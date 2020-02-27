@@ -11,7 +11,7 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl />
     <Copyright>Fluid 2020</Copyright>
-    <Version>0.1</Version>
+    <Version>2020.1</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
