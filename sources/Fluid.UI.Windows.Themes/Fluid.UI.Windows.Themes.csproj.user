@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Animations.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Brushes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Classic.Accent.Blue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Classic.Accent.Green.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Classic.Accent.Red.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Classic.Accent.Yellow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Classic.Dark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Classic.Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Fonts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

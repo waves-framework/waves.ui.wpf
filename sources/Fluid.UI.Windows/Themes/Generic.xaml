@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Анимации -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Animations.xaml" />
+
+        <!-- Кисти -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Brushes.xaml" />
+
+        <!-- Конверторы -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Converters.xaml" />
+
+        <!-- Шрифты -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Fonts.xaml" />
+
+        <!-- Иконки -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
+
+        <!-- Прозрачности -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Opacity.xaml" />
+
+        <!-- Размеры -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Sizes.xaml" />
+
+        <!-- Отступы -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Spacings.xaml" />
+
+        <!-- Стили текста -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Text.xaml" />
+
+        <!-- Словарь со стандартными определениями внешнего вида контролов -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Themes/Default.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

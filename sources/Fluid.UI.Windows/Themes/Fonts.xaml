@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="FiraGo-Regular">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO Regular</FontFamily>
+    <FontFamily x:Key="FiraGo-Medium">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO Medium</FontFamily>
+    <FontFamily x:Key="FiraGo-SemiBold">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO SemiBold</FontFamily>
+    <FontFamily x:Key="FiraGo-Bold">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO Bold</FontFamily>
+    <FontFamily x:Key="FiraGo-ExtraBold">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO ExtraBold</FontFamily>
+    <FontFamily x:Key="FiraGo-Heavy">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO Heavy</FontFamily>
+    <FontFamily x:Key="FiraGo-Book">pack://application:,,,/Fluid.UI;component/Fonts/#FiraGO Book</FontFamily>
+    <FontFamily x:Key="Lato-Regular">pack://application:,,,/Fluid.UI;component/Fonts/#Lato Regular</FontFamily>
+    <FontFamily x:Key="Lato-SemiBold">pack://application:,,,/Fluid.UI;component/Fonts/#Lato Semibold</FontFamily>
+    <FontFamily x:Key="Lato-Medium">pack://application:,,,/Fluid.UI;component/Fonts/#Lato Medium</FontFamily>
+    <FontFamily x:Key="Lato-Bold">pack://application:,,,/Fluid.UI;component/Fonts/#Lato Bold</FontFamily>
+    <FontFamily x:Key="Lato-Black">pack://application:,,,/Fluid.UI;component/Fonts/#Lato Black</FontFamily>
+    <FontFamily x:Key="Lato-Heavy">pack://application:,,,/Fluid.UI;component/Fonts/#Lato Heavy</FontFamily>
+    
+</ResourceDictionary>

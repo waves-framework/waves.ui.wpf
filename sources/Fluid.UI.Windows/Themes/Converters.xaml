@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:Fluid.UI.Windows.Converters"
+                    xmlns:negation="clr-namespace:Fluid.UI.Windows.Converters.Logical.Negation"
+                    xmlns:bits="clr-namespace:Fluid.UI.Windows.Converters.UnitConverters.Bits"
+                    xmlns:bytes="clr-namespace:Fluid.UI.Windows.Converters.UnitConverters.Bytes"
+                    xmlns:hertz="clr-namespace:Fluid.UI.Windows.Converters.UnitConverters.Hertz"
+                    xmlns:channels="clr-namespace:Fluid.UI.Windows.Converters.UnitConverters.Channels"
+                    xmlns:voltage="clr-namespace:Fluid.UI.Windows.Converters.UnitConverters.Voltage">
+
+    <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter"/>
+    <converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter"/>
+    <converters:FileNameToImageBrushConverter x:Key="FileNameToImageBrushConverter"/>
+    <converters:FluidColorToHexStringConverter x:Key="FluidColorToHexStringConverter"/>
+    <converters:FluidColorToTransparentColorConverter x:Key="FluidColorToTransparentColorConverter"/>
+    <converters:FluidColorToSolidColorBrushConverter x:Key="FluidColorToSolidColorBrushConverter"/>
+    <converters:NotNullToBoolConverter x:Key="NotNullToBoolConverter"/>
+    <converters:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
+    <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+    <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    <converters:ProgressValueToDegreeConverter x:Key="ProgressValueToDegreeConverter"/>
+    <converters:SensorTypeToSelectedIndexConverter x:Key="SensorTypeToSelectedIndexConverter"/>
+    <converters:SolidColorBrushToColorConverter x:Key="SolidColorBrushToColorConverter"/>
+    <converters:StringIsNullOrEmptyConverter x:Key="StringIsNullOrEmptyConverter"/>
+    <converters:StringPathToGeometryConverter x:Key="StringPathToGeometryConverter"/>
+    <converters:StringValueToVisibilityConverter x:Key="StringValueToVisibilityConverter"/>
+    <converters:ZeroCountToBoolConverter x:Key="ZeroCountToBoolConverter"/>
+    <converters:ZeroCountToVisibilityConverter x:Key="ZeroCountToVisibilityConverter"/>
+    <converters:IconStringKeyToGeometryConverter x:Key="IconStringKeyToGeometryConverter"/>
+
+    <negation:BoolNegationConverter x:Key="BoolNegationConverter"/>
+    <negation:BoolToVisibilityNegationConverter x:Key="BoolToVisibilityNegationConverter"/>
+
+    <bits:NumberOfBitsToStringConverter x:Key="NumberOfBitsToStringConverter"/>
+    <bytes:NumberOfBytesToFormattedStringConverter x:Key="NumberOfBytesToFormattedStringConverter"/>
+    <channels:ChannelNumberToStringConverter x:Key="ChannelNumberToStringConverter"/>
+    <channels:NumberOfChannelToStringConverter x:Key="NumberOfChannelToStringConverter"/>
+    <hertz:HertzToShortStringConverter x:Key="HertzToShortStringConverter"/>
+    <voltage:TimesToSolidColorBrushConverter x:Key="TimesToSolidColorBrushConverter"/>
+    <voltage:VoltsToStringConverter x:Key="VoltsToStringConverter"/>
+    
+</ResourceDictionary>

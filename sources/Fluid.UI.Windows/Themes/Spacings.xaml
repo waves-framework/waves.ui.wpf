@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Thickness x:Key="SmallThickness" Left="6" Top="3" Right="6" Bottom="3"/>
+
+    <Thickness x:Key="StandardThickness" Left="12" Top="6" Right="12" Bottom="6"/>
+
+    <Thickness x:Key="MediumThickness" Left="18" Top="12" Right="18" Bottom="12"/>
+
+    <Thickness x:Key="BigThickness" Left="24" Top="18" Right="24" Bottom="18"/>
+    
+</ResourceDictionary>

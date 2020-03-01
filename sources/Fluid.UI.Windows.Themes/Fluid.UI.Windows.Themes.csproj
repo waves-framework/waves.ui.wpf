@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="../../props/Fluid.UI.props" />
+
+  <ItemGroup>
+    <None Remove="Fonts\FiraGO-Bold.ttf" />
+    <None Remove="Fonts\FiraGO-Book.ttf" />
+    <None Remove="Fonts\FiraGO-ExtraBold.ttf" />
+    <None Remove="Fonts\FiraGO-Heavy.ttf" />
+    <None Remove="Fonts\FiraGO-Medium.ttf" />
+    <None Remove="Fonts\FiraGO-Regular.ttf" />
+    <None Remove="Fonts\FiraGO-SemiBold.ttf" />
+    <None Remove="Fonts\Lato-Black.ttf" />
+    <None Remove="Fonts\Lato-Bold.ttf" />
+    <None Remove="Fonts\Lato-Heavy.ttf" />
+    <None Remove="Fonts\Lato-Medium.ttf" />
+    <None Remove="Fonts\Lato-Regular.ttf" />
+    <None Remove="Fonts\Lato-Semibold.ttf" />
+    <None Include="..\..\..\files\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\FiraGO-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\FiraGO-Book.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\FiraGO-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\FiraGO-Heavy.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\FiraGO-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\FiraGO-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\FiraGO-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Lato-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Lato-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Lato-Heavy.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Lato-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Lato-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Lato-Semibold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

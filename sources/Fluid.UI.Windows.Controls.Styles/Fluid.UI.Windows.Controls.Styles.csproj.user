@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Button.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Calendar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CheckBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RepeatButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TabControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
