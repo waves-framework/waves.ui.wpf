@@ -1,4 +1,9 @@
-﻿namespace Fluid.UI.Windows.Extensions
+﻿using System;
+using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
+
+namespace Fluid.UI.Windows.Controls.Styles.Extensions
 {
     internal static class Window
     {

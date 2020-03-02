@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Themes", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Controls.Styles", "..\sources\Fluid.UI.Windows.Controls.Styles\Fluid.UI.Windows.Controls.Styles.csproj", "{14E3CE07-0121-414B-AB5F-0260E0930BA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid.UI.Windows.Controls.Helpers", "..\sources\Fluid.UI.Windows.Controls.Helpers\Fluid.UI.Windows.Controls.Helpers.csproj", "{4AD83C45-BBD8-4B76-A228-D657E5B21FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Controls.Helpers", "..\sources\Fluid.UI.Windows.Controls.Helpers\Fluid.UI.Windows.Controls.Helpers.csproj", "{4AD83C45-BBD8-4B76-A228-D657E5B21FFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{A0A7A41E-28B4-4055-A30B-D9B38AB233FB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converters", "Converters", "{88645F33-9C36-4FAA-91E2-C0350F32CD3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Converters", "..\sources\Fluid.UI.Windows.Converters\Fluid.UI.Windows.Converters.csproj", "{01A97FCA-2066-4E6A-9656-FB4ECBB424B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid.UI.Windows.Converters", "..\sources\Fluid.UI.Windows.Converters\Fluid.UI.Windows.Converters.csproj", "{01A97FCA-2066-4E6A-9656-FB4ECBB424B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Controls.Primitives", "..\sources\Fluid.UI.Windows.Controls.Primitives\Fluid.UI.Windows.Controls.Primitives.csproj", "{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid.UI.Windows.Controls.Styles.IO", "..\sources\Fluid.UI.Windows.Controls.Styles.IO\Fluid.UI.Windows.Controls.Styles.IO.csproj", "{F9949160-837D-4C08-A94A-AAF2952D8296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,30 @@ Global
 		{01A97FCA-2066-4E6A-9656-FB4ECBB424B9}.Release|x64.Build.0 = Release|Any CPU
 		{01A97FCA-2066-4E6A-9656-FB4ECBB424B9}.Release|x86.ActiveCfg = Release|Any CPU
 		{01A97FCA-2066-4E6A-9656-FB4ECBB424B9}.Release|x86.Build.0 = Release|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Debug|x64.Build.0 = Debug|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Debug|x86.Build.0 = Debug|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Release|x64.ActiveCfg = Release|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Release|x64.Build.0 = Release|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Release|x86.ActiveCfg = Release|Any CPU
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97}.Release|x86.Build.0 = Release|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Debug|x64.Build.0 = Debug|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Release|x64.ActiveCfg = Release|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Release|x64.Build.0 = Release|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9949160-837D-4C08-A94A-AAF2952D8296}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,8 +125,9 @@ Global
 		{14E3CE07-0121-414B-AB5F-0260E0930BA7} = {A0A7A41E-28B4-4055-A30B-D9B38AB233FB}
 		{4AD83C45-BBD8-4B76-A228-D657E5B21FFB} = {A0A7A41E-28B4-4055-A30B-D9B38AB233FB}
 		{A0A7A41E-28B4-4055-A30B-D9B38AB233FB} = {C68996C2-037B-4C99-9CCE-5D1BE04BF57C}
-		{88645F33-9C36-4FAA-91E2-C0350F32CD3A} = {C68996C2-037B-4C99-9CCE-5D1BE04BF57C}
-		{01A97FCA-2066-4E6A-9656-FB4ECBB424B9} = {88645F33-9C36-4FAA-91E2-C0350F32CD3A}
+		{01A97FCA-2066-4E6A-9656-FB4ECBB424B9} = {C68996C2-037B-4C99-9CCE-5D1BE04BF57C}
+		{C4F4CFE8-A1A4-4EDC-AA5C-B92D4FDB7F97} = {A0A7A41E-28B4-4055-A30B-D9B38AB233FB}
+		{F9949160-837D-4C08-A94A-AAF2952D8296} = {A0A7A41E-28B4-4055-A30B-D9B38AB233FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B7BB703-A82E-468B-AE8C-46F0CA04AD8B}

@@ -11,19 +11,40 @@
     <Page Update="CheckBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ContextMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ListBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Menu.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="RepeatButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ScrollBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ScrollViewer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TabControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Thumb.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Window.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -4,7 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
@@ -17,7 +17,7 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="Auto"/>
 
-        <Setter Property="Background" Value="{StaticResource Primary-400-Brush}" />
+        <Setter Property="Background" Value="{DynamicResource Primary-400-Brush}" />
         <Setter Property="Focusable" Value="false" />
         <Setter Property="IsTabStop" Value="false" />
 

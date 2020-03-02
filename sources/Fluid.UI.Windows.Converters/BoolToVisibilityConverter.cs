@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace Fluid.UI.Windows.Converters
 {
     /// <inheritdoc />
-    public class NullToBooleanConverter : IValueConverter
+    public class BoolToVisibilityConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value == null;
+            if (value != null && (bool)value)
+                return Visibility.Visible;
+            return Visibility.Collapsed;
         }
 
         /// <inheritdoc />
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Binding.DoNothing;
+            return value != null && (Visibility)value == Visibility.Visible;
         }
     }
 }

@@ -1,21 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:Fluid.UI.Controls"
-                    xmlns:helpers="clr-namespace:Fluid.UI.Helpers">
+                    xmlns:primitives="clr-namespace:Fluid.UI.Windows.Controls.Primitives;assembly=Fluid.UI.Windows.Controls.Primitives"
+                    xmlns:helpers="clr-namespace:Fluid.UI.Windows.Controls.Helpers;assembly=Fluid.UI.Windows.Controls.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Control.xaml" />
-
-        <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Resources/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
         <!-- Кнопки -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/RepeatButton.xaml" />
 
         <!-- Ползунок -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Thumb.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
@@ -34,7 +31,7 @@
                           Width="18"
                           Height="18"
                           Command="ScrollBar.LineLeftCommand"
-                          Content="{StaticResource Icon-Sort-Left}"
+                          Content="{DynamicResource Icon-Sort-Left}"
                           Style="{StaticResource ScrollBarLineButtonStyle}" 
                           Padding="-4,-1,0,0"/>
 
@@ -48,7 +45,7 @@
 
                 <Track.Thumb>
 
-                    <controls:Thumb Style="{StaticResource ScrollBarThumbStyle}" />
+                    <primitives:Thumb Style="{StaticResource ScrollBarThumbStyle}" />
 
                 </Track.Thumb>
 
@@ -65,7 +62,7 @@
                           Width="18"
                           Height="18"
                           Command="ScrollBar.LineRightCommand"
-                          Content="{StaticResource Icon-Sort-Right}"
+                          Content="{DynamicResource Icon-Sort-Right}"
                           Style="{StaticResource ScrollBarLineButtonStyle}" 
                           Padding="-4,-1,0,0"/>
         </Grid>
@@ -88,7 +85,7 @@
                           Height="18"
                           Command="ScrollBar.LineUpCommand"
                           Style="{StaticResource ScrollBarLineButtonStyle}"
-                          Content="{StaticResource Icon-Sort-Up}"
+                          Content="{DynamicResource Icon-Sort-Up}"
                           Padding="-1,-4,0,0"/>
 
             <Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="True" Margin="-1">
@@ -101,7 +98,7 @@
                 </Track.DecreaseRepeatButton>
 
                 <Track.Thumb>
-                    <controls:Thumb Style="{StaticResource ScrollBarThumbStyle}" />
+                    <primitives:Thumb Style="{StaticResource ScrollBarThumbStyle}" />
                 </Track.Thumb>
 
                 <Track.IncreaseRepeatButton>
@@ -117,7 +114,7 @@
                           Width="18"
                           Height="18"
                           Command="ScrollBar.LineDownCommand"
-                          Content="{StaticResource Icon-Sort-Down}"
+                          Content="{DynamicResource Icon-Sort-Down}"
                           Style="{StaticResource ScrollBarLineButtonStyle}"
                           Padding="-1,-4,0,0"/>
         </Grid>

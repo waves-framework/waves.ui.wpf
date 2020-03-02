@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:viewModel="clr-namespace:Fluid.Core.Enums;assembly=Fluid.Core">
+                    xmlns:enums="clr-namespace:Fluid.Core.IO.Enums;assembly=Fluid.Core.IO.Enums">
 
     <ResourceDictionary.MergedDictionaries>
 
@@ -36,63 +36,63 @@
     <!-- Общий стиль иконки директории. -->
     <Style x:Key="DirectoryPathStyle" TargetType="{x:Type Path}">
 
-        <Setter Property="Data" Value="{StaticResource Icon-Folder}"/>
+        <Setter Property="Data" Value="{DynamicResource Icon-Folder}"/>
 
         <Style.Triggers>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Directory}">
-                <Setter Property="Data" Value="{StaticResource Icon-Folder}" />
+                         Value="{x:Static enums:DirectoryType.Directory}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Folder}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.HardDrive}">
-                <Setter Property="Data" Value="{StaticResource Icon-Hard-Drive}" />
+                         Value="{x:Static enums:DirectoryType.HardDrive}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Hard-Drive}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.NetworkDirectory}">
-                <Setter Property="Data" Value="{StaticResource Icon-Network-Folder}" />
+                         Value="{x:Static enums:DirectoryType.NetworkDirectory}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Network-Folder}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.OpticalDrive}">
-                <Setter Property="Data" Value="{StaticResource Icon-Optical-Drive}" />
+                         Value="{x:Static enums:DirectoryType.OpticalDrive}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Optical-Drive}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Ram}">
-                <Setter Property="Data" Value="{StaticResource Icon-Ram}" />
+                         Value="{x:Static enums:DirectoryType.Ram}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Ram}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Removable}">
-                <Setter Property="Data" Value="{StaticResource Icon-Removable-Drive}" />
+                         Value="{x:Static enums:DirectoryType.Removable}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Removable-Drive}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Unknown}">
-                <Setter Property="Data" Value="{StaticResource Icon-Help}" />
+                         Value="{x:Static enums:DirectoryType.Unknown}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Help}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.NoRootDirectory}">
-                <Setter Property="Data" Value="{StaticResource Icon-Home}" />
+                         Value="{x:Static enums:DirectoryType.NoRootDirectory}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Home}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Desktop}">
-                <Setter Property="Data" Value="{StaticResource Icon-Desktop}" />
+                         Value="{x:Static enums:DirectoryType.Desktop}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Desktop}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Pc}">
-                <Setter Property="Data" Value="{StaticResource Icon-Pc}" />
+                         Value="{x:Static enums:DirectoryType.Pc}">
+                <Setter Property="Data" Value="{DynamicResource Icon-Pc}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.User}">
-                <Setter Property="Data" Value="{StaticResource Icon-User-Folder}" />
+                         Value="{x:Static enums:DirectoryType.User}">
+                <Setter Property="Data" Value="{DynamicResource Icon-User-Folder}" />
             </DataTrigger>
 
         </Style.Triggers>
@@ -102,164 +102,164 @@
     <!-- Общий стиль иконки файла. -->
     <Style x:Key="FilePathStyle" TargetType="{x:Type Path}">
 
-        <Setter Property="Data" Value="{StaticResource Icon-File}"/>
+        <Setter Property="Data" Value="{DynamicResource Icon-File}"/>
 
         <Style.Triggers>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".exe">
-                <Setter Property="Data" Value="{StaticResource Icon-Application}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Application}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".dll">
-                <Setter Property="Data" Value="{StaticResource Icon-Library-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Library-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".jpg">
-                <Setter Property="Data" Value="{StaticResource Icon-Image-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Image-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".png">
-                <Setter Property="Data" Value="{StaticResource Icon-Image-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Image-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".gif">
-                <Setter Property="Data" Value="{StaticResource Icon-Image-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Image-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".bmp">
-                <Setter Property="Data" Value="{StaticResource Icon-Image-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Image-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".tiff">
-                <Setter Property="Data" Value="{StaticResource Icon-Image-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Image-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mov">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".avi">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".3gp">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mkv">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".webm">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mp4">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".wmv">
-                <Setter Property="Data" Value="{StaticResource Icon-Video-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Video-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mp3">
-                <Setter Property="Data" Value="{StaticResource Icon-Audio-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Audio-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".wma">
-                <Setter Property="Data" Value="{StaticResource Icon-Audio-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Audio-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".wav">
-                <Setter Property="Data" Value="{StaticResource Icon-Audio-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Audio-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".ogg">
-                <Setter Property="Data" Value="{StaticResource Icon-Audio-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Audio-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".m4a">
-                <Setter Property="Data" Value="{StaticResource Icon-Audio-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Audio-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".aac">
-                <Setter Property="Data" Value="{StaticResource Icon-Audio-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Audio-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".pdf">
-                <Setter Property="Data" Value="{StaticResource Icon-Pdf-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Pdf-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".doc">
-                <Setter Property="Data" Value="{StaticResource Icon-Document-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Document-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".docx">
-                <Setter Property="Data" Value="{StaticResource Icon-Document-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Document-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".ppt">
-                <Setter Property="Data" Value="{StaticResource Icon-Presentation-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Presentation-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".pptx">
-                <Setter Property="Data" Value="{StaticResource Icon-Presentation-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Presentation-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".xls">
-                <Setter Property="Data" Value="{StaticResource Icon-Spreadsheet-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Spreadsheet-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".xlsx">
-                <Setter Property="Data" Value="{StaticResource Icon-Spreadsheet-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Spreadsheet-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".sys">
-                <Setter Property="Data" Value="{StaticResource Icon-System-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-System-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".ini">
-                <Setter Property="Data" Value="{StaticResource Icon-System-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-System-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".config">
-                <Setter Property="Data" Value="{StaticResource Icon-System-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-System-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".zip">
-                <Setter Property="Data" Value="{StaticResource Icon-Archive}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Archive}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".rar">
-                <Setter Property="Data" Value="{StaticResource Icon-Archive}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Archive}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".7z">
-                <Setter Property="Data" Value="{StaticResource Icon-Archive}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Archive}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".xml">
-                <Setter Property="Data" Value="{StaticResource Icon-Code-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Code-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".log">
-                <Setter Property="Data" Value="{StaticResource Icon-Document-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Document-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".bin">
-                <Setter Property="Data" Value="{StaticResource Icon-File-Binary}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-File-Binary}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".txt">
-                <Setter Property="Data" Value="{StaticResource Icon-Document-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Document-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".rtf">
-                <Setter Property="Data" Value="{StaticResource Icon-Document-File}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Document-File}" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".bat">
-                <Setter Property="Data" Value="{StaticResource Icon-Console-Windows}" />
+                <Setter Property="Data" Value="{DynamicResource Icon-Console-Windows}" />
             </DataTrigger>
 
         </Style.Triggers>
@@ -267,59 +267,59 @@
     </Style>
 
     <!-- Общий стиль подписи типа директории. -->
-    <Style x:Key="DirectoryTypeTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Regular1}">
+    <Style x:Key="DirectoryTypeTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{DynamicResource Regular1}">
 
         <Setter Property="Text" Value="Папка с файлами"/>
 
         <Style.Triggers>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Directory}">
+                         Value="{x:Static enums:DirectoryType.Directory}">
                 <Setter Property="Text" Value="Папка с файлами" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.HardDrive}">
+                         Value="{x:Static enums:DirectoryType.HardDrive}">
                 <Setter Property="Text" Value="Локальный диск" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.NetworkDirectory}">
+                         Value="{x:Static enums:DirectoryType.NetworkDirectory}">
                 <Setter Property="Text" Value="Сетевая папка" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.OpticalDrive}">
+                         Value="{x:Static enums:DirectoryType.OpticalDrive}">
                 <Setter Property="Text" Value="Отпический диск" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Ram}">
+                         Value="{x:Static enums:DirectoryType.Ram}">
                 <Setter Property="Text" Value="Память" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Removable}">
+                         Value="{x:Static enums:DirectoryType.Removable}">
                 <Setter Property="Text" Value="Внешний диск" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Unknown}">
+                         Value="{x:Static enums:DirectoryType.Unknown}">
                 <Setter Property="Text" Value="Неизвестно" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.NoRootDirectory}">
+                         Value="{x:Static enums:DirectoryType.NoRootDirectory}">
                 <Setter Property="Text" Value="No root directory" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Desktop}">
+                         Value="{x:Static enums:DirectoryType.Desktop}">
                 <Setter Property="Text" Value="Рабочий стол" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static viewModel:DirectoryType.Pc}">
+                         Value="{x:Static enums:DirectoryType.Pc}">
                 <Setter Property="Text" Value="Локальные диски и др." />
             </DataTrigger>
 
@@ -328,7 +328,7 @@
     </Style>
 
     <!-- Общий стиль подписи типа файла. -->
-    <Style x:Key="FileTypeTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Regular1}">
+    <Style x:Key="FileTypeTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{DynamicResource Regular1}">
 
         <Setter Property="Text" Value="Файл"/>
 

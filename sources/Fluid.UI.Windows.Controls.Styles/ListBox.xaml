@@ -4,7 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
@@ -51,18 +51,18 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="HighlightCanvas" Property="Opacity" Value="{StaticResource Opacity8}" />
+                            <Setter TargetName="HighlightCanvas" Property="Opacity" Value="{DynamicResource Opacity8}" />
                         </Trigger>
 
                         <!-- Убрать привязку к конкретным цветам -->
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="{StaticResource Accent-Foreground-100-Brush}" />
-                            <Setter Property="Background" Value="{StaticResource Accent-500-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}" />
+                            <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="{StaticResource Primary-Foreground-900-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
                         </Trigger>
 
                         <EventTrigger RoutedEvent="Loaded">
@@ -87,7 +87,7 @@
                             <MultiTrigger.Setters>
                                 <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
                                 <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}" />
-                                <Setter Property="Opacity" Value="{StaticResource Opacity5}"/>
+                                <Setter Property="Opacity" Value="{DynamicResource Opacity5}"/>
                             </MultiTrigger.Setters>
                         </MultiTrigger>
 

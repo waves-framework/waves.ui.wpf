@@ -1,19 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Fluid.UI.Styles.Controls"
-                    xmlns:converters="clr-namespace:Fluid.UI.Converters"
-                    xmlns:helpers="clr-namespace:Fluid.UI.Helpers">
+                    xmlns:helpers="clr-namespace:Fluid.UI.Windows.Controls.Helpers;assembly=Fluid.UI.Windows.Controls.Helpers">
 
 
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
-
-    <!-- Конвертер - Наличие контрола в видимость элемента управления -->
-    <converters:StringValueToVisibilityConverter x:Key="StringValueToVisibilityConverter" />
 
     <!-- Основное описание стиля текстбокса-->
     <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource ControlStyle}">
@@ -30,9 +25,9 @@
 
         <Setter Property="IsTabStop" Value="True"/>
 
-        <Setter Property="Background" Value="{StaticResource Primary-100-Brush}" />
-        <Setter Property="BorderBrush" Value="{StaticResource Primary-700-Brush}" />
-        <Setter Property="Foreground" Value="{StaticResource Primary-Foreground-100-Brush}" />
+        <Setter Property="Background" Value="{DynamicResource Primary-100-Brush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary-700-Brush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}" />
 
         <Setter Property="Template">
 
@@ -46,7 +41,7 @@
                         <Border Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" />
 
                         <Border x:Name="HighlightBorder" Background="Transparent"
-                                BorderBrush="{StaticResource Accent-500-Brush}"
+                                BorderBrush="{DynamicResource Accent-500-Brush}"
                                 BorderThickness="{TemplateBinding BorderThickness}" Opacity="0"
                                 CornerRadius="6" />
 
@@ -57,7 +52,7 @@
                                    VerticalAlignment="Center"
                                    FontSize="{TemplateBinding FontSize}"
                                    Foreground="{TemplateBinding Foreground}"
-                                   Text="{TemplateBinding helpers:ControlHelper.Description}"
+                                   Text="{TemplateBinding helpers:TextBox.Description}"
                                    Visibility="Collapsed"
                                    TextTrimming="CharacterEllipsis" />
 
@@ -102,9 +97,9 @@
                         </DataTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{StaticResource Primary-500-Brush}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource Primary-700-Brush}" />
-                            <Setter Property="Foreground" Value="{StaticResource Primary-Foreground-900-Brush}" />
+                            <Setter Property="Background" Value="{DynamicResource Primary-500-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-700-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
                         </Trigger>
 
                         <Trigger Property="AcceptsReturn" Value="True">

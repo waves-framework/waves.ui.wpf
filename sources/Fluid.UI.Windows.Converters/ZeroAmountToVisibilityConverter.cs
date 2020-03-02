@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace Fluid.UI.Windows.Converters
 {
     /// <inheritdoc />
-    public class InverseZeroAmountToVisibilityConverter : IValueConverter
+    public class ZeroAmountToVisibilityConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

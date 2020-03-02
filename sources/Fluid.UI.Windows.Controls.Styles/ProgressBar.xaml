@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
@@ -25,8 +25,8 @@
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
 
-        <Setter Property="Foreground" Value="{StaticResource Accent-500-Brush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Accent-500-Brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Accent-500-Brush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Accent-500-Brush}"/>
 
         <Setter Property="Template">
 
@@ -37,15 +37,15 @@
                     <Grid x:Name="Root">
 
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="{StaticResource StandardCornerRadius}" />
+                                CornerRadius="{DynamicResource StandardCornerRadius}" />
 
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1"
-                                CornerRadius="{StaticResource StandardCornerRadius}" />
+                                CornerRadius="{DynamicResource StandardCornerRadius}" />
 
                         <Border x:Name="PART_Track"
                                 Background="Transparent"
-                                CornerRadius="{StaticResource StandardCornerRadius}"/>
+                                CornerRadius="{DynamicResource StandardCornerRadius}"/>
 
                         <Grid x:Name="ProgressBarRootGrid">
 
@@ -67,11 +67,11 @@
                                             </LinearGradientBrush.Transform>
 
                                             <!--TODO: объявление этих цветов за пределами того словаря-->
-                                            <GradientStop x:Name="GradientStop1" Offset="0" Color="{StaticResource Color-100}" />
-                                            <GradientStop x:Name="GradientStop2" Offset="0.5" Color="{StaticResource Color-100}" />
-                                            <GradientStop x:Name="GradientStop3" Offset="0.501" Color="{StaticResource Accent-Color-500}" />
-                                            <GradientStop x:Name="GradientStop4" Offset="0.999" Color="{StaticResource Accent-Color-500}" />
-                                            <GradientStop x:Name="GradientStop5" Offset="0.1" Color="{StaticResource Color-100}" />
+                                            <GradientStop x:Name="GradientStop1" Offset="0" Color="{DynamicResource Color-100}" />
+                                            <GradientStop x:Name="GradientStop2" Offset="0.5" Color="{DynamicResource Color-100}" />
+                                            <GradientStop x:Name="GradientStop3" Offset="0.501" Color="{DynamicResource Accent-Color-500}" />
+                                            <GradientStop x:Name="GradientStop4" Offset="0.999" Color="{DynamicResource Accent-Color-500}" />
+                                            <GradientStop x:Name="GradientStop5" Offset="0.1" Color="{DynamicResource Color-100}" />
 
                                         </LinearGradientBrush>
 
@@ -155,11 +155,11 @@
 
                         <Trigger Property="IsEnabled" Value="False">
 
-                            <Setter Property="Background" Value="{StaticResource Primary-500-Brush}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource Primary-700-Brush}" />
-                            <Setter Property="Foreground" Value="{StaticResource Primary-Foreground-900-Brush}" />
+                            <Setter Property="Background" Value="{DynamicResource Primary-500-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-700-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
 
-                            <Setter Property="Opacity" TargetName="IndeterminateRoot" Value="{StaticResource Opacity8}"/>
+                            <Setter Property="Opacity" TargetName="IndeterminateRoot" Value="{DynamicResource Opacity8}"/>
 
                         </Trigger>
 

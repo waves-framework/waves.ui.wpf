@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace Fluid.UI.Windows.Converters
 {
     /// <inheritdoc />
-    public class InverseZeroAmountToBoolConverter : IValueConverter
+    public class ZeroAmountToBoolConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

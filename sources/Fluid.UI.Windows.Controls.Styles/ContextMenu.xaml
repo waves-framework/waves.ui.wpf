@@ -5,13 +5,13 @@
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Стили меню -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Menu.xaml" />
 
         <!-- Стили меню -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollViewer.xaml" />
 
         <!-- Основной контрол -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI;component/Styles/Controls/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
@@ -26,7 +26,7 @@
 
         <Setter Property="Padding" Value="0"/>
 
-        <Setter Property="Background" Value="{StaticResource Primary-100-Brush}" />
+        <Setter Property="Background" Value="{DynamicResource Primary-100-Brush}" />
         <Setter Property="Block.TextAlignment" Value="Left" />
         <Setter Property="BorderBrush" Value="{DynamicResource Accent-500-Brush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -68,7 +68,5 @@
         </Setter>
 
     </Style>
-
-    
 
 </ResourceDictionary>

@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Fluid.UI.Extensions;
+using Fluid.UI.Windows.Controls.Styles.Extensions;
 
-namespace Fluid.UI.Styles.Controls
+namespace Fluid.UI.Windows.Controls.Styles
 {
     public partial class Window
     {

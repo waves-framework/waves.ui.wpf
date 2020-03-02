@@ -2,16 +2,15 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Fluid.UI.Windows.Converters.Inverse
+namespace Fluid.UI.Windows.Converters
 {
     /// <inheritdoc />
-    public class InverseStringIsNullOrEmptyToBooleanConverter : IValueConverter
+    public class NullToBoolConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var s = (string)value;
-            return !string.IsNullOrEmpty(s);
+            return value == null;
         }
 
         /// <inheritdoc />
