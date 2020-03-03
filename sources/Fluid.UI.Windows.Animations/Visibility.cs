@@ -1,9 +1,15 @@
-﻿namespace Fluid.UI.Windows.Animations
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Media.Animation;
+
+namespace Fluid.UI.Windows.Animations
 {
     /// <summary>
     ///     Supplies attached properties that provides visibility of animations
     /// </summary>
-    public class VisibilityAnimation
+    public class Visibility
     {
         public enum AnimationType
         {
@@ -57,7 +63,7 @@
             DependencyProperty.RegisterAttached(
                 "AnimationType",
                 typeof(AnimationType),
-                typeof(VisibilityAnimation),
+                typeof(Visibility),
                 new FrameworkPropertyMetadata(AnimationType.None,
                     OnAnimationTypePropertyChanged));
 
@@ -104,7 +110,7 @@
         /// <summary>
         ///     VisibilityAnimation static ctor
         /// </summary>
-        static VisibilityAnimation()
+        static Visibility()
         {
             // Here we “register" on Visibility property “before change" event
             UIElement.VisibilityProperty.AddOwner(
