@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Accent.Blue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Accent.Green.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Accent.Red.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Accent.Yellow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Primary.Dark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Primary.Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

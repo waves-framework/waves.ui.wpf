@@ -2,13 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Page Update="Button.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Control.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Window.xaml">
+    <Page Update="Icons.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

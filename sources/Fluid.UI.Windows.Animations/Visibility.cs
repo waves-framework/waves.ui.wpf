@@ -116,7 +116,7 @@ namespace Fluid.UI.Windows.Animations
             UIElement.VisibilityProperty.AddOwner(
                 typeof(FrameworkElement),
                 new FrameworkPropertyMetadata(
-                    Visibility.Visible,
+                    System.Windows.Visibility.Visible,
                     VisibilityChanged,
                     CoerceVisibility));
         }
@@ -148,7 +148,7 @@ namespace Fluid.UI.Windows.Animations
             if (frameworkElement == null) return baseValue;
 
             // Cast to type safe value
-            var visibility = (Visibility) baseValue;
+            var visibility = (System.Windows.Visibility) baseValue;
 
             // If Visibility value hasn’t change, do nothing.
             // This can happen if the Visibility property is set using data binding 
@@ -175,7 +175,7 @@ namespace Fluid.UI.Windows.Animations
             // value (baseValue)
             doubleAnimation.Completed += (sender, eventArgs) =>
             {
-                if (visibility == Visibility.Visible)
+                if (visibility == System.Windows.Visibility.Visible)
                 {
                     // In case we change into Visibility.Visible, the correct value 
                     // is already set, so just update the animation started flag
@@ -204,7 +204,7 @@ namespace Fluid.UI.Windows.Animations
                 }
             };
 
-            if (visibility == Visibility.Collapsed || visibility == Visibility.Hidden)
+            if (visibility == System.Windows.Visibility.Collapsed || visibility == System.Windows.Visibility.Hidden)
             {
                 // Fade out by animating opacity
                 doubleAnimation.From = 1.0;
@@ -223,7 +223,7 @@ namespace Fluid.UI.Windows.Animations
             // Make sure the element remains visible during the animation
             // The original requested value will be set in the completed event of 
             // the animation
-            return Visibility.Visible;
+            return System.Windows.Visibility.Visible;
         }
 
         /// <summary>

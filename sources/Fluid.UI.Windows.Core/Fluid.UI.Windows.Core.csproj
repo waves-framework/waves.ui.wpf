@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="../../props/Fluid.UI.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Fluid.Core" Version="2020.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows.Colors\Fluid.UI.Windows.Colors.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Controls.Styles\Fluid.UI.Windows.Controls.Styles.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

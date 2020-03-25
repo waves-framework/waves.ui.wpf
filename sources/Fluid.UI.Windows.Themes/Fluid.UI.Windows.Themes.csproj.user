@@ -8,24 +8,6 @@
     <Page Update="Brushes.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Colors\Classic.Accent.Blue.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Colors\Classic.Accent.Green.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Colors\Classic.Accent.Red.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Colors\Classic.Accent.Yellow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Colors\Classic.Dark.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Colors\Classic.Light.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Fonts.xaml">
       <SubType>Designer</SubType>
     </Page>

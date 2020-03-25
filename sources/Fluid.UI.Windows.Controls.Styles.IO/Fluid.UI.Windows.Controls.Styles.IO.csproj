@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <UseWPF>true</UseWPF>
@@ -7,7 +7,7 @@
   <Import Project="../../props/Fluid.UI.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.IO.Enums" Version="2020.1.2" />
+    <PackageReference Include="Fluid.Core.IO" Version="2020.1.1" />
   </ItemGroup>
 
 </Project>
