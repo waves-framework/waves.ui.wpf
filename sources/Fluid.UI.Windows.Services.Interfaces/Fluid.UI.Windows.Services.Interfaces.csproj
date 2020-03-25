@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="../../props/Fluid.UI.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Fluid.Core.Services.Interfaces" Version="2020.1.3" />
+  </ItemGroup>
+
+</Project>

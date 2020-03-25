@@ -8,7 +8,7 @@ using Fluid.Core.Base.Enums;
 using Application = System.Windows.Application;
 using Bootstrapper = Fluid.Core.Core;
 
-namespace Fluid.UI.Windows.Core
+namespace Fluid.UI.Windows
 {
     /// <summary>
     /// Ядро UI.

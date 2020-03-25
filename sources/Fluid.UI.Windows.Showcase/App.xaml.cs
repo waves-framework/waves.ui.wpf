@@ -2,7 +2,7 @@
 using System.Windows;
 using Fluid.UI.Windows.Showcase.View.Window;
 using Fluid.UI.Windows.Showcase.ViewModel;
-using Bootstrapper = Fluid.UI.Windows.Core.Core;
+using Bootstrapper = Fluid.UI.Windows.Core;
 
 namespace Fluid.UI.Windows.Showcase
 {
