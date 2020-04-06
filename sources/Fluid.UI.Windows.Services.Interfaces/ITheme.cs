@@ -1,31 +1,94 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Windows;
+using Fluid.Core.Base;
+using Fluid.Core.Base.Interfaces;
 
 namespace Fluid.UI.Windows.Services.Interfaces
 {
     /// <summary>
-    /// Интерфейс темы.
+    ///     Интерфейс темы.
     /// </summary>
-    public interface ITheme
+    public interface ITheme : IObservableObject
     {
         /// <summary>
-        /// Наименование.
+        ///     Получает наименование темы.
         /// </summary>
         string Name { get; }
 
         /// <summary>
-        /// Словарь основных цветов.
+        /// Получает словарь основных цветов.
         /// </summary>
-        ResourceDictionary PrimaryColorDictionaryInfo { get; set; }
+        ResourceDictionary PrimaryColorResourceDictionary { get; }
 
         /// <summary>
-        /// Словарь акцентных цветов.
+        /// Получает словарь акцентных цветов.
         /// </summary>
-        ResourceDictionary AccentColorDictionaryInfo { get; set; }
+        ResourceDictionary AccentColorResourceDictionary { get; }
 
         /// <summary>
-        /// Словарь дополнительных цветов.
+        /// Получает словарь дополнительных цветов.
         /// </summary>
-        ResourceDictionary MiscellaneousColorDictionaryInfo { get; set; }
+        ResourceDictionary MiscellaneousResourceDictionary { get; }
+
+        /// <summary>
+        /// Получает основной цвет по весу.
+        /// </summary>
+        /// <param name="weight">Вес.</param>
+        /// <returns>Цвет.</returns>
+        Color GetPrimaryColor(int weight);
+
+        /// <summary>
+        /// Получает основной цвет текста по весу.
+        /// </summary>
+        /// <param name="weight">Вес.</param>
+        /// <returns>Цвет.</returns>
+        Color GetPrimaryForegroundColor(int weight);
+
+        /// <summary>
+        /// Получает акцентный цвет по весу.
+        /// </summary>
+        /// <param name="weight">Вес.</param>
+        /// <returns>Цвет.</returns>
+        Color GetAccentColor(int weight);
+
+        /// <summary>
+        /// Получает акцентный цвет текста по весу.
+        /// </summary>
+        /// <param name="weight">Вес.</param>
+        /// <returns>Цвет.</returns>
+        Color GetAccentForegroundColor(int weight);
+
+        /// <summary>
+        /// Получает дополнительный цвет по ключу и весу.
+        /// </summary>
+        /// <param name="key">Ключ.</param>
+        /// <param name="weight">Вес.</param>
+        /// <returns>Цвет.</returns>
+        Color GetMiscellaneousColor(string key, int weight);
+
+        ///// <summary>
+        /////     Получает словарь основных цветов.
+        ///// </summary>
+        //Dictionary<int, Color> PrimaryColorDictionary { get; }
+
+        ///// <summary>
+        /////     Получает словарь основных цветов текста.
+        ///// </summary>
+        //Dictionary<int, Color> PrimaryForegroundColorDictionary { get; }
+
+        ///// <summary>
+        /////     Получает словарь акцентных цветов.
+        ///// </summary>
+        //Dictionary<int, Color> AccentColorDictionary { get; }
+
+        ///// <summary>
+        /////     Получает словарь акцентных цветов текста.
+        ///// </summary>
+        //Dictionary<int, Color> AccentForegroundColorDictionary { get; }
+
+        ///// <summary>
+        /////     Получает словарь дополнительных цветов.
+        ///// </summary>
+        //Dictionary<int, Color> MiscellaneousColorDictionary { get; }
     }
 }

@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
   </ItemGroup>
 

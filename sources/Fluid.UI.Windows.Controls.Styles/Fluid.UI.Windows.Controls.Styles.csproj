@@ -7,7 +7,7 @@
   <Import Project="../../props/Fluid.UI.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Native.Windows" Version="2020.1.1" />
+    <PackageReference Include="Fluid.Core.Native.Windows" Version="2020.1.28" />
   </ItemGroup>
 
   <ItemGroup>

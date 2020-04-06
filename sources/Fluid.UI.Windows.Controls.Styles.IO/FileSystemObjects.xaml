@@ -86,7 +86,7 @@
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static enums:DirectoryType.Pc}">
+                         Value="{x:Static enums:DirectoryType.Computer}">
                 <Setter Property="Data" Value="{DynamicResource Icon-Pc}" />
             </DataTrigger>
 
@@ -319,7 +319,7 @@
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                         Value="{x:Static enums:DirectoryType.Pc}">
+                         Value="{x:Static enums:DirectoryType.Computer}">
                 <Setter Property="Text" Value="Локальные диски и др." />
             </DataTrigger>
 

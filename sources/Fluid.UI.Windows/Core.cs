@@ -1,44 +1,46 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Resources;
 using System.Windows;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
+using Fluid.Core.Services;
+using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
-using Bootstrapper = Fluid.Core.Core;
 
 namespace Fluid.UI.Windows
 {
     /// <summary>
     /// Ядро UI.
     /// </summary>
-    public static class Core
+    public class Core : Fluid.Core.Core
     {
-        private static ResourceDictionary _primaryColorDictionary;
-        private static ResourceDictionary _accentColorDictionary;
-        private static ResourceDictionary _miscellaneousColorDictionary;
+        private ResourceDictionary _primaryColorDictionary;
+        private ResourceDictionary _accentColorDictionary;
+        private ResourceDictionary _miscellaneousColorDictionary;
 
         /// <summary>
         /// Инициализировано ли ядро.
         /// </summary>
-        public static bool IsInitialized { get; private set; }
+        public bool IsInitialized { get; private set; }
 
         /// <summary>
         /// Получает или задает экземпляр запущенного приложения.
         /// </summary>
-        public static Application Application { get; private set; }
+        public Application Application { get; private set; }
 
         /// <summary>
         /// Запуск ядра.
         /// </summary>
-        public static void Start(Application application)
+        public void Start(Application application)
         {
             try
             {
                 Application = application;
 
-                Bootstrapper.Start();
+                Start();
 
                 if (!InitializeDictionaries())
                     throw new Exception("Ошибка при инициализации базовых словарей ресурсов UI.");
@@ -50,22 +52,35 @@ namespace Fluid.UI.Windows
             }
             catch (Exception ex)
             {
-                Bootstrapper.WriteLogMessage(ex, "UI.Core");
+                WriteLogMessage(ex, "UI.Core");
             }
         }
 
         /// <summary>
         /// Инициализация сервисов.
         /// </summary>
-        private static bool InitializeServices()
+        private bool InitializeServices()
         {
+            // application
+            var themeService = Manager.GetService<IThemeService>().First();
+            if (themeService == null)
+            {
+                WriteLogMessage(new Message("Service loading", "Theme service is not loaded", "UI Core", MessageType.Warning));
+            }
+            else
+            {
+                RegisterService(themeService);
+            }
+
+            //egisterService<IThemeService>(new ThemeService(_primaryColorDictionary, _accentColorDictionary, _miscellaneousColorDictionary));
+
             return true;
         }
 
         /// <summary>
         /// Инициализация словарей.
         /// </summary>
-        private static bool InitializeDictionaries()
+        private bool InitializeDictionaries()
         {
             try
             {
@@ -73,7 +88,7 @@ namespace Fluid.UI.Windows
                 if (dictionaries.Count == 1)
                 {
                     var core = dictionaries[0];
-                    if (core.Source.AbsolutePath.Equals("/Fluid.UI.Windows.Core;component/Core.xaml"))
+                    if (core.Source.AbsolutePath.Equals("/Fluid.UI.Windows;component/Core.xaml"))
                     {
                         dictionaries = core.MergedDictionaries;
 
@@ -90,7 +105,7 @@ namespace Fluid.UI.Windows
             }
             catch (Exception e)
             {
-                Bootstrapper.WriteLogMessage(new Message("Ошибка", "При инициализации конфигурации возникла ошибка:\r\n" + e.Message, "UI.Core", MessageType.Error));
+                WriteLogMessage(new Message("Ошибка", "При инициализации конфигурации возникла ошибка:\r\n" + e.Message, "UI.Core", MessageType.Error));
                 return false;
             }
         }

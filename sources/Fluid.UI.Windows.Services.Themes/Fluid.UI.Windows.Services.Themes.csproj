@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <UseWPF>true</UseWPF>
@@ -7,12 +7,12 @@
   <Import Project="../../props/Fluid.UI.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.28" />
+    <PackageReference Include="Fluid.Core.Services" Version="2020.1.28" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fluid.UI.Windows.Extensions\Fluid.UI.Windows.Extensions.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Services.Interfaces\Fluid.UI.Windows.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Services\Fluid.UI.Windows.Services.csproj" />
   </ItemGroup>
 
 </Project>

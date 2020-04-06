@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows;
+using Fluid.Core.Services.Interfaces;
+using Fluid.UI.Windows.Services.Interfaces;
 using Fluid.UI.Windows.Showcase.View.Window;
 using Fluid.UI.Windows.Showcase.ViewModel;
-using Bootstrapper = Fluid.UI.Windows.Core;
 
 namespace Fluid.UI.Windows.Showcase
 {
@@ -11,22 +12,40 @@ namespace Fluid.UI.Windows.Showcase
     /// </summary>
     public partial class App
     {
+        /// <summary>
+        /// Gets UI Core.
+        /// </summary>
+        public static Core Core { get; } = new Core();
+
         /// <inheritdoc />
         protected override void OnStartup(StartupEventArgs e)
         {
             try
             {
-                Bootstrapper.Start(this);
+                Core.Start(this);
 
                 var viewModel = new MainViewModel();
+                viewModel.Initialize();
                 var view = new MainWindowView {DataContext = viewModel};
                 view.Show();
+
+                view.Closing += OnViewClosing;
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Actions when main view closing.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnViewClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Core.Stop();
         }
     }
 }
