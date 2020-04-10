@@ -7,8 +7,8 @@
   <Import Project="../../props/Fluid.UI.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.28" />
-    <PackageReference Include="Fluid.Core.Services.Interfaces" Version="2020.1.28" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.32" />
+    <PackageReference Include="Fluid.Core.Services.Interfaces" Version="2020.1.32" />
   </ItemGroup>
 
 </Project>

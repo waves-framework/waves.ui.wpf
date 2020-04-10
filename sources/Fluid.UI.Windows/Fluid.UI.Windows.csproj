@@ -7,11 +7,11 @@
   <Import Project="../../props/Fluid.UI.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core" Version="2020.1.28" />
-    <PackageReference Include="Fluid.Core.Services.Applications" Version="2020.1.28" />
-    <PackageReference Include="Fluid.Core.Services.Input" Version="2020.1.28" />
-    <PackageReference Include="Fluid.Core.Services.Logging" Version="2020.1.28" />
-    <PackageReference Include="Fluid.Core.Services.Modules" Version="2020.1.28" />
+    <PackageReference Include="Fluid.Core" Version="2020.1.32" />
+    <PackageReference Include="Fluid.Core.Services.Applications" Version="2020.1.32" />
+    <PackageReference Include="Fluid.Core.Services.Input" Version="2020.1.32" />
+    <PackageReference Include="Fluid.Core.Services.Logging" Version="2020.1.32" />
+    <PackageReference Include="Fluid.Core.Services.Modules" Version="2020.1.32" />
   </ItemGroup>
 
   <ItemGroup>
