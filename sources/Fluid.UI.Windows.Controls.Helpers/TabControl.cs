@@ -2,10 +2,13 @@
 
 namespace Fluid.UI.Windows.Controls.Helpers
 {
+    /// <summary>
+    /// Tab control dependency property helper.
+    /// </summary>
     public class TabControl
     {
         /// <summary>
-        ///     Свойство ширины вкладки.
+        ///     Gets or sets "Tab Width" dependency property.
         /// </summary>
         public static readonly DependencyProperty TabWidthProperty =
             DependencyProperty.RegisterAttached(
@@ -13,20 +16,20 @@ namespace Fluid.UI.Windows.Controls.Helpers
                 new PropertyMetadata(double.NaN));
 
         /// <summary>
-        ///     Получает ширину вкладки.
+        ///     Gets tab width.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">Dependency object.</param>
+        /// <returns>Tab width value.</returns>
         public static double GetTabWidth(DependencyObject obj)
         {
             return (double) obj.GetValue(TabWidthProperty);
         }
 
         /// <summary>
-        ///     Задает ширину вкладки.
+        ///     Sets tab width.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
+        /// <param name="obj">Dependency object.</param>
+        /// <param name="value">Tab width value.</param>
         public static void SetTabWidth(DependencyObject obj, double value)
         {
             obj.SetValue(TabWidthProperty, value);

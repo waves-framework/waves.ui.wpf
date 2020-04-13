@@ -4,7 +4,7 @@ using Fluid.UI.Windows.Controls.Primitives.Interfaces;
 namespace Fluid.UI.Windows.Controls.Primitives
 {
     /// <summary>
-    /// Ползунок.
+    /// Thumb.
     /// </summary>
     public class Thumb : System.Windows.Controls.Primitives.Thumb, IThumb
     {
@@ -33,6 +33,9 @@ namespace Fluid.UI.Windows.Controls.Primitives
             if (_currentDevice != null) CaptureCurrentDevice(e);
         }
 
+        /// <summary>
+        /// Releases device.
+        /// </summary>
         private void ReleaseCurrentDevice()
         {
             if (_currentDevice == null) return;
@@ -43,6 +46,10 @@ namespace Fluid.UI.Windows.Controls.Primitives
             ReleaseTouchCapture(temp);
         }
 
+        /// <summary>
+        /// Captures current device.
+        /// </summary>
+        /// <param name="e">Arguments.</param>
         private void CaptureCurrentDevice(TouchEventArgs e)
         {
             var gotTouch = CaptureTouch(e.TouchDevice);

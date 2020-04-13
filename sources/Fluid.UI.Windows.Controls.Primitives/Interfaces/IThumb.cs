@@ -8,22 +8,22 @@ namespace Fluid.UI.Windows.Controls.Primitives.Interfaces
     public interface IThumb : IInputElement
     {
         /// <summary>
-        ///     Событие начала перемещение.
+        ///     Event for drag started handling.
         /// </summary>
         event DragStartedEventHandler DragStarted;
 
         /// <summary>
-        ///     Событие получение разницы перемещения.
+        ///     Event for drag delta handling.
         /// </summary>
         event DragDeltaEventHandler DragDelta;
 
         /// <summary>
-        ///     Событие завершения перемещения.
+        ///     Event for drag completed handling.
         /// </summary>
         event DragCompletedEventHandler DragCompleted;
 
         /// <summary>
-        ///     Событие двойного клика.
+        ///     Event for mouse double click handling.
         /// </summary>
         event MouseButtonEventHandler MouseDoubleClick;
     }
