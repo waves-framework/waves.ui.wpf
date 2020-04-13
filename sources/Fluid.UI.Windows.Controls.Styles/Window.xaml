@@ -5,14 +5,15 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <!-- Кнопки -->
+        <!-- Buttons. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Button.xaml" />
 
-        <!-- Основной контрол -->
+        <!-- Base control. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
+    <!-- Base windows style. -->
     <Style x:Key="WindowStyle" TargetType="{x:Type Window}" BasedOn="{StaticResource ControlStyle}">
 
         <EventSetter Event="Loaded" Handler="OnWindowLoaded" />
@@ -40,9 +41,9 @@
 
                 <ControlTemplate TargetType="{x:Type Window}">
 
+                    <!-- Main container. -->
                     <AdornerDecorator>
 
-                        <!-- Главный контейнер -->
                         <Border x:Name="PART_Border"
                                 TextOptions.TextRenderingMode="ClearType"
                                 TextOptions.TextFormattingMode="Display"
@@ -63,7 +64,7 @@
 
                             </Border.Effect>
 
-                            <!-- Основная сетка -->
+                            <!-- Window view grid. -->
                             <Grid VerticalAlignment="Stretch"
                                   HorizontalAlignment="Stretch">
 
@@ -72,14 +73,14 @@
                                     <RowDefinition x:Name="ContentRow" Height="*" />
                                 </Grid.RowDefinitions>
 
-                                <!--Основная сетка с контентом -->
+                                <!-- Window content grid. -->
                                 <Grid Grid.Row="0" Grid.RowSpan="2">
 
                                     <ContentPresenter ClipToBounds="True" />
 
                                 </Grid>     
 
-                                <!-- Верхняя сетка -->
+                                <!-- Title bar grid. -->
                                 <Grid Grid.Row="0"
                                       MouseLeftButtonDown="OnTitleBarMouseLeftButtonDown"
                                       MouseMove="OnTitleBarMouseMove"
@@ -90,7 +91,7 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <!-- Сетка-заглушка для работы перетаскивания окна -->
+                                    <!-- Blank grid for window moving (don't delete it!) -->
                                     <Grid Opacity="0" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" />
 
                                     <Grid Grid.Column="0"
@@ -109,7 +110,7 @@
 
                                     </Grid>
 
-                                    <!-- Сетка кнопок окна -->
+                                    <!-- Window buttons grid. -->
                                     <Grid Grid.Column="1">
 
                                         <StackPanel Orientation="Horizontal"
@@ -178,7 +179,7 @@
 
                                 </Grid>
 
-                                <!-- Сетка линий измения окна -->
+                                <!-- Window resizing canvases grid. -->
                                 <Grid Grid.Row="0" Grid.RowSpan="2">
 
                                     <Grid.Resources>
@@ -281,10 +282,10 @@
 
                     </AdornerDecorator>
 
-                    <!-- Тригеры -->
+                    <!-- Triggers. -->
                     <ControlTemplate.Triggers>
 
-                        <!-- Состояние окна -->
+                        <!-- Windows state. -->
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter Property="Margin" TargetName="PART_Border" Value="5,5,5,5" />
                             <Setter Property="Visibility" TargetName="LeftResizeCanvas" Value="Collapsed" />
@@ -293,10 +294,8 @@
                             <Setter Property="Visibility" TargetName="BottomResizeCanvas" Value="Collapsed" />
                         </Trigger>
 
-                        <!-- Режим измениния размера-->
+                        <!-- Resize mode. -->
                         <Trigger Property="ResizeMode" Value="NoResize">
-                            <!--<Setter Property="Visibility" TargetName="MaximizeButton" Value="Collapsed" />
-                            <Setter Property="Visibility" TargetName="MinimizeButton" Value="Collapsed" />-->
                             <Setter Property="IsEnabled" TargetName="LeftResizeCanvas" Value="False" />
                             <Setter Property="IsEnabled" TargetName="TopResizeCanvas" Value="False" />
                             <Setter Property="IsEnabled" TargetName="RightResizeCanvas" Value="False" />

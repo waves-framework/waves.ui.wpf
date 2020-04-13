@@ -4,12 +4,12 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <!-- Основной контрол -->
+        <!-- Base control. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
-    <!-- Описание стиля выделения -->
+    <!-- Button focus visual style. -->
     <Style x:Key="ButtonFocusVisual">
 
         <Setter Property="Control.Template">
@@ -33,7 +33,7 @@
 
     </Style>
 
-    <!-- Основное описание стиля кнопки -->
+    <!-- Base button style.-->
     <Style x:Key="ButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlStyle}">
 
         <Setter Property="helpers:Control.CornerRadius" Value="{DynamicResource StandardCornerRadius}"/>
@@ -140,7 +140,7 @@
 
     </Style>
 
-    <!-- Стиль акцентной кнопки -->
+    <!-- Base accent button style. -->
     <Style x:Key="AccentButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
 
         <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}"/>
@@ -149,7 +149,7 @@
 
     </Style>
 
-    <!-- Стиль кнопки верхней панели окна -->
+    <!-- Window tool bar button style (for example, minimize, maximize and close). -->
     <Style x:Key="WindowToolBarButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
 
         <Setter Property="MinWidth" Value="36"/>
