@@ -4,6 +4,6 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <Import Project="../../props/Fluid.UI.props" />
+  <Import Project="../../props/Fluid.UI.Windows.props" />
 
 </Project>

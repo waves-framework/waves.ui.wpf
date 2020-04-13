@@ -6,33 +6,24 @@ using Fluid.Core.Services.Interfaces;
 namespace Fluid.UI.Windows.Services.Interfaces
 {
     /// <summary>
-    /// Интерфейс сервиса тем.
+    /// Interface of theme service classes.
     /// </summary>
     public interface IThemeService : IService
     {
         /// <summary>
-        /// Gets or sets primary color dictionary.
+        /// Gets or sets selected theme.
         /// </summary>
-        ResourceDictionary PrimaryColorDictionary { get; set; }
+        ITheme SelectedTheme { get; set; }
 
         /// <summary>
-        /// Gets or sets accent color dictionary.
-        /// </summary>
-        ResourceDictionary AccentColorDictionary { get; set; }
-
-        /// <summary>
-        /// Gets or sets miscellaneous color dictionary.
-        /// </summary>
-        ResourceDictionary MiscellaneousColorDictionary { get; set; }
-
-        /// <summary>
-        /// Выбранная тема.
-        /// </summary>
-        ITheme SelectedTheme { get; }
-
-        /// <summary>
-        /// Коллекция тем.
+        /// Gets themes collection.
         /// </summary>
         ObservableCollection<ITheme> Themes { get; }
+
+        /// <summary>
+        /// Attaches application to service.
+        /// </summary>
+        /// <param name="application">Application instance.</param>
+        void AttachApplication(Application application);
     }
 }

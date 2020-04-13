@@ -4,7 +4,7 @@ using System.Windows;
 using Fluid.Core.Base;
 using Fluid.UI.Windows.Services.Interfaces;
 
-namespace Fluid.UI.Windows.Services.Themes
+namespace Fluid.UI.Windows.Services
 {
     /// <summary>
     /// Класс представления темы.
@@ -23,7 +23,7 @@ namespace Fluid.UI.Windows.Services.Themes
 
         private Dictionary<int, Color> _primaryColorDictionary;
         private Dictionary<int, Color> _accentColorDictionary;
-        private Dictionary<int, Color> _miscellaneousColorDictionary;
+        private Dictionary<string, Color> _miscellaneousColorDictionary;
         private Dictionary<int, Color> _primaryForegroundColorDictionary;
         private Dictionary<int, Color> _accentForegroundColorDictionary;
 
@@ -35,12 +35,14 @@ namespace Fluid.UI.Windows.Services.Themes
         /// Новый экземпляр темы.
         /// </summary>
         /// <param name="name">Наименование темы.</param>
+        /// <param name="id">Theme's id.</param>
         /// <param name="primary">Словарь ресурсов основных цветов.</param>
         /// <param name="accent">Словарь ресурсов акцентных цветов.</param>
         /// <param name="miscellaneous">Словарь ресурсов дополнительных цветов.</param>
-        public Theme(string name, ResourceDictionary primary, ResourceDictionary accent, ResourceDictionary miscellaneous)
+        public Theme(string name, Guid id, ResourceDictionary primary, ResourceDictionary accent, ResourceDictionary miscellaneous)
         {
             Name = name;
+            Id = id;
 
             PrimaryColorResourceDictionary = primary;
             AccentColorResourceDictionary = accent;
@@ -48,6 +50,9 @@ namespace Fluid.UI.Windows.Services.Themes
 
             InitializeColors();
         }
+
+        /// <inheritdoc />
+        public Guid Id { get; private set; }
 
         /// <inheritdoc />
         public string Name { get; private set; }
@@ -91,31 +96,31 @@ namespace Fluid.UI.Windows.Services.Themes
         /// <inheritdoc />
         public Color GetPrimaryColor(int weight)
         {
-            throw new NotImplementedException();
+            return _primaryColorDictionary[weight];
         }
 
         /// <inheritdoc />
         public Color GetPrimaryForegroundColor(int weight)
         {
-            throw new NotImplementedException();
+            return _primaryForegroundColorDictionary[weight];
         }
 
         /// <inheritdoc />
         public Color GetAccentColor(int weight)
         {
-            throw new NotImplementedException();
+            return _accentColorDictionary[weight];
         }
 
         /// <inheritdoc />
         public Color GetAccentForegroundColor(int weight)
         {
-            throw new NotImplementedException();
+            return _accentForegroundColorDictionary[weight];
         }
 
         /// <inheritdoc />
-        public Color GetMiscellaneousColor(string key, int weight)
+        public Color GetMiscellaneousColor(string key)
         {
-            throw new NotImplementedException();
+            return _miscellaneousColorDictionary[key];
         }
 
         /// <summary>

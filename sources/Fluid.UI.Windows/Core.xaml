@@ -3,10 +3,6 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <!-- Colors -->
-        <ResourceDictionary  Source="pack://application:,,,/Fluid.UI.Windows.Colors;component/Primary.Dark.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Colors;component/Accent.Blue.xaml" />
-
         <!-- Controls -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
@@ -16,37 +12,6 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
-
-    <!-- Primary -->
-    <SolidColorBrush x:Key="Primary-100-Brush" Color="{StaticResource Color-100}"/>
-    <SolidColorBrush x:Key="Primary-200-Brush" Color="{StaticResource Color-200}"/>
-    <SolidColorBrush x:Key="Primary-300-Brush" Color="{StaticResource Color-300}"/>
-    <SolidColorBrush x:Key="Primary-400-Brush" Color="{StaticResource Color-400}"/>
-    <SolidColorBrush x:Key="Primary-500-Brush" Color="{StaticResource Color-500}"/>
-    <SolidColorBrush x:Key="Primary-600-Brush" Color="{StaticResource Color-600}"/>
-    <SolidColorBrush x:Key="Primary-700-Brush" Color="{StaticResource Color-700}"/>
-    <SolidColorBrush x:Key="Primary-800-Brush" Color="{StaticResource Color-800}"/>
-    <SolidColorBrush x:Key="Primary-900-Brush" Color="{StaticResource Color-900}"/>
-
-    <!-- Primary Foreground -->
-    <SolidColorBrush x:Key="Primary-Foreground-100-Brush" Color="{StaticResource Color-Foreground-100}"/>
-    <SolidColorBrush x:Key="Primary-Foreground-500-Brush" Color="{StaticResource Color-Foreground-500}"/>
-    <SolidColorBrush x:Key="Primary-Foreground-900-Brush" Color="{StaticResource Color-Foreground-900}"/>
-
-    <!-- Accent 1 -->
-    <SolidColorBrush x:Key="Accent-100-Brush" Color="{StaticResource Accent-Color-100}"/>
-    <SolidColorBrush x:Key="Accent-200-Brush" Color="{StaticResource Accent-Color-200}"/>
-    <SolidColorBrush x:Key="Accent-300-Brush" Color="{StaticResource Accent-Color-300}"/>
-    <SolidColorBrush x:Key="Accent-400-Brush" Color="{StaticResource Accent-Color-400}"/>
-    <SolidColorBrush x:Key="Accent-500-Brush" Color="{StaticResource Accent-Color-500}"/>
-    <SolidColorBrush x:Key="Accent-600-Brush" Color="{StaticResource Accent-Color-600}"/>
-    <SolidColorBrush x:Key="Accent-700-Brush" Color="{StaticResource Accent-Color-700}"/>
-    <SolidColorBrush x:Key="Accent-800-Brush" Color="{StaticResource Accent-Color-800}"/>
-    <SolidColorBrush x:Key="Accent-900-Brush" Color="{StaticResource Accent-Color-900}"/>
-
-    <SolidColorBrush x:Key="Accent-Foreground-100-Brush" Color="{StaticResource Accent-Color-Foreground-100}"/>
-    <SolidColorBrush x:Key="Accent-Foreground-500-Brush" Color="{StaticResource Accent-Color-Foreground-500}"/>
-    <SolidColorBrush x:Key="Accent-Foreground-900-Brush" Color="{StaticResource Accent-Color-Foreground-900}"/>
 
     <!-- Стиль окна -->
     <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}"/>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
@@ -10,6 +11,11 @@ namespace Fluid.UI.Windows.Services.Interfaces
     /// </summary>
     public interface ITheme : IObservableObject
     {
+        /// <summary>
+        /// Gets theme ID.
+        /// </summary>
+        Guid Id { get; }
+
         /// <summary>
         ///     Получает наименование темы.
         /// </summary>
@@ -62,33 +68,7 @@ namespace Fluid.UI.Windows.Services.Interfaces
         /// Получает дополнительный цвет по ключу и весу.
         /// </summary>
         /// <param name="key">Ключ.</param>
-        /// <param name="weight">Вес.</param>
         /// <returns>Цвет.</returns>
-        Color GetMiscellaneousColor(string key, int weight);
-
-        ///// <summary>
-        /////     Получает словарь основных цветов.
-        ///// </summary>
-        //Dictionary<int, Color> PrimaryColorDictionary { get; }
-
-        ///// <summary>
-        /////     Получает словарь основных цветов текста.
-        ///// </summary>
-        //Dictionary<int, Color> PrimaryForegroundColorDictionary { get; }
-
-        ///// <summary>
-        /////     Получает словарь акцентных цветов.
-        ///// </summary>
-        //Dictionary<int, Color> AccentColorDictionary { get; }
-
-        ///// <summary>
-        /////     Получает словарь акцентных цветов текста.
-        ///// </summary>
-        //Dictionary<int, Color> AccentForegroundColorDictionary { get; }
-
-        ///// <summary>
-        /////     Получает словарь дополнительных цветов.
-        ///// </summary>
-        //Dictionary<int, Color> MiscellaneousColorDictionary { get; }
+        Color GetMiscellaneousColor(string key);
     }
 }

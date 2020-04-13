@@ -34,80 +34,49 @@ namespace Fluid.UI.Windows
         /// <summary>
         /// Запуск ядра.
         /// </summary>
-        public void Start(Application application)
+        public override void Start()
         {
             try
             {
-                Application = application;
+                base.Start();
 
-                Start();
-
-                if (!InitializeDictionaries())
-                    throw new Exception("Ошибка при инициализации базовых словарей ресурсов UI.");
-
-                if (!InitializeServices())
-                    throw new Exception("Ошибка при инициализации сервисов UI.");
-
+                Initialize();
+                
                 IsInitialized = true;
             }
             catch (Exception ex)
             {
-                WriteLogMessage(ex, "UI.Core");
+                WriteLogException(ex, "UI.Core");
             }
+        }
+
+        /// <summary>
+        /// Starts UI core.
+        /// </summary>
+        /// <param name="application">Application instance.</param>
+        public void Start(Application application)
+        {
+            Application = application;
+
+            Start();
+        }
+
+        /// <summary>
+        /// Initializes UI Core.
+        /// </summary>
+        private void Initialize()
+        {
+            InitializeServices();
         }
 
         /// <summary>
         /// Инициализация сервисов.
         /// </summary>
-        private bool InitializeServices()
+        private void InitializeServices()
         {
-            // application
-            var themeService = Manager.GetService<IThemeService>().First();
-            if (themeService == null)
-            {
-                WriteLogMessage(new Message("Service loading", "Theme service is not loaded", "UI Core", MessageType.Warning));
-            }
-            else
-            {
-                RegisterService(themeService);
-            }
+            RegisterService(ServiceManager.GetService<IThemeService>().First());
 
-            //egisterService<IThemeService>(new ThemeService(_primaryColorDictionary, _accentColorDictionary, _miscellaneousColorDictionary));
-
-            return true;
-        }
-
-        /// <summary>
-        /// Инициализация словарей.
-        /// </summary>
-        private bool InitializeDictionaries()
-        {
-            try
-            {
-                var dictionaries = Application.Resources.MergedDictionaries;
-                if (dictionaries.Count == 1)
-                {
-                    var core = dictionaries[0];
-                    if (core.Source.AbsolutePath.Equals("/Fluid.UI.Windows;component/Core.xaml"))
-                    {
-                        dictionaries = core.MergedDictionaries;
-
-                        _primaryColorDictionary = dictionaries[0];
-                        _accentColorDictionary = dictionaries[1];
-                    }
-                    else
-                    {
-                        throw new Exception("Неверный словарь ресурсов Core.xaml.");
-                    }
-                }
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                WriteLogMessage(new Message("Ошибка", "При инициализации конфигурации возникла ошибка:\r\n" + e.Message, "UI.Core", MessageType.Error));
-                return false;
-            }
+            GetService<IThemeService>().AttachApplication(Application);
         }
     }
 }

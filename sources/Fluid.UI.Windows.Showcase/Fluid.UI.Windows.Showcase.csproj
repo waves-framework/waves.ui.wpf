@@ -19,6 +19,6 @@
     <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
   </ItemGroup>
 
-  <Import Project="../../props/Fluid.UI.props" />
+  <Import Project="../../props/Fluid.UI.Windows.props" />
 
 </Project>
