@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Fluid.UI.Windows.Controls.Primitives</id>
+    <version>{$NUGETVERSION}</version>
+    <authors>Fluid</authors>
+    <owners>Fluid</owners>
+    <licenseUrl>https://ambertape.ru</licenseUrl>
+    <projectUrl>https://ambertape.ru</projectUrl>
+    <icon>files\logo.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Библиотека примитивов пользовательских элементов управления.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2019-2020</copyright>
+    <tags>fluid ui windows controls primitives</tags>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.NETCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+  	<file src="..\..\files\logo.png" target="files\" />
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Primitives.dll" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Primitives.xml" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Primitives.dll" target="build\x86"/>
+    <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Primitives.xml" target="build\x86"/>
+    <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Primitives.dll" target="build\x64"/>
+    <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Primitives.xml" target="build\x64"/>
+  </files>
+</package>
