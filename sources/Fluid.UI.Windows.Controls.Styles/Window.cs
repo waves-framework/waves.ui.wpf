@@ -6,15 +6,18 @@ using Fluid.UI.Windows.Controls.Styles.Extensions;
 
 namespace Fluid.UI.Windows.Controls.Styles
 {
+    /// <summary>
+    /// Window.
+    /// </summary>
     public partial class Window
     {
         private bool _resizeInProgress;
 
         /// <summary>
-        ///     Действия при загрузке окна
+        ///     Actions when window loaded.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             var window = sender as System.Windows.Window;
@@ -24,10 +27,10 @@ namespace Fluid.UI.Windows.Controls.Styles
         }
 
         /// <summary>
-        ///     Действия при нажатии левой кнопки мыши по верхней панели окна
+        ///     Actions when mouse down on title bar.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnTitleBarMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount > 1)
@@ -37,10 +40,10 @@ namespace Fluid.UI.Windows.Controls.Styles
         }
 
         /// <summary>
-        ///     Действия при перемещении мыши по верхней панели окна
+        ///     Actions when mouse moves on title bar.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnTitleBarMouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -62,20 +65,20 @@ namespace Fluid.UI.Windows.Controls.Styles
         }
 
         /// <summary>
-        ///     Действия при нажатии кнопки сворачивания окна
+        ///     Actions when clicks on minimize window button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnMinimizeButtonClick(object sender, RoutedEventArgs e)
         {
             sender.ForWindowFromTemplate(w => w.WindowState = WindowState.Minimized);
         }
 
         /// <summary>
-        ///     Действия при нажатии кнопки разворачивания окна
+        ///     Actions when clicks on maximize window button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnMaximizeButtonClick(object sender, RoutedEventArgs e)
         {
             sender.ForWindowFromTemplate(
@@ -85,20 +88,20 @@ namespace Fluid.UI.Windows.Controls.Styles
         }
 
         /// <summary>
-        ///     Действия при нажатии кнопки закрытия окна
+        ///     Actions when clicks on close window button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnCloseButtonClick(object sender, RoutedEventArgs e)
         {
             sender.ForWindowFromTemplate(w => w.Close());
         }
 
         /// <summary>
-        ///     Действия при инициализации изменения размера окна
+        ///     Actions when window resize initializes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnWindowResizeInitialization(object sender, MouseButtonEventArgs e)
         {
             var canvas = sender as Canvas;
@@ -110,10 +113,10 @@ namespace Fluid.UI.Windows.Controls.Styles
         }
 
         /// <summary>
-        ///     Действия при изменении размера окна
+        ///     Actions when windows is resizing.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnWindowResizing(object sender, MouseEventArgs e)
         {
             if (!_resizeInProgress) return;
@@ -167,10 +170,10 @@ namespace Fluid.UI.Windows.Controls.Styles
         }
 
         /// <summary>
-        ///     Действия при окончании измерения размера окна
+        ///     Actions when window resize ends.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
         private void OnWindowResizeEnd(object sender, MouseButtonEventArgs e)
         {
             var canvas = sender as Canvas;

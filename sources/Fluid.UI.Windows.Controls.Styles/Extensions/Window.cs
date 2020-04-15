@@ -5,13 +5,16 @@ using System.Windows.Media;
 
 namespace Fluid.UI.Windows.Controls.Styles.Extensions
 {
+    /// <summary>
+    /// Window extension.
+    /// </summary>
     internal static class Window
     {
         /// <summary>
-        ///     ???
+        ///     Execute action for window from child dependency object.
         /// </summary>
-        /// <param name="childDependencyObject"></param>
-        /// <param name="action"></param>
+        /// <param name="childDependencyObject">Child dependency object.</param>
+        /// <param name="action">Action.</param>
         public static void ForWindowFromChild(this object childDependencyObject, Action<System.Windows.Window> action)
         {
             var element = childDependencyObject as DependencyObject;
@@ -25,39 +28,38 @@ namespace Fluid.UI.Windows.Controls.Styles.Extensions
         }
 
         /// <summary>
-        ///     Вовращает окно
+        ///     Returns windows from child object.
         /// </summary>
-        /// <param name="childDependencyObject"></param>
-        /// <returns></returns>
+        /// <param name="childDependencyObject">Child dependency object.</param>
+        /// <returns>Window.</returns>
         public static System.Windows.Window GetWindow(this object childDependencyObject)
         {
             var element = childDependencyObject as DependencyObject;
             while (element != null)
             {
                 element = VisualTreeHelper.GetParent(element);
-                if (element is System.Windows.Window) return element as System.Windows.Window;
+                if (element is System.Windows.Window window) return window;
             }
 
             return null;
         }
 
         /// <summary>
-        ///     ???
+        ///     Execute action for window from template.
         /// </summary>
-        /// <param name="templateFrameworkElement"></param>
-        /// <param name="action"></param>
+        /// <param name="templateFrameworkElement">Template framework element.</param>
+        /// <param name="action">Action.</param>
         public static void ForWindowFromTemplate(this object templateFrameworkElement,
             Action<System.Windows.Window> action)
         {
-            var window = ((FrameworkElement) templateFrameworkElement).TemplatedParent as System.Windows.Window;
-            if (window != null) action(window);
+            if (((FrameworkElement) templateFrameworkElement).TemplatedParent is System.Windows.Window window) action(window);
         }
 
         /// <summary>
-        ///     Получает указатель на окно
+        ///     Gets window handle (IntPtr).
         /// </summary>
-        /// <param name="window"></param>
-        /// <returns></returns>
+        /// <param name="window">Window.</param>
+        /// <returns>Pointer / Handle.</returns>
         public static IntPtr GetWindowHandle(this System.Windows.Window window)
         {
             var helper = new WindowInteropHelper(window);

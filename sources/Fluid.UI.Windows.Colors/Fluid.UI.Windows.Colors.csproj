@@ -4,7 +4,7 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <Import Project="../../props/Fluid.UI.props" />
+  <Import Project="../../props/Fluid.UI.Windows.props" />
 
   <ItemGroup>
     <Page Update="Accent.Blue.xaml">
@@ -23,6 +23,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Primary.Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Miscellaneous.Classic.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

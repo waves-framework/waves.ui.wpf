@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Fluid.Core.Services;
 using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Fluid.UI.Windows.Showcase.View.Window;
@@ -22,7 +23,7 @@ namespace Fluid.UI.Windows.Showcase
         {
             try
             {
-                Core.Start(this);
+                Core.Start(Current);
 
                 var viewModel = new MainViewModel();
                 viewModel.Initialize();

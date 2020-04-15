@@ -13,7 +13,6 @@ namespace Fluid.UI.Windows.Showcase.ViewModel
         public override void Initialize()
         {
             ThemeService = App.Core.GetService<IThemeService>();
-
         }
     }
 }

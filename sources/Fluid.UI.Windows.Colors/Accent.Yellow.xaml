@@ -15,4 +15,19 @@
     <Color x:Key="Accent-Color-Foreground-500">#454B5E</Color>
     <Color x:Key="Accent-Color-Foreground-900">#FFFFFF</Color>
 
+    <!-- Accent -->
+    <SolidColorBrush x:Key="Accent-100-Brush" Color="{StaticResource Accent-Color-100}"/>
+    <SolidColorBrush x:Key="Accent-200-Brush" Color="{StaticResource Accent-Color-200}"/>
+    <SolidColorBrush x:Key="Accent-300-Brush" Color="{StaticResource Accent-Color-300}"/>
+    <SolidColorBrush x:Key="Accent-400-Brush" Color="{StaticResource Accent-Color-400}"/>
+    <SolidColorBrush x:Key="Accent-500-Brush" Color="{StaticResource Accent-Color-500}"/>
+    <SolidColorBrush x:Key="Accent-600-Brush" Color="{StaticResource Accent-Color-600}"/>
+    <SolidColorBrush x:Key="Accent-700-Brush" Color="{StaticResource Accent-Color-700}"/>
+    <SolidColorBrush x:Key="Accent-800-Brush" Color="{StaticResource Accent-Color-800}"/>
+    <SolidColorBrush x:Key="Accent-900-Brush" Color="{StaticResource Accent-Color-900}"/>
+
+    <SolidColorBrush x:Key="Accent-Foreground-100-Brush" Color="{StaticResource Accent-Color-Foreground-100}"/>
+    <SolidColorBrush x:Key="Accent-Foreground-500-Brush" Color="{StaticResource Accent-Color-Foreground-500}"/>
+    <SolidColorBrush x:Key="Accent-Foreground-900-Brush" Color="{StaticResource Accent-Color-Foreground-900}"/>
+
 </ResourceDictionary>

@@ -13,7 +13,7 @@ using Application = System.Windows.Application;
 namespace Fluid.UI.Windows
 {
     /// <summary>
-    /// Ядро UI.
+    /// UI Core.
     /// </summary>
     public class Core : Fluid.Core.Core
     {
@@ -22,92 +22,59 @@ namespace Fluid.UI.Windows
         private ResourceDictionary _miscellaneousColorDictionary;
 
         /// <summary>
-        /// Инициализировано ли ядро.
+        /// Gets whether UI Core is initialized.
         /// </summary>
         public bool IsInitialized { get; private set; }
 
         /// <summary>
-        /// Получает или задает экземпляр запущенного приложения.
+        /// Gets instance of attached application.
         /// </summary>
         public Application Application { get; private set; }
 
-        /// <summary>
-        /// Запуск ядра.
-        /// </summary>
-        public void Start(Application application)
+        /// <inheritdoc />
+        public override void Start()
         {
             try
             {
-                Application = application;
+                base.Start();
 
-                Start();
-
-                if (!InitializeDictionaries())
-                    throw new Exception("Ошибка при инициализации базовых словарей ресурсов UI.");
-
-                if (!InitializeServices())
-                    throw new Exception("Ошибка при инициализации сервисов UI.");
-
+                Initialize();
+                
                 IsInitialized = true;
             }
             catch (Exception ex)
             {
-                WriteLogMessage(ex, "UI.Core");
+                WriteLogException(ex, "UI.Core");
             }
         }
 
         /// <summary>
-        /// Инициализация сервисов.
+        /// Starts UI core.
         /// </summary>
-        private bool InitializeServices()
+        /// <param name="application">Application instance.</param>
+        public void Start(Application application)
         {
-            // application
-            var themeService = Manager.GetService<IThemeService>().First();
-            if (themeService == null)
-            {
-                WriteLogMessage(new Message("Service loading", "Theme service is not loaded", "UI Core", MessageType.Warning));
-            }
-            else
-            {
-                RegisterService(themeService);
-            }
+            Application = application;
 
-            //egisterService<IThemeService>(new ThemeService(_primaryColorDictionary, _accentColorDictionary, _miscellaneousColorDictionary));
-
-            return true;
+            Start();
         }
 
         /// <summary>
-        /// Инициализация словарей.
+        /// Initializes UI Core.
         /// </summary>
-        private bool InitializeDictionaries()
+        private void Initialize()
         {
-            try
-            {
-                var dictionaries = Application.Resources.MergedDictionaries;
-                if (dictionaries.Count == 1)
-                {
-                    var core = dictionaries[0];
-                    if (core.Source.AbsolutePath.Equals("/Fluid.UI.Windows;component/Core.xaml"))
-                    {
-                        dictionaries = core.MergedDictionaries;
+            InitializeServices();
+        }
 
-                        _primaryColorDictionary = dictionaries[0];
-                        _accentColorDictionary = dictionaries[1];
-                    }
-                    else
-                    {
-                        throw new Exception("Неверный словарь ресурсов Core.xaml.");
-                    }
-                }
+        /// <summary>
+        /// Initializes UI core base services.
+        /// </summary>
+        private void InitializeServices()
+        {
+            RegisterService(ServiceManager.GetService<IThemeService>().First());
 
-                return true;
-            }
-            catch (Exception e)
-            {
-                WriteLogMessage(new Message("Ошибка", "При инициализации конфигурации возникла ошибка:\r\n" + e.Message, "UI.Core", MessageType.Error));
-                return false;
-            }
+            GetService<IThemeService>().AttachApplication(Application);
         }
     }
 }
