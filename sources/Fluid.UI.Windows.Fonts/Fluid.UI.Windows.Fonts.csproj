@@ -20,10 +20,6 @@
     <None Remove="Lato-Medium.ttf" />
     <None Remove="Lato-Regular.ttf" />
     <None Remove="Lato-Semibold.ttf" />
-    <None Include="..\..\..\files\logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

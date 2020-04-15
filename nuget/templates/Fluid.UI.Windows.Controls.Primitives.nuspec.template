@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Fluid.UI.Windows.Controls.Styles</id>
+    <version>{$NUGETVERSION}</version>
+    <authors>Fluid</authors>
+    <owners>Fluid</owners>
+    <licenseUrl>https://ambertape.ru</licenseUrl>
+    <projectUrl>https://ambertape.ru</projectUrl>
+    <icon>files\logo.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Библиотека стилей пользовательских элементов управления.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2019-2020</copyright>
+    <tags>fluid ui windows controls primitives</tags>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="Fluid.Core.Native.Windows" version="[2020.1.75,2020.2)" />
+        <dependency id="Fluid.UI.Controls.Helpers" version="[{$NUGETVERSION},2020.2)" />
+        <dependency id="Fluid.UI.Controls.Primitives" version="[{$NUGETVERSION},2020.2)" />
+        <dependency id="Fluid.UI.Controls.Converters" version="[{$NUGETVERSION},2020.2)" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.NETCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+  	<file src="..\..\files\logo.png" target="files\" />
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Styles.dll" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Styles.xml" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Styles.dll" target="build\x86"/>
+    <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Styles.xml" target="build\x86"/>
+    <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Styles.dll" target="build\x64"/>
+    <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.UI.Windows.Controls.Styles.xml" target="build\x64"/>
+  </files>
+</package>
