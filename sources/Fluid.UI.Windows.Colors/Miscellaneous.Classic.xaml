@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Disabled-Color">#6D6A75</Color>
+    <Color x:Key="Disabled-Foreground-Color">#BFBDC1</Color>
+
+    <SolidColorBrush x:Key="Disabled-Brush" Color="{StaticResource Disabled-Color}"/>
+    <SolidColorBrush x:Key="Disabled-Foreground-Brush" Color="{StaticResource Disabled-Foreground-Color}"/>
+    
+</ResourceDictionary>

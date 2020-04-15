@@ -11,6 +11,11 @@ namespace Fluid.UI.Windows.Services.Interfaces
     public interface IThemeService : IService
     {
         /// <summary>
+        /// Gets or sets whether service sets automatic color scheme.
+        /// </summary>
+        bool UseAutomaticScheme { get; set; }
+
+        /// <summary>
         /// Gets or sets selected theme.
         /// </summary>
         ITheme SelectedTheme { get; set; }

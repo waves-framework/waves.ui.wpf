@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:Fluid.UI.Windows.Controls.Helpers;assembly=Fluid.UI.Windows.Controls.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -10,12 +11,18 @@
 
         <StackPanel>
 
-            <ComboBox ItemsSource="{Binding ThemeService.Themes, UpdateSourceTrigger=PropertyChanged}"
+            <!--<ComboBox ItemsSource="{Binding ThemeService.Themes, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding ThemeService.SelectedTheme, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                       DisplayMemberPath="Name"
-                      Height="34"/>
+                      Height="34"/>-->
+
+            
 
         </StackPanel>
+
+        <Button Height="38"
+                Content="Кнопка"
+                helpers:Control.CornerRadius="6"/>
             
     </Grid>
 

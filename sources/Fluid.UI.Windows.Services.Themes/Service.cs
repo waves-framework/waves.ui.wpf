@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Composition;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using Fluid.Core.Base;
@@ -26,8 +27,11 @@ namespace Fluid.UI.Windows.Services.Themes
         private const string AccentGreenColorsDictionaryUri = "/Fluid.UI.Windows.Colors;component/Accent.Green.xaml";
         private const string AccentRedColorsDictionaryUri = "/Fluid.UI.Windows.Colors;component/Accent.Red.xaml";
         private const string AccentYellowColorsDictionaryUri = "/Fluid.UI.Windows.Colors;component/Accent.Yellow.xaml";
+        private const string MiscellaneousColorsDictionaryUri = "/Fluid.UI.Windows.Colors;component/Miscellaneous.Classic.xaml";
 
         private readonly object _themesCollectionLocker = new object();
+
+        private bool _isSystemUsingDarkTheme = false;
 
         private ResourceDictionary _oldPrimaryResourceDictionary;
         private ResourceDictionary _oldAccentResourceDictionary;
@@ -42,6 +46,9 @@ namespace Fluid.UI.Windows.Services.Themes
 
         /// <inheritdoc />
         public override string Name { get; set; } = "Windows UI Theme Service";
+
+        /// <inheritdoc />
+        public bool UseAutomaticScheme { get; set; } = true;
 
         /// <inheritdoc />
         public ITheme SelectedTheme
@@ -66,9 +73,10 @@ namespace Fluid.UI.Windows.Services.Themes
         {
             _application = application;
 
-            OnMessageReceived(this, new Message("Initialization", "Application attached.", Name, MessageType.Information));
-
             InitializeSelectedTheme();
+            InitializeSystemThemeCheckerDaemon();
+
+            OnMessageReceived(this, new Message("Initialization", "Application attached.", Name, MessageType.Information));
         }
 
         /// <inheritdoc />
@@ -87,13 +95,29 @@ namespace Fluid.UI.Windows.Services.Themes
         /// <inheritdoc />
         public override void LoadConfiguration(IConfiguration configuration)
         {
-            _selectedThemeId = LoadConfigurationValue<Guid>(configuration, "ThemesService-SelectedThemeId", Guid.Empty);
+            try
+            {
+                _selectedThemeId = LoadConfigurationValue<Guid>(configuration, "ThemesService-SelectedThemeId", Guid.Empty);
+                UseAutomaticScheme = LoadConfigurationValue<bool>(configuration, "ThemesService-UseAutomaticScheme", false);
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(this, new Message("Theme Service", "Error loading configuration:\r\n" + e, Name, MessageType.Error));
+            }
         }
 
         /// <inheritdoc />
         public override void SaveConfiguration(IConfiguration configuration)
         {
-            configuration.SetPropertyValue("ThemesService-SelectedThemeId", _selectedThemeId);
+            try
+            {
+                configuration.SetPropertyValue("ThemesService-SelectedThemeId", _selectedThemeId);
+                configuration.SetPropertyValue("ThemesService-UseAutomaticScheme", UseAutomaticScheme);
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(this, new Message("Theme Service", "Error saving configuration:\r\n" + e, Name, MessageType.Error));
+            }
         }
 
         /// <inheritdoc />
@@ -103,21 +127,86 @@ namespace Fluid.UI.Windows.Services.Themes
         }
 
         /// <summary>
+        /// Initializes system theme checker daemon.
+        /// </summary>
+        private void InitializeSystemThemeCheckerDaemon()
+        {
+            Task.Run(async delegate
+            {
+                do
+                {
+                    try
+                    {
+                        var value = (int)Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", "1");
+
+                        _isSystemUsingDarkTheme = value != 1;
+
+                        await Task.Delay(2500).ConfigureAwait(false);
+
+                        if (_isSystemUsingDarkTheme && SelectedTheme.IsDark) continue;
+                        if (!_isSystemUsingDarkTheme && !SelectedTheme.IsDark) continue;
+
+                        _application.Dispatcher.Invoke(delegate
+                        {
+                            foreach (var theme in Themes)
+                            {
+                                if (_isSystemUsingDarkTheme)
+                                {
+                                    if (theme.IsDark)
+                                    {
+                                        SelectedTheme = theme;
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    if (!theme.IsDark)
+                                    {
+                                        SelectedTheme = theme;
+                                        return;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        OnMessageReceived(this, new Message("Theme Service", "Error checking system theme:\r\n" + e, Name, MessageType.Error));
+                    }
+
+                } while (IsInitialized);
+            });
+        }
+
+        /// <summary>
         ///     Initializes collection synchronization.S
         /// </summary>
         private void InitializeCollectionSynchronization()
         {
-            BindingOperations.EnableCollectionSynchronization(Themes, _themesCollectionLocker);
+            try
+            {
+                BindingOperations.EnableCollectionSynchronization(Themes, _themesCollectionLocker);
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(this, new Message("Theme Service", "Error enabling collection synchronization:\r\n" + e , Name, MessageType.Error));
+            }
         }
 
         /// <summary>
-        ///     Инициализация тем.
+        ///     Initializes themes.
         /// </summary>
         private void InitializeThemes()
         {
-            Themes.Clear();
-
-            InitializeBaseThemes();
+            try
+            {
+                Themes.Clear();
+                InitializeBaseThemes();
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(this, new Message("Theme Service", "Error initializing base themes:\r\n" + e, Name, MessageType.Error));
+            }
         }
 
         /// <summary>
@@ -127,23 +216,30 @@ namespace Fluid.UI.Windows.Services.Themes
         {
             if (Themes.Count > 0)
             {
-                if (_selectedThemeId.Equals(Guid.Empty))
+                try
                 {
-                    SelectedTheme = Themes[0];
-                }
-                else
-                {
-                    foreach (var theme in Themes)
+                    if (_selectedThemeId.Equals(Guid.Empty))
                     {
-                        if (theme.Id != _selectedThemeId) continue;
-                        SelectedTheme = theme;
-                        break;
+                        SelectedTheme = Themes[0];
                     }
+                    else
+                    {
+                        foreach (var theme in Themes)
+                        {
+                            if (theme.Id != _selectedThemeId) continue;
+                            SelectedTheme = theme;
+                            break;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    OnMessageReceived(this, new Message("Theme Service", "Error initializing selected theme:\r\n" + e, Name, MessageType.Error));
                 }
             }
             else
             {
-                OnMessageReceived(this, new Message("Themes", "Themes not found.", Name, MessageType.Error));
+                OnMessageReceived(this, new Message("Theme Service", "Themes not found.", Name, MessageType.Error));
             }
         }
 
@@ -152,7 +248,9 @@ namespace Fluid.UI.Windows.Services.Themes
         /// </summary>
         private void InitializeBaseThemes()
         {
-            Themes.Add(new Theme("Dark / Blue", Guid.Parse("39834D2D-42D3-4440-9109-F1C1175ECE22"), 
+            try
+            {
+                Themes.Add(new Theme("Dark / Blue", Guid.Parse("39834D2D-42D3-4440-9109-F1C1175ECE22"),
                 new ResourceDictionary
                 {
                     Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
@@ -161,86 +259,123 @@ namespace Fluid.UI.Windows.Services.Themes
                 {
                     Source = new Uri(AccentBlueColorsDictionaryUri, UriKind.RelativeOrAbsolute)
                 },
-                null));
+                new ResourceDictionary
+                {
+                    Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                },
+                true));
 
-            Themes.Add(new Theme("Dark / Green", Guid.Parse("B0976F22-9812-4CD4-9A48-D50C89751FE8"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentGreenColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Dark / Green", Guid.Parse("B0976F22-9812-4CD4-9A48-D50C89751FE8"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentGreenColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    true));
 
-            Themes.Add(new Theme("Dark / Red", Guid.Parse("77C4FC42-C9AC-435A-9FA6-16208CA94FA9"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentRedColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Dark / Red", Guid.Parse("77C4FC42-C9AC-435A-9FA6-16208CA94FA9"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentRedColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    true));
 
-            Themes.Add(new Theme("Dark / Yellow", Guid.Parse("56A2C1ED-6F69-45A9-AE3E-972A77340CAF"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentYellowColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Dark / Yellow", Guid.Parse("56A2C1ED-6F69-45A9-AE3E-972A77340CAF"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentYellowColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    true));
 
-            Themes.Add(new Theme("Light / Blue", Guid.Parse("27D324B4-3279-481C-899B-153A60BAC3D0"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentBlueColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Light / Blue", Guid.Parse("27D324B4-3279-481C-899B-153A60BAC3D0"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentBlueColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    false));
 
-            Themes.Add(new Theme("Light / Green", Guid.Parse("C8AD5DCD-5E81-41C1-A18F-4C5DEA11B800"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentGreenColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Light / Green", Guid.Parse("C8AD5DCD-5E81-41C1-A18F-4C5DEA11B800"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentGreenColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    false));
 
-            Themes.Add(new Theme("Light / Red", Guid.Parse("D7E3FCC7-6375-4994-ABE9-266CEA4DD576"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentRedColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Light / Red", Guid.Parse("D7E3FCC7-6375-4994-ABE9-266CEA4DD576"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentRedColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    false));
 
-            Themes.Add(new Theme("Light / Yellow", Guid.Parse("B42FC3FE-8022-4D0D-8D02-86540BD68862"),
-                new ResourceDictionary
-                {
-                    Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                new ResourceDictionary
-                {
-                    Source = new Uri(AccentYellowColorsDictionaryUri, UriKind.RelativeOrAbsolute)
-                },
-                null));
+                Themes.Add(new Theme("Light / Yellow", Guid.Parse("B42FC3FE-8022-4D0D-8D02-86540BD68862"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentYellowColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    false));
 
-            OnMessageReceived(this, new Message("Initialization", "Base themes initialized.", Name, MessageType.Information));
+                OnMessageReceived(this, new Message("Initialization", "Base themes initialized.", Name, MessageType.Information));
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(this, new Message("Theme Service", "Error initializing base themes:\r\n" + e, Name, MessageType.Error));
+            }
         }
 
         /// <summary>
@@ -250,25 +385,35 @@ namespace Fluid.UI.Windows.Services.Themes
         {
             if (_application == null) return;
 
-            var dictionaries = _application.Resources.MergedDictionaries;
-
-            _application.Resources.BeginInit();
-
-            if (dictionaries.Count > 1)
+            try
             {
-                dictionaries.Remove(_oldPrimaryResourceDictionary);
-                dictionaries.Remove(_oldAccentResourceDictionary);
+                var dictionaries = _application.Resources.MergedDictionaries;
+
+                _application.Resources.BeginInit();
+
+                if (dictionaries.Count > 1)
+                {
+                    dictionaries.Remove(_oldPrimaryResourceDictionary);
+                    dictionaries.Remove(_oldAccentResourceDictionary);
+                    dictionaries.Remove(_oldMiscellaneousResourceDictionary);
+                }
+
+                dictionaries.Add(SelectedTheme.PrimaryColorResourceDictionary);
+                dictionaries.Add(SelectedTheme.AccentColorResourceDictionary);
+                dictionaries.Add(SelectedTheme.MiscellaneousResourceDictionary);
+
+                _oldPrimaryResourceDictionary = SelectedTheme.PrimaryColorResourceDictionary;
+                _oldAccentResourceDictionary = SelectedTheme.AccentColorResourceDictionary;
+                _oldMiscellaneousResourceDictionary = SelectedTheme.MiscellaneousResourceDictionary;
+
+                _application.Resources.EndInit();
+
+                OnMessageReceived(this, new Message("Theme Service", "Theme changed.", Name, MessageType.Information));
             }
-
-            dictionaries.Add(SelectedTheme.PrimaryColorResourceDictionary);
-            dictionaries.Add(SelectedTheme.AccentColorResourceDictionary);
-
-            _oldPrimaryResourceDictionary = SelectedTheme.PrimaryColorResourceDictionary;
-            _oldAccentResourceDictionary = SelectedTheme.AccentColorResourceDictionary;
-
-            _application.Resources.EndInit();
-
-            OnMessageReceived(this, new Message("Themes", "Theme changed.", Name, MessageType.Information));
+            catch (Exception e)
+            {
+                OnMessageReceived(this, new Message("Theme Service", "Error updating theme:\r\n" + e, Name, MessageType.Error));
+            }
         }
     }
 }
