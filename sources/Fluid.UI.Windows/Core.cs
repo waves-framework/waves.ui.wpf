@@ -13,7 +13,7 @@ using Application = System.Windows.Application;
 namespace Fluid.UI.Windows
 {
     /// <summary>
-    /// Ядро UI.
+    /// UI Core.
     /// </summary>
     public class Core : Fluid.Core.Core
     {
@@ -22,18 +22,16 @@ namespace Fluid.UI.Windows
         private ResourceDictionary _miscellaneousColorDictionary;
 
         /// <summary>
-        /// Инициализировано ли ядро.
+        /// Gets whether UI Core is initialized.
         /// </summary>
         public bool IsInitialized { get; private set; }
 
         /// <summary>
-        /// Получает или задает экземпляр запущенного приложения.
+        /// Gets instance of attached application.
         /// </summary>
         public Application Application { get; private set; }
 
-        /// <summary>
-        /// Запуск ядра.
-        /// </summary>
+        /// <inheritdoc />
         public override void Start()
         {
             try
@@ -70,7 +68,7 @@ namespace Fluid.UI.Windows
         }
 
         /// <summary>
-        /// Инициализация сервисов.
+        /// Initializes UI core base services.
         /// </summary>
         private void InitializeServices()
         {

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.11" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.20" />
   </ItemGroup>
 
   <ItemGroup>

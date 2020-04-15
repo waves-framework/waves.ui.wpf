@@ -13,7 +13,12 @@
 
     </ResourceDictionary.MergedDictionaries>
 
-    <!-- Стиль окна -->
+    <!-- Button -->
+	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}"/>
+
+    <!-- Window -->
     <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}"/>
+
+
     
 </ResourceDictionary>
