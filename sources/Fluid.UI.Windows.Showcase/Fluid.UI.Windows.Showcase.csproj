@@ -15,10 +15,6 @@
     <PackageReference Include="Fluid.Presentation" Version="2020.1.20" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
-  </ItemGroup>
-
   <Import Project="../../props/Fluid.UI.Windows.props" />
 
 </Project>
