@@ -18,7 +18,7 @@
         <dependency id="Fluid.Core.Native.Windows" version="[2020.1.75,2020.2)" />
         <dependency id="Fluid.UI.Windows.Controls.Helpers" version="[{$NUGETVERSION},2020.2)" />
         <dependency id="Fluid.UI.Windows.Controls.Primitives" version="[{$NUGETVERSION},2020.2)" />
-        <dependency id="Fluid.UI.Windows.Controls.Converters" version="[{$NUGETVERSION},2020.2)" />
+        <dependency id="Fluid.UI.Windows.Converters" version="[{$NUGETVERSION},2020.2)" />
       </group>
     </dependencies>
     <frameworkReferences>
