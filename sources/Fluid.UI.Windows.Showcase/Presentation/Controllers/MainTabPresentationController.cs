@@ -14,6 +14,10 @@ namespace Fluid.UI.Windows.Showcase.Presentation.Controllers
         {
             Presentations.Add(new TextTabPresentation());
             Presentations.Add(new ButtonsTabPresentation());
+            Presentations.Add(new ComboBoxesTabPresentation());
+            Presentations.Add(new CheckBoxesTabPresentation());
+            Presentations.Add(new TextBoxesTabPresentation());
+            Presentations.Add(new ThemeTabPresentation());
             Presentations.Add(new AboutTabPresentation());
 
             foreach (var presentation in Presentations)

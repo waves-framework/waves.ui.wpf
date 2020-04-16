@@ -12,6 +12,7 @@
     <Color x:Key="Color-900">#A7AAB2</Color>
 
     <Color x:Key="Color-100-Transparent">#000B132B</Color>
+    <Color x:Key="Color-300-Transparent">#00293045</Color>
 
     <Color x:Key="Color-Foreground-100">#FFFFFF</Color>
     <Color x:Key="Color-Foreground-500">#E1E2E5</Color>

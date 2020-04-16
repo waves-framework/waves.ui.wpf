@@ -12,5 +12,11 @@ namespace Fluid.UI.Windows.Showcase.Services.Interfaces
         /// </summary>
         /// <returns>Generated text.</returns>
         string GenerateText();
+
+        /// <summary>
+        /// Generates word.
+        /// </summary>
+        /// <returns>Generated word.</returns>
+        string GenerateWord();
     }
 }

@@ -67,6 +67,12 @@ namespace Fluid.UI.Windows.Services
         public string Name { get; }
 
         /// <inheritdoc />
+        public Color PrimaryExampleColor => GetPrimaryColor(100);
+
+        /// <inheritdoc />
+        public Color AccentExampleColor => GetAccentColor(500);
+
+        /// <inheritdoc />
         public ResourceDictionary PrimaryColorResourceDictionary
         {
             get => _primaryColorResourceDictionary;

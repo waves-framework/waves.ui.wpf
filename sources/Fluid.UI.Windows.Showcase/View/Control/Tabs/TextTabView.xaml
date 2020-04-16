@@ -16,62 +16,61 @@
 
                 <TextBlock Text="Text styles" Style="{StaticResource Header1}" Margin="0,0,0,9"/>
 
-                <TextBlock Text="Examples of text styles." Style="{StaticResource Regular1}" Margin="0,0,0,6"/>
+                <TextBlock Text="Examples of text styles." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,24"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,24"/>
 
 
                 <TextBlock Text="Header 1" Style="{StaticResource Header2}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <TextBlock Text="Used for main headlines." Style="{StaticResource Regular1}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
+                <TextBlock Text="Used for main headlines." Style="{StaticResource Regular1}" Margin="0,0,0,9" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
 
                 <TextBlock Text="{Binding Header1Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Header1}" Margin="0,0,0,36"/>
 
 
                 <TextBlock Text="Header 2" Style="{StaticResource Header2}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <TextBlock Text="Used for secondary headers." Style="{StaticResource Regular1}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
+                <TextBlock Text="Used for secondary headers." Style="{StaticResource Regular1}" Margin="0,0,0,9" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
 
                 <TextBlock Text="{Binding Header2Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Header2}" Margin="0,0,0,36"/>
 
 
                 <TextBlock Text="Header 3" Style="{StaticResource Header2}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <TextBlock Text="Used for subtitles." Style="{StaticResource Regular1}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
+                <TextBlock Text="Used for subtitles." Style="{StaticResource Regular1}" Margin="0,0,0,9" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
 
                 <TextBlock Text="{Binding Header3Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Header3}" Margin="0,0,0,36"/>
 
 
-
                 <TextBlock Text="Regular 1" Style="{StaticResource Header2}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <TextBlock Text="Used for the main text of programs.." Style="{StaticResource Regular1}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
+                <TextBlock Text="Used for the main text of programs." Style="{StaticResource Regular1}" Margin="0,0,0,9" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
 
                 <TextBlock Text="{Binding Regular1Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Regular1}" Margin="0,0,0,36"/>
 
 
                 <TextBlock Text="Regular 2" Style="{StaticResource Header2}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <TextBlock Text="It is used as a subtext (for example, some insignificant signatures)." Style="{StaticResource Regular1}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
+                <TextBlock Text="It is used as a subtext (for example, some insignificant signatures)." Style="{StaticResource Regular1}" Margin="0,0,0,9" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
 
                 <TextBlock Text="{Binding Regular2Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Regular2}" Margin="0,0,0,36"/>
 
 
                 <TextBlock Text="Hint 1" Style="{StaticResource Header2}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <TextBlock Text="Used for some hints." Style="{StaticResource Regular1}" Margin="0,0,0,6" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
+                <TextBlock Text="Used for some hints." Style="{StaticResource Regular1}" Margin="0,0,0,9" Foreground="{DynamicResource Primary-Foreground-500-Brush}"/>
 
-                <Canvas Height="1" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,9"/>
 
                 <TextBlock Text="{Binding Hint1Text, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource Hint1}" Margin="0,0,0,0"/>
 
