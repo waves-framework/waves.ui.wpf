@@ -242,34 +242,6 @@
                               KeyboardNavigation.TabNavigation="Local"
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
 
-                            <VisualStateManager.VisualStateGroups>
-
-                                <VisualStateGroup x:Name="CommonStates"/>
-
-                                <VisualStateGroup x:Name="SelectionStates">
-
-                                    <VisualStateGroup.Transitions>
-                                        <VisualTransition GeneratedDuration="0:0:0.3"/>
-                                    </VisualStateGroup.Transitions>
-
-                                    <VisualState x:Name="Unselected">
-
-                                        <Storyboard>
-
-                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PART_SelectedContentHost">
-                                                <EasingDoubleKeyFrame KeyTime="0" Value="{StaticResource Opacity0}"/>
-                                            </DoubleAnimationUsingKeyFrames>
-
-                                        </Storyboard>
-
-                                    </VisualState>
-
-                                    <VisualState x:Name="Selected"/>
-
-                                </VisualStateGroup>
-
-                            </VisualStateManager.VisualStateGroups>
-
                             <ContentPresenter x:Name="PART_SelectedContentHost"
                                               Margin="{TemplateBinding Padding}"
                                               ContentSource="SelectedContent"
