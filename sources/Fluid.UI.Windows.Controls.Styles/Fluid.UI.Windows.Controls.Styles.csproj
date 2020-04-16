@@ -14,6 +14,7 @@
     <ProjectReference Include="..\Fluid.UI.Windows.Controls.Helpers\Fluid.UI.Windows.Controls.Helpers.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Controls.Primitives\Fluid.UI.Windows.Controls.Primitives.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Converters\Fluid.UI.Windows.Converters.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,20 +3,36 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>fluid.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fluid.ico" />
+    <None Remove="FodyWeavers.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="fluid.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Presentation\Controllers\" />
     <Folder Include="View\Tab\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.20" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.21" />
+    <PackageReference Include="RandomDataGenerator.Net" Version="1.0.11" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
 
   <Import Project="../../props/Fluid.UI.Windows.props" />

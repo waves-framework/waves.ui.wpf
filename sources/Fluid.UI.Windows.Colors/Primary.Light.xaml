@@ -15,6 +15,8 @@
     <Color x:Key="Color-Foreground-500">#454B5E</Color>
     <Color x:Key="Color-Foreground-900">#A7AAB2</Color>
 
+    <Color x:Key="Color-100-Transparent">#00FFFFFF</Color>
+
     <!-- Primary -->
     <SolidColorBrush x:Key="Primary-100-Brush" Color="{StaticResource Color-100}" />
     <SolidColorBrush x:Key="Primary-200-Brush" Color="{StaticResource Color-200}" />

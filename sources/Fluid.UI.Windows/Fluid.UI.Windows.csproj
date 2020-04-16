@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Fluid.UI.Windows.Colors\Fluid.UI.Windows.Colors.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Controls.Helpers\Fluid.UI.Windows.Controls.Helpers.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Controls.Styles\Fluid.UI.Windows.Controls.Styles.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Fonts\Fluid.UI.Windows.Fonts.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Services.Interfaces\Fluid.UI.Windows.Services.Interfaces.csproj" />
   </ItemGroup>

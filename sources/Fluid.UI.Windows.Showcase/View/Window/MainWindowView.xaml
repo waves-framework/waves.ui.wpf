@@ -8,11 +8,13 @@
     x:Class="Fluid.UI.Windows.Showcase.View.Window.MainWindowView"
     Style="{DynamicResource WindowStyle}"
     mc:Ignorable="d"
-    Title="UI Showcase" Height="450" Width="800">
+    Title="Fluid - UI Showcase" Height="768" Width="1024" 
+    WindowStartupLocation="CenterScreen"
+    Icon="pack://application:,,,/Fluid.UI.Windows.Showcase;component/fluid.ico">
 
     <Grid>
 
-        <control:MainControlView Margin="24,40,24,24" DataContext="{Binding}" />
+        <control:MainControlView Margin="0" DataContext="{Binding}" />
 
     </Grid>
 

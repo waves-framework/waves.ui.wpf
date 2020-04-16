@@ -44,7 +44,10 @@
 
         <Setter Property="Background" Value="{DynamicResource Primary-300-Brush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Primary-500-Brush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}" />
         <Setter Property="BorderThickness" Value="1" />
+
+        <Setter Property="Height" Value="36"/>
 
         <Setter Property="IsTabStop" Value="True" />
 
@@ -77,12 +80,13 @@
                                             Content="{TemplateBinding Content}"
                                             Focusable="False"
                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            TextElement.Foreground="{TemplateBinding Foreground}"
                                             Foreground="{TemplateBinding Foreground}"
                                             Padding="{TemplateBinding Padding}"
                                             ContentStringFormat="{TemplateBinding ContentStringFormat}"
                                             ContentTemplate="{TemplateBinding ContentTemplate}"
                                             ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                            IsTabStop="False" />
+                                            IsTabStop="False"/>
 
                         </Grid>
 
@@ -91,8 +95,8 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{DynamicResource Primary-500-Brush}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-700-Brush}" />
+                            <Setter Property="Background" Value="{DynamicResource Primary-100-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-300-Brush}" />
                             <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
                         </Trigger>
 

@@ -74,7 +74,7 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Window content grid. -->
-                                <Grid Grid.Row="0" Grid.RowSpan="2">
+                                <Grid Grid.Row="1">
 
                                     <ContentPresenter ClipToBounds="True" />
 

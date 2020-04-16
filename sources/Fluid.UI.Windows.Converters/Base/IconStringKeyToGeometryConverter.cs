@@ -15,7 +15,7 @@ namespace Fluid.UI.Windows.Converters.Base
         {
             Dictionary = new ResourceDictionary
             {
-                Source = new Uri("pack://application:,,,/Fluid.UI;component/Resources/Icons.xaml")
+                Source = new Uri("pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml")
             };
         }
 

@@ -87,6 +87,8 @@ namespace Fluid.UI.Windows
         private void InitializeServices()
         {
             RegisterService(ServiceManager.GetService<IThemeService>().First());
+
+            InitializeThemeService();
         }
 
         private void InitializeThemeService()
