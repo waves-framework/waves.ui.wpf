@@ -4,12 +4,12 @@
 
     <Application.Resources>
 
-        <ResourceDictionary >
+        <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
 
                 <!-- Главный словарь ресурсов-->
-                <ResourceDictionary  Source="pack://application:,,,/Fluid.UI.Windows;component/Core.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Core.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 

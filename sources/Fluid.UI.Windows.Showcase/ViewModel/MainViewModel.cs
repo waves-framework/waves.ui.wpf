@@ -1,6 +1,5 @@
 ﻿using Fluid.Presentation.Base;
 using Fluid.UI.Windows.Services.Interfaces;
-
 using Bootstrapper = Fluid.Core.Core;
 
 namespace Fluid.UI.Windows.Showcase.ViewModel

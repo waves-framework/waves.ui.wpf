@@ -3,7 +3,7 @@
 namespace Fluid.UI.Windows.Controls.Helpers
 {
     /// <summary>
-    /// TextBox's dependency property helper.
+    ///     TextBox's dependency property helper.
     /// </summary>
     public class TextBox
     {
@@ -15,7 +15,7 @@ namespace Fluid.UI.Windows.Controls.Helpers
                 new UIPropertyMetadata(string.Empty));
 
         /// <summary>
-        /// Gets description.
+        ///     Gets description.
         /// </summary>
         /// <param name="obj">Dependency object.</param>
         /// <returns>Description value.</returns>

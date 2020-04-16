@@ -15,20 +15,20 @@
     <Color x:Key="Color-Foreground-500">#E1E2E5</Color>
     <Color x:Key="Color-Foreground-900">#A6A9B2</Color>
 
-        <!-- Primary -->
-    <SolidColorBrush x:Key="Primary-100-Brush" Color="{StaticResource Color-100}"/>
-    <SolidColorBrush x:Key="Primary-200-Brush" Color="{StaticResource Color-200}"/>
-    <SolidColorBrush x:Key="Primary-300-Brush" Color="{StaticResource Color-300}"/>
-    <SolidColorBrush x:Key="Primary-400-Brush" Color="{StaticResource Color-400}"/>
-    <SolidColorBrush x:Key="Primary-500-Brush" Color="{StaticResource Color-500}"/>
-    <SolidColorBrush x:Key="Primary-600-Brush" Color="{StaticResource Color-600}"/>
-    <SolidColorBrush x:Key="Primary-700-Brush" Color="{StaticResource Color-700}"/>
-    <SolidColorBrush x:Key="Primary-800-Brush" Color="{StaticResource Color-800}"/>
-    <SolidColorBrush x:Key="Primary-900-Brush" Color="{StaticResource Color-900}"/>
+    <!-- Primary -->
+    <SolidColorBrush x:Key="Primary-100-Brush" Color="{StaticResource Color-100}" />
+    <SolidColorBrush x:Key="Primary-200-Brush" Color="{StaticResource Color-200}" />
+    <SolidColorBrush x:Key="Primary-300-Brush" Color="{StaticResource Color-300}" />
+    <SolidColorBrush x:Key="Primary-400-Brush" Color="{StaticResource Color-400}" />
+    <SolidColorBrush x:Key="Primary-500-Brush" Color="{StaticResource Color-500}" />
+    <SolidColorBrush x:Key="Primary-600-Brush" Color="{StaticResource Color-600}" />
+    <SolidColorBrush x:Key="Primary-700-Brush" Color="{StaticResource Color-700}" />
+    <SolidColorBrush x:Key="Primary-800-Brush" Color="{StaticResource Color-800}" />
+    <SolidColorBrush x:Key="Primary-900-Brush" Color="{StaticResource Color-900}" />
 
     <!-- Primary Foreground -->
-    <SolidColorBrush x:Key="Primary-Foreground-100-Brush" Color="{StaticResource Color-Foreground-100}"/>
-    <SolidColorBrush x:Key="Primary-Foreground-500-Brush" Color="{StaticResource Color-Foreground-500}"/>
-    <SolidColorBrush x:Key="Primary-Foreground-900-Brush" Color="{StaticResource Color-Foreground-900}"/>
+    <SolidColorBrush x:Key="Primary-Foreground-100-Brush" Color="{StaticResource Color-Foreground-100}" />
+    <SolidColorBrush x:Key="Primary-Foreground-500-Brush" Color="{StaticResource Color-Foreground-500}" />
+    <SolidColorBrush x:Key="Primary-Foreground-900-Brush" Color="{StaticResource Color-Foreground-900}" />
 
 </ResourceDictionary>

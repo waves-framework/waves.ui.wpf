@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Windows;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
 using Fluid.Core.Base.Interfaces;
@@ -14,10 +13,6 @@ namespace Fluid.UI.Windows
     /// </summary>
     public class Core : Fluid.Core.Core
     {
-        private ResourceDictionary _primaryColorDictionary;
-        private ResourceDictionary _accentColorDictionary;
-        private ResourceDictionary _miscellaneousColorDictionary;
-
         /// <summary>
         ///     Gets whether UI Core is initialized.
         /// </summary>
@@ -41,7 +36,7 @@ namespace Fluid.UI.Windows
             }
             catch (Exception ex)
             {
-                WriteLogException(ex, "UI.Core");
+                WriteLogException(ex, "UI.Core", true);
             }
         }
 
@@ -65,6 +60,17 @@ namespace Fluid.UI.Windows
             }
 
             base.WriteLogMessage(message);
+        }
+
+        /// <inheritdoc />
+        public override void WriteLogException(Exception ex, string sender, bool isFatal)
+        {
+            if (isFatal)
+            {
+                // TODO: fatal error handling.
+            }
+
+            base.WriteLogException(ex, sender, isFatal);
         }
 
         /// <summary>

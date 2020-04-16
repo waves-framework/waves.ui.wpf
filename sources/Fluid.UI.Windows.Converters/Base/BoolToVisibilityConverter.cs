@@ -11,7 +11,7 @@ namespace Fluid.UI.Windows.Converters.Base
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null && (bool)value)
+            if (value != null && (bool) value)
                 return Visibility.Visible;
             return Visibility.Collapsed;
         }
@@ -19,7 +19,7 @@ namespace Fluid.UI.Windows.Converters.Base
         /// <inheritdoc />
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value != null && (Visibility)value == Visibility.Visible;
+            return value != null && (Visibility) value == Visibility.Visible;
         }
     }
 }

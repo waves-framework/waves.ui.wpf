@@ -9,7 +9,7 @@ namespace Fluid.UI.Windows.Converters.Base
     public class IconStringKeyToGeometryConverter : IValueConverter
     {
         /// <summary>
-        /// Новый экземпляр конвертера
+        ///     Новый экземпляр конвертера
         /// </summary>
         public IconStringKeyToGeometryConverter()
         {
@@ -20,7 +20,7 @@ namespace Fluid.UI.Windows.Converters.Base
         }
 
         /// <summary>
-        /// Словарь ресурсов иконок.
+        ///     Словарь ресурсов иконок.
         /// </summary>
         public ResourceDictionary Dictionary { get; }
 

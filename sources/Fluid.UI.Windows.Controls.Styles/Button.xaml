@@ -23,7 +23,7 @@
                             Background="Transparent"
                             BorderBrush="{TemplateBinding Foreground}"
                             CornerRadius="{DynamicResource StandardCornerRadius}"
-                            SnapsToDevicePixels="True"/>
+                            SnapsToDevicePixels="True" />
 
                 </ControlTemplate>
 
@@ -36,17 +36,17 @@
     <!-- Base button style.-->
     <Style x:Key="ButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlStyle}">
 
-        <Setter Property="helpers:Control.CornerRadius" Value="{DynamicResource StandardCornerRadius}"/>
+        <Setter Property="helpers:Control.CornerRadius" Value="{DynamicResource StandardCornerRadius}" />
 
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
 
         <Setter Property="Padding" Value="0" />
 
-        <Setter Property="Background" Value="{DynamicResource Primary-300-Brush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Primary-500-Brush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="{DynamicResource Primary-300-Brush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary-500-Brush}" />
+        <Setter Property="BorderThickness" Value="1" />
 
-        <Setter Property="IsTabStop" Value="True"/>
+        <Setter Property="IsTabStop" Value="True" />
 
         <Setter Property="Template">
 
@@ -57,16 +57,16 @@
                     <Grid>
 
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}"/>
+                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" />
 
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}"/>
+                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" />
 
-                        <Border x:Name="HighlightBorder" 
-                                Background="{TemplateBinding Foreground}" 
-                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" 
-                                Opacity="0.0"/>
+                        <Border x:Name="HighlightBorder"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}"
+                                Opacity="0.0" />
 
                         <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
@@ -143,21 +143,21 @@
     <!-- Base accent button style. -->
     <Style x:Key="AccentButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
 
-        <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Accent-700-Brush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}"/>
+        <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Accent-700-Brush}" />
+        <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}" />
 
     </Style>
 
     <!-- Window tool bar button style (for example, minimize, maximize and close). -->
     <Style x:Key="WindowToolBarButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
 
-        <Setter Property="MinWidth" Value="36"/>
-        <Setter Property="MinHeight" Value="36"/>
+        <Setter Property="MinWidth" Value="36" />
+        <Setter Property="MinHeight" Value="36" />
 
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}" />
 
     </Style>
 

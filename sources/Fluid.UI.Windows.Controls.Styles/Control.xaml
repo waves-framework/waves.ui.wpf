@@ -4,7 +4,7 @@
     <!-- Base control style. -->
     <Style x:Key="ControlStyle" TargetType="{x:Type Control}">
 
-        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}" />
 
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
 
@@ -12,8 +12,8 @@
 
         <Setter Property="FontSize" Value="12" />
 
-        <Setter Property="SnapsToDevicePixels" Value="false"/>
+        <Setter Property="SnapsToDevicePixels" Value="false" />
 
     </Style>
-    
+
 </ResourceDictionary>

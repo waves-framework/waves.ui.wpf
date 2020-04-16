@@ -13,7 +13,7 @@ namespace Fluid.UI.Windows.Converters.Unit.Bytes
             var text = string.Empty;
             if (value == null) return text;
 
-            var count = (long)value;
+            var count = (long) value;
 
             if (count == 0)
                 text += "0 байт";

@@ -3,7 +3,7 @@
 namespace Fluid.UI.Windows.Controls.Helpers
 {
     /// <summary>
-    /// Control's dependency property helper.
+    ///     Control's dependency property helper.
     /// </summary>
     public class Control
     {

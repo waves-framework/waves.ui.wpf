@@ -6,7 +6,7 @@
         <!-- Controls -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml" />
 
         <!-- Icons -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
@@ -14,11 +14,10 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Button -->
-	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}"/>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}" />
 
     <!-- Window -->
-    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}"/>
+    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}" />
 
 
-    
 </ResourceDictionary>

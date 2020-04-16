@@ -3,7 +3,7 @@
 namespace Fluid.UI.Windows.Controls.Helpers
 {
     /// <summary>
-    /// Tab control dependency property helper.
+    ///     Tab control dependency property helper.
     /// </summary>
     public class TabControl
     {

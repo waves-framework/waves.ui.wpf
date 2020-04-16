@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace Fluid.UI.Windows.Presentation.Commands
 {
     /// <summary>
-    /// Action command.
+    ///     Action command.
     /// </summary>
     /// <typeparam name="T">Type.</typeparam>
     public class ActionCommand<T> : ICommand
@@ -12,7 +12,7 @@ namespace Fluid.UI.Windows.Presentation.Commands
         private readonly Action<T> _action;
 
         /// <summary>
-        /// Creates new instance of action command.
+        ///     Creates new instance of action command.
         /// </summary>
         /// <param name="action">Action.</param>
         public ActionCommand(Action<T> action)

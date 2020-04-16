@@ -14,7 +14,6 @@ namespace Fluid.UI.Windows.Converters.Unit.Channels
             var text = value + " канал";
 
             if (number >= 0 && number <= 100)
-            {
                 if (number < 10 || number > 19)
                 {
                     var rem = 0;
@@ -44,8 +43,8 @@ namespace Fluid.UI.Windows.Converters.Unit.Channels
                         return text + "ов";
                     if (rem == 9)
                         return text + "ов";
-                }            
-            }
+                }
+
             return text + "ов";
         }
 

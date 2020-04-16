@@ -1,8 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
-using Fluid.Core.Services;
-using Fluid.Core.Services.Interfaces;
-using Fluid.UI.Windows.Services.Interfaces;
 using Fluid.UI.Windows.Showcase.View.Window;
 using Fluid.UI.Windows.Showcase.ViewModel;
 
@@ -14,7 +12,7 @@ namespace Fluid.UI.Windows.Showcase
     public partial class App
     {
         /// <summary>
-        /// Gets UI Core.
+        ///     Gets UI Core.
         /// </summary>
         public static Core Core { get; } = new Core();
 
@@ -40,11 +38,11 @@ namespace Fluid.UI.Windows.Showcase
         }
 
         /// <summary>
-        /// Actions when main view closing.
+        ///     Actions when main view closing.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
-        private void OnViewClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void OnViewClosing(object sender, CancelEventArgs e)
         {
             Core.Stop();
         }
