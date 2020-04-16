@@ -26,6 +26,16 @@ namespace Fluid.UI.Windows.Services.Interfaces
         string Name { get; }
 
         /// <summary>
+        /// Gets example of primary color.
+        /// </summary>
+        Color PrimaryExampleColor { get; }
+
+        /// <summary>
+        /// Gets example of accent color.
+        /// </summary>
+        Color AccentExampleColor { get; }
+
+        /// <summary>
         ///     Gets theme primary resource dictionary.
         /// </summary>
         ResourceDictionary PrimaryColorResourceDictionary { get; }
