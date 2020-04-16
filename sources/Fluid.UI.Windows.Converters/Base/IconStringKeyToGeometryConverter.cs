@@ -9,18 +9,18 @@ namespace Fluid.UI.Windows.Converters.Base
     public class IconStringKeyToGeometryConverter : IValueConverter
     {
         /// <summary>
-        /// Новый экземпляр конвертера
+        ///     Новый экземпляр конвертера
         /// </summary>
         public IconStringKeyToGeometryConverter()
         {
             Dictionary = new ResourceDictionary
             {
-                Source = new Uri("pack://application:,,,/Fluid.UI;component/Resources/Icons.xaml")
+                Source = new Uri("pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml")
             };
         }
 
         /// <summary>
-        /// Словарь ресурсов иконок.
+        ///     Словарь ресурсов иконок.
         /// </summary>
         public ResourceDictionary Dictionary { get; }
 

@@ -12,7 +12,7 @@ namespace Fluid.UI.Windows.Converters.Unit.Bits
         {
             if (value != null)
             {
-                var number = (short)value;
+                var number = (short) value;
                 var text = value + " бит";
 
                 if (number == 8)

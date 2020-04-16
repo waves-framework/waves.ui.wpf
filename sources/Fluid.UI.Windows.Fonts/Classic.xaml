@@ -14,5 +14,5 @@
     <FontFamily x:Key="Font-2-Bold">pack://application:,,,/Fluid.UI.Windows.Fonts;component/#Lato Bold</FontFamily>
     <FontFamily x:Key="Font-2-Black">pack://application:,,,/Fluid.UI.Windows.Fonts;component/#Lato Black</FontFamily>
     <FontFamily x:Key="Font-2-Heavy">pack://application:,,,/Fluid.UI.Windows.Fonts;component/#Lato Heavy</FontFamily>
-    
+
 </ResourceDictionary>

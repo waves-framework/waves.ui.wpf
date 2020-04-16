@@ -36,6 +36,32 @@ namespace Fluid.UI.Windows.Animations
             new Dictionary<FrameworkElement, bool>();
 
         /// <summary>
+        ///     Using a DependencyProperty as the backing store for AnimationType.
+        ///     This enables animation, styling, binding, etc…
+        /// </summary>
+        public static readonly DependencyProperty AnimationTypeProperty =
+            DependencyProperty.RegisterAttached(
+                "AnimationType",
+                typeof(AnimationType),
+                typeof(Visibility),
+                new FrameworkPropertyMetadata(AnimationType.None,
+                    OnAnimationTypePropertyChanged));
+
+        /// <summary>
+        ///     VisibilityAnimation static ctor
+        /// </summary>
+        static Visibility()
+        {
+            // Here we “register" on Visibility property “before change" event
+            UIElement.VisibilityProperty.AddOwner(
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata(
+                    System.Windows.Visibility.Visible,
+                    VisibilityChanged,
+                    CoerceVisibility));
+        }
+
+        /// <summary>
         ///     Get AnimationType attached property
         /// </summary>
         /// <param name="obj">Dependency object</param>
@@ -54,18 +80,6 @@ namespace Fluid.UI.Windows.Animations
         {
             obj.SetValue(AnimationTypeProperty, value);
         }
-
-        /// <summary>
-        ///     Using a DependencyProperty as the backing store for AnimationType.
-        ///     This enables animation, styling, binding, etc…
-        /// </summary>
-        public static readonly DependencyProperty AnimationTypeProperty =
-            DependencyProperty.RegisterAttached(
-                "AnimationType",
-                typeof(AnimationType),
-                typeof(Visibility),
-                new FrameworkPropertyMetadata(AnimationType.None,
-                    OnAnimationTypePropertyChanged));
 
         /// <summary>
         ///     AnimationType property changed
@@ -105,20 +119,6 @@ namespace Fluid.UI.Windows.Animations
         private static void UnHookVisibilityChanges(FrameworkElement frameworkElement)
         {
             if (HookedElements.ContainsKey(frameworkElement)) HookedElements.Remove(frameworkElement);
-        }
-
-        /// <summary>
-        ///     VisibilityAnimation static ctor
-        /// </summary>
-        static Visibility()
-        {
-            // Here we “register" on Visibility property “before change" event
-            UIElement.VisibilityProperty.AddOwner(
-                typeof(FrameworkElement),
-                new FrameworkPropertyMetadata(
-                    System.Windows.Visibility.Visible,
-                    VisibilityChanged,
-                    CoerceVisibility));
         }
 
         /// <summary>

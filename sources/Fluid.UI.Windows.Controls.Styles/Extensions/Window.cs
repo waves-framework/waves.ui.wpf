@@ -6,7 +6,7 @@ using System.Windows.Media;
 namespace Fluid.UI.Windows.Controls.Styles.Extensions
 {
     /// <summary>
-    /// Window extension.
+    ///     Window extension.
     /// </summary>
     internal static class Window
     {
@@ -52,7 +52,8 @@ namespace Fluid.UI.Windows.Controls.Styles.Extensions
         public static void ForWindowFromTemplate(this object templateFrameworkElement,
             Action<System.Windows.Window> action)
         {
-            if (((FrameworkElement) templateFrameworkElement).TemplatedParent is System.Windows.Window window) action(window);
+            if (((FrameworkElement) templateFrameworkElement).TemplatedParent is System.Windows.Window window)
+                action(window);
         }
 
         /// <summary>

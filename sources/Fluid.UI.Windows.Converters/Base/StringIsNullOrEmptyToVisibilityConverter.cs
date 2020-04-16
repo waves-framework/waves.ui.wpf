@@ -11,8 +11,8 @@ namespace Fluid.UI.Windows.Converters.Base
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var o = (value);
-            return (string.IsNullOrEmpty(o?.ToString())) ? Visibility.Collapsed : Visibility.Visible;
+            var o = value;
+            return string.IsNullOrEmpty(o?.ToString()) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <inheritdoc />

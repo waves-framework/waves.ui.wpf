@@ -6,19 +6,42 @@
         <!-- Controls -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Padding.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Text.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml" />
+
+        <!-- Converters -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Converters;component/Converters.xaml" />
 
         <!-- Icons -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
 
+        <!-- Fonts -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Fonts;component/Classic.xaml" />
+
+        <!-- Text -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Text.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Button -->
-	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}"/>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}" />
+
+    <!-- Scrollbar. -->
+    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ScrollBarStyle}"/>
+
+    <!-- Tab Control -->
+    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource TabControlStyle}" />
+
+    <!-- Tab Item -->
+    <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource TabItemStyle}"/>
 
     <!-- Window -->
-    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}"/>
+    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}" />
 
-
-    
 </ResourceDictionary>

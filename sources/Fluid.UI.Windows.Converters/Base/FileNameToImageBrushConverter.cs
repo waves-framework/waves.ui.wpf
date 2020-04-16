@@ -34,7 +34,7 @@ namespace Fluid.UI.Windows.Converters.Base
             }
 
             var image = new BitmapImage(new Uri(fileName, UriKind.Relative));
-            return new ImageBrush(image) {Stretch = stretch };
+            return new ImageBrush(image) {Stretch = stretch};
         }
 
         /// <inheritdoc />
