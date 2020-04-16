@@ -5,6 +5,8 @@
 
         <!-- Controls -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Padding.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/RepeatButton.xaml" />
@@ -12,8 +14,13 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollViewer.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Text.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ToggleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Thumb.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml" />
+
+        <!-- Templates -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Services.Templates;component/Theme.xaml" />
 
         <!-- Converters -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Converters;component/Converters.xaml" />
@@ -29,8 +36,17 @@
 
     </ResourceDictionary.MergedDictionaries>
 
-    <!-- Button -->
+    <!-- Button. -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}" />
+
+    <!-- Checkbox. -->
+    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource CheckBoxStyle}" />
+
+    <!-- Combobox. -->
+    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ComboBoxStyle}" />
+
+    <!-- Combobox item. -->
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ComboBoxItemStyle}" />
 
     <!-- Scrollbar. -->
     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ScrollBarStyle}"/>
@@ -40,6 +56,12 @@
 
     <!-- Tab Item -->
     <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource TabItemStyle}"/>
+
+    <!-- Tab Control -->
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}" />
+
+    <!-- Toggle button -->
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ToggleButtonStyle}" />
 
     <!-- Window -->
     <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}" />

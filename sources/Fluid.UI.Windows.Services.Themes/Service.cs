@@ -42,6 +42,7 @@ namespace Fluid.UI.Windows.Services.Themes
 
         private ITheme _selectedTheme;
         private Guid _selectedThemeId = Guid.Empty;
+        private bool _useAutomaticScheme = true;
 
         /// <inheritdoc />
         public override Guid Id { get; } = Guid.Parse("61482A15-667C-4993-AEAE-4F19A62C17B8");
@@ -50,7 +51,17 @@ namespace Fluid.UI.Windows.Services.Themes
         public override string Name { get; set; } = "Windows UI Theme Service";
 
         /// <inheritdoc />
-        public bool UseAutomaticScheme { get; set; } = true;
+        public bool UseAutomaticScheme
+        {
+            get => _useAutomaticScheme;
+            set
+            {
+                _useAutomaticScheme = value;
+
+                if (value)
+                    InitializeSystemThemeCheckerDaemon();
+            }
+        }
 
         /// <inheritdoc />
         public ITheme SelectedTheme
@@ -137,6 +148,8 @@ namespace Fluid.UI.Windows.Services.Themes
         /// </summary>
         private void InitializeSystemThemeCheckerDaemon()
         {
+            if (!UseAutomaticScheme) return;
+
             Task.Run(async delegate
             {
                 do
@@ -150,6 +163,9 @@ namespace Fluid.UI.Windows.Services.Themes
                         _isSystemUsingDarkTheme = value != 1;
 
                         await Task.Delay(2500).ConfigureAwait(false);
+
+                        if (!UseAutomaticScheme)
+                            break;
 
                         if (_isSystemUsingDarkTheme && SelectedTheme.IsDark) continue;
                         if (!_isSystemUsingDarkTheme && !SelectedTheme.IsDark) continue;
@@ -181,7 +197,7 @@ namespace Fluid.UI.Windows.Services.Themes
                             new Message("Theme Service", "Error checking system theme:\r\n" + e, Name,
                                 MessageType.Error));
                     }
-                } while (IsInitialized);
+                } while (UseAutomaticScheme);
             });
         }
 

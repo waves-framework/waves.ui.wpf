@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Fluid.UI.Windows.Showcase.View.Control.Tabs.ThemeTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fluid.UI.Windows.Showcase.View.Control.Tabs"
+             xmlns:tabs="clr-namespace:Fluid.UI.Windows.Showcase.ViewModel.Tabs"
+             d:DataContext="{d:DesignInstance tabs:ThemeTabViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+
+        <ScrollViewer>
+
+            <StackPanel Margin="{StaticResource BigThickness}" HorizontalAlignment="Left">
+
+                <TextBlock Text="Theme" Style="{StaticResource Header1}" Margin="0,0,0,9"/>
+
+                <TextBlock Text="Changing application themes example." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
+
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,24"/>
+
+                <TextBlock Text="Theme selector" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                <TextBlock Text="Choose theme of current application." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                <ComboBox Height="36"
+                          ItemsSource="{Binding ThemeService.Themes, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding ThemeService.SelectedTheme, UpdateSourceTrigger=PropertyChanged}"
+                          ItemTemplate="{StaticResource ThemeComboBoxDataTemplate}"
+                          VerticalContentAlignment="Center"
+                          Padding="12,0,12,0"
+                          Margin="0,0,0,18">
+
+                    <ComboBox.Style>
+
+                        <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type ComboBox}">
+
+                            <Style.Triggers>
+
+                                <DataTrigger Binding="{Binding ThemeService.UseAutomaticScheme}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ThemeService.UseAutomaticScheme}" Value="False">
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </DataTrigger>
+
+                            </Style.Triggers>
+
+                        </Style>
+
+                    </ComboBox.Style>
+
+                </ComboBox>
+
+                <TextBlock Text="System color" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                <TextBlock Text="Sets whether application is repeating system color theme." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                <CheckBox Content="Repeat system color theme" IsChecked="{Binding ThemeService.UseAutomaticScheme}"/>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <Canvas Height="24" VerticalAlignment="Top" Margin="0,0,18,0">
+
+            <Canvas.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="{DynamicResource Color-100}" Offset="0.0" />
+                    <GradientStop Offset="1" Color="{DynamicResource Color-100-Transparent}"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+
+        </Canvas>
+            
+    </Grid>
+
+</UserControl>

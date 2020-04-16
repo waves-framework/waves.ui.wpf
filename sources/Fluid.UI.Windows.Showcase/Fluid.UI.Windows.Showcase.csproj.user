@@ -16,7 +16,19 @@
     <Compile Update="View\Control\Tabs\ButtonsTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\CheckBoxesTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\ComboBoxesTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\TextBoxesTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\TextTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\ThemeTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Window\MainWindowView.xaml.cs">
@@ -33,7 +45,19 @@
     <Page Update="View\Control\Tabs\ButtonsTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Control\Tabs\CheckBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ComboBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\TextBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Control\Tabs\TextTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ThemeTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Templates\Tabs.xaml">
