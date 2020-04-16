@@ -3,7 +3,7 @@
 namespace Fluid.UI.Windows.Controls.Helpers
 {
     /// <summary>
-    /// Tab control dependency property helper.
+    ///     Tab control dependency property helper.
     /// </summary>
     public class TabControl
     {
@@ -16,6 +16,14 @@ namespace Fluid.UI.Windows.Controls.Helpers
                 new PropertyMetadata(double.NaN));
 
         /// <summary>
+        /// Gets or sets "IsContentVisible" dependecy property. 
+        /// </summary>
+        public static readonly DependencyProperty IsContentVisibleProperty =
+            DependencyProperty.RegisterAttached(
+                "IsContentVisible", typeof(bool), typeof(TabControl),
+                new PropertyMetadata(true));
+
+        /// <summary>
         ///     Gets tab width.
         /// </summary>
         /// <param name="obj">Dependency object.</param>
@@ -26,6 +34,16 @@ namespace Fluid.UI.Windows.Controls.Helpers
         }
 
         /// <summary>
+        ///     Gets whether is content visible.
+        /// </summary>
+        /// <param name="obj">Dependency object.</param>
+        /// <returns>Returns whether in content visible value.</returns>
+        public static bool GetIsContentVisible(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsContentVisibleProperty);
+        }
+
+        /// <summary>
         ///     Sets tab width.
         /// </summary>
         /// <param name="obj">Dependency object.</param>
@@ -33,6 +51,16 @@ namespace Fluid.UI.Windows.Controls.Helpers
         public static void SetTabWidth(DependencyObject obj, double value)
         {
             obj.SetValue(TabWidthProperty, value);
+        }
+
+        /// <summary>
+        ///     Sets whether is content visible.
+        /// </summary>
+        /// <param name="obj">Dependency object.</param>
+        /// <param name="value">Is content visible value.</param>
+        public static void SetIsContentVisible(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsContentVisibleProperty, value);
         }
     }
 }

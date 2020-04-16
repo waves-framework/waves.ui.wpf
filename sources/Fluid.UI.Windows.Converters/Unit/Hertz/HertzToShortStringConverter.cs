@@ -13,7 +13,7 @@ namespace Fluid.UI.Windows.Converters.Unit.Hertz
             try
             {
                 var v = System.Convert.ToDouble(value);
-                var i = (int)Math.Log10(v);
+                var i = (int) Math.Log10(v);
 
                 if (v >= 1)
                 {

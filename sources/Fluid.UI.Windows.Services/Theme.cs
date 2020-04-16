@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 using Fluid.Core.Base;
 using Fluid.UI.Windows.Services.Interfaces;
+using Color = Fluid.Core.Base.Color;
 
 namespace Fluid.UI.Windows.Services
 {
     /// <summary>
-    /// Theme.
+    ///     Theme.
     /// </summary>
     public class Theme : ObservableObject, ITheme
     {
@@ -15,24 +17,24 @@ namespace Fluid.UI.Windows.Services
         private const string PrimaryForegroundColorKey = "Color-Foreground";
         private const string AccentColorKey = "Accent-Color";
         private const string AccentForegroundColorKey = "Accent-Color-Foreground";
+        private readonly int[] _accentColorWeights = {100, 200, 300, 400, 500, 600, 700, 800, 900};
+        private readonly int[] _accentForegroundColorWeights = {100, 500, 900};
 
-        private readonly int[] _primaryColorWeights = { 100, 200, 300, 400, 500, 600, 700, 800, 900 };
-        private readonly int[] _primaryForegroundColorWeights = { 100, 500, 900 };
-        private readonly int[] _accentColorWeights = { 100, 200, 300, 400, 500, 600, 700, 800, 900 };
-        private readonly int[] _accentForegroundColorWeights = { 100, 500, 900 };
-
-        private Dictionary<int, Color> _primaryColorDictionary;
+        private readonly int[] _primaryColorWeights = {100, 200, 300, 400, 500, 600, 700, 800, 900};
+        private readonly int[] _primaryForegroundColorWeights = {100, 500, 900};
         private Dictionary<int, Color> _accentColorDictionary;
-        private Dictionary<string, Color> _miscellaneousColorDictionary;
-        private Dictionary<int, Color> _primaryForegroundColorDictionary;
-        private Dictionary<int, Color> _accentForegroundColorDictionary;
-
-        private ResourceDictionary _primaryColorResourceDictionary;
         private ResourceDictionary _accentColorResourceDictionary;
+        private Dictionary<int, Color> _accentForegroundColorDictionary;
+        private Dictionary<string, Color> _miscellaneousColorDictionary;
         private ResourceDictionary _miscellaneousResourceDictionary;
 
+        private Dictionary<int, Color> _primaryColorDictionary;
+
+        private ResourceDictionary _primaryColorResourceDictionary;
+        private Dictionary<int, Color> _primaryForegroundColorDictionary;
+
         /// <summary>
-        /// Creates new instance of <see cref="Theme"/> 
+        ///     Creates new instance of <see cref="Theme" />
         /// </summary>
         /// <param name="name">Theme name.</param>
         /// <param name="id">Guid.</param>
@@ -40,7 +42,8 @@ namespace Fluid.UI.Windows.Services
         /// <param name="accent">Sets dictionary of accent colors.</param>
         /// <param name="miscellaneous">Sets dictionary of miscellaneous colors.</param>
         /// <param name="isDark">Sets whether theme is dark.</param>
-        public Theme(string name, Guid id, ResourceDictionary primary, ResourceDictionary accent, ResourceDictionary miscellaneous, bool isDark)
+        public Theme(string name, Guid id, ResourceDictionary primary, ResourceDictionary accent,
+            ResourceDictionary miscellaneous, bool isDark)
         {
             Name = name;
             Id = id;
@@ -55,13 +58,13 @@ namespace Fluid.UI.Windows.Services
         }
 
         /// <inheritdoc />
-        public bool IsDark { get; private set; }
+        public bool IsDark { get; }
 
         /// <inheritdoc />
-        public Guid Id { get; private set; }
+        public Guid Id { get; }
 
         /// <inheritdoc />
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <inheritdoc />
         public ResourceDictionary PrimaryColorResourceDictionary
@@ -130,15 +133,19 @@ namespace Fluid.UI.Windows.Services
         }
 
         /// <summary>
-        /// Initializes colors.
+        ///     Initializes colors.
         /// </summary>
         private void InitializeColors()
         {
-            _primaryColorDictionary = GetColorsDictionary(PrimaryColorResourceDictionary, PrimaryColorKey, _primaryColorWeights);
-            _primaryForegroundColorDictionary = GetColorsDictionary(PrimaryColorResourceDictionary, PrimaryForegroundColorKey,
+            _primaryColorDictionary =
+                GetColorsDictionary(PrimaryColorResourceDictionary, PrimaryColorKey, _primaryColorWeights);
+            _primaryForegroundColorDictionary = GetColorsDictionary(PrimaryColorResourceDictionary,
+                PrimaryForegroundColorKey,
                 _primaryForegroundColorWeights);
-            _accentColorDictionary = GetColorsDictionary(AccentColorResourceDictionary, AccentColorKey, _accentColorWeights);
-            _accentForegroundColorDictionary = GetColorsDictionary(AccentColorResourceDictionary, AccentForegroundColorKey, _accentForegroundColorWeights);
+            _accentColorDictionary =
+                GetColorsDictionary(AccentColorResourceDictionary, AccentColorKey, _accentColorWeights);
+            _accentForegroundColorDictionary = GetColorsDictionary(AccentColorResourceDictionary,
+                AccentForegroundColorKey, _accentForegroundColorWeights);
             _miscellaneousColorDictionary = GetColorsDictionary(MiscellaneousResourceDictionary);
         }
 
@@ -149,7 +156,8 @@ namespace Fluid.UI.Windows.Services
         /// <param name="key">Key.</param>
         /// <param name="weights">Weight.</param>
         /// <returns>Colors dictionary.</returns>
-        private static Dictionary<int, Color> GetColorsDictionary(ResourceDictionary dictionary, string key, int[] weights)
+        private static Dictionary<int, Color> GetColorsDictionary(ResourceDictionary dictionary, string key,
+            int[] weights)
         {
             var result = new Dictionary<int, Color>();
 
@@ -160,7 +168,7 @@ namespace Fluid.UI.Windows.Services
         }
 
         /// <summary>
-        /// Gets colors dictionary from resource dictionary.
+        ///     Gets colors dictionary from resource dictionary.
         /// </summary>
         /// <param name="dictionary">ResourceDictionary</param>
         /// <returns>Colors dictionary.</returns>
@@ -173,7 +181,7 @@ namespace Fluid.UI.Windows.Services
                 var str = key.ToString();
                 if (str.EndsWith("-Brush"))
                 {
-                    var brush = (System.Windows.Media.SolidColorBrush)dictionary[str];
+                    var brush = (SolidColorBrush) dictionary[str];
                     result.Add(str, Extensions.Color.ToFluidColor(brush.Color));
                 }
             }
@@ -191,7 +199,7 @@ namespace Fluid.UI.Windows.Services
         private static Color GetColorFromResourceDictionary(ResourceDictionary dictionary, string key, int weight)
         {
             var currentKey = key + "-" + weight;
-            var color = (System.Windows.Media.Color)dictionary[currentKey];
+            var color = (System.Windows.Media.Color) dictionary[currentKey];
             return Extensions.Color.ToFluidColor(color);
         }
     }

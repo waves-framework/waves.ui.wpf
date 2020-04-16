@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:Double x:Key="Opacity1">1.0</system:Double>
+    <system:Double x:Key="Opacity2">0.9</system:Double>
+    <system:Double x:Key="Opacity3">0.8</system:Double>
+    <system:Double x:Key="Opacity4">0.6</system:Double>
+    <system:Double x:Key="Opacity5">0.5</system:Double>
+    <system:Double x:Key="Opacity6">0.25</system:Double>
+    <system:Double x:Key="Opacity7">0.125</system:Double>
+    <system:Double x:Key="Opacity8">0.0625</system:Double>
+    <system:Double x:Key="Opacity9">0.03125</system:Double>
+    <system:Double x:Key="Opacity0">0.0</system:Double>
+
+</ResourceDictionary>

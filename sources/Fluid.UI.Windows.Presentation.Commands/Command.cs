@@ -4,15 +4,15 @@ using System.Windows.Input;
 namespace Fluid.UI.Windows.Presentation.Commands
 {
     /// <summary>
-    /// Command.
+    ///     Command.
     /// </summary>
     public class Command : ICommand
     {
-        private readonly Action<object> _execute;
         private readonly Func<object, bool> _canExecute;
+        private readonly Action<object> _execute;
 
         /// <summary>
-        /// Creates new instance of command.
+        ///     Creates new instance of command.
         /// </summary>
         /// <param name="execute">Execute action.</param>
         /// <param name="canExecute">Can execute delegate.</param>

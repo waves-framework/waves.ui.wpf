@@ -36,7 +36,7 @@
     <!-- Общий стиль иконки директории. -->
     <Style x:Key="DirectoryPathStyle" TargetType="{x:Type Path}">
 
-        <Setter Property="Data" Value="{DynamicResource Icon-Folder}"/>
+        <Setter Property="Data" Value="{DynamicResource Icon-Folder}" />
 
         <Style.Triggers>
 
@@ -102,7 +102,7 @@
     <!-- Общий стиль иконки файла. -->
     <Style x:Key="FilePathStyle" TargetType="{x:Type Path}">
 
-        <Setter Property="Data" Value="{DynamicResource Icon-File}"/>
+        <Setter Property="Data" Value="{DynamicResource Icon-File}" />
 
         <Style.Triggers>
 
@@ -269,7 +269,7 @@
     <!-- Общий стиль подписи типа директории. -->
     <Style x:Key="DirectoryTypeTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{DynamicResource Regular1}">
 
-        <Setter Property="Text" Value="Папка с файлами"/>
+        <Setter Property="Text" Value="Папка с файлами" />
 
         <Style.Triggers>
 
@@ -330,164 +330,164 @@
     <!-- Общий стиль подписи типа файла. -->
     <Style x:Key="FileTypeTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{DynamicResource Regular1}">
 
-        <Setter Property="Text" Value="Файл"/>
+        <Setter Property="Text" Value="Файл" />
 
         <Style.Triggers>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".exe">
-                <Setter  Property="Text" Value="Приложение"/>
+                <Setter Property="Text" Value="Приложение" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".dll">
-                <Setter  Property="Text" Value="Библиотека"/>
+                <Setter Property="Text" Value="Библиотека" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".jpg">
-                <Setter  Property="Text" Value="Изображение JPEG"/>
+                <Setter Property="Text" Value="Изображение JPEG" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".png">
-                <Setter  Property="Text" Value="Изображение PNG"/>
+                <Setter Property="Text" Value="Изображение PNG" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".gif">
-                <Setter  Property="Text" Value="Изображение GIF"/>
+                <Setter Property="Text" Value="Изображение GIF" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".bmp">
-                <Setter  Property="Text" Value="Изображение BMP"/>
+                <Setter Property="Text" Value="Изображение BMP" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".tiff">
-                <Setter  Property="Text" Value="Изображение TIFF"/>
+                <Setter Property="Text" Value="Изображение TIFF" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mov">
-                <Setter  Property="Text" Value="Видеофайл TIFF"/>
+                <Setter Property="Text" Value="Видеофайл TIFF" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".avi">
-                <Setter  Property="Text" Value="Видеофайл AVI"/>
+                <Setter Property="Text" Value="Видеофайл AVI" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".3gp">
-                <Setter  Property="Text" Value="Видеофайл 3GP"/>
+                <Setter Property="Text" Value="Видеофайл 3GP" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mkv">
-                <Setter  Property="Text" Value="Видеофайл MKV"/>
+                <Setter Property="Text" Value="Видеофайл MKV" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".webm">
-                <Setter  Property="Text" Value="Видеофайл WEBM"/>
+                <Setter Property="Text" Value="Видеофайл WEBM" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mp4">
-                <Setter  Property="Text" Value="Видеофайл MP4"/>
+                <Setter Property="Text" Value="Видеофайл MP4" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".wmv">
-                <Setter  Property="Text" Value="Видеофайл WMV"/>
+                <Setter Property="Text" Value="Видеофайл WMV" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".mp3">
-                <Setter  Property="Text" Value="Аудиофайл MP3"/>
+                <Setter Property="Text" Value="Аудиофайл MP3" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".wma">
-                <Setter  Property="Text" Value="Аудиофайл WMA"/>
+                <Setter Property="Text" Value="Аудиофайл WMA" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".wav">
-                <Setter  Property="Text" Value="Аудиофайл WAV"/>
+                <Setter Property="Text" Value="Аудиофайл WAV" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".ogg">
-                <Setter  Property="Text" Value="Аудиофайл OGG"/>
+                <Setter Property="Text" Value="Аудиофайл OGG" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".m4a">
-                <Setter  Property="Text" Value="Аудиофайл M4A"/>
+                <Setter Property="Text" Value="Аудиофайл M4A" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".aac">
-                <Setter  Property="Text" Value="Аудиофайл AAC"/>
+                <Setter Property="Text" Value="Аудиофайл AAC" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".pdf">
-                <Setter  Property="Text" Value="Документ PDF"/>
+                <Setter Property="Text" Value="Документ PDF" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".doc">
-                <Setter  Property="Text" Value="Документ DOC"/>
+                <Setter Property="Text" Value="Документ DOC" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".docx">
-                <Setter  Property="Text" Value="Документ DOCX"/>
+                <Setter Property="Text" Value="Документ DOCX" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".ppt">
-                <Setter  Property="Text" Value="Презентация PPT"/>
+                <Setter Property="Text" Value="Презентация PPT" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".pptx">
-                <Setter  Property="Text" Value="Презентация PPTX"/>
+                <Setter Property="Text" Value="Презентация PPTX" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".xls">
-                <Setter  Property="Text" Value="Таблица XLS"/>
+                <Setter Property="Text" Value="Таблица XLS" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".xlsx">
-                <Setter  Property="Text" Value="Таблица XLSX"/>
+                <Setter Property="Text" Value="Таблица XLSX" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".sys">
-                <Setter  Property="Text" Value="Системный файл"/>
+                <Setter Property="Text" Value="Системный файл" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".ini">
-                <Setter  Property="Text" Value="Файл конфигурации INI"/>
+                <Setter Property="Text" Value="Файл конфигурации INI" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".config">
-                <Setter  Property="Text" Value="Файл конфигурации CONFIG"/>
+                <Setter Property="Text" Value="Файл конфигурации CONFIG" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".zip">
-                <Setter  Property="Text" Value="Архив ZIP"/>
+                <Setter Property="Text" Value="Архив ZIP" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".rar">
-                <Setter  Property="Text" Value="Архив RAR"/>
+                <Setter Property="Text" Value="Архив RAR" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".7z">
-                <Setter  Property="Text" Value="Архив 7z"/>
+                <Setter Property="Text" Value="Архив 7z" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".xml">
-                <Setter  Property="Text" Value="Файл XML"/>
+                <Setter Property="Text" Value="Файл XML" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".log">
-                <Setter  Property="Text" Value="Файл логов"/>
+                <Setter Property="Text" Value="Файл логов" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".bin">
-                <Setter  Property="Text" Value="Бинарный файл"/>
+                <Setter Property="Text" Value="Бинарный файл" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".txt">
-                <Setter  Property="Text" Value="Текстовый файл"/>
+                <Setter Property="Text" Value="Текстовый файл" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".rtf">
-                <Setter  Property="Text" Value="Документ RTF"/>
+                <Setter Property="Text" Value="Документ RTF" />
             </DataTrigger>
 
             <DataTrigger Binding="{Binding Extension, UpdateSourceTrigger=PropertyChanged}" Value=".bat">
-                <Setter  Property="Text" Value="Пакетный файла Windows"/>
+                <Setter Property="Text" Value="Пакетный файла Windows" />
             </DataTrigger>
 
         </Style.Triggers>

@@ -7,7 +7,7 @@ using Fluid.UI.Windows.Controls.Styles.Extensions;
 namespace Fluid.UI.Windows.Controls.Styles
 {
     /// <summary>
-    /// Window.
+    ///     Window.
     /// </summary>
     public partial class Window
     {

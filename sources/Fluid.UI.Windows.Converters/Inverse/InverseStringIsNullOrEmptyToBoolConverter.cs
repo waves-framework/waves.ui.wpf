@@ -10,7 +10,7 @@ namespace Fluid.UI.Windows.Converters.Inverse
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var s = (string)value;
+            var s = (string) value;
             return !string.IsNullOrEmpty(s);
         }
 

@@ -10,12 +10,33 @@
     <Compile Update="View\Control\MainControlView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\AboutTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\ButtonsTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\TextTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Window\MainWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Control\MainControlView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\AboutTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ButtonsTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\TextTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Templates\Tabs.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Window\MainWindowView.xaml">

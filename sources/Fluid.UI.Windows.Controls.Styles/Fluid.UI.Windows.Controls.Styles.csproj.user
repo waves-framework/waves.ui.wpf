@@ -8,6 +8,30 @@
     <Page Update="Control.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Opacity.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Padding.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RepeatButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TabControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Text.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Thumb.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Window.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -7,17 +7,18 @@
   <Import Project="../../props/Fluid.UI.Windows.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core" Version="2020.1.75" />
-    <PackageReference Include="Fluid.Core.Services.Applications" Version="2020.1.75" />
-    <PackageReference Include="Fluid.Core.Services.Input" Version="2020.1.75" />
-    <PackageReference Include="Fluid.Core.Services.Logging" Version="2020.1.75" />
-    <PackageReference Include="Fluid.Core.Services.Modules" Version="2020.1.75" />
+    <PackageReference Include="Fluid.Core" Version="2020.1.80" />
+    <PackageReference Include="Fluid.Core.Services.Applications" Version="2020.1.80" />
+    <PackageReference Include="Fluid.Core.Services.Input" Version="2020.1.80" />
+    <PackageReference Include="Fluid.Core.Services.Logging" Version="2020.1.80" />
+    <PackageReference Include="Fluid.Core.Services.Modules" Version="2020.1.80" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fluid.UI.Windows.Colors\Fluid.UI.Windows.Colors.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Controls.Helpers\Fluid.UI.Windows.Controls.Helpers.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Controls.Styles\Fluid.UI.Windows.Controls.Styles.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Fonts\Fluid.UI.Windows.Fonts.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Services.Interfaces\Fluid.UI.Windows.Services.Interfaces.csproj" />
   </ItemGroup>

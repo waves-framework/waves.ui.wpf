@@ -1,33 +1,25 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
 using System.Linq;
-using System.Resources;
-using System.Windows;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
-using Fluid.Core.Services;
+using Fluid.Core.Base.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
 
 namespace Fluid.UI.Windows
 {
     /// <summary>
-    /// UI Core.
+    ///     UI Core.
     /// </summary>
     public class Core : Fluid.Core.Core
     {
-        private ResourceDictionary _primaryColorDictionary;
-        private ResourceDictionary _accentColorDictionary;
-        private ResourceDictionary _miscellaneousColorDictionary;
-
         /// <summary>
-        /// Gets whether UI Core is initialized.
+        ///     Gets whether UI Core is initialized.
         /// </summary>
         public bool IsInitialized { get; private set; }
 
         /// <summary>
-        /// Gets instance of attached application.
+        ///     Gets instance of attached application.
         /// </summary>
         public Application Application { get; private set; }
 
@@ -39,17 +31,17 @@ namespace Fluid.UI.Windows
                 base.Start();
 
                 Initialize();
-                
+
                 IsInitialized = true;
             }
             catch (Exception ex)
             {
-                WriteLogException(ex, "UI.Core");
+                WriteLogException(ex, "UI.Core", true);
             }
         }
 
         /// <summary>
-        /// Starts UI core.
+        ///     Starts UI core.
         /// </summary>
         /// <param name="application">Application instance.</param>
         public void Start(Application application)
@@ -59,8 +51,30 @@ namespace Fluid.UI.Windows
             Start();
         }
 
+        /// <inheritdoc />
+        public override void WriteLogMessage(IMessage message)
+        {
+            if (message.Type == MessageType.Fatal)
+            {
+                // TODO: fatal error handling.
+            }
+
+            base.WriteLogMessage(message);
+        }
+
+        /// <inheritdoc />
+        public override void WriteLogException(Exception ex, string sender, bool isFatal)
+        {
+            if (isFatal)
+            {
+                // TODO: fatal error handling.
+            }
+
+            base.WriteLogException(ex, sender, isFatal);
+        }
+
         /// <summary>
-        /// Initializes UI Core.
+        ///     Initializes UI Core.
         /// </summary>
         private void Initialize()
         {
@@ -68,13 +82,24 @@ namespace Fluid.UI.Windows
         }
 
         /// <summary>
-        /// Initializes UI core base services.
+        ///     Initializes UI core base services.
         /// </summary>
         private void InitializeServices()
         {
             RegisterService(ServiceManager.GetService<IThemeService>().First());
 
-            GetService<IThemeService>().AttachApplication(Application);
+            InitializeThemeService();
+        }
+
+        private void InitializeThemeService()
+        {
+            var service = GetService<IThemeService>();
+
+            if (service == null)
+                WriteLogMessage(
+                    new Message("Service", "Theme Service is not initialized", "UI Core", MessageType.Fatal));
+            else
+                service.AttachApplication(Application);
         }
     }
 }
