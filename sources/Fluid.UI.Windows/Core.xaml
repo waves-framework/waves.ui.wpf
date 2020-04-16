@@ -14,6 +14,7 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollViewer.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Text.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ToggleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Thumb.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml" />
@@ -55,6 +56,9 @@
 
     <!-- Tab Item -->
     <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource TabItemStyle}"/>
+
+    <!-- Tab Control -->
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}" />
 
     <!-- Toggle button -->
     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ToggleButtonStyle}" />

@@ -19,6 +19,12 @@
     <Compile Update="View\Control\Tabs\CheckBoxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\ComboBoxesTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\TextBoxesTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\TextTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +46,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\CheckBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ComboBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\TextBoxesTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\TextTabView.xaml">
