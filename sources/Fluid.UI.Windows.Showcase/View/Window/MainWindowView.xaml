@@ -8,7 +8,7 @@
         x:Class="Fluid.UI.Windows.Showcase.View.Window.MainWindowView"
         Style="{DynamicResource WindowStyle}"
         mc:Ignorable="d"
-        Title="MainWindowView" Height="450" Width="800">
+        Title="UI Showcase" Height="450" Width="800">
 
     <Grid>
 
