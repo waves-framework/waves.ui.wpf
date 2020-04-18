@@ -17,6 +17,7 @@ namespace Fluid.UI.Windows.Showcase.Presentation.Controllers
             Presentations.Add(new ComboBoxesTabPresentation());
             Presentations.Add(new CheckBoxesTabPresentation());
             Presentations.Add(new TextBoxesTabPresentation());
+            Presentations.Add(new CoreTabPresentation());
             Presentations.Add(new ThemeTabPresentation());
             Presentations.Add(new AboutTabPresentation());
 

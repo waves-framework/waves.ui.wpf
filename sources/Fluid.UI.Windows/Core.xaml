@@ -20,7 +20,8 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml" />
 
         <!-- Templates -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Services.Templates;component/Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Templates;component/Message.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Templates;component/Theme.xaml" />
 
         <!-- Converters -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Converters;component/Converters.xaml" />

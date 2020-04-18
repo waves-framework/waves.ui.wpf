@@ -21,7 +21,7 @@
     <ProjectReference Include="..\Fluid.UI.Windows.Fonts\Fluid.UI.Windows.Fonts.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Services.Interfaces\Fluid.UI.Windows.Services.Interfaces.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Services.Templates\Fluid.UI.Windows.Services.Templates.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Services.Templates\Fluid.UI.Windows.Templates.csproj" />
   </ItemGroup>
 
   <ItemGroup>

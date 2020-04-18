@@ -1,10 +1,22 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!-- Disabled colors -->
     <Color x:Key="Disabled-Color">#6D6A75</Color>
     <Color x:Key="Disabled-Foreground-Color">#BFBDC1</Color>
 
+    <!-- Message colors -->
+    <Color x:Key="Warning-Color">#D2B040</Color>
+    <Color x:Key="Error-Color">#E04345</Color>
+    <Color x:Key="Fatal-Color">#E04345</Color>
+    <Color x:Key="Success-Color">#01946D</Color>
+
     <SolidColorBrush x:Key="Disabled-Brush" Color="{StaticResource Disabled-Color}" />
     <SolidColorBrush x:Key="Disabled-Foreground-Brush" Color="{StaticResource Disabled-Foreground-Color}" />
+
+    <SolidColorBrush x:Key="Warning-Brush" Color="{StaticResource Warning-Color}" />
+    <SolidColorBrush x:Key="Error-Brush" Color="{StaticResource Error-Color}" />
+    <SolidColorBrush x:Key="Fatal-Brush" Color="{StaticResource Fatal-Color}" />
+    <SolidColorBrush x:Key="Success-Brush" Color="{StaticResource Success-Color}"/>
 
 </ResourceDictionary>
