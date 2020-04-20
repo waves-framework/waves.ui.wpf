@@ -15,18 +15,9 @@
     <tags>fluid ui windows</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Fluid.Core" version="[2020.1.75,2020.2)" />
-        <dependency id="Fluid.Core.Services.Applications" version="[2020.1.75,2020.2)" />
-        <dependency id="Fluid.Core.Services.Input" version="[2020.1.75,2020.2)" />
-        <dependency id="Fluid.Core.Services.Logging" version="[2020.1.75,2020.2)" />
-        <dependency id="Fluid.Core.Services.Modules" version="[2020.1.75,2020.2)" />
-        <dependency id="Fluid.UI.Windows.Colors" version="[{$NUGETVERSION},2020.2)" />
-        <dependency id="Fluid.UI.Windows.Controls.Helpers" version="[{$NUGETVERSION},2020.2)" />
-        <dependency id="Fluid.UI.Windows.Controls.Styles" version="[{$NUGETVERSION},2020.2)" />
-        <dependency id="Fluid.UI.Windows.Fonts" version="[{$NUGETVERSION},2020.2)" />
+        <dependency id="Fluid.Core" version="[2020.1.96,2020.2)" />
+        <dependency id="Fluid.Core.Base.Applications" version="[2020.1.96,2020.2)" />
         <dependency id="Fluid.UI.Windows.Resources" version="[{$NUGETVERSION},2020.2)" />
-        <dependency id="Fluid.UI.Windows.Services.Interfaces" version="[{$NUGETVERSION},2020.2)" />
-        <dependency id="Fluid.UI.Windows.Services.Templates" version="[{$NUGETVERSION},2020.2)" />
       </group>
     </dependencies>
     <frameworkReferences>

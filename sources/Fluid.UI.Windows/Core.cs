@@ -33,6 +33,9 @@ namespace Fluid.UI.Windows
                 Initialize();
 
                 IsInitialized = true;
+
+                WriteLogMessage(
+                    new Message("UI Core", "UI Core launched successfully.", "UI Core", MessageType.Success));
             }
             catch (Exception ex)
             {

@@ -11,6 +11,9 @@
     <Page Update="Control.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ListBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Opacity.xaml">
       <SubType>Designer</SubType>
     </Page>

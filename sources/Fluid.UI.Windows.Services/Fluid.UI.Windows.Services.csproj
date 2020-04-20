@@ -7,12 +7,11 @@
   <Import Project="../../props/Fluid.UI.Windows.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.80" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.92" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fluid.UI.Windows.Extensions\Fluid.UI.Windows.Extensions.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Services.Interfaces\Fluid.UI.Windows.Services.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

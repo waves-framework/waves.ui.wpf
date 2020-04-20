@@ -1,4 +1,5 @@
-﻿using Fluid.Presentation.Base;
+﻿using System;
+using Fluid.Presentation.Base;
 
 namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
 {

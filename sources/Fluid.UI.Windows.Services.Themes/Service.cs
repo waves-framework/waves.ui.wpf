@@ -18,7 +18,7 @@ namespace Fluid.UI.Windows.Services.Themes
     ///     Windows UI theme service.
     /// </summary>
     [Export(typeof(IService))]
-    public class Service : Core.Services.Service, IThemeService
+    public class Service : Core.Base.Service, IThemeService
     {
         private const string PrimaryLightColorsDictionaryUri = "/Fluid.UI.Windows.Colors;component/Primary.Light.xaml";
         private const string PrimaryDarkColorsDictionaryUri = "/Fluid.UI.Windows.Colors;component/Primary.Dark.xaml";
