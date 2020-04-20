@@ -27,10 +27,11 @@ namespace Fluid.UI.Windows.Showcase
                 Core.Start(Current);
                 Core.RegisterService<ITextGeneratorService>(new TextGeneratorService());
 
-                var presentation = new MainTabPresentationController();
-                presentation.Initialize();
-
-                var view = new MainWindowView {DataContext = presentation};
+                var controller = new MainTabPresentationController();
+                controller.MessageReceived += OnControllerMessageReceived;
+                controller.Initialize();
+                
+                var view = new MainWindowView {DataContext = controller };
                 view.Show();
 
                 view.Closing += OnViewClosing;
@@ -40,6 +41,16 @@ namespace Fluid.UI.Windows.Showcase
                 Console.WriteLine(exception);
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Actions when controller's message received.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Message.</param>
+        private void OnControllerMessageReceived(object sender, Fluid.Core.Base.Interfaces.IMessage e)
+        {
+            Core.WriteLogMessage(e);
         }
 
         /// <summary>

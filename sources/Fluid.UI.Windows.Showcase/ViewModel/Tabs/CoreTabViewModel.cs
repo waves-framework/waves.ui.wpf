@@ -24,6 +24,15 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
             LoggingService = App.Core.GetService<ILoggingService>();
 
             _textGeneratorService = App.Core.GetService<ITextGeneratorService>();
+
+            //LoggingService.WriteMessageToLog(new Message(_textGeneratorService.GenerateWord(), _textGeneratorService.GenerateText(), _textGeneratorService.GenerateWord(), MessageType.Information));
+            //LoggingService.WriteMessageToLog(new Message(_textGeneratorService.GenerateWord(), _textGeneratorService.GenerateText(), _textGeneratorService.GenerateWord(), MessageType.Debug));
+            //LoggingService.WriteMessageToLog(new Message(_textGeneratorService.GenerateWord(), _textGeneratorService.GenerateText(), _textGeneratorService.GenerateWord(), MessageType.Warning));
+            //LoggingService.WriteMessageToLog(new Message(_textGeneratorService.GenerateWord(), _textGeneratorService.GenerateText(), _textGeneratorService.GenerateWord(), MessageType.Error));
+            //LoggingService.WriteMessageToLog(new Message(_textGeneratorService.GenerateWord(), _textGeneratorService.GenerateText(), _textGeneratorService.GenerateWord(), MessageType.Fatal));
+            //LoggingService.WriteMessageToLog(new Message(_textGeneratorService.GenerateWord(), _textGeneratorService.GenerateText(), _textGeneratorService.GenerateWord(), MessageType.Success));
         }
+
+
     }
 }

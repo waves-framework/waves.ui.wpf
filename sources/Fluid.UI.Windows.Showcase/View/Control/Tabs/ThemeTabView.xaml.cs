@@ -1,4 +1,6 @@
-﻿using Fluid.Presentation.Interfaces;
+﻿using System;
+using Fluid.Core.Base.Interfaces;
+using Fluid.Presentation.Interfaces;
 
 namespace Fluid.UI.Windows.Showcase.View.Control.Tabs
 {
@@ -13,6 +15,18 @@ namespace Fluid.UI.Windows.Showcase.View.Control.Tabs
         public ThemeTabView()
         {
             InitializeComponent();
+        }
+
+        /// <inheritdoc />
+        public event EventHandler<IMessage> MessageReceived;
+
+        /// <summary>
+        /// Notifies when message received.
+        /// </summary>
+        /// <param name="e">Message.</param>
+        protected virtual void OnMessageReceived(IMessage e)
+        {
+            MessageReceived?.Invoke(this, e);
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controllers="clr-namespace:Fluid.UI.Windows.Showcase.Presentation.Controllers"
-             xmlns:helpers="clr-namespace:Fluid.UI.Windows.Controls.Helpers;assembly=Fluid.UI.Windows.Controls.Helpers"
+             xmlns:helpers="clr-namespace:Fluid.UI.Windows.Helpers;assembly=Fluid.UI.Windows"
              d:DataContext="{d:DesignInstance controllers:MainTabPresentationController}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">

@@ -61,7 +61,7 @@
                         <ItemsControl.ItemsPanel>
 
                             <ItemsPanelTemplate>
-                                <StackPanel IsItemsHost="True" Margin="{StaticResource StandardThickness}"/>
+                                <StackPanel IsItemsHost="True" Margin="12,24,12,24"/>
                             </ItemsPanelTemplate>
 
                         </ItemsControl.ItemsPanel>
@@ -70,7 +70,7 @@
 
                 </ScrollViewer>
 
-                <Canvas Height="6" VerticalAlignment="Top" Margin="0,0,18,0">
+                <Canvas Height="24" VerticalAlignment="Top" Margin="0,0,18,0">
 
                     <Canvas.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">

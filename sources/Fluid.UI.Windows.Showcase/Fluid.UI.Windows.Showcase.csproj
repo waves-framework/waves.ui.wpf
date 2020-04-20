@@ -26,15 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.21" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.23" />
     <PackageReference Include="RandomDataGenerator.Net" Version="1.0.11" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows.Presentation.Commands\Fluid.UI.Windows.Commands.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
   </ItemGroup>
 

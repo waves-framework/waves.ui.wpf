@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <UseWPF>true</UseWPF>
@@ -7,27 +7,96 @@
   <Import Project="../../props/Fluid.UI.Windows.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core" Version="2020.1.80" />
-    <PackageReference Include="Fluid.Core.Services.Applications" Version="2020.1.80" />
-    <PackageReference Include="Fluid.Core.Services.Input" Version="2020.1.80" />
-    <PackageReference Include="Fluid.Core.Services.Logging" Version="2020.1.80" />
-    <PackageReference Include="Fluid.Core.Services.Modules" Version="2020.1.80" />
+    <PackageReference Include="Fluid.Core" Version="2020.1.96" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.96" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fluid.UI.Windows.Colors\Fluid.UI.Windows.Colors.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Controls.Helpers\Fluid.UI.Windows.Controls.Helpers.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Controls.Styles\Fluid.UI.Windows.Controls.Styles.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Fonts\Fluid.UI.Windows.Fonts.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Services.Interfaces\Fluid.UI.Windows.Services.Interfaces.csproj" />
-    <ProjectReference Include="..\Fluid.UI.Windows.Services.Templates\Fluid.UI.Windows.Templates.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Colors\Accent.Blue.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Accent.Green.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Accent.Red.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Accent.Yellow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Miscellaneous.Classic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Primary.Dark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Primary.Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ListBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Opacity.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Padding.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\RepeatButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TabControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Text.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Thumb.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Window.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\Message.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\Theme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

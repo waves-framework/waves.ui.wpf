@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ic="clr-namespace:Fluid.UI.Windows.Converters.Inverse"
+                    xmlns:bitsc="clr-namespace:Fluid.UI.Windows.Converters.Unit.Bits"
+                    xmlns:bytesc="clr-namespace:Fluid.UI.Windows.Converters.Unit.Bytes"
+                    xmlns:chc="clr-namespace:Fluid.UI.Windows.Converters.Unit.Channels"
+                    xmlns:hertzc="clr-namespace:Fluid.UI.Windows.Converters.Unit.Hertz"
+                    xmlns:voltagec="clr-namespace:Fluid.UI.Windows.Converters.Unit.Voltage"
+                    xmlns:base="clr-namespace:Fluid.UI.Windows.Converters.Base">
+
+    <!-- Main Converters -->
+    <base:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <base:FileNameToImageBrushConverter x:Key="FileNameToImageBrushConverter" />
+    <base:FluidColorToHexStringConverter x:Key="FluidColorToHexStringConverter" />
+    <base:FluidColorToSolidColorBrushConverter x:Key="FluidColorToSolidColorBrushConverter" />
+    <base:FluidColorToTransparentColorConverter x:Key="FluidColorToTransparentColorConverter" />
+    <base:IconStringKeyToGeometryConverter x:Key="IconStringKeyToGeometryConverter" />
+    <base:NullToBoolConverter x:Key="NullToBooleanConverter" />
+    <base:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <base:ProgressValueToDegreeConverter x:Key="ProgressValueToDegreeConverter" />
+    <base:SolidColorBrushToSystemColorConverter x:Key="SolidColorBrushToSystemColorConverter" />
+    <base:StringIsNullOrEmptyToBoolConverter x:Key="StringIsNullOrEmptyToBoolConverter" />
+    <base:StringIsNullOrEmptyToVisibilityConverter x:Key="StringIsNullOrEmptyToVisibilityConverter" />
+    <base:StringPathToGeometryConverter x:Key="StringPathToGeometryConverter" />
+    <base:SystemColorToSolidColorBrushConverter x:Key="SystemColorToSolidColorBrushConverter" />
+    <base:ZeroAmountToBoolConverter x:Key="ZeroAmountToBoolConverter" />
+    <base:ZeroAmountToVisibilityConverter x:Key="ZeroAmountToVisibilityConverter" />
+
+    <!-- Inverse Converters -->
+    <ic:InverseBoolConverter x:Key="InverseBoolConverter" />
+    <ic:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+    <ic:InverseNullToBoolConverter x:Key="InverseNullToBoolConverter" />
+    <ic:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter" />
+    <ic:InverseStringIsNullOrEmptyToBoolConverter x:Key="InverseStringIsNullOrEmptyToBoolConverter" />
+    <ic:InverseStringIsNullOrEmptyToVisibilityConverter x:Key="InverseStringIsNullOrEmptyToVisibilityConverter" />
+    <ic:InverseZeroAmountToBoolConverter x:Key="InverseZeroAmountToBoolConverter" />
+    <ic:InverseZeroAmountToVisibilityConverter x:Key="InverseZeroAmountToVisibilityConverter" />
+
+    <!-- Unit Converters - Bits -->
+    <bitsc:NumberOfBitsToStringConverter x:Key="NumberOfBitsToStringConverter" />
+
+    <!-- Unit Converters - Bytes -->
+    <bytesc:NumberOfBytesToFormattedStringConverter x:Key="NumberOfBytesToFormattedStringConverter" />
+
+    <!-- Unit Converters - Channels -->
+    <chc:ChannelNumberToStringConverter x:Key="ChannelNumberToStringConverter" />
+    <chc:NumberOfChannelToStringConverter x:Key="NumberOfChannelToStringConverter" />
+
+    <!-- Unit Converters - Hertz -->
+    <hertzc:HertzToShortStringConverter x:Key="HertzToShortStringConverter" />
+
+    <!-- Unit Converters - Voltage -->
+    <voltagec:TimesToSolidColorBrushConverter x:Key="TimesToSolidColorBrushConverter" />
+    <voltagec:VoltsToStringConverter x:Key="VoltsToStringConverter" />
+
+</ResourceDictionary>
