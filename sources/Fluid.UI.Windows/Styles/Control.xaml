@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Opacity.. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
+
+        <!-- Padding. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Base control style. -->
+    <Style x:Key="ControlStyle" TargetType="{x:Type Control}">
+
+        <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-100-Brush}" />
+
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+
+        <Setter Property="FontFamily" Value="{DynamicResource Font-2-Regular}" />
+
+        <Setter Property="FontSize" Value="12" />
+
+        <Setter Property="SnapsToDevicePixels" Value="false" />
+
+    </Style>
+
+</ResourceDictionary>

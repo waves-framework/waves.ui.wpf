@@ -4,7 +4,15 @@
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>fluid.ico</ApplicationIcon>
+    <AssemblyName>Fluid.UI.Windows.Showcase</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="View\Tab\**" />
+    <EmbeddedResource Remove="View\Tab\**" />
+    <None Remove="View\Tab\**" />
+    <Page Remove="View\Tab\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="fluid.ico" />
@@ -18,16 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\Tab\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.21" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.23" />
     <PackageReference Include="RandomDataGenerator.Net" Version="1.0.11" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows.Presentation.Commands\Fluid.UI.Windows.Commands.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
   </ItemGroup>
 

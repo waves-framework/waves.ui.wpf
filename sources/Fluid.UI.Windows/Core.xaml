@@ -4,35 +4,36 @@
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Controls -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Button.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/CheckBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ComboBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Control.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Padding.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/RepeatButton.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollBar.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ScrollViewer.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Text.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TabControl.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/TextBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/ToggleButton.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Thumb.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Window.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Window.xaml" />
 
         <!-- Templates -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Services.Templates;component/Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Message.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Theme.xaml" />
 
         <!-- Converters -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Converters;component/Converters.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
 
-        <!-- Icons -->
+        <!-- Resources -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
-
-        <!-- Fonts -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Fonts;component/Classic.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Fonts.xaml" />
 
         <!-- Text -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Controls.Styles;component/Text.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
@@ -47,6 +48,15 @@
 
     <!-- Combobox item. -->
     <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ComboBoxItemStyle}" />
+
+    <!-- Combobox. -->
+    <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource ListBoxStyle}" />
+
+    <!-- ListBox item. -->
+    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ListBoxItemStyle}" />
+
+    <!-- Scrollbar. -->
+    <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ProgressBarStyle}"/>
 
     <!-- Scrollbar. -->
     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ScrollBarStyle}"/>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Fluid.UI.Windows.Presentation.Commands
+namespace Fluid.UI.Windows.Commands
 {
     /// <summary>
     ///     Action command.

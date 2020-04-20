@@ -22,6 +22,15 @@
     <Compile Update="View\Control\Tabs\ComboBoxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\CoreTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\ListboxesTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\ProgressBarsTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\TextBoxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -51,6 +60,15 @@
     <Page Update="View\Control\Tabs\ComboBoxesTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Control\Tabs\CoreTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ListBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ProgressBarsTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Control\Tabs\TextBoxesTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -58,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\ThemeTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Templates\Items.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Templates\Tabs.xaml">

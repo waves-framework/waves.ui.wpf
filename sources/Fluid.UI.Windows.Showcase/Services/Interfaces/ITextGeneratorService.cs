@@ -1,4 +1,5 @@
-﻿using Fluid.Core.Services.Interfaces;
+﻿using Fluid.Core.Base.Interfaces;
+using Fluid.Core.Services.Interfaces;
 
 namespace Fluid.UI.Windows.Showcase.Services.Interfaces
 {

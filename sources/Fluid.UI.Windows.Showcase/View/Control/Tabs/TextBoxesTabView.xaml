@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fluid.UI.Windows.Showcase.View.Control.Tabs"
-             xmlns:helpers="clr-namespace:Fluid.UI.Windows.Controls.Helpers;assembly=Fluid.UI.Windows.Controls.Helpers"
+             xmlns:helpers="clr-namespace:Fluid.UI.Windows.Helpers;assembly=Fluid.UI.Windows"
              xmlns:tabs="clr-namespace:Fluid.UI.Windows.Showcase.ViewModel.Tabs"
              d:DataContext="{d:DesignInstance tabs:TextBoxesTabViewModel}"
              mc:Ignorable="d" 
