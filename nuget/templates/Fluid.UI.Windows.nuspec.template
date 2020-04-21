@@ -18,6 +18,7 @@
         <dependency id="Fluid.Core" version="[2020.1.96,2020.2)" />
         <dependency id="Fluid.Core.Base.Applications" version="[2020.1.96,2020.2)" />
         <dependency id="Fluid.UI.Windows.Resources" version="[{$NUGETVERSION},2020.2)" />
+        <dependency id="Microsoft.Xaml.Behaviors.Wpf" version="1.1.19" />
       </group>
     </dependencies>
     <frameworkReferences>

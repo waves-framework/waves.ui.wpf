@@ -34,7 +34,7 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -55,6 +55,12 @@
 
                     </Grid>
 
+                    <Grid Grid.Column="6">
+
+                        <TextBlock Text="Run progress" Style="{StaticResource Header3}"/>
+
+                    </Grid>
+
                 </Grid>
 
                 <Grid Margin="0,0,0,24">
@@ -66,7 +72,7 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -89,7 +95,7 @@
 
                     <Grid Grid.Column="6">
 
-                        <Button Command="{Binding FirstButtonRunCommand}">
+                        <Button Command="{Binding FirstButtonRunCommand}" Style="{StaticResource AccentButtonStyle}">
 
                             <Grid>
 
@@ -101,7 +107,7 @@
 
                                 <Grid Grid.Column="0">
 
-                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-5,-2,0,0">
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-8,-2,0,0">
 
                                         <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}">
 
@@ -158,7 +164,7 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -179,6 +185,12 @@
 
                     </Grid>
 
+                    <Grid Grid.Column="6">
+
+                        <TextBlock Text="Run progress" Style="{StaticResource Header3}"/>
+
+                    </Grid>
+
                 </Grid>
 
                 <Grid Margin="0,0,0,0">
@@ -190,7 +202,7 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -226,7 +238,7 @@
 
                     <Grid Grid.Column="6">
 
-                        <Button Command="{Binding SecondButtonRunCommand}">
+                        <Button Command="{Binding SecondButtonRunCommand}" Style="{StaticResource AccentButtonStyle}">
 
                             <Grid>
 
@@ -238,7 +250,7 @@
 
                                 <Grid Grid.Column="0">
 
-                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-5,-2,0,0">
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-8,-2,0,0">
 
                                         <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}">
 
