@@ -22,6 +22,9 @@
     <Compile Update="View\Control\Tabs\ComboBoxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\ConfigurationTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\CoreTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\ComboBoxesTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ConfigurationTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\CoreTabView.xaml">
