@@ -323,6 +323,16 @@
 
                         </TextBlock>
 
+                        <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Margin="0,24,0,24"/>
+
+                        <TextBlock Style="{StaticResource Header1}" Margin="0,0,0,9">
+                            Icons by Icons8
+                        </TextBlock>
+
+                        <TextBlock Style="{StaticResource Header2}" Margin="0,0,0,12">
+                            icons8.com
+                        </TextBlock>
+
                     </StackPanel>
 
                 </ScrollViewer>

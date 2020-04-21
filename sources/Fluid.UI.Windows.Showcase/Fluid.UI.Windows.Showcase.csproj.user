@@ -28,7 +28,13 @@
     <Compile Update="View\Control\Tabs\ListboxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\MenusTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\ProgressBarsTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\Tabs\RadioButtonsTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Control\Tabs\TextBoxesTabView.xaml.cs">
@@ -66,7 +72,13 @@
     <Page Update="View\Control\Tabs\ListBoxesTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Control\Tabs\MenusTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Control\Tabs\ProgressBarsTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\RadioButtonsTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\TextBoxesTabView.xaml">

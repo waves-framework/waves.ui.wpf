@@ -121,7 +121,11 @@
 
         <Setter Property="ClickMode" Value="Hover" />
 
+        <Setter Property="Background" Value="{DynamicResource Primary-100-Brush}" />
         <Setter Property="Foreground" Value="{DynamicResource Primary-900-Brush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="Auto" />
 

@@ -7,10 +7,13 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Button.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ContextMenu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Control.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Menu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/RadioButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/RepeatButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ScrollBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ScrollViewer.xaml" />
@@ -49,14 +52,29 @@
     <!-- Combobox item. -->
     <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ComboBoxItemStyle}" />
 
-    <!-- Combobox. -->
+    <!-- Context menu. -->
+    <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource ContextMenuStyle}" />
+
+    <!-- ListBox. -->
     <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource ListBoxStyle}" />
 
     <!-- ListBox item. -->
     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ListBoxItemStyle}" />
 
+    <!-- Menu. -->
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource MenuStyle}" />
+
+    <!-- Menu item. -->
+    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MenuItemStyle}" />
+
     <!-- Scrollbar. -->
     <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ProgressBarStyle}"/>
+
+    <!-- Scrollbar. -->
+    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource RadioButtonStyle}"/>
+
+    <!-- Menu separator. -->
+    <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource SeparatorStyle}" />
 
     <!-- Scrollbar. -->
     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ScrollBarStyle}"/>

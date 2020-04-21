@@ -23,6 +23,8 @@ namespace Fluid.UI.Windows.Services
     {
         private const string PrimaryLightColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Primary.Light.xaml";
         private const string PrimaryDarkColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Primary.Dark.xaml";
+        private const string AccentWhiteColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.White.xaml";
+        private const string AccentBlackColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Black.xaml";
         private const string AccentBlueColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Blue.xaml";
         private const string AccentGreenColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Green.xaml";
         private const string AccentRedColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Red.xaml";
@@ -329,6 +331,21 @@ namespace Fluid.UI.Windows.Services
                     },
                     true));
 
+                Themes.Add(new Theme("Black / White", Guid.Parse("ADDCB340-5E01-4974-9A5F-7EEA0C013AF9"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentWhiteColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    true));
+
                 Themes.Add(new Theme("Light / Blue", Guid.Parse("27D324B4-3279-481C-899B-153A60BAC3D0"),
                     new ResourceDictionary
                     {
@@ -382,6 +399,21 @@ namespace Fluid.UI.Windows.Services
                     new ResourceDictionary
                     {
                         Source = new Uri(AccentYellowColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    false));
+                    
+                Themes.Add(new Theme("White / Black", Guid.Parse("E14927EB-6231-4C31-8FFE-7CFA6DF713FE"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(AccentBlackColorsDictionaryUri, UriKind.RelativeOrAbsolute)
                     },
                     new ResourceDictionary
                     {

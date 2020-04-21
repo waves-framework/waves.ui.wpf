@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Accent-Color-100">#0B132B</Color>
+    <Color x:Key="Accent-Color-200">#192137</Color>
+    <Color x:Key="Accent-Color-300">#293045</Color>
+    <Color x:Key="Accent-Color-400">#373E51</Color>
+    <Color x:Key="Accent-Color-500">#454B5E</Color>
+    <Color x:Key="Accent-Color-600">#636878</Color>
+    <Color x:Key="Accent-Color-700">#808491</Color>
+    <Color x:Key="Accent-Color-800">#9497A2</Color>
+    <Color x:Key="Accent-Color-900">#A7AAB2</Color>
+
+    <Color x:Key="Accent-Color-Foreground-100">#FFFFFF</Color>
+    <Color x:Key="Accent-Color-Foreground-500">#E1E2E5</Color>
+    <Color x:Key="Accent-Color-Foreground-900">#A6A9B2</Color>
+
+    <!-- Accent -->
+    <SolidColorBrush x:Key="Accent-100-Brush" Color="{StaticResource Accent-Color-100}" />
+    <SolidColorBrush x:Key="Accent-200-Brush" Color="{StaticResource Accent-Color-200}" />
+    <SolidColorBrush x:Key="Accent-300-Brush" Color="{StaticResource Accent-Color-300}" />
+    <SolidColorBrush x:Key="Accent-400-Brush" Color="{StaticResource Accent-Color-400}" />
+    <SolidColorBrush x:Key="Accent-500-Brush" Color="{StaticResource Accent-Color-500}" />
+    <SolidColorBrush x:Key="Accent-600-Brush" Color="{StaticResource Accent-Color-600}" />
+    <SolidColorBrush x:Key="Accent-700-Brush" Color="{StaticResource Accent-Color-700}" />
+    <SolidColorBrush x:Key="Accent-800-Brush" Color="{StaticResource Accent-Color-800}" />
+    <SolidColorBrush x:Key="Accent-900-Brush" Color="{StaticResource Accent-Color-900}" />
+
+    <SolidColorBrush x:Key="Accent-Foreground-100-Brush" Color="{StaticResource Accent-Color-Foreground-100}" />
+    <SolidColorBrush x:Key="Accent-Foreground-500-Brush" Color="{StaticResource Accent-Color-Foreground-500}" />
+    <SolidColorBrush x:Key="Accent-Foreground-900-Brush" Color="{StaticResource Accent-Color-Foreground-900}" />
+
+</ResourceDictionary>

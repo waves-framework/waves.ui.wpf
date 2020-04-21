@@ -3,9 +3,9 @@
 namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
 {
     /// <summary>
-    /// Menus tab view model.
+    /// Radio buttons view model.
     /// </summary>
-    public class MenusTabViewModel : PresentationViewModel
+    public class RadioButtonsViewModel : PresentationViewModel
     {
         /// <inheritdoc />
         public override void Initialize()

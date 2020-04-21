@@ -41,20 +41,21 @@
 
                 <Track.DecreaseRepeatButton>
 
-                    <RepeatButton Command="ScrollBar.PageLeftCommand" Style="{StaticResource ScrollBarPageButtonStyle}" />
+                    <RepeatButton Command="ScrollBar.PageLeftCommand" Style="{StaticResource ScrollBarPageButtonStyle}" IsTabStop="False"/>
 
                 </Track.DecreaseRepeatButton>
 
                 <Track.Thumb>
 
-                    <primitives:Thumb Style="{StaticResource ScrollBarThumbStyle}" />
+                    <primitives:Thumb Style="{StaticResource ScrollBarThumbStyle}" IsTabStop="True"/>
 
                 </Track.Thumb>
 
                 <Track.IncreaseRepeatButton>
 
                     <RepeatButton Command="ScrollBar.PageRightCommand"
-                                  Style="{StaticResource ScrollBarPageButtonStyle}" />
+                                  Style="{StaticResource ScrollBarPageButtonStyle}" 
+                                  IsTabStop="False"/>
 
                 </Track.IncreaseRepeatButton>
 
@@ -95,18 +96,20 @@
                 <Track.DecreaseRepeatButton>
 
                     <RepeatButton Command="ScrollBar.PageUpCommand" 
-                                  Style="{StaticResource ScrollBarPageButtonStyle}" />
+                                  Style="{StaticResource ScrollBarPageButtonStyle}" 
+                                  IsTabStop="False"/>
 
                 </Track.DecreaseRepeatButton>
 
                 <Track.Thumb>
-                    <primitives:Thumb Style="{StaticResource ScrollBarThumbStyle}" />
+                    <primitives:Thumb Style="{StaticResource ScrollBarThumbStyle}" IsTabStop="True"/>
                 </Track.Thumb>
 
                 <Track.IncreaseRepeatButton>
 
                     <RepeatButton Command="ScrollBar.PageDownCommand"
-                                  Style="{StaticResource ScrollBarPageButtonStyle}" />
+                                  Style="{StaticResource ScrollBarPageButtonStyle}" 
+                                  IsTabStop="False"/>
 
                 </Track.IncreaseRepeatButton>
 
