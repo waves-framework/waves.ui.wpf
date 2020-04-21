@@ -103,7 +103,7 @@
 
                             <Canvas x:Name="SelectionCanvas"
                                     Background="{DynamicResource Accent-500-Brush}" 
-                                    Opacity="{StaticResource Opacity8}"/>
+                                    Opacity="{StaticResource Opacity6}"/>
 
                         </Grid>
 

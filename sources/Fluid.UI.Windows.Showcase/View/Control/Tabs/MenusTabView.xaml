@@ -1,14 +1,476 @@
 ﻿<UserControl x:Class="Fluid.UI.Windows.Showcase.View.Control.Tabs.MenusTabView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Fluid.UI.Windows.Showcase.View.Control.Tabs"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-            
+
+        <ScrollViewer>
+
+            <StackPanel Margin="{StaticResource BigThickness}">
+
+                <TextBlock Text="Menus" Style="{StaticResource Header1}" Margin="0,0,0,9" />
+
+                <TextBlock Text="Examples of menus." Style="{StaticResource Regular1}" Margin="0,0,0,9" />
+
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300"
+                        HorizontalAlignment="Left" Margin="0,0,0,24" />
+
+                <TextBlock Text="Simple menu" Style="{StaticResource Header2}" Margin="0,0,0,7" />
+
+                <TextBlock Text="Regular menu used in applications." Style="{StaticResource Regular1}"
+                           Margin="0,0,0,18" />
+
+                <Grid Margin="0,0,0,24">
+
+                    <Border CornerRadius="{StaticResource StandardCornerRadius}"
+                            Background="{DynamicResource Primary-300-Brush}" />
+
+                    <Menu Margin="6,0,6,0">
+
+                        <MenuItem Header="File">
+
+                            <MenuItem.Icon>
+
+                                <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                    <Path
+                                        Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                        Data="{StaticResource Icon-File}" />
+
+                                </Viewbox>
+
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="New">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-File-New}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <Separator Style="{StaticResource SeparatorStyle}" />
+
+                            <MenuItem Header="Open">
+
+                                <MenuItem Header="File">
+
+                                    <MenuItem.Icon>
+
+                                        <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                            <Path
+                                                Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                                Data="{StaticResource Icon-File}" />
+
+                                        </Viewbox>
+
+                                    </MenuItem.Icon>
+
+                                </MenuItem>
+
+                                <MenuItem Header="Folder">
+
+                                    <MenuItem.Icon>
+
+                                        <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                            <Path
+                                                Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                                Data="{StaticResource Icon-Folder}" />
+
+                                        </Viewbox>
+
+                                    </MenuItem.Icon>
+
+                                </MenuItem>
+
+                            </MenuItem>
+
+                            <Separator Style="{StaticResource SeparatorStyle}" />
+
+                            <MenuItem Header="Save">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Save}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Save all">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Save-All}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <Separator Style="{StaticResource SeparatorStyle}" />
+
+                            <MenuItem Header="Close" />
+
+                        </MenuItem>
+
+                        <MenuItem Header="Edit">
+
+                            <MenuItem.Icon>
+
+                                <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-2,0,0,0">
+
+                                    <Path
+                                        Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                        Data="{StaticResource Icon-Edit}" />
+
+                                </Viewbox>
+
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="Undo">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Undo}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Redo" IsEnabled="False">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Redo}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <Separator Style="{StaticResource SeparatorStyle}" />
+
+                            <MenuItem Header="Copy">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Copy}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Cut">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Cut}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Paste">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Paste}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Remove">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Delete}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Window">
+
+                            <MenuItem.Icon>
+
+                                <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                    <Path
+                                        Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                        Data="{StaticResource Icon-Application}" />
+
+                                </Viewbox>
+
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="Show window" IsChecked="True"/>
+
+                        </MenuItem>
+
+                        <MenuItem Header="Help">
+
+                            <MenuItem.Icon>
+
+                                <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                    <Path
+                                        Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                        Data="{StaticResource Icon-Help}" />
+
+                                </Viewbox>
+
+                            </MenuItem.Icon>
+
+                            <MenuItem Header="See help">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Help}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="About..."/>
+
+                        </MenuItem>
+
+                    </Menu>
+
+                </Grid>
+
+                <TextBlock Text="Context menu" Style="{StaticResource Header2}" Margin="0,0,0,7" />
+
+                <TextBlock Text="Context menu used in applications." Style="{StaticResource Regular1}"
+                           Margin="0,0,0,18" />
+
+                <Border Height="96" 
+                        Background="{DynamicResource Primary-300-Brush}" 
+                        BorderThickness="2"
+                        CornerRadius="{StaticResource StandardCornerRadius}">
+
+                    <Border.ContextMenu>
+
+                        <ContextMenu>
+
+                            <MenuItem Header="Undo">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Undo}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Redo" IsEnabled="False">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Redo}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <Separator Style="{StaticResource SeparatorStyle}" />
+
+                            <MenuItem Header="Copy">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Copy}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Cut">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Cut}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Paste">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Paste}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+                            <MenuItem Header="Remove">
+
+                                <MenuItem.Icon>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                                        <Path
+                                            Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                            Data="{StaticResource Icon-Delete}" />
+
+                                    </Viewbox>
+
+                                </MenuItem.Icon>
+
+                            </MenuItem>
+
+
+                        </ContextMenu>
+
+                    </Border.ContextMenu>
+
+                    <Border.BorderBrush>
+                        <DrawingBrush Viewport="0,0,8,8" ViewportUnits="Absolute" TileMode="Tile" >
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <GeometryDrawing Brush="{DynamicResource Primary-700-Brush}" >
+                                        <GeometryDrawing.Geometry>
+                                            <GeometryGroup>
+                                                <RectangleGeometry Rect="0,0,34,34" />
+                                                <RectangleGeometry Rect="34,34,34,34" />
+                                            </GeometryGroup>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.BorderBrush>
+
+                    <TextBlock Style="{StaticResource Regular2}"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               MaxWidth="160">
+
+                        Click left mouse button here to open context menu...
+
+                    </TextBlock>
+
+                </Border>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <Canvas Height="24" VerticalAlignment="Top" Margin="0,0,18,0">
+
+            <Canvas.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="{DynamicResource Color-100}" Offset="0.0" />
+                    <GradientStop Offset="1" Color="{DynamicResource Color-100-Transparent}" />
+                </LinearGradientBrush>
+            </Canvas.Background>
+
+        </Canvas>
+
     </Grid>
 
 </UserControl>

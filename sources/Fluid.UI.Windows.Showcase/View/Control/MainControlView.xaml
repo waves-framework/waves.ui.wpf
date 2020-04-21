@@ -21,7 +21,7 @@
 
             <DataTemplate x:Key="TabContentTemplate">
                 <Grid x:Name="TabContentGrid">
-                    <ContentControl Content="{Binding}"/>
+                    <ContentControl Content="{Binding}" IsTabStop="False"/>
                 </Grid>
             </DataTemplate>
 
@@ -52,7 +52,8 @@
 
             <ContentControl x:Name="Content"
                             ContentTemplate="{StaticResource TabContentTemplate}"
-                            Content="{Binding SelectedPresentation.View, UpdateSourceTrigger=PropertyChanged}"/>
+                            Content="{Binding SelectedPresentation.View, UpdateSourceTrigger=PropertyChanged}"
+                            IsTabStop="False"/>
 
         </Grid>
 

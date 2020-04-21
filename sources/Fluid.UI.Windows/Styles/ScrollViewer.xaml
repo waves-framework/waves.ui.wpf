@@ -9,6 +9,9 @@
         <!-- Icons. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
 
+        <!-- Repeat buttons. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/RepeatButton.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
     <MenuScrollingVisibilityConverter x:Key="MenuScrollingVisibilityConverter" />
@@ -33,23 +36,25 @@
                     <Grid Margin="0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="24" />
+                            <!-- TODO: ScrollViewer buttons. -->
+                            <RowDefinition Height="0" />
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="24" />
+                            <RowDefinition Height="0" />
                         </Grid.RowDefinitions>
 
                         <Border Grid.Row="1">
                             <ScrollContentPresenter Margin="{TemplateBinding Padding}" />
                         </Border>
 
-                        <RepeatButton Grid.Row="0"
+                        <!--<RepeatButton Grid.Row="0"
+                                      x:Name="LineUpRepeatButton"
                                       Command="{x:Static ScrollBar.LineUpCommand}"
                                       Content="{StaticResource Icon-Sort-Up}"
                                       Padding="-4,-1,0,0"
-                                      CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                      CommandTarget="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollViewer}}}"
                                       Focusable="False"
                                       Style="{StaticResource MenuScrollButtonStyle}"
-                                      Height="24">
+                                      Height="16">
 
                             <RepeatButton.Visibility>
 
@@ -57,10 +62,10 @@
                                               ConverterParameter="0"
                                               FallbackValue="Visibility.Collapsed">
 
-                                    <Binding Path="ComputedVerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="VerticalOffset" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="ExtentHeight" RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="ComputedVerticalScrollBarVisibility" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollViewer}}" />
+                                    <Binding Path="VerticalOffset" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollViewer}}" />
+                                    <Binding Path="ExtentHeight" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollViewer}}" />
+                                    <Binding Path="ViewportHeight" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollViewer}}" />
 
                                 </MultiBinding>
 
@@ -92,7 +97,7 @@
 
                             </RepeatButton.Visibility>
 
-                        </RepeatButton>
+                        </RepeatButton>-->
 
                     </Grid>
 

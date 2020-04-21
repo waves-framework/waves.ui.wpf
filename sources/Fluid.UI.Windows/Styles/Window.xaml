@@ -125,7 +125,8 @@
                                                     Click="OnMinimizeButtonClick"
                                                     Height="36"
                                                     Width="36"
-                                                    Margin="0,0,0,0">
+                                                    Margin="0,0,0,0"
+                                                    IsTabStop="False">
 
                                                 <Viewbox Height="12" Width="12" Stretch="Uniform" Margin="-1,2,0,0">
 
@@ -144,7 +145,8 @@
                                                     Click="OnMaximizeButtonClick"
                                                     Height="36"
                                                     Width="36"
-                                                    Margin="0,0,0,0">
+                                                    Margin="0,0,0,0"
+                                                    IsTabStop="False">
 
                                                 <Viewbox Height="12" Width="12" Stretch="Uniform" Margin="1,0,0,0">
 
@@ -167,7 +169,8 @@
                                                     Click="OnCloseButtonClick"
                                                     Height="36"
                                                     Width="36"
-                                                    Margin="0,0,0,0">
+                                                    Margin="0,0,0,0"
+                                                    IsTabStop="False">
 
                                                 <Viewbox Height="12" Width="12" Stretch="Uniform" Margin="-2,-2,0,0">
 

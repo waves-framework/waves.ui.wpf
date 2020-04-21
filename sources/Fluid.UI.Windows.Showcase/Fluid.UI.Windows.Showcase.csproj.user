@@ -34,6 +34,9 @@
     <Compile Update="View\Control\Tabs\ProgressBarsTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\RadioButtonsTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\TextBoxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\ProgressBarsTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\RadioButtonsTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\TextBoxesTabView.xaml">

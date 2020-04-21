@@ -21,6 +21,7 @@ namespace Fluid.UI.Windows.Showcase.Presentation.Controllers
                 RegisterPresentation(new ButtonsTabPresentation());
                 RegisterPresentation(new ComboBoxesTabPresentation());
                 RegisterPresentation(new CheckBoxesTabPresentation());
+                RegisterPresentation(new RadioButtonsTabPresentation());
                 RegisterPresentation(new TextBoxesTabPresentation());
                 RegisterPresentation(new ListBoxesTabPresentation());
                 RegisterPresentation(new ProgressBarsTabPresentation());

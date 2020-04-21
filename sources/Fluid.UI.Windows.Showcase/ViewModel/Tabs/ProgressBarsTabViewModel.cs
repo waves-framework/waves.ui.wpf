@@ -30,7 +30,7 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
         /// <summary>
         /// Gets second progress.
         /// </summary>
-        public int SecondProgress { get; set; } = 30;
+        public int SecondProgress { get; set; } = 0;
 
         /// <summary>
         /// Gets first button text.
@@ -147,7 +147,7 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
                 SecondProgress = i;
             }
 
-            SecondProgress = 30;
+            SecondProgress = 0;
             SecondButtonProgressText = "Run";
 
             IsSecondRunning = false;
