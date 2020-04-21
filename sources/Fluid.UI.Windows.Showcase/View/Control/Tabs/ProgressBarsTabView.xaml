@@ -34,7 +34,7 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -55,6 +55,12 @@
 
                     </Grid>
 
+                    <Grid Grid.Column="6">
+
+                        <TextBlock Text="Run progress" Style="{StaticResource Header3}"/>
+
+                    </Grid>
+
                 </Grid>
 
                 <Grid Margin="0,0,0,24">
@@ -66,30 +72,48 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
 
-                        <ProgressBar Value="{Binding FirstProgress, UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel>
+
+                            <ProgressBar Value="{Binding FirstProgress, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <TextBlock Text="{Binding FirstProgress, StringFormat={}{0:#0'%'}}" Style="{StaticResource Hint1}" Margin="0,5,0,0" TextAlignment="Right"/>
+
+                        </StackPanel>
 
                     </Grid>
 
                     <Grid Grid.Column="2">
 
-                        <ProgressBar IsIndeterminate="True"/>
+                        <StackPanel>
+
+                            <ProgressBar Value="{Binding FirstProgress, UpdateSourceTrigger=PropertyChanged}" IsIndeterminate="True"/>
+
+                            <TextBlock Text="Please, wait..." Style="{StaticResource Hint1}" Margin="0,5,0,0" TextAlignment="Right"/>
+
+                        </StackPanel>
 
                     </Grid>
 
                     <Grid Grid.Column="4">
 
-                        <ProgressBar Value="{Binding FirstProgress, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                        <StackPanel>
+
+                            <ProgressBar Value="{Binding FirstProgress, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+
+                            <TextBlock Text="{Binding FirstProgress, StringFormat={}{0:#0'%'}}" Style="{StaticResource Hint1}" Margin="0,5,0,0" TextAlignment="Right"/>
+
+                        </StackPanel>
 
                     </Grid>
 
                     <Grid Grid.Column="6">
 
-                        <Button Command="{Binding FirstButtonRunCommand}">
+                        <Button Command="{Binding FirstButtonRunCommand}" Style="{StaticResource AccentButtonStyle}">
 
                             <Grid>
 
@@ -101,7 +125,7 @@
 
                                 <Grid Grid.Column="0">
 
-                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-5,-2,0,0">
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-8,-2,0,0">
 
                                         <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}">
 
@@ -158,7 +182,7 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
@@ -179,6 +203,12 @@
 
                     </Grid>
 
+                    <Grid Grid.Column="6">
+
+                        <TextBlock Text="Run progress" Style="{StaticResource Header3}"/>
+
+                    </Grid>
+
                 </Grid>
 
                 <Grid Margin="0,0,0,0">
@@ -190,43 +220,63 @@
                         <ColumnDefinition Width="24"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
-                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="140"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" HorizontalAlignment="Left">
 
                         <ProgressBar Value="{Binding SecondProgress, UpdateSourceTrigger=PropertyChanged}" 
                                      Style="{StaticResource CircleProgressBar}"
                                      Height="34"
                                      Width="34"
-                                     HorizontalAlignment="Left"/>
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+
+                        <TextBlock Text="{Binding SecondProgress, StringFormat={}{0:#0'%'}}" Style="{StaticResource Hint1}" Margin="0,0,0,0" 
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+
 
                     </Grid>
 
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="2" HorizontalAlignment="Left">
 
-                        <ProgressBar IsIndeterminate="True"
+                        <ProgressBar Value="{Binding SecondProgress, UpdateSourceTrigger=PropertyChanged}" 
+                                     IsIndeterminate="True"
                                      Style="{StaticResource CircleProgressBar}"
                                      Height="34"
                                      Width="34"
-                                     HorizontalAlignment="Left"/>
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+
+                        <TextBlock Text="..." Style="{StaticResource Hint1}" Margin="0,0,0,0" 
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
 
                     </Grid>
 
-                    <Grid Grid.Column="4">
+                    <Grid Grid.Column="4" HorizontalAlignment="Left">
 
-                        <ProgressBar Value="{Binding SecondProgress, UpdateSourceTrigger=PropertyChanged}"
+                        <ProgressBar Value="{Binding SecondProgress, UpdateSourceTrigger=PropertyChanged}" 
                                      Style="{StaticResource CircleProgressBar}"
                                      IsEnabled="False"
                                      Height="34"
                                      Width="34"
-                                     HorizontalAlignment="Left"/>
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+
+                        <TextBlock Text="{Binding SecondProgress, StringFormat={}{0:#0'%'}}" Style="{StaticResource Hint1}" Margin="0,0,0,0" 
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
 
                     </Grid>
 
                     <Grid Grid.Column="6">
 
-                        <Button Command="{Binding SecondButtonRunCommand}">
+                        <Button Command="{Binding SecondButtonRunCommand}" Style="{StaticResource AccentButtonStyle}">
 
                             <Grid>
 
@@ -238,7 +288,7 @@
 
                                 <Grid Grid.Column="0">
 
-                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-5,-2,0,0">
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-8,-2,0,0">
 
                                         <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}">
 

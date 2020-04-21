@@ -2,6 +2,12 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Page Update="Colors\Accent.Black.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Colors\Accent.White.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Colors\Accent.Blue.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -38,6 +44,9 @@
     <Page Update="Styles\ComboBox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\Control.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -54,6 +63,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\RadioButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\RepeatButton.xaml">

@@ -20,7 +20,7 @@
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Width" Value="Auto" />
 
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         <Setter Property="Padding" Value="{StaticResource StandardThickness}" />
@@ -103,7 +103,7 @@
 
                             <Canvas x:Name="SelectionCanvas"
                                     Background="{DynamicResource Accent-500-Brush}" 
-                                    Opacity="{StaticResource Opacity8}"/>
+                                    Opacity="{StaticResource Opacity6}"/>
 
                         </Grid>
 
@@ -132,7 +132,7 @@
                         <Trigger Property="TabStripPlacement" Value="Left">
 
                             <Setter TargetName="ColumnDefinition0" Property="Width" Value="*" />
-                            <Setter TargetName="ColumnDefinition1" Property="Width" Value="2" />
+                            <Setter TargetName="ColumnDefinition1" Property="Width" Value="3" />
                             <Setter TargetName="SeparatorGrid" Property="Grid.Column" Value="1" />
                             <Setter TargetName="SeparatorGrid" Property="Grid.Row" Value="0" />
                             <Setter TargetName="HeaderPanelGrid" Property="Grid.Column" Value="0" />
@@ -144,7 +144,7 @@
 
                         <Trigger Property="TabStripPlacement" Value="Right">
 
-                            <Setter TargetName="ColumnDefinition0" Property="Width" Value="2" />
+                            <Setter TargetName="ColumnDefinition0" Property="Width" Value="3" />
                             <Setter TargetName="ColumnDefinition1" Property="Width" Value="*" />
                             <Setter TargetName="SeparatorGrid" Property="Grid.Column" Value="0" />
                             <Setter TargetName="SeparatorGrid" Property="Grid.Row" Value="0" />
@@ -198,6 +198,9 @@
 
         <Setter Property="Padding" Value="{StaticResource StandardThickness}" />
 
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+
         <Setter Property="TabStripPlacement" Value="Top"/>
 
         <Setter Property="helpers:TabControl.IsContentVisible" Value="True"/>
@@ -224,7 +227,9 @@
                               Grid.Row="0"
                               Grid.Column="0"
                               Panel.ZIndex="1"
-                              Width="{TemplateBinding helpers:TabControl.TabWidth}">
+                              Width="{TemplateBinding helpers:TabControl.TabWidth}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 
                             <TabPanel x:Name="HeaderPanel"
                                       IsItemsHost="true"
