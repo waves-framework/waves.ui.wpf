@@ -4,9 +4,87 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fluid.UI.Windows.Showcase.View.Control.Tabs"
+             xmlns:tabs="clr-namespace:Fluid.UI.Windows.Showcase.ViewModel.Tabs"
+             d:DataContext="{d:DesignInstance tabs:ConfigurationTabViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+
+    <Grid Margin="{StaticResource BigThickness}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <StackPanel>
+
+                <TextBlock Text="Configuration" Style="{StaticResource Header1}" Margin="0,0,0,9"/>
+
+                <TextBlock Text="This tab shows core confgutation propertiex." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
+
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <StackPanel>
+
+                    <TextBlock Text="Properties" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                    <TextBlock Text="Shows all core properties." Style="{StaticResource Regular1}" Margin="0,0,0,0"/>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+
+                <ListBox ItemsSource="{Binding Configuration.Properties, UpdateSourceTrigger=PropertyChanged}"
+                         ItemTemplate="{StaticResource PropertyListDataTemplate}"
+                         Background="Transparent"
+                         BorderBrush="Transparent"
+                         BorderThickness="0"
+                         Margin="-12,0,-24,-18">
+
+                    <ItemsControl.ItemsPanel>
+
+                        <ItemsPanelTemplate>
+                            <StackPanel IsItemsHost="True" Margin="12,24,12,24"/>
+                        </ItemsPanelTemplate>
+
+                    </ItemsControl.ItemsPanel>
+
+                </ListBox>
+
+                <Canvas Height="24" VerticalAlignment="Top" Margin="0,0,18,0">
+
+                    <Canvas.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="{DynamicResource Color-100}" Offset="0.0" />
+                            <GradientStop Offset="1" Color="{DynamicResource Color-100-Transparent}"/>
+                        </LinearGradientBrush>
+                    </Canvas.Background>
+
+                </Canvas>
+
+            </Grid>
+
+        </Grid>
+
     </Grid>
+
 </UserControl>

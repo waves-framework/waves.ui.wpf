@@ -98,6 +98,9 @@
     <Page Update="Templates\Message.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\Property.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\Theme.xaml">
       <SubType>Designer</SubType>
     </Page>
