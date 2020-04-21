@@ -25,7 +25,7 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
         /// <summary>
         /// Gets first progress.
         /// </summary>
-        public int FirstProgress { get; set; }
+        public int FirstProgress { get; set; } = 0;
 
         /// <summary>
         /// Gets second progress.

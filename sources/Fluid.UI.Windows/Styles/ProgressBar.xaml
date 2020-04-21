@@ -198,7 +198,7 @@
         <Setter Property="Foreground" Value="{DynamicResource Accent-500-Brush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Accent-500-Brush}"/>
 
-        <Setter Property="Minimum" Value="10" />
+        <Setter Property="Minimum" Value="5" />
         <Setter Property="Maximum" Value="100" />
 
         <Setter Property="helpers:BehaviorHelper.Behaviors" >
