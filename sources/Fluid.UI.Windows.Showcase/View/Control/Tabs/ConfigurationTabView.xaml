@@ -45,41 +45,212 @@
 
                     <TextBlock Text="Properties" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
 
-                    <TextBlock Text="Shows all core properties." Style="{StaticResource Regular1}" Margin="0,0,0,0"/>
+                    <TextBlock Text="Shows all core properties." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                    <Grid>
+
+                        <Border Background="{DynamicResource Primary-300-Brush}" CornerRadius="6"/>
+
+                        <Grid Margin="6,6">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                    <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Command="{Binding AddPropertyCommand}"
+                                        Margin="0,0,3,0">
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Plus}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Add new"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                                <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Margin="0,0,3,0">
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-1,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Show-Property}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Show"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                                <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Margin="0,0,3,0">
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Edit}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Edit"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                                <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Margin="0,0,0,0">
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Remove}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Remove"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                            </StackPanel>
+
+                            <Button Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    Margin="0,0,6,0"
+                                    HorizontalAlignment="Right">
+
+                                <Grid Margin="12,0">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="9"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+
+                                        <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                            <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Save-All}"/>
+
+                                        </Viewbox>
+
+                                    </Grid>
+
+                                    <Grid Grid.Column="2">
+
+                                        <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Save all"/>
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </Button>
+
+                        </Grid>
+
+                    </Grid>
 
                 </StackPanel>
 
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" Margin="-18,0,-24,-18">
 
                 <ListBox ItemsSource="{Binding Configuration.Properties, UpdateSourceTrigger=PropertyChanged}"
                          ItemTemplate="{StaticResource PropertyListDataTemplate}"
                          Background="Transparent"
                          BorderBrush="Transparent"
                          BorderThickness="0"
-                         Margin="-12,0,-24,-18">
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                     <ItemsControl.ItemsPanel>
 
                         <ItemsPanelTemplate>
-                            <StackPanel IsItemsHost="True" Margin="12,24,12,24"/>
+                            <StackPanel IsItemsHost="True" Margin="0,0,0,0"/>
                         </ItemsPanelTemplate>
 
                     </ItemsControl.ItemsPanel>
 
                 </ListBox>
-
-                <Canvas Height="24" VerticalAlignment="Top" Margin="0,0,18,0">
-
-                    <Canvas.Background>
-                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="{DynamicResource Color-100}" Offset="0.0" />
-                            <GradientStop Offset="1" Color="{DynamicResource Color-100-Transparent}"/>
-                        </LinearGradientBrush>
-                    </Canvas.Background>
-
-                </Canvas>
 
             </Grid>
 

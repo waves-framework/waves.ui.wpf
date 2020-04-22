@@ -2,6 +2,11 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Controls\ModalityWindowsPresentationControllerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Colors\Accent.Black.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -33,6 +38,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Core.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ModalityWindowsPresentationControllerView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\Button.xaml">
@@ -96,6 +104,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Message.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\ModalityWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\ModalityWindowAction.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Property.xaml">

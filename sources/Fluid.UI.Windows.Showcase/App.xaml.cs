@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using Fluid.Core.Base;
 using Fluid.UI.Windows.Showcase.Presentation.Controllers;
 using Fluid.UI.Windows.Showcase.Services;
 using Fluid.UI.Windows.Showcase.Services.Interfaces;
@@ -24,15 +27,19 @@ namespace Fluid.UI.Windows.Showcase
         {
             try
             {
+                SubscribeEvents();
+
                 Core.Start(Current);
                 Core.RegisterService<ITextGeneratorService>(new TextGeneratorService());
 
                 var controller = new MainTabPresentationController();
                 controller.MessageReceived += OnControllerMessageReceived;
                 controller.Initialize();
-                
-                var view = new MainWindowView {DataContext = controller };
+
+                var view = new MainWindowView { DataContext = controller };
                 view.Show();
+
+                Core.AttachMainWindow(view);
 
                 view.Closing += OnViewClosing;
             }
@@ -41,6 +48,35 @@ namespace Fluid.UI.Windows.Showcase
                 Console.WriteLine(exception);
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Subscribe events.
+        /// </summary>
+        private void SubscribeEvents()
+        {
+            DispatcherUnhandledException += OnDispatcherUnhandledException;
+            TaskScheduler.UnobservedTaskException += OnTaskSchedulerUnobservedTaskException;
+        }
+
+        /// <summary>
+        /// Notifies when unhandled exception received.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            Core.WriteLogMessage(new Message(e.Exception, true));
+        }
+
+        /// <summary>
+        /// Notifies when unhandled exception received.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnTaskSchedulerUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            Core.WriteLogMessage(new Message(e.Exception, true));
         }
 
         /// <summary>

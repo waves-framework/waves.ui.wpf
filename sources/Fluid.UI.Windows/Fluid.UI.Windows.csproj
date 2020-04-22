@@ -9,10 +9,12 @@
   <ItemGroup>
     <PackageReference Include="Fluid.Core" Version="2020.1.96" />
     <PackageReference Include="Fluid.Core.Base" Version="2020.1.96" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.24" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows.Commands\Fluid.UI.Windows.Commands.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
   </ItemGroup>
 
@@ -104,6 +106,10 @@
     <Page Update="Templates\Theme.xaml">
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Presentation\View\" />
   </ItemGroup>
 
 </Project>

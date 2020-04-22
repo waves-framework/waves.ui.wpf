@@ -5,6 +5,9 @@
 
     <ResourceDictionary.MergedDictionaries>
 
+        <!-- Converters. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
+
         <!-- Icons. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
 
@@ -21,23 +24,19 @@
 
     <DataTemplate x:Key="PropertyListDataTemplate" DataType="{x:Type interfaces:IProperty}">
 
-        <Grid Margin="6,6,6,6">
+        <Grid Margin="12,12,12,12">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16" />
-                <ColumnDefinition Width="12" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="6" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="0" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="24" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="12" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" VerticalAlignment="Top">
+            <Grid Grid.Column="0" VerticalAlignment="Center">
 
-                <Viewbox Height="16" Width="16" Stretch="Uniform" Margin="0,2,0,0">
+                <Viewbox Height="28" Width="28" Stretch="Uniform" Margin="0,2,0,0">
 
                     <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Property}"/>
 
@@ -47,41 +46,78 @@
 
             <Grid Grid.Column="2" VerticalAlignment="Top">
 
-                <Border CornerRadius="6,6,6,6" Background="{DynamicResource Primary-100-Brush}"/>
+                <StackPanel>
+
+                    <Grid Margin="0,0,0,6" HorizontalAlignment="Left">
+
+                        <Border CornerRadius="6" Background="{DynamicResource Primary-500-Brush}" Opacity="{StaticResource Opacity5}"/>
+
+                        <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="6"/>
+
+                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Style="{StaticResource Header3}" VerticalAlignment="Center" Margin="{StaticResource SmallThickness}"/>
+
+                    </Grid>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Margin="0,0,-1,0">
+
+                            <Border CornerRadius="6,0,0,6" Background="{DynamicResource Primary-500-Brush}" Opacity="{StaticResource Opacity5}"/>
+
+                            <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="6,0,0,6"/>
+
+                            <TextBlock Text="{Binding Value}" Margin="{StaticResource SmallThickness}" VerticalAlignment="Center" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Style="{StaticResource Regular1}"/>
+
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+
+                            <Border Background="{DynamicResource Primary-200-Brush}" CornerRadius="0,6,6,0" Opacity="{StaticResource Opacity5}"/>
+                            <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="0,6,6,0"/>
+
+                            <TextBlock Text="{Binding Value, Converter={StaticResource ObjectToTypeNameConverter}}" VerticalAlignment="Center" FontSize="12" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Style="{StaticResource Regular2}" Margin="{StaticResource SmallThickness}"/>
+
+                        </Grid>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Column="4" VerticalAlignment="Top">
+
+                <Border Background="{DynamicResource Primary-200-Brush}" CornerRadius="6" Opacity="{StaticResource Opacity5}"/>
                 <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="6"/>
 
-                <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="{StaticResource SmallThickness}"/>
+                <TextBlock VerticalAlignment="Center" FontSize="12" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Margin="{StaticResource SmallThickness}">
 
-            </Grid>
+                    <TextBlock.Style>
 
-            <Grid Grid.Column="4" Margin="0,0,-1,0" VerticalAlignment="Top">
+                        <Style BasedOn="{StaticResource Regular2}" TargetType="{x:Type TextBlock}">
 
-                <Border CornerRadius="6,0,0,6" Background="{DynamicResource Primary-300-Brush}"/>
+                            <Style.Triggers>
 
-                <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="6,0,0,6"/>
+                                <DataTrigger Binding="{Binding IsReadOnly}" Value="True">
+                                    <Setter Property="Text" Value="Read Only"></Setter>
+                                </DataTrigger>
 
-                <TextBlock Text="{Binding Value}" Margin="{StaticResource SmallThickness}" VerticalAlignment="Center"/>
+                                <DataTrigger Binding="{Binding IsReadOnly}" Value="False">
+                                    <Setter Property="Text" Value="Editable"></Setter>
+                                </DataTrigger>
 
-            </Grid>
+                            </Style.Triggers>
 
-            <Grid Grid.Column="6" VerticalAlignment="Top">
+                        </Style>
 
-                <Border CornerRadius="0,6,6,0" Background="{DynamicResource Primary-300-Brush}"/>
+                    </TextBlock.Style>
 
-                <Border Background="{DynamicResource Primary-500-Brush}" CornerRadius="0,6,6,0" Opacity="{StaticResource Opacity5}"/>
-                <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="0,6,6,0"/>
-
-                <Grid Margin="{StaticResource SmallThickness}">
-
-                    <TextBlock Text="Type" VerticalAlignment="Center" FontSize="12" Margin="0,0,0,0"/>
-
-                </Grid>
-
-            </Grid>
-
-            <Grid Grid.Column="8">
-
-                <TextBlock Text="Is read only" VerticalAlignment="Center" Style="{StaticResource Hint1}"/>
+                </TextBlock>
 
             </Grid>
 

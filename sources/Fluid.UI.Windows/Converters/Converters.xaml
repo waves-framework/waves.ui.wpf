@@ -17,6 +17,7 @@
     <base:IconStringKeyToGeometryConverter x:Key="IconStringKeyToGeometryConverter" />
     <base:NullToBoolConverter x:Key="NullToBooleanConverter" />
     <base:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <base:ObjectToTypeNameConverter x:Key="ObjectToTypeNameConverter" />
     <base:ProgressValueToDegreeConverter x:Key="ProgressValueToDegreeConverter" />
     <base:SolidColorBrushToSystemColorConverter x:Key="SolidColorBrushToSystemColorConverter" />
     <base:StringIsNullOrEmptyToBoolConverter x:Key="StringIsNullOrEmptyToBoolConverter" />

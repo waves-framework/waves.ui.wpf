@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
 using Fluid.Core.Base.Interfaces;
+using Fluid.Presentation.Interfaces;
+using Fluid.UI.Windows.Presentation.ModalityWindows.Base;
+using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
+using ModalityWindowsPresentationControllerView = Fluid.UI.Windows.Controls.ModalityWindowsPresentationControllerView;
 
 namespace Fluid.UI.Windows
 {
@@ -13,6 +19,8 @@ namespace Fluid.UI.Windows
     /// </summary>
     public class Core : Fluid.Core.Core
     {
+        private IModalityWindowsPresentationController _modalityWindowController;
+
         /// <summary>
         ///     Gets whether UI Core is initialized.
         /// </summary>
@@ -52,6 +60,41 @@ namespace Fluid.UI.Windows
             Application = application;
 
             Start();
+        }
+
+        /// <summary>
+        /// Attaches main window.
+        /// </summary>
+        public void AttachMainWindow(Window window)
+        {
+            Application.MainWindow = window;
+
+            if (!(Application.MainWindow?.Content is Grid grid)) return;
+
+            _modalityWindowController = new ModalityWindowsPresentationController();
+            var controllerView = new ModalityWindowsPresentationControllerView() { DataContext = _modalityWindowController };
+
+            _modalityWindowController.Initialize();
+
+            grid.Children.Add(controllerView);
+        }
+
+        /// <summary>
+        /// Shows modality window.
+        /// </summary>
+        /// <param name="presentation">Presentation.</param>
+        public void ShowModalityWindow(IModalityWindowPresentation presentation)
+        {
+            _modalityWindowController?.ShowWindow(presentation);
+        }
+
+        /// <summary>
+        /// Hides modality window.
+        /// </summary>
+        /// <param name="presentation">Presentation.</param>
+        public void HideModalityWindow(IModalityWindowPresentation presentation)
+        {
+            _modalityWindowController?.HideWindow(presentation);
         }
 
         /// <inheritdoc />

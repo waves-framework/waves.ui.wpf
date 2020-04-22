@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:interfaces="clr-namespace:Fluid.UI.Windows.Base.Interfaces">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Button. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Button.xaml" />
+
+        <!-- Converters. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
+
+        <!-- Icons. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
+
+        <!-- Padding. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
+
+        <!-- Text. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
+
+        <!-- Opacity. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="ModalityWindowActionButtonDataTemplate" DataType="{x:Type interfaces:IModalityWindowAction}">
+
+        <Button ToolTip="{Binding ToolTip}" 
+                Command="{Binding Command}">
+
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+                    <Setter Property="Style" Value="{StaticResource ButtonStyle}"/>
+
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding IsAccent}" Value="{StaticResource AccentButtonStyle}"/>
+
+                    </Style.Triggers>
+
+                </Style>
+
+            </Button.Style>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <Viewbox Height="{Binding Icon.Height}" Width="{Binding Icon.Height}" Stretch="Uniform" Margin="{Binding Icon.Padding}">
+
+                        <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{Binding Icon.PathData}"/>
+
+                    </Viewbox>
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+
+                    <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="{Binding Caption}"/>
+
+                </Grid>
+
+            </Grid>
+
+        </Button>
+
+    </DataTemplate>
+
+</ResourceDictionary>
