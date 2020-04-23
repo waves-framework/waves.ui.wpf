@@ -76,7 +76,7 @@
                                 <!-- Window content grid. -->
                                 <Grid Grid.Row="1">
 
-                                    <ContentPresenter ClipToBounds="True" />
+                                    <ContentPresenter/>
 
                                 </Grid>
 

@@ -23,16 +23,20 @@
         <!-- Opacity. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
 
+        <!-- Actions. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/ModalityWindowAction.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate x:Key="ModalityWindowDataTemplate" DataType="{x:Type interfaces:IModalityWindowPresentation}">
 
-        <Grid VerticalAlignment="Center"
-              HorizontalAlignment="Center">
+        <Grid VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch"
+              Margin="{StaticResource BigThickness}">
 
             <Grid.Effect>
 
-                <DropShadowEffect Color="{DynamicResource Accent-Color-900}"
+                <DropShadowEffect Color="{DynamicResource Primary-Foreground-Color-100}"
                                   Opacity="0.5"
                                   BlurRadius="12"
                                   ShadowDepth="2"
@@ -40,11 +44,11 @@
 
             </Grid.Effect>
 
-            <Grid Width="{Binding Width, UpdateSourceTrigger=PropertyChanged}"
-                  Height="{Binding Height, UpdateSourceTrigger=PropertyChanged}">
+            <Grid MaxWidth="{Binding MaxWidth, UpdateSourceTrigger=PropertyChanged}"
+                  MaxHeight="{Binding MaxHeight, UpdateSourceTrigger=PropertyChanged}">
 
                 <Border Background="{DynamicResource Primary-100-Brush}" CornerRadius="{StaticResource StandardCornerRadius}"/>
-                <Border BorderBrush="{DynamicResource Primary-300-Brush}" BorderThickness="1" CornerRadius="{StaticResource StandardCornerRadius}"/>
+                <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="{StaticResource StandardCornerRadius}"/>
 
                 <Grid>
 
@@ -121,7 +125,7 @@
 
                     <Grid Grid.Row="2">
 
-                        <ContentControl Content="{Binding View}"/>
+                        <ContentControl Content="{Binding View}" Margin="1,0,1,0"/>
 
                     </Grid>
 
@@ -135,11 +139,18 @@
 
                         <Border Background="{DynamicResource Primary-200-Brush}" CornerRadius="0,0,6,6" Margin="1,0,1,1"/>
 
-                        <StackPanel Margin="{StaticResource StandardThickness}">
+                        <ItemsControl ItemsSource="{Binding Actions, UpdateSourceTrigger=PropertyChanged}"
+                                      ItemTemplate="{StaticResource ModalityWindowActionButtonDataTemplate}">
 
-        
+                            <ItemsControl.ItemsPanel>
 
-                        </StackPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel IsItemsHost="True" Orientation="Horizontal" Margin="{StaticResource MediumThickness}" HorizontalAlignment="Right"/>
+                                </ItemsPanelTemplate>
+
+                            </ItemsControl.ItemsPanel>
+
+                        </ItemsControl>
 
                     </Grid>
 

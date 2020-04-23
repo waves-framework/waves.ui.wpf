@@ -182,7 +182,7 @@
 
                 <Setter TargetName="LayoutRoot" Property="Effect">
                     <Setter.Value>
-                        <DropShadowEffect Color="{DynamicResource Accent-Color-900}"
+                        <DropShadowEffect Color="{DynamicResource Primary-Foreground-Color-100}"
                                           Opacity="0.5"
                                           BlurRadius="12"
                                           ShadowDepth="2"
@@ -454,7 +454,7 @@
             <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="True">
                 <Setter TargetName="LayoutRoot" Property="Effect">
                     <Setter.Value>
-                        <DropShadowEffect Color="{DynamicResource Accent-Color-900}"
+                        <DropShadowEffect Color="{DynamicResource Primary-Foreground-Color-100}"
                                           Opacity="0.5"
                                           BlurRadius="12"
                                           ShadowDepth="2"

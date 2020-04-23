@@ -3,13 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:modalityWindows="clr-namespace:Fluid.UI.Windows.Showcase.ViewModel.ModalityWindows"
+             d:DataContext="{d:DesignInstance modalityWindows:AddPropertyModalityWindowViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
 
-        <TextBlock Text="123"/>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="144"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Canvas Margin="0,0,0,0" Opacity="{StaticResource Opacity6}">
+
+                <Canvas.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="1" Color="{DynamicResource Color-500}"/>
+                        <GradientStop Offset="0" Color="{DynamicResource Color-100-Transparent}"/>
+                    </LinearGradientBrush>
+                </Canvas.Background>
+
+            </Canvas>
+
+            <Grid VerticalAlignment="Center">
+
+                <Viewbox Height="64" Width="64" Stretch="Uniform">
+
+                    <Path Fill="{DynamicResource Primary-900-Brush}" Data="{StaticResource Icon-File-New}"/>
+
+                </Viewbox>
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Canvas Background="{DynamicResource Primary-300-Brush}"/>
+        </Grid>
+
+        <Grid Grid.Column="2">
+
+            <ScrollViewer>
+
+                <StackPanel Margin="{StaticResource BigThickness}">
+
+                    <TextBlock Text="Name" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                    <TextBlock Text="Editing of property name." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
+
+                    <TextBox Text="{Binding Property.Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,24"/>
+
+                    <TextBlock Text="Value" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                    <TextBlock Text="Editing of property value." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
+
+                    <TextBox Text="{Binding Property.Value, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,24"/>
+
+                    <TextBlock Text="Read only" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                    <TextBlock Text="Setting up read only value." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
+
+                    <CheckBox Content="Is read only?" IsChecked="{Binding Property.IsReadOnly, UpdateSourceTrigger=PropertyChanged}"/>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+        </Grid>
+
     </Grid>
 
 </UserControl>

@@ -49,7 +49,7 @@
                     <Grid>
 
                         <Border x:Name="Border"
-                                Padding="{TemplateBinding Padding}"
+                                Margin="12"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -60,7 +60,19 @@
                                             Grid.IsSharedSizeScope="{TemplateBinding Grid.IsSharedSizeScope}"
                                             KeyboardNavigation.DirectionalNavigation="Cycle"
                                             KeyboardNavigation.TabNavigation="Cycle"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+
+                                <ItemsPresenter.Effect>
+
+                                    <DropShadowEffect Color="{DynamicResource Primary-Foreground-Color-100}"
+                                                      Opacity="0.5"
+                                                      BlurRadius="12"
+                                                      ShadowDepth="2"
+                                                      Direction="-75" />
+
+                                </ItemsPresenter.Effect>
+
+                            </ItemsPresenter>
 
                         </Border>
 

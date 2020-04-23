@@ -61,11 +61,13 @@
                     <Grid>
 
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" />
+                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" 
+                                x:Name="BackgroundBorder"/>
 
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" />
+                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" 
+                                x:Name="StrokeBorder"/>
 
                         <Border x:Name="HighlightBorder"
                                 Background="{TemplateBinding Foreground}"
@@ -114,8 +116,10 @@
                                 <Condition Property="IsChecked" Value="True"/>
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="Background" Value="{DynamicResource Accent-100-Brush}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource Accent-200-Brush}" />
+                            <Setter Property="Opacity" TargetName="BackgroundBorder" Value="{StaticResource Opacity5}"/>
+                            <Setter Property="Opacity" TargetName="StrokeBorder" Value="{StaticResource Opacity8}"/>
+                            <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Accent-700-Brush}" />
                             <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}" />
 
                         </MultiTrigger>

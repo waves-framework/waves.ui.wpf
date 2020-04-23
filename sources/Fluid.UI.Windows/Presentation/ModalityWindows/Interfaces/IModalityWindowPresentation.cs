@@ -23,12 +23,12 @@ namespace Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces
         /// <summary>
         /// Gets or sets height of window.
         /// </summary>
-        double Height { get; set; }
+        double MaxHeight { get; set; }
 
         /// <summary>
         /// Gets or sets width of window.
         /// </summary>
-        double Width { get; set; }
+        double MaxWidth { get; set; }
 
         /// <summary>
         ///     Gets collection of actions.

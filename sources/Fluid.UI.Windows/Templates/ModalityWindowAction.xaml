@@ -27,17 +27,29 @@
     <DataTemplate x:Key="ModalityWindowActionButtonDataTemplate" DataType="{x:Type interfaces:IModalityWindowAction}">
 
         <Button ToolTip="{Binding ToolTip}" 
-                Command="{Binding Command}">
+                Command="{Binding Command}"
+                MinWidth="48"
+                Margin="6,0,0,0">
 
             <Button.Style>
 
-                <Style TargetType="{x:Type Button}">
-
-                    <Setter Property="Style" Value="{StaticResource ButtonStyle}"/>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
 
                     <Style.Triggers>
 
-                        <DataTrigger Binding="{Binding IsAccent}" Value="{StaticResource AccentButtonStyle}"/>
+                        <DataTrigger Binding="{Binding IsAccent}" Value="True">
+
+                            <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Accent-700-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}" />
+
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding IsEnabled}" Value="False">
+
+                            <Setter Property="IsEnabled" Value="False" />
+
+                        </DataTrigger>
 
                     </Style.Triggers>
 
@@ -45,15 +57,14 @@
 
             </Button.Style>
 
-            <Grid>
+            <Grid Margin="12,0,12,0">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="9"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="0" Margin="0,0,9,0" Visibility="{Binding Icon, Converter={StaticResource InverseNullToVisibilityConverter}}">
 
                     <Viewbox Height="{Binding Icon.Height}" Width="{Binding Icon.Height}" Stretch="Uniform" Margin="{Binding Icon.Padding}">
 
@@ -63,7 +74,7 @@
 
                 </Grid>
 
-                <Grid Grid.Column="2">
+                <Grid Grid.Column="1">
 
                     <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="{Binding Caption}"/>
 

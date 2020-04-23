@@ -38,6 +38,9 @@
 
         <Grid Grid.Column="0" Margin="0,0,0,0">
 
+            <Canvas Background="{DynamicResource Primary-200-Brush}" Margin="0,-36,0,0"/>
+            <!--<Canvas Background="{DynamicResource Primary-500-Brush}" Width="2" Margin="0,-36,-0,0" HorizontalAlignment="Right"/>-->
+
             <TabControl x:Name="TabControl"
                         ItemsSource="{Binding Presentations, UpdateSourceTrigger=PropertyChanged}"
                         SelectedItem="{Binding SelectedPresentation, UpdateSourceTrigger=PropertyChanged}"
@@ -45,6 +48,37 @@
                         TabStripPlacement="Left"
                         helpers:TabControl.IsContentVisible="False"
                         SelectionChanged="OnTabSelectionChanged"/>
+
+        </Grid>
+
+        <Grid Grid.Column="0">
+
+            <Grid Margin="12,-36,0,0" Height="36" VerticalAlignment="Top">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,0,0,0">
+
+                        <Path Fill="{DynamicResource Primary-Foreground-900-Brush}" Data="M12,0.143c0,0-8,8.486-8,13.857c0,4.457,3.543,8,8,8s8-3.543,8-8C20,8.629,12,0.143,12,0.143z"/>
+
+                    </Viewbox>
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+
+                    <TextBlock Style="{StaticResource Regular1}" Foreground="{DynamicResource Primary-Foreground-900-Brush}" Text="Fluid UI" VerticalAlignment="Center"/>
+
+                </Grid>
+
+            </Grid>
+
 
         </Grid>
 

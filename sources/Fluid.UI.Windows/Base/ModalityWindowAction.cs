@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Fluid.Core.Base;
 using Fluid.UI.Windows.Base.Interfaces;
+using Fluid.UI.Windows.Commands;
 using Microsoft.Xaml.Behaviors.Core;
 
 namespace Fluid.UI.Windows.Base
@@ -85,7 +86,7 @@ namespace Fluid.UI.Windows.Base
         public bool IsAccent { get; private set; }
 
         /// <inheritdoc />
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled { get; set; } = true;
 
         /// <inheritdoc />
         public IVectorIcon Icon { get; private set; }
@@ -105,11 +106,50 @@ namespace Fluid.UI.Windows.Base
         public ICommand Command { get; private set; }
 
         /// <summary>
+        /// Returns new "OK" action.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        /// <returns>Modality window action.</returns>
+        public static IModalityWindowAction OkModalityWindowAction(Action action)
+        {
+            return new ModalityWindowAction("Ok", new ResourcesVectorIcon("Icon-Success", 14, 14), action);
+        }
+
+        /// <summary>
+        /// Returns new "Save" action.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        /// <returns>Modality window action.</returns>
+        public static IModalityWindowAction SaveModalityWindowAction(Action action)
+        {
+            return new ModalityWindowAction("Save", new ResourcesVectorIcon("Icon-Save", 14, 14), action, true);
+        }
+
+        /// <summary>
+        /// Returns new "Save" action.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        /// <returns>Modality window action.</returns>
+        public static IModalityWindowAction CloseModalityWindowAction(Action action)
+        {
+            return new ModalityWindowAction("Close", new ResourcesVectorIcon("Icon-Delete", 14, 14), action);
+        }
+
+        /// <summary>
         /// Initializes base command.
         /// </summary>
         private void InitializeCommand()
         {
-            Command = new ActionCommand(Action);
+            Command = new Command(OnCommandExecute);
+        }
+
+        /// <summary>
+        /// Actions when command executing.
+        /// </summary>
+        /// <param name="obj">Parameter.</param>
+        private void OnCommandExecute(object obj)
+        {
+            Action?.Invoke();
         }
     }
 }

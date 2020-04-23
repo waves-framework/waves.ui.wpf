@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using System.Windows.Input;
+using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Base.Interfaces;
 using Fluid.UI.Windows.Commands;
@@ -36,10 +37,10 @@ namespace Fluid.UI.Windows.Presentation.ModalityWindows.Base
         public abstract string Title { get; }
 
         /// <inheritdoc />
-        public virtual double Height { get; set; } = 240;
+        public virtual double MaxHeight { get; set; } = 240;
 
         /// <inheritdoc />
-        public virtual double Width { get; set; } = 320;
+        public virtual double MaxWidth { get; set; } = 320;
 
         /// <inheritdoc />
         public abstract override IPresentationViewModel DataContext { get; }
@@ -54,6 +55,16 @@ namespace Fluid.UI.Windows.Presentation.ModalityWindows.Base
         /// Command to "Close Window".
         /// </summary>
         public ICommand CloseWindowCommand { get; private set; }
+
+        /// <inheritdoc />
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            if (!(DataContext is IModalityWindowPresentationViewModel context)) return;
+
+            context.AttachActions(Actions);
+        }
 
         /// <summary>
         /// Actions when window requesting closing.
