@@ -33,7 +33,7 @@
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
 
-        <Setter Property="Background" Value="{DynamicResource Primary-300-Brush}"/>
+        <Setter Property="Background" Value="{DynamicResource Accent-100-Brush}"/>
         <Setter Property="Foreground" Value="{DynamicResource Accent-500-Brush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Accent-500-Brush}"/>
 
