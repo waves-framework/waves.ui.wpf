@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Fluid.UI.Windows.Controls
+namespace Fluid.UI.Windows.View.ModalityWindow
 {
     /// <summary>
     ///     Modality windows presentation controller view.

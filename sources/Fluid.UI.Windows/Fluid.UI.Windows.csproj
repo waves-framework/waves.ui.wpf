@@ -112,7 +112,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Presentation\View\" />
+    <Folder Include="Presentation\ModalityWindow\" />
   </ItemGroup>
 
 </Project>

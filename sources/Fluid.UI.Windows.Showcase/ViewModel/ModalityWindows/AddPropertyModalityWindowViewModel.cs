@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
+using Fluid.UI.Windows.Base;
 using Fluid.UI.Windows.Base.Interfaces;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Base;
 
 namespace Fluid.UI.Windows.Showcase.ViewModel.ModalityWindows
 {

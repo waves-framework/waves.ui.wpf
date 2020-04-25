@@ -1,7 +1,6 @@
 ﻿using Fluid.UI.Windows.Base.Interfaces;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
 
-namespace Fluid.UI.Windows.Presentation.ModalityWindows.Extensions
+namespace Fluid.UI.Windows.Extensions
 {
     /// <summary>
     /// Modality windows actions extensions.

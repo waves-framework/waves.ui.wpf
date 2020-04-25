@@ -3,8 +3,7 @@ using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Base;
 using Fluid.UI.Windows.Base.Interfaces;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Base;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Extensions;
+using Fluid.UI.Windows.Extensions;
 using Fluid.UI.Windows.Showcase.View.ModalityWindow;
 using Fluid.UI.Windows.Showcase.ViewModel.ModalityWindows;
 

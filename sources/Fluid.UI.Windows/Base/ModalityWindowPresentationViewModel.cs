@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Fluid.Presentation.Base;
 using Fluid.UI.Windows.Base.Interfaces;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
 
-namespace Fluid.UI.Windows.Presentation.ModalityWindows.Base
+namespace Fluid.UI.Windows.Base
 {
     /// <summary>
     /// Base abstract modality window presentation view model.

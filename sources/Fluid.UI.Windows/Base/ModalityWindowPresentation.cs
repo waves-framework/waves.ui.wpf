@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using System.Windows.Input;
-using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Base.Interfaces;
 using Fluid.UI.Windows.Commands;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
 
-namespace Fluid.UI.Windows.Presentation.ModalityWindows.Base
+namespace Fluid.UI.Windows.Base
 {
     /// <summary>
     /// Base abstract modality window presentation.

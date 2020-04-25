@@ -7,11 +7,11 @@ using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
 using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Base;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
+using Fluid.UI.Windows.Base;
+using Fluid.UI.Windows.Base.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
-using ModalityWindowsPresentationControllerView = Fluid.UI.Windows.Controls.ModalityWindowsPresentationControllerView;
+using ModalityWindowsPresentationControllerView = Fluid.UI.Windows.View.ModalityWindow.ModalityWindowsPresentationControllerView;
 
 namespace Fluid.UI.Windows
 {

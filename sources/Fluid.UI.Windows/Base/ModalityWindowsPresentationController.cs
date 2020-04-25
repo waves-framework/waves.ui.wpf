@@ -1,11 +1,9 @@
 ﻿using System.Linq;
-using System.Windows.Input;
 using Fluid.Presentation.Base;
 using Fluid.Presentation.Interfaces;
-using Fluid.UI.Windows.Commands;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
+using Fluid.UI.Windows.Base.Interfaces;
 
-namespace Fluid.UI.Windows.Presentation.ModalityWindows.Base
+namespace Fluid.UI.Windows.Base
 {
     /// <summary>
     /// Modality windows presentation controller.

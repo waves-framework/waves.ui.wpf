@@ -1,6 +1,6 @@
 ﻿using System;
 using Fluid.Core.Base.Interfaces;
-using Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces;
+using Fluid.UI.Windows.Base.Interfaces;
 
 namespace Fluid.UI.Windows.Showcase.View.ModalityWindow
 {

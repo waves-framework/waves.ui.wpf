@@ -1,6 +1,6 @@
 ﻿using Fluid.Presentation.Interfaces;
 
-namespace Fluid.UI.Windows.Presentation.ModalityWindows.Interfaces
+namespace Fluid.UI.Windows.Base.Interfaces
 {
     /// <summary>
     /// Interface for modality windows presentation controller.
