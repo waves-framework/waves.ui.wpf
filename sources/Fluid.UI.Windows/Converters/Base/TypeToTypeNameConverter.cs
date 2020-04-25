@@ -5,14 +5,16 @@ using System.Windows.Data;
 namespace Fluid.UI.Windows.Converters.Base
 {
     /// <inheritdoc />
-    public class ObjectToTypeNameConverter : IValueConverter
+    public class TypeToTypeNameConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null) return Extensions.Type.GetFriendlyName(value.GetType());
+            if (value == null) return "Unknown";
 
-            return "Unknown";
+            var type = value as Type;
+
+            return type == null ? "Unknown" : Extensions.Type.GetFriendlyName(type);
         }
 
         /// <inheritdoc />

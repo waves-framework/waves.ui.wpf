@@ -48,7 +48,7 @@ namespace Fluid.UI.Windows.Showcase.Presentation.ModalityWindows
         /// <inheritdoc />
         public override void Initialize()
         {
-            _dataContext = new AddPropertyModalityWindowViewModel(Property);
+            _dataContext = new AddPropertyModalityWindowViewModel();
 
             base.Initialize();
         }
@@ -68,7 +68,17 @@ namespace Fluid.UI.Windows.Showcase.Presentation.ModalityWindows
         private void InitializeActions()
         {
             this.AddAction(ModalityWindowAction.CloseModalityWindowAction(delegate { App.Core.HideModalityWindow(this); }));
-            this.AddAction(ModalityWindowAction.SaveModalityWindowAction(delegate { App.Core.HideModalityWindow(this); }));
+            this.AddAction(ModalityWindowAction.SaveModalityWindowAction(delegate
+            {
+                var context = _dataContext as AddPropertyModalityWindowViewModel;
+                if (context == null) return;
+
+                var property = context.GetResultProperty();
+
+                App.Core.Configuration.Properties.Add(property);
+
+                App.Core.HideModalityWindow(this);
+            }));
         }
     }
 }

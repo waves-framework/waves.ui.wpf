@@ -47,7 +47,9 @@
 
                         <DataTrigger Binding="{Binding IsEnabled}" Value="False">
 
-                            <Setter Property="IsEnabled" Value="False" />
+                            <Setter Property="Background" Value="{DynamicResource Primary-100-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-300-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
 
                         </DataTrigger>
 

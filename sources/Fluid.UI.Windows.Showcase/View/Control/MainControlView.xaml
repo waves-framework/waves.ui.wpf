@@ -57,7 +57,7 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="9"/>
+                    <ColumnDefinition Width="12"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -73,7 +73,7 @@
 
                 <Grid Grid.Column="2">
 
-                    <TextBlock Style="{StaticResource Regular1}" Foreground="{DynamicResource Primary-Foreground-900-Brush}" Text="Fluid UI" VerticalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource Header3}" Foreground="{DynamicResource Primary-Foreground-900-Brush}" Text="Fluid UI" VerticalAlignment="Center" Margin="0,1,0,0"/>
 
                 </Grid>
 

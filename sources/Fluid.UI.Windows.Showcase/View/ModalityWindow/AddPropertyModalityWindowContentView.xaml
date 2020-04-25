@@ -55,19 +55,47 @@
 
                     <TextBlock Text="Editing of property name." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
 
-                    <TextBox Text="{Binding Property.Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,24"/>
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,24"/>
 
-                    <TextBlock Text="Value" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+                    <TextBlock Text="Value and type" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
 
-                    <TextBlock Text="Editing of property value." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
+                    <TextBlock Text="Editing of property value and its type." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
 
-                    <TextBox Text="{Binding Property.Value, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,24"/>
+                    <Grid Margin="0,0,0,24">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="12"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+
+                            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+
+                            <ComboBox ItemsSource="{Binding Types, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedItem="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
+                                  ItemTemplate="{StaticResource TypeListDataTemplate}"/>
+
+                        </Grid>
+
+                    </Grid>
 
                     <TextBlock Text="Read only" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
 
                     <TextBlock Text="Setting up read only value." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
 
-                    <CheckBox Content="Is read only?" IsChecked="{Binding Property.IsReadOnly, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox Content="Is read only?" IsChecked="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,24"/>
+
+                    <TextBlock Text="Deleting" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                    <TextBlock Text="Setting up whether property can be deleted." Style="{StaticResource Regular1}" Margin="0,0,0,18"/>
+
+                    <CheckBox Content="Can be deleted?" IsChecked="{Binding CanBeDeleted, UpdateSourceTrigger=PropertyChanged}"/>
 
                 </StackPanel>
 

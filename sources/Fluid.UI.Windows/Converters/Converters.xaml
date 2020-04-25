@@ -24,6 +24,7 @@
     <base:StringIsNullOrEmptyToVisibilityConverter x:Key="StringIsNullOrEmptyToVisibilityConverter" />
     <base:StringPathToGeometryConverter x:Key="StringPathToGeometryConverter" />
     <base:SystemColorToSolidColorBrushConverter x:Key="SystemColorToSolidColorBrushConverter" />
+    <base:TypeToTypeNameConverter x:Key="TypeToTypeNameConverter" />
     <base:ZeroAmountToBoolConverter x:Key="ZeroAmountToBoolConverter" />
     <base:ZeroAmountToVisibilityConverter x:Key="ZeroAmountToVisibilityConverter" />
 

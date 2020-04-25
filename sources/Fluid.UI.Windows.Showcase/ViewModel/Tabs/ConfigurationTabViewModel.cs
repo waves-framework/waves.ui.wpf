@@ -16,6 +16,11 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
     public class ConfigurationTabViewModel : PresentationViewModel
     {
         /// <summary>
+        /// Gets or sets selected property.
+        /// </summary>
+        public IProperty SelectedProperty { get; set; }
+
+        /// <summary>
         /// Gets core configuration.
         /// </summary>
         public IConfiguration Configuration { get; private set; }

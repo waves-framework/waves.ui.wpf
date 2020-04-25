@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -73,6 +74,14 @@ namespace Fluid.UI.Windows
 
             _modalityWindowController = new ModalityWindowsPresentationController();
             var controllerView = new ModalityWindowsPresentationControllerView() { DataContext = _modalityWindowController };
+
+            _modalityWindowController.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+            {
+                if (args.PropertyName == "IsVisible")
+                {
+                    grid.Children[0].IsEnabled = !_modalityWindowController.IsVisible;
+                }
+            };
 
             _modalityWindowController.Initialize();
 

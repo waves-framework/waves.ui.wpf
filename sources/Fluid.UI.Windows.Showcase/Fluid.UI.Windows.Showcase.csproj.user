@@ -102,6 +102,9 @@
     <Page Update="View\ModalityWindow\AddPropertyModalityWindowContentView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\ModalityWindow\ShowPropertyModalityWindowContentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Templates\Items.xaml">
       <SubType>Designer</SubType>
     </Page>

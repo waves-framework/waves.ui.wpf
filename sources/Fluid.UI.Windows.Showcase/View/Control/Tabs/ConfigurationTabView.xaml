@@ -160,6 +160,28 @@
                                         BorderThickness="0"
                                         Margin="0,0,0,0">
 
+                                    <Button.Style>
+
+                                        <Style BasedOn="{StaticResource ButtonStyle}" TargetType="{x:Type Button}">
+
+                                            <Setter Property="IsEnabled" Value="False"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.CanBeDeleted}" Value="True">
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.CanBeDeleted}" Value="False">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </Button.Style>
+
                                     <Grid Margin="12,0">
 
                                         <Grid.ColumnDefinitions>
@@ -236,6 +258,7 @@
 
                 <ListBox ItemsSource="{Binding Configuration.Properties, UpdateSourceTrigger=PropertyChanged}"
                          ItemTemplate="{StaticResource PropertyListDataTemplate}"
+                         SelectedItem="{Binding SelectedProperty, UpdateSourceTrigger=PropertyChanged}"
                          Background="Transparent"
                          BorderBrush="Transparent"
                          BorderThickness="0"
