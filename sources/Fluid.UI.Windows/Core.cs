@@ -9,9 +9,12 @@ using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Base;
 using Fluid.UI.Windows.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Modality.Presentation.Controllers;
+using Fluid.UI.Windows.Controls.Modality.Presentation.Controllers.Interfaces;
+using Fluid.UI.Windows.Controls.Modality.Presentation.Interfaces;
+using Fluid.UI.Windows.Controls.Modality.View;
 using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
-using ModalityWindowsPresentationControllerView = Fluid.UI.Windows.View.ModalityWindow.ModalityWindowsPresentationControllerView;
 
 namespace Fluid.UI.Windows
 {
@@ -20,7 +23,7 @@ namespace Fluid.UI.Windows
     /// </summary>
     public class Core : Fluid.Core.Core
     {
-        private IModalityWindowsPresentationController _modalityWindowController;
+        private IModalWindowsPresentationController _modalityWindowController;
 
         /// <summary>
         ///     Gets whether UI Core is initialized.
@@ -72,8 +75,8 @@ namespace Fluid.UI.Windows
 
             if (!(Application.MainWindow?.Content is Grid grid)) return;
 
-            _modalityWindowController = new ModalityWindowsPresentationController();
-            var controllerView = new ModalityWindowsPresentationControllerView() { DataContext = _modalityWindowController };
+            _modalityWindowController = new ModalWindowsPresentationController();
+            var controllerView = new ModalWindowPresentationControllerView() { DataContext = _modalityWindowController };
 
             _modalityWindowController.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
             {
@@ -92,7 +95,7 @@ namespace Fluid.UI.Windows
         /// Shows modality window.
         /// </summary>
         /// <param name="presentation">Presentation.</param>
-        public void ShowModalityWindow(IModalityWindowPresentation presentation)
+        public void ShowModalityWindow(IModalWindowPresentation presentation)
         {
             _modalityWindowController?.ShowWindow(presentation);
         }
@@ -101,7 +104,7 @@ namespace Fluid.UI.Windows
         /// Hides modality window.
         /// </summary>
         /// <param name="presentation">Presentation.</param>
-        public void HideModalityWindow(IModalityWindowPresentation presentation)
+        public void HideModalityWindow(IModalWindowPresentation presentation)
         {
             _modalityWindowController?.HideWindow(presentation);
         }

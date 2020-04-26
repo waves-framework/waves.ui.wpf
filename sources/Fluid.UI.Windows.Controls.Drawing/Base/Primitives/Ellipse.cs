@@ -15,6 +15,12 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Primitives
         public float Radius { get; set; }
 
         /// <inheritdoc />
+        public override void Dispose()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <inheritdoc />
         public override string Name { get; set; } = "Ellipse";
 
         /// <inheritdoc />

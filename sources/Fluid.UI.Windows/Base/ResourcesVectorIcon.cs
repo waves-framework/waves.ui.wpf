@@ -11,7 +11,7 @@ namespace Fluid.UI.Windows.Base
     /// </summary>
     public class ResourcesVectorIcon : ObservableObject, IVectorIcon
     {
-        private const string DefaultResourceUriSource = "pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml";
+        private const string DefaultResourceUriSource = "pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml";
 
         /// <summary>
         /// Creates new instance of <see cref="ResourcesVectorIcon"/> from default icons resource. 

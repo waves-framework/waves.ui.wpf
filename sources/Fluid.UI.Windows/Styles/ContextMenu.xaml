@@ -16,7 +16,7 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
 
         <!-- Icons. -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 

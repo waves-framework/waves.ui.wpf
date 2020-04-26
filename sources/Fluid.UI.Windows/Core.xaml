@@ -12,6 +12,7 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Control.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ListBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/RadioButton.xaml" />
@@ -21,8 +22,9 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/TabControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/TextBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/ToggleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Window.xaml" />
 
         <!-- Templates -->
@@ -30,16 +32,15 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Message.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Theme.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Type.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Controls/Modality/View/Templates/ModalWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Controls/Modality/View/Templates/ModalWindowAction.xaml" />
 
         <!-- Converters -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
 
         <!-- Resources -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Fonts.xaml" />
-
-        <!-- Text -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Fonts.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 

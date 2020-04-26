@@ -127,6 +127,28 @@
                                         BorderThickness="0"
                                         Margin="0,0,3,0">
 
+                                    <Button.Style>
+
+                                        <Style BasedOn="{StaticResource ButtonStyle}" TargetType="{x:Type Button}">
+
+                                            <Setter Property="IsEnabled" Value="False"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.IsReadOnly}" Value="True">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.CanBeDeleted}" Value="False">
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </Button.Style>
+
                                     <Grid Margin="12,0">
 
                                         <Grid.ColumnDefinitions>
@@ -158,7 +180,8 @@
                                 <Button Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
-                                        Margin="0,0,0,0">
+                                        Margin="0,0,0,0"
+                                        Command="{Binding RemovePropertyCommand}">
 
                                     <Button.Style>
 

@@ -49,7 +49,7 @@
     <Compile Update="View\Control\Tabs\ThemeTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ModalityWindow\AddPropertyModalityWindowContentView.xaml.cs">
+    <Compile Update="View\ModalWindow\AddPropertyModalWindowContentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Window\MainWindowView.xaml.cs">
@@ -99,7 +99,7 @@
     <Page Update="View\Control\Tabs\ThemeTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ModalityWindow\AddPropertyModalityWindowContentView.xaml">
+    <Page Update="View\ModalWindow\AddPropertyModalWindowContentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Templates\Items.xaml">

@@ -2,10 +2,10 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="View\ModalityWindow\MessageModalityWindowView.xaml.cs">
+    <Compile Update="Controls\Modality\View\MessageModalWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ModalityWindow\ModalityWindowsPresentationControllerView.xaml.cs">
+    <Compile Update="Controls\Modality\View\ModalWindowPresentationControllerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -46,10 +46,16 @@
     <Page Update="Core.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ModalityWindow\MessageModalityWindowView.xaml">
+    <Page Update="Resources\Fonts.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ModalityWindow\ModalityWindowsPresentationControllerView.xaml">
+    <Page Update="Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Modality\View\MessageModalWindowView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Modality\View\ModalWindowPresentationControllerView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\Button.xaml">
@@ -115,10 +121,10 @@
     <Page Update="Templates\Message.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Templates\ModalityWindow.xaml">
+    <Page Update="Controls\Modality\View\Templates\ModalWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Templates\ModalityWindowAction.xaml">
+    <Page Update="Controls\Modality\View\Templates\ModalWindowAction.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Property.xaml">
