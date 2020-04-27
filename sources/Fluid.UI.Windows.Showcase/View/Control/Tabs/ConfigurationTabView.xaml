@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fluid.UI.Windows.Showcase.View.Control.Tabs"
              xmlns:tabs="clr-namespace:Fluid.UI.Windows.Showcase.ViewModel.Tabs"
+             xmlns:behaviors="clr-namespace:Fluid.UI.Windows.Behaviors;assembly=Fluid.UI.Windows"
              d:DataContext="{d:DesignInstance tabs:ConfigurationTabViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -23,7 +24,7 @@
 
                 <TextBlock Text="Configuration" Style="{StaticResource Header1}" Margin="0,0,0,9"/>
 
-                <TextBlock Text="This tab shows core confgutation propertiex." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
+                <TextBlock Text="This tab shows core configuration properties." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
 
                 <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,0"/>
 
@@ -92,7 +93,9 @@
                                 <Button Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
-                                        Margin="0,0,3,0">
+                                        Margin="0,0,3,0"
+                                        Command="{Binding ShowPropertyCommand}"
+                                        IsEnabled="{Binding SelectedProperty, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseNullToBoolConverter}}">
 
                                     <Grid Margin="12,0">
 
@@ -125,7 +128,8 @@
                                 <Button Background="Transparent"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
-                                        Margin="0,0,3,0">
+                                        Margin="0,0,3,0"
+                                        Command="{Binding EditPropertyCommand}">
 
                                     <Button.Style>
 
@@ -239,7 +243,9 @@
                                     BorderBrush="Transparent"
                                     BorderThickness="0"
                                     Margin="0,0,6,0"
-                                    HorizontalAlignment="Right">
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding SaveAllCommand}"
+                                    IsEnabled="{Binding IsConfigurationChanged, UpdateSourceTrigger=PropertyChanged}">
 
                                 <Grid Margin="12,0">
 
@@ -279,14 +285,15 @@
 
             <Grid Grid.Row="2" Margin="-18,0,-24,-18">
 
-                <ListBox ItemsSource="{Binding Configuration.Properties, UpdateSourceTrigger=PropertyChanged}"
+                <ListBox ItemsSource="{Binding Properties, UpdateSourceTrigger=PropertyChanged}"
                          ItemTemplate="{StaticResource PropertyListDataTemplate}"
                          SelectedItem="{Binding SelectedProperty, UpdateSourceTrigger=PropertyChanged}"
                          Background="Transparent"
                          BorderBrush="Transparent"
                          BorderThickness="0"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         behaviors:ListBoxDoubleClickBehavior.DoubleClickItemCommand="{Binding PropertiesDoubleClickCommand}">
 
                     <ItemsControl.ItemsPanel>
 

@@ -89,7 +89,6 @@
                             </BeginStoryboard>
                         </EventTrigger>
 
-
                         <!-- Триггер, отвечающий за видимость описания текстбокса -->
                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
                             <Setter TargetName="PART_Message" Property="Visibility" Value="Visible" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Base;
@@ -12,49 +13,44 @@ using Fluid.UI.Windows.Showcase.ViewModel.ModalWindow;
 namespace Fluid.UI.Windows.Showcase.Presentation.ModalWindow
 {
     /// <summary>
-    /// Add property modality window presentation.
+    /// Edit property presentation.
     /// </summary>
-    public class AddPropertyModalWindowPresentation : ModalWindowPresentation
+    public class EditPropertyModalWindowPresentation : ModalWindowPresentation
     {
         private IPresentationViewModel _dataContext;
 
-        private ObservableCollection<IProperty> _properties;
+        private readonly IProperty _property;
 
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         /// <summary>
         /// Creates new instance of add property modality window action.
         /// </summary>
-        public AddPropertyModalWindowPresentation(ObservableCollection<IProperty> properties, IConfiguration configuration)
+        public EditPropertyModalWindowPresentation(IProperty property, IConfiguration configuration)
         {
             InitializeView();
             InitializeActions();
 
-            _properties = properties;
+            _property = property;
             _configuration = configuration;
         }
 
-        /// <summary>
-        /// Gets configuration.
-        /// </summary>
-        public IConfiguration Configuration { get; private set; }
+        /// <inheritdoc />
+        public override IVectorIcon Icon { get; } = new ResourcesVectorIcon("Icon-File");
 
         /// <inheritdoc />
-        public override IVectorIcon Icon { get; } = new ResourcesVectorIcon("Icon-File-New");
-
-        /// <inheritdoc />
-        public override string Title => "Add property";
+        public override string Title => "Edit property";
 
         /// <inheritdoc />
         public override IPresentationViewModel DataContext => _dataContext;
 
         /// <inheritdoc />
-        public override IPresentationView View { get; } = new AddPropertyModalWindowContentView();
+        public override IPresentationView View { get; } = new EditPropertyModalWindowContentView();
 
         /// <inheritdoc />
         public override void Initialize()
         {
-            _dataContext = new AddPropertyModalWindowViewModel();
+            _dataContext = new EditPropertyModalWindowViewModel(_property);
 
             base.Initialize();
         }
@@ -76,14 +72,12 @@ namespace Fluid.UI.Windows.Showcase.Presentation.ModalWindow
             this.AddAction(ModalWindowAction.Close(delegate { App.Core.HideModalityWindow(this); }));
             this.AddAction(ModalWindowAction.Save(delegate
             {
-                var context = _dataContext as AddPropertyModalWindowViewModel;
+                var context = _dataContext as EditPropertyModalWindowViewModel;
                 if (context == null) return;
 
                 var property = context.GetResultProperty();
 
-                _configuration.AddProperty(property);
-
-                _properties.Add(property);
+                _property.SetValue(property.GetValue());
 
                 App.Core.HideModalityWindow(this);
             }));

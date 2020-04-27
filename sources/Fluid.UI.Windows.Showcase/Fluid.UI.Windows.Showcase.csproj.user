@@ -52,6 +52,12 @@
     <Compile Update="View\ModalWindow\AddPropertyModalWindowContentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\ModalWindow\EditPropertyModalWindowContentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ModalWindow\ShowPropertyModalWindowContentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Window\MainWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +106,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ModalWindow\AddPropertyModalWindowContentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ModalWindow\EditPropertyModalWindowContentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ModalWindow\ShowPropertyModalWindowContentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Templates\Items.xaml">

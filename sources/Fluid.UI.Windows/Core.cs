@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
 using Fluid.Core.Base.Interfaces;
@@ -62,6 +64,9 @@ namespace Fluid.UI.Windows
         public void Start(Application application)
         {
             Application = application;
+
+            Application.DispatcherUnhandledException += OnDispatcherUnhandledException;
+            TaskScheduler.UnobservedTaskException += OnTaskSchedulerUnobservedTaskException;
 
             Start();
         }
@@ -149,6 +154,9 @@ namespace Fluid.UI.Windows
             InitializeThemeService();
         }
 
+        /// <summary>
+        /// Initializes theme service.
+        /// </summary>
         private void InitializeThemeService()
         {
             var service = GetService<IThemeService>();
@@ -158,6 +166,26 @@ namespace Fluid.UI.Windows
                     new Message("Service", "Theme Service is not initialized", "UI Core", MessageType.Fatal));
             else
                 service.AttachApplication(Application);
+        }
+
+        /// <summary>
+        /// Notifies when unhandled exception received.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            WriteLogMessage(new Message(e.Exception, true));
+        }
+
+        /// <summary>
+        /// Notifies when unhandled exception received.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnTaskSchedulerUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            WriteLogMessage(new Message(e.Exception, true));
         }
     }
 }

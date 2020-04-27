@@ -27,8 +27,6 @@ namespace Fluid.UI.Windows.Showcase
         {
             try
             {
-                SubscribeEvents();
-
                 Core.Start(Current);
                 Core.RegisterService<ITextGeneratorService>(new TextGeneratorService());
 
@@ -48,35 +46,6 @@ namespace Fluid.UI.Windows.Showcase
                 Console.WriteLine(exception);
                 throw;
             }
-        }
-
-        /// <summary>
-        /// Subscribe events.
-        /// </summary>
-        private void SubscribeEvents()
-        {
-            DispatcherUnhandledException += OnDispatcherUnhandledException;
-            TaskScheduler.UnobservedTaskException += OnTaskSchedulerUnobservedTaskException;
-        }
-
-        /// <summary>
-        /// Notifies when unhandled exception received.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            Core.WriteLogMessage(new Message(e.Exception, true));
-        }
-
-        /// <summary>
-        /// Notifies when unhandled exception received.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnTaskSchedulerUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
-        {
-            Core.WriteLogMessage(new Message(e.Exception, true));
         }
 
         /// <summary>

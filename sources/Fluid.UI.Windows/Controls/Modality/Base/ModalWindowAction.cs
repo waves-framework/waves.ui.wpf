@@ -126,7 +126,7 @@ namespace Fluid.UI.Windows.Controls.Modality.Base
         /// <returns>Modal action collection.</returns>
         public static ICollection<IModalWindowAction> YesNo(Action yesAction, Action noAction)
         {
-            return new ObservableCollection<IModalWindowAction>() { Yes(yesAction), No(noAction) };
+            return new ObservableCollection<IModalWindowAction>() {  No(noAction), Yes(yesAction) };
         }
 
         /// <summary>
