@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using Fluid.Core.Base;
 using Fluid.UI.Windows.Showcase.Presentation.Controllers;
 using Fluid.UI.Windows.Showcase.Services;
 using Fluid.UI.Windows.Showcase.Services.Interfaces;
@@ -30,9 +33,11 @@ namespace Fluid.UI.Windows.Showcase
                 var controller = new MainTabPresentationController();
                 controller.MessageReceived += OnControllerMessageReceived;
                 controller.Initialize();
-                
-                var view = new MainWindowView {DataContext = controller };
+
+                var view = new MainWindowView { DataContext = controller };
                 view.Show();
+
+                Core.AttachMainWindow(view);
 
                 view.Closing += OnViewClosing;
             }

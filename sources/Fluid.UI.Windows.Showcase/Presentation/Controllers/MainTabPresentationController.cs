@@ -26,6 +26,7 @@ namespace Fluid.UI.Windows.Showcase.Presentation.Controllers
                 RegisterPresentation(new ListBoxesTabPresentation());
                 RegisterPresentation(new ProgressBarsTabPresentation());
                 RegisterPresentation(new MenusTabPresentation());
+                RegisterPresentation(new ConfigurationTabPresentation());
                 RegisterPresentation(new CoreTabPresentation());
                 RegisterPresentation(new ThemeTabPresentation());
                 RegisterPresentation(new AboutTabPresentation());

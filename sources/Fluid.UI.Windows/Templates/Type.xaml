@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:interfaces="clr-namespace:System;assembly=System.Runtime">
+
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Converters. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
+
+        <!-- Icons. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
+
+        <!-- Padding. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
+
+        <!-- Text. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
+
+        <!-- Opacity. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="TypeListDataTemplate" DataType="{x:Type interfaces:Type}">
+
+        <TextBlock Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                   Style="{StaticResource Regular1}"
+                   Text="{Binding Converter={StaticResource TypeToTypeNameConverter}}"/>
+
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -7,7 +7,7 @@
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Control.xaml" />
 
         <!-- Icons. -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
 
         <!-- Repeat buttons. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/RepeatButton.xaml" />

@@ -23,7 +23,7 @@
 
                 <TextBlock Text="Core" Style="{StaticResource Header1}" Margin="0,0,0,9"/>
 
-                <TextBlock Text="This tab show information about core." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
+                <TextBlock Text="This tab shows information about core." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
 
                 <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,0"/>
 

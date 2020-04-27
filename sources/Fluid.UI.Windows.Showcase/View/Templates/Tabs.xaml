@@ -8,7 +8,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="9"/>
+                <ColumnDefinition Width="12"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -24,7 +24,8 @@
 
             <Grid Grid.Column="2">
 
-                <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource Header3}"/>
 
             </Grid>
 
