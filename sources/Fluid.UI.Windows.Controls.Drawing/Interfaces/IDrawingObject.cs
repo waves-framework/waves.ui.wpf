@@ -25,6 +25,21 @@ namespace Fluid.UI.Windows.Controls.Drawing.Interfaces
         float Opacity { get; set; }
 
         /// <summary>
+        /// Gets or sets stroke thickness.
+        /// </summary>
+        float StrokeThickness { get; set; }
+
+        /// <summary>
+        /// Gets or sets fill.
+        /// </summary>
+        Color Fill { get; set; }
+
+        /// <summary>
+        /// Gets or sets stroke.
+        /// </summary>
+        Color Stroke { get; set; }
+
+        /// <summary>
         /// Gets size of object.
         /// </summary>
         Size Size { get; }

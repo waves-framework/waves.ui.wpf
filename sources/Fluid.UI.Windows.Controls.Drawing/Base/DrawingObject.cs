@@ -27,6 +27,15 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base
         public float Opacity { get; set; } = 1.0f;
 
         /// <inheritdoc />
+        public float StrokeThickness { get; set; } = 1;
+
+        /// <inheritdoc />
+        public Color Fill { get; set; } = Color.Black;
+
+        /// <inheritdoc />
+        public Color Stroke { get; set; } = Color.Gray;
+
+        /// <inheritdoc />
         public abstract Size Size { get; }
 
         /// <inheritdoc />

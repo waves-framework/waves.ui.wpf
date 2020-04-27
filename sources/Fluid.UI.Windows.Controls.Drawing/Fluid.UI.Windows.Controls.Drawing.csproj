@@ -11,4 +11,9 @@
     <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2-preview.60" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controls\Canvas\ViewModel\" />
+    <Folder Include="Controls\Canvas\Presentation\" />
+  </ItemGroup>
+
 </Project>

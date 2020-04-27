@@ -1,34 +1,34 @@
-﻿using System.ComponentModel;
-using Fluid.Core.Base;
+﻿using Fluid.Core.Base;
 using Fluid.UI.Windows.Controls.Drawing.Extensions;
 using SkiaSharp;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Base.Primitives
 {
     /// <summary>
-    /// Ellipse.
+    /// Rectangle.
     /// </summary>
-    public class Ellipse : ShapeDrawingObject
+    public class Rectangle : ShapeDrawingObject
     {
         /// <inheritdoc />
-        public override string Name { get; set; } = "Ellipse";
+        public override string Name { get; set; } = "Rectangle";
 
         /// <inheritdoc />
         public override Size Size => new Size(Width, Height);
 
         /// <summary>
-        /// Gets or sets ellipse radius.
+        /// Gets or sets corner radius.
         /// </summary>
-        public float Radius { get; set; }
+        public float CornerRadius { get; set; }
 
         /// <inheritdoc />
         public override void Draw(SKCanvas canvas)
         {
             if (!IsVisible) return;
 
-            using (var paint = new SKPaint { Color = Fill.ToSkColor(Opacity), IsAntialias = IsAntialiased})
+            using (var paint = new SKPaint { Color = Fill.ToSkColor(Opacity), IsAntialias = IsAntialiased })
             {
-                canvas.DrawCircle(Location.X, Location.Y, Radius, paint);
+                canvas.DrawRoundRect(Location.X, Location.Y, Width, Height,
+                    CornerRadius, CornerRadius, paint);
             }
 
             if (!(StrokeThickness > 0)) return;
@@ -41,7 +41,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Primitives
                 IsAntialias = IsAntialiased
             })
             {
-                canvas.DrawCircle(Location.X, Location.Y, Radius, paint);
+                canvas.DrawRoundRect(Location.X, Location.Y, Width, Height,
+                    CornerRadius, CornerRadius, paint);
             }
         }
 
