@@ -6,7 +6,7 @@
     <ResourceDictionary.MergedDictionaries>
 
         <!-- Icons. -->
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows.Resources;component/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
 
         <!-- Padding. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />

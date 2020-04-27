@@ -7,13 +7,26 @@
   <Import Project="../../props/Fluid.UI.Windows.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core" Version="2020.1.96" />
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.96" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <None Remove="Resources\Fonts\FiraGO-Bold.ttf" />
+    <None Remove="Resources\Fonts\FiraGO-Book.ttf" />
+    <None Remove="Resources\Fonts\FiraGO-ExtraBold.ttf" />
+    <None Remove="Resources\Fonts\FiraGO-Heavy.ttf" />
+    <None Remove="Resources\Fonts\FiraGO-Medium.ttf" />
+    <None Remove="Resources\Fonts\FiraGO-Regular.ttf" />
+    <None Remove="Resources\Fonts\FiraGO-SemiBold.ttf" />
+    <None Remove="Resources\Fonts\Lato-Black.ttf" />
+    <None Remove="Resources\Fonts\Lato-Bold.ttf" />
+    <None Remove="Resources\Fonts\Lato-Heavy.ttf" />
+    <None Remove="Resources\Fonts\Lato-Medium.ttf" />
+    <None Remove="Resources\Fonts\Lato-Regular.ttf" />
+    <None Remove="Resources\Fonts\Lato-Semibold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fluid.UI.Windows.Resources\Fluid.UI.Windows.Resources.csproj" />
+    <PackageReference Include="Fluid.Core" Version="2020.1.125" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.125" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.24" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Colors\Accent.Template.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Colors\Accent.Black.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -51,6 +67,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Fonts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Icons.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\Button.xaml">
@@ -104,6 +126,48 @@
     <Page Update="Templates\Theme.xaml">
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\FiraGO-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\FiraGO-Book.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\FiraGO-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\FiraGO-Heavy.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\FiraGO-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\FiraGO-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\FiraGO-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Heavy.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Lato-Semibold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

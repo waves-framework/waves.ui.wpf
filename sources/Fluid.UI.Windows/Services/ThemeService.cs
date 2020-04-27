@@ -4,6 +4,7 @@ using System.Composition;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Enums;
 using Fluid.Core.Base.Interfaces;
@@ -12,6 +13,7 @@ using Fluid.UI.Windows.Base.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Microsoft.Win32;
 using Application = System.Windows.Application;
+using Color = Fluid.Core.Base.Color;
 
 namespace Fluid.UI.Windows.Services
 {
@@ -29,6 +31,7 @@ namespace Fluid.UI.Windows.Services
         private const string AccentGreenColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Green.xaml";
         private const string AccentRedColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Red.xaml";
         private const string AccentYellowColorsDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Yellow.xaml";
+        private const string AccentTemplateDictionaryUri = "/Fluid.UI.Windows;component/Colors/Accent.Template.xaml";
         private const string MiscellaneousColorsDictionaryUri ="/Fluid.UI.Windows;component/Colors/Miscellaneous.Classic.xaml";
 
         private readonly object _themesCollectionLocker = new object();
@@ -38,6 +41,7 @@ namespace Fluid.UI.Windows.Services
         private bool _isSystemUsingDarkTheme;
         private ResourceDictionary _oldAccentResourceDictionary;
         private ResourceDictionary _oldMiscellaneousResourceDictionary;
+        private ResourceDictionary _systemAccentResourceDictionary;
 
         private ResourceDictionary _oldPrimaryResourceDictionary;
 
@@ -271,6 +275,33 @@ namespace Fluid.UI.Windows.Services
         {
             try
             {
+                CreateSystemAccentDictionary();
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(this,
+                    new Message("Theme Service", "Error initializing system accent theme:\r\n" + e, Name, MessageType.Error));
+            }
+           
+
+            try
+            {
+                
+                    
+                Themes.Add(new Theme("Dark / System accent", Guid.Parse("842FB00F-1B3B-4FE1-BB47-EC80BF99B623"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+
+                    _systemAccentResourceDictionary,
+
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    true));
+
                 Themes.Add(new Theme("Dark / Blue", Guid.Parse("39834D2D-42D3-4440-9109-F1C1175ECE22"),
                     new ResourceDictionary
                     {
@@ -345,6 +376,20 @@ namespace Fluid.UI.Windows.Services
                         Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
                     },
                     true));
+                    
+                Themes.Add(new Theme("Light / System accent", Guid.Parse("B7369E9A-A2BB-4E63-9474-F26259C0DEF7"),
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+
+                    _systemAccentResourceDictionary,
+
+                    new ResourceDictionary
+                    {
+                        Source = new Uri(MiscellaneousColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                    },
+                    false));
 
                 Themes.Add(new Theme("Light / Blue", Guid.Parse("27D324B4-3279-481C-899B-153A60BAC3D0"),
                     new ResourceDictionary
@@ -432,6 +477,65 @@ namespace Fluid.UI.Windows.Services
         }
 
         /// <summary>
+        /// Creates system accent resource dictionary.
+        /// </summary>
+        private void CreateSystemAccentDictionary()
+        {
+            var accent = SystemParameters.WindowGlassBrush as SolidColorBrush;
+            if (accent == null) return;
+
+            var accentColor = accent.Color;
+
+            _systemAccentResourceDictionary = new ResourceDictionary();
+
+            for (var i = 500; i > 0; i -= 100)
+            {
+                var color = GetColor(accentColor, i / 500.0f);
+
+                _systemAccentResourceDictionary.Add("Accent-Color-" + i, color);
+                _systemAccentResourceDictionary.Add("Accent-" + i + "-Brush", new SolidColorBrush(color));
+            }
+
+            for (var i = 600; i < 1000; i += 100)
+            {
+                var color = GetColor(accentColor, i / 500.0f);
+
+                _systemAccentResourceDictionary.Add("Accent-Color-" + i, color);
+                _systemAccentResourceDictionary.Add("Accent-" + i + "-Brush", new SolidColorBrush(color));
+            }
+
+            var luminance = (0.299 * accentColor.R + 0.587 * accentColor.G + 0.114 * accentColor.B) / 255;
+
+            ResourceDictionary resourceDictionary;
+
+            if (luminance > 0.5)
+            {
+                resourceDictionary = new ResourceDictionary()
+                {
+                    Source = new Uri(PrimaryLightColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                };
+            }
+            else
+            {
+                resourceDictionary = new ResourceDictionary()
+                {
+                    Source = new Uri(PrimaryDarkColorsDictionaryUri, UriKind.RelativeOrAbsolute)
+                };
+            }
+
+            for (var i = 100; i < 1000; i += 400)
+            {
+                var colorKey = "Color-Foreground-" + i;
+                var brushKey = "Primary-Foreground-" + i + "-Brush";
+
+                var color = (System.Windows.Media.Color)resourceDictionary[colorKey];
+
+                _systemAccentResourceDictionary.Add("Accent-Color-Foreground-" + i, color);
+                _systemAccentResourceDictionary.Add("Accent-Foreground-" + i + "-Brush", new SolidColorBrush(color));
+            }
+        }
+
+        /// <summary>
         ///     Updates theme.
         /// </summary>
         private void UpdateTheme()
@@ -468,6 +572,39 @@ namespace Fluid.UI.Windows.Services
                 OnMessageReceived(this,
                     new Message("Theme Service", "Error updating theme:\r\n" + e, Name, MessageType.Error));
             }
+        }
+
+        /// <summary>
+        /// Gets color by brightness index.
+        /// </summary>
+        /// <param name="color">Original color.</param>
+        /// <param name="index">Brightness index.</param>
+        /// <returns>Color.</returns>
+        private static System.Windows.Media.Color GetColor(System.Windows.Media.Color color, float index)
+        {
+            var a = (float)255;
+            var r = color.R * index;
+            var g = color.G * index;
+            var b = color.B * index;
+
+            if (a > 255) a = 255;
+            if (a < 0) a = 0;
+
+            if (r > 255) r = 255;
+            if (r < 0) r = 0;
+
+            if (g > 255) g = 255;
+            if (g < 0) g = 0;
+
+            if (b > 255) b = 255;
+            if (b < 0) b = 0;
+
+            var ab = (byte)a;
+            var rb = (byte)r;
+            var gb = (byte)g;
+            var bb = (byte)b;
+
+            return System.Windows.Media.Color.FromArgb(ab, rb, gb, bb);
         }
     }
 }
