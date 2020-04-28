@@ -8,12 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Fluid.Core.Base" Version="2020.1.125" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2-preview.60" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\Canvas\ViewModel\" />
     <Folder Include="Controls\Canvas\Presentation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
   </ItemGroup>
 
 </Project>
