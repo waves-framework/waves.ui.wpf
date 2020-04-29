@@ -16,6 +16,9 @@
     <Compile Update="View\Control\Tabs\ButtonsTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Control\Tabs\ChartingTabView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Control\Tabs\CheckBoxesTabView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\ButtonsTabView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\Tabs\ChartingTabView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Control\Tabs\CheckBoxesTabView.xaml">

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.Desktop;
 using SkiaSharp.Views.WPF;
@@ -8,14 +9,14 @@ using SkiaSharp.Views.WPF;
 namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
 {
     /// <summary>
-    /// Paint surface command behavior.
+    ///     Paint surface command behavior.
     /// </summary>
     public class PaintSurfaceCommandBehavior : Behavior<SKElement>
     {
-        private object _dataContext;
+        private CanvasViewModel _dataContext;
 
         /// <summary>
-        /// Gets or sets paint command property.
+        ///     Gets or sets paint command property.
         /// </summary>
         public static readonly DependencyProperty PaintCommandProperty =
             DependencyProperty.RegisterAttached(
@@ -25,7 +26,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
                 null);
 
         /// <summary>
-        /// Gets command.
+        ///     Gets command.
         /// </summary>
         /// <param name="obj">Dependency object.</param>
         /// <returns>Command.</returns>
@@ -35,7 +36,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
         }
 
         /// <summary>
-        /// Sets command.
+        ///     Sets command.
         /// </summary>
         /// <param name="obj">Dependency object.</param>
         /// <param name="value">Command.</param>
@@ -45,11 +46,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
         }
 
         /// <summary>
-        /// Gets or sets paint command.
+        ///     Gets or sets paint command.
         /// </summary>
         public ICommand PaintCommand
         {
-            get => (ICommand)GetValue(PaintCommandProperty);
+            get => (ICommand) GetValue(PaintCommandProperty);
             set => SetValue(PaintCommandProperty, value);
         }
 
@@ -61,6 +62,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
             var skElement = AssociatedObject;
 
             skElement.DataContextChanged += OnDataContextChanged;
+            skElement.SizeChanged += OnSizeChanged;
             skElement.PaintSurface += OnPaintSurface;
         }
 
@@ -72,11 +74,45 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
             var skElement = AssociatedObject;
 
             skElement.DataContextChanged -= OnDataContextChanged;
+            skElement.SizeChanged -= OnSizeChanged;
             skElement.PaintSurface -= OnPaintSurface;
+
+            if (_dataContext != null)
+                _dataContext.RedrawRequested -= OnRedrawRequested;
         }
 
         /// <summary>
-        /// Actions when data context changed.
+        ///     Actions when size changed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            AssociatedObject.InvalidateMeasure();
+            AssociatedObject.InvalidateArrange();
+
+            if (_dataContext == null) return;
+
+            var size = e.NewSize;
+
+            _dataContext.Width = Convert.ToSingle(size.Width);
+            _dataContext.Height = Convert.ToSingle(size.Height);
+
+            if (Math.Abs(size.Width) < double.Epsilon || Math.Abs(size.Height) < double.Epsilon)
+            {
+                _dataContext.IsDrawingInitialized = false;
+            }
+            else
+            {
+                _dataContext.IsDrawingInitialized = true;
+            }
+        }
+
+        /// <summary>
+        ///     Actions when data context changed.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -85,20 +121,47 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
             var element = sender as FrameworkElement;
             if (element == null) return;
 
-            _dataContext = element.DataContext;
+            var dataContext = element.DataContext as CanvasViewModel;
+            if (dataContext == null) return;
+
+            _dataContext = dataContext;
+
+            _dataContext.RedrawRequested += OnRedrawRequested;
         }
 
         /// <summary>
-        /// Actions when paint requested.
+        /// Notifies when redraw requested.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments/</param>
+        private void OnRedrawRequested(object sender, EventArgs e)
+        {
+            Dispatcher?.Invoke(delegate
+            {
+                try
+                {
+                    AssociatedObject.InvalidateVisual();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                }
+            });
+        }
+
+        /// <summary>
+        ///     Actions when paint requested.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
         private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
-            if (PaintCommand?.CanExecute(e) == true)
-            {
-                PaintCommand.Execute(e);
-            }
+            if (_dataContext == null) return;
+
+            if (_dataContext.Canvas == null)
+                _dataContext.Canvas = e.Surface.Canvas;
+
+            _dataContext.Draw();
         }
     }
 }

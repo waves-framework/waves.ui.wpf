@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using Fluid.Core.Base;
+using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Interfaces;
 using SkiaSharp;
 
@@ -9,55 +11,48 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel.Interfaces
     /// <summary>
     /// Interface for drawing canvas.
     /// </summary>
-    public interface ICanvasViewModel
+    public interface ICanvasViewModel : IPresentationViewModel
     {
         /// <summary>
-        ///     Gets or sets font size.
+        /// Gets whether is drawing initialized.
         /// </summary>
-        double FontSize { get; set; }
+        bool IsDrawingInitialized { get; }
 
         /// <summary>
-        ///     Фон области отрисовки.
+        ///     Gets collection of drawing object.
         /// </summary>
-        Color Background { get; set; }
+        ICollection<IDrawingObject> DrawingObjects { get; }
 
         /// <summary>
-        ///     Цвет текста на области отрисовки.
+        /// Gets paint command/
         /// </summary>
-        Color Foreground { get; set; }
+        ICommand PaintCommand { get; }
 
         /// <summary>
-        ///     Список отрисовываемых объектов.
+        /// Adds drawing object.
         /// </summary>
-        List<IDrawingObject> DrawingObjects { get; }
+        /// <param name="obj">Drawing object.</param>
+        void AddDrawingObject(IDrawingObject obj);
 
         /// <summary>
-        ///     Событие необходимости перирисовки.
+        /// Removes drawing object.
         /// </summary>
-        event EventHandler RedrawRequired;
+        /// <param name="obj">Drawing object.</param>
+        void RemoveDrawingObject(IDrawingObject obj);
 
         /// <summary>
-        ///     Инициализация.
+        /// Updates canvas.
         /// </summary>
-        void Initialize();
+        void Update();
 
         /// <summary>
-        ///     Обновление области отрисовки.
+        ///     Draws objects.
         /// </summary>
-        ///     Удаление объекта отрисовки.
-        /// </summary>
-        /// <param name="obj"></param>
-        void RemoveObject(IDrawingObject obj);
+        void Draw();
 
         /// <summary>
-        ///     Очистка области отрисовки.
+        /// Clears drawing objects.
         /// </summary>
         void Clear();
-
-        /// <summary>
-        ///     Отрисовка.
-        /// </summary>
-        /// <param name="surface"></param>
-        void Draw(SKSurface surface);
     }
 }
