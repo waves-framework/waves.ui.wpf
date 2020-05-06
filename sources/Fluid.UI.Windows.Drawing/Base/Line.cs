@@ -1,5 +1,6 @@
 ﻿using System;
 using Fluid.Core.Base;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Drawing.Extensions;
 using SkiaSharp;
 
@@ -29,50 +30,26 @@ namespace Fluid.UI.Windows.Drawing.Base
         public float[] DashPattern { get; set; } = { 0, 0, 0, 0 };
 
         /// <inheritdoc />
-        public override void Draw(SKCanvas canvas)
+        public override void Draw(IDrawingElement e)
         {
             if (!IsVisible) return;
 
-            using (var paint = new SKPaint
-                {Color = Fill.ToSkColor(Opacity), IsAntialias = IsAntialiased})
+            using (var paint = new Paint() { Fill = Fill, IsAntialiased = IsAntialiased, Opacity = Opacity, DashPattern = DashPattern})
             {
-                GetDashArray(paint);
-                canvas.DrawLine(Point1.ToSkPoint(), Point2.ToSkPoint(), paint);
+                e.DrawLine(Point1, Point2, paint);
             }
 
             if (!(StrokeThickness > 0)) return;
 
-            using (var paint = new SKPaint
+            using (var paint = new Paint() { IsAntialiased = IsAntialiased, Opacity = Opacity, DashPattern = DashPattern, Stroke = Stroke, StrokeThickness = StrokeThickness })
             {
-                Color = Stroke.ToSkColor(Opacity),
-                IsStroke = true,
-                StrokeWidth = StrokeThickness,
-                IsAntialias = IsAntialiased
-            })
-            {
-                GetDashArray(paint);
-                canvas.DrawLine(Point1.ToSkPoint(), Point2.ToSkPoint(), paint);
+                e.DrawLine(Point1, Point2, paint);
             }
         }
 
         /// <inheritdoc />
         public override void Dispose()
         {
-        }
-
-        /// <summary>
-        /// Gets dash array.
-        /// </summary>
-        /// <param name="paint">SKPaint.</param>
-        private void GetDashArray(SKPaint paint)
-        {
-            if (DashPattern != null)
-            {
-                var dashEffect = SKPathEffect.CreateDash(DashPattern, 0);
-                paint.PathEffect = paint.PathEffect != null
-                    ? SKPathEffect.CreateCompose(dashEffect, paint.PathEffect)
-                    : dashEffect;
-            }
         }
     }
 }

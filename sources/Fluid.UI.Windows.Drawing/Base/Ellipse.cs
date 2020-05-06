@@ -30,7 +30,7 @@ namespace Fluid.UI.Windows.Drawing.Base
 
             if (!(StrokeThickness > 0)) return;
 
-            using (var paint = new Paint() { Fill = Fill, IsAntialiased = IsAntialiased, Opacity = Opacity, Stroke = Stroke, StrokeThickness = StrokeThickness})
+            using (var paint = new Paint() { IsAntialiased = IsAntialiased, Opacity = Opacity, Stroke = Stroke, StrokeThickness = StrokeThickness})
             {
                 e.DrawCircle(Location, Radius, paint);
             }

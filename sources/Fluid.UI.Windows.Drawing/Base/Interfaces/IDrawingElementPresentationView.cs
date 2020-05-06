@@ -1,6 +1,5 @@
 ﻿using System;
 using Fluid.Presentation.Interfaces;
-using Microsoft.Xaml.Behaviors;
 
 namespace Fluid.UI.Windows.Drawing.Base.Interfaces
 {
@@ -9,6 +8,9 @@ namespace Fluid.UI.Windows.Drawing.Base.Interfaces
     /// </summary>
     public interface IDrawingElementPresentationView : IPresentationView, IDisposable
     {
-        
+        /// <summary>
+        /// Gets or sets drawing element.
+        /// </summary>
+        IDrawingElement DrawingElement { get; }
     }
 }

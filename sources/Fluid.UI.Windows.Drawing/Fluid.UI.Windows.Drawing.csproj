@@ -10,7 +10,6 @@
     <PackageReference Include="Fluid.Core.Base" Version="2020.1.125" />
     <PackageReference Include="Fluid.Presentation" Version="2020.1.24" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
-    <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2" />
   </ItemGroup>
 
   <ItemGroup>
