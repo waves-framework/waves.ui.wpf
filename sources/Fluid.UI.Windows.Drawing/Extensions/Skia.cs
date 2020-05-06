@@ -2,7 +2,7 @@
 using Fluid.Core.Base;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Extensions
+namespace Fluid.UI.Windows.Drawing.Extensions
 {
     /// <summary>
     /// Skia extensions.

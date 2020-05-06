@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Input;
-using Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel;
+using Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.Desktop;
 using SkiaSharp.Views.WPF;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
+namespace Fluid.UI.Windows.Drawing.Behaviors
 {
     /// <summary>
     ///     Paint surface command behavior.
@@ -119,8 +119,16 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
         {
             if (_dataContext == null) return;
 
-            if (_dataContext.Surface == null)
-                _dataContext.Surface = e.Surface;
+            //if (_dataContext.Surface == null)
+            //    _dataContext.Surface = e.Surface;
+
+            if (!_dataContext.IsDrawingInitialized)
+            {
+                var handle = GCHandle.Alloc(e.Surface);
+                var ptr = GCHandle.ToIntPtr(handle);
+
+                _dataContext.SetSurfacePointer(ptr);
+            }
 
             _dataContext.Draw();
         }

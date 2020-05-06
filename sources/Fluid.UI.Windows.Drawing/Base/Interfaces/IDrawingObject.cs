@@ -2,7 +2,7 @@
 using Fluid.Core.Base.Interfaces;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Interfaces
+namespace Fluid.UI.Windows.Drawing.Base.Interfaces
 {
     /// <summary>
     /// Interface of drawing object.

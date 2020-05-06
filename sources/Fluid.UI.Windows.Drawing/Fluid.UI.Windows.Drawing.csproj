@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Controls\Canvas\Presentation\" />
+    <Folder Include="Controls\Canvas\View\ICanvas\" />
   </ItemGroup>
 
   <ItemGroup>

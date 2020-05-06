@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fluid.UI.Windows.Controls.Drawing\Fluid.UI.Windows.Controls.Drawing.csproj" />
+    <ProjectReference Include="..\Fluid.UI.Windows.Controls.Drawing\Fluid.UI.Windows.Drawing.csproj" />
     <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
   </ItemGroup>
 

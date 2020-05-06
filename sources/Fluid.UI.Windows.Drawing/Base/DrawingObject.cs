@@ -1,10 +1,10 @@
 ﻿using System;
 using Fluid.Core.Base;
-using Fluid.UI.Windows.Controls.Drawing.Interfaces;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
 using SkiaSharp;
 using Object = Fluid.Core.Base.Object;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Base
+namespace Fluid.UI.Windows.Drawing.Base
 {
     /// <summary>
     /// Base abstract class for drawing objects.

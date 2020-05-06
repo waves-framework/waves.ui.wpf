@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
-using Fluid.Core.Base;
+﻿using System.Collections.Generic;
 using Fluid.Presentation.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.Interfaces;
-using SkiaSharp;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel.Interfaces
+namespace Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel.Interfaces
 {
     /// <summary>
     /// Interface for drawing canvas.

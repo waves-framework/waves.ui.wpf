@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Fluid.Core.Base;
-using Fluid.UI.Windows.Controls.Drawing.Interfaces;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Base
+namespace Fluid.UI.Windows.Drawing.Base
 {
     /// <summary>
     /// Text style.

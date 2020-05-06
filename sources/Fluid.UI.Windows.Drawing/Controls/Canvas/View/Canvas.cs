@@ -1,14 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows.Data;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
 using Fluid.Presentation.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.Behaviors;
+using Fluid.UI.Windows.Drawing.Behaviors;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.WPF;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.View
+namespace Fluid.UI.Windows.Drawing.Controls.Canvas.View
 {
     /// <summary>
     /// Drawing canvas.

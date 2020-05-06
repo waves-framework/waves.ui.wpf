@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using System.Windows.Data;
-using System.Windows.Input;
-using Fluid.Core.Base;
 using Fluid.Presentation.Base;
-using Fluid.UI.Windows.Commands;
-using Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.Extensions;
-using Fluid.UI.Windows.Controls.Drawing.Interfaces;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel.Interfaces;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
+namespace Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel
 {
     /// <summary>
     /// Drawing canvas view model.
@@ -19,6 +16,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
     public class CanvasViewModel : PresentationViewModel, ICanvasViewModel
     {
         private readonly object _collectionLocker = new object();
+
+        private SKSurface _surface;
 
         /// <summary>
         /// Creates new instance of canvas view model.
@@ -42,11 +41,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
         /// Gets or sets height.
         /// </summary>
         public float Height { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets drawing surface.
-        /// </summary>
-        public SKSurface Surface { get; internal set; }
 
         /// <inheritdoc />
         public bool IsDrawingInitialized { get; internal set; }
@@ -72,6 +66,20 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Sets surface pointer.
+        /// </summary>
+        /// <param name="ptr">Pointer.</param>
+        public void SetSurfacePointer(IntPtr ptr)
+        {
+            var handle = GCHandle.FromIntPtr(ptr);
+            
+            _surface = handle.Target as SKSurface;
+
+            if (_surface != null) 
+                IsDrawingInitialized = true;
+        }
+
         /// <inheritdoc />
         public void Update()
         {
@@ -82,13 +90,14 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
         public virtual void Draw()
         {
             if (!IsDrawingInitialized) return;
-            if (Surface == null) return;
-            if (Surface.Handle == IntPtr.Zero) return;
 
-            Surface.Canvas.Clear(SKColors.Black);
+            if (_surface == null) return;
+            if (_surface.Handle == IntPtr.Zero) return;
+
+            _surface.Canvas.Clear(SKColors.Empty);
 
             foreach (var obj in DrawingObjects)
-                obj.Draw(Surface.Canvas);
+                obj.Draw(_surface.Canvas);
         }
 
         /// <inheritdoc />

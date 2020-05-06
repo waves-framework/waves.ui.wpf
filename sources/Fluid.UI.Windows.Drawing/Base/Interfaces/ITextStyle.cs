@@ -1,6 +1,6 @@
 ﻿using Fluid.Core.Base;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Interfaces
+namespace Fluid.UI.Windows.Drawing.Base.Interfaces
 {
     /// <summary>
     /// Text style interface.

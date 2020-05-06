@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="../../props/Fluid.UI.Windows.props" />
+
+</Project>

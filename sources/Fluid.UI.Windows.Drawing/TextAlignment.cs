@@ -1,4 +1,4 @@
-﻿namespace Fluid.UI.Windows.Controls.Drawing
+﻿namespace Fluid.UI.Windows.Drawing
 {
     /// <summary>
     /// Text alignment enum.

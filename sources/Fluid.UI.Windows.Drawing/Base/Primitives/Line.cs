@@ -1,9 +1,9 @@
 ﻿using System;
 using Fluid.Core.Base;
-using Fluid.UI.Windows.Controls.Drawing.Extensions;
+using Fluid.UI.Windows.Drawing.Extensions;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Controls.Drawing.Base.Primitives
+namespace Fluid.UI.Windows.Drawing.Base.Primitives
 {
     /// <summary>
     /// Line.
