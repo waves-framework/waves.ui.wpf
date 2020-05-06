@@ -24,11 +24,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel.Interfaces
         ICollection<IDrawingObject> DrawingObjects { get; }
 
         /// <summary>
-        /// Gets paint command/
-        /// </summary>
-        ICommand PaintCommand { get; }
-
-        /// <summary>
         /// Adds drawing object.
         /// </summary>
         /// <param name="obj">Drawing object.</param>

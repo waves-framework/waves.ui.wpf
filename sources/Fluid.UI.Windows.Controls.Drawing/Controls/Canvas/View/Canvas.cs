@@ -52,12 +52,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.View
         /// </summary>
         private void InitializeBehaviors()
         {
-            var behavior = new PaintSurfaceCommandBehavior();
-
-            //BindingOperations.SetBinding(behavior, PaintSurfaceCommandBehavior.PaintCommandProperty,
-            //    new Binding("PaintCommand"));
-
-            Interaction.GetBehaviors(this).Add(behavior);
+            Interaction.GetBehaviors(this).Add(new PaintBehavior());
         }
 
         /// <summary>

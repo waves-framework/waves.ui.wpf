@@ -44,18 +44,15 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
         public float Height { get; internal set; }
 
         /// <summary>
-        /// Gets or sets drawing canvas.
+        /// Gets or sets drawing surface.
         /// </summary>
-        public SKCanvas Canvas { get; internal set; }
+        public SKSurface Surface { get; internal set; }
 
         /// <inheritdoc />
         public bool IsDrawingInitialized { get; internal set; }
 
         /// <inheritdoc />
         public ICollection<IDrawingObject> DrawingObjects { get; private set; } = new ObservableCollection<IDrawingObject>();
-
-        /// <inheritdoc />
-        public ICommand PaintCommand { get; private set; }
 
         /// <inheritdoc />
         public override void Initialize()
@@ -85,11 +82,13 @@ namespace Fluid.UI.Windows.Controls.Drawing.Controls.Canvas.ViewModel
         public virtual void Draw()
         {
             if (!IsDrawingInitialized) return;
+            if (Surface == null) return;
+            if (Surface.Handle == IntPtr.Zero) return;
 
-            Canvas.Clear(SKColor.Empty);
+            Surface.Canvas.Clear(SKColors.Black);
 
             foreach (var obj in DrawingObjects)
-                obj.Draw(Canvas);
+                obj.Draw(Surface.Canvas);
         }
 
         /// <inheritdoc />

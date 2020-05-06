@@ -34,7 +34,7 @@
 
         <Grid Grid.Row="2">
 
-            <view:Canvas DataContext="{Binding Canvas}" Width="100" Height="100"/>
+            <view:Canvas DataContext="{Binding Canvas}"/>
 
         </Grid>
 

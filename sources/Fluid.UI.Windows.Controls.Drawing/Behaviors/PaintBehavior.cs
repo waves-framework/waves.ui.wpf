@@ -11,48 +11,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
     /// <summary>
     ///     Paint surface command behavior.
     /// </summary>
-    public class PaintSurfaceCommandBehavior : Behavior<SKElement>
+    public class PaintBehavior : Behavior<SKElement>
     {
         private CanvasViewModel _dataContext;
-
-        /// <summary>
-        ///     Gets or sets paint command property.
-        /// </summary>
-        public static readonly DependencyProperty PaintCommandProperty =
-            DependencyProperty.RegisterAttached(
-                nameof(PaintCommand),
-                typeof(ICommand),
-                typeof(PaintSurfaceCommandBehavior),
-                null);
-
-        /// <summary>
-        ///     Gets command.
-        /// </summary>
-        /// <param name="obj">Dependency object.</param>
-        /// <returns>Command.</returns>
-        public static ICommand GetValue(DependencyObject obj)
-        {
-            return (ICommand) obj.GetValue(PaintCommandProperty);
-        }
-
-        /// <summary>
-        ///     Sets command.
-        /// </summary>
-        /// <param name="obj">Dependency object.</param>
-        /// <param name="value">Command.</param>
-        public static void SetValue(DependencyObject obj, ICommand value)
-        {
-            obj.SetValue(PaintCommandProperty, value);
-        }
-
-        /// <summary>
-        ///     Gets or sets paint command.
-        /// </summary>
-        public ICommand PaintCommand
-        {
-            get => (ICommand) GetValue(PaintCommandProperty);
-            set => SetValue(PaintCommandProperty, value);
-        }
 
         /// <inheritdoc />
         protected override void OnAttached()
@@ -158,8 +119,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behaviors
         {
             if (_dataContext == null) return;
 
-            if (_dataContext.Canvas == null)
-                _dataContext.Canvas = e.Surface.Canvas;
+            if (_dataContext.Surface == null)
+                _dataContext.Surface = e.Surface;
 
             _dataContext.Draw();
         }
