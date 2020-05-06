@@ -40,14 +40,9 @@ namespace Fluid.UI.Windows.Drawing.Base.Interfaces
         Color Stroke { get; set; }
 
         /// <summary>
-        /// Gets size of object.
-        /// </summary>
-        Size Size { get; }
-
-        /// <summary>
         ///     Draw object in current canvas.
         /// </summary>
-        /// <param name="canvas">Canvas.</param>
-        void Draw(SKCanvas canvas);
+        /// <param name="e">Drawing element.</param>
+        void Draw(IDrawingElement e);
     }
 }

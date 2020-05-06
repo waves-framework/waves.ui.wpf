@@ -36,9 +36,6 @@ namespace Fluid.UI.Windows.Drawing.Base
         public Color Stroke { get; set; } = Color.Gray;
 
         /// <inheritdoc />
-        public abstract Size Size { get; }
-
-        /// <inheritdoc />
-        public abstract void Draw(SKCanvas canvas);
+        public abstract void Draw(IDrawingElement e);
     }
 }

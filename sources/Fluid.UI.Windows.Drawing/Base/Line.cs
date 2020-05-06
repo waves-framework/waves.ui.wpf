@@ -3,7 +3,7 @@ using Fluid.Core.Base;
 using Fluid.UI.Windows.Drawing.Extensions;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Drawing.Base.Primitives
+namespace Fluid.UI.Windows.Drawing.Base
 {
     /// <summary>
     /// Line.
@@ -12,9 +12,6 @@ namespace Fluid.UI.Windows.Drawing.Base.Primitives
     {
         /// <inheritdoc />
         public override string Name { get; set; } = "Line";
-
-        /// <inheritdoc />
-        public override Size Size => new Size(Math.Abs(Point2.X - Point1.X), Math.Abs(Point2.Y - Point1.Y));
 
         /// <summary>
         ///     Gets or sets first point.

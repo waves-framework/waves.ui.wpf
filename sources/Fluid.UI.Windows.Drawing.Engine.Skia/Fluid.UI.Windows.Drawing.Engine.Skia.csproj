@@ -6,4 +6,8 @@
 
   <Import Project="../../props/Fluid.UI.Windows.props" />
 
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2.1" />
+  </ItemGroup>
+
 </Project>

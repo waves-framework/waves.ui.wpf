@@ -2,7 +2,7 @@
 using Fluid.UI.Windows.Drawing.Extensions;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Drawing.Base.Primitives
+namespace Fluid.UI.Windows.Drawing.Base
 {
     /// <summary>
     /// Text.

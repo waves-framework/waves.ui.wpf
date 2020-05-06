@@ -1,8 +1,9 @@
 ﻿using Fluid.Core.Base;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Drawing.Extensions;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Drawing.Base.Primitives
+namespace Fluid.UI.Windows.Drawing.Base
 {
     /// <summary>
     /// Ellipse.
@@ -12,35 +13,26 @@ namespace Fluid.UI.Windows.Drawing.Base.Primitives
         /// <inheritdoc />
         public override string Name { get; set; } = "Ellipse";
 
-        /// <inheritdoc />
-        public override Size Size => new Size(Width, Height);
-
         /// <summary>
         /// Gets or sets ellipse radius.
         /// </summary>
         public float Radius { get; set; }
 
         /// <inheritdoc />
-        public override void Draw(SKCanvas canvas)
+        public override void Draw(IDrawingElement e)
         {
             if (!IsVisible) return;
 
-            using (var paint = new SKPaint { Color = Fill.ToSkColor(Opacity), IsAntialias = IsAntialiased})
+            using (var paint = new Paint() { Fill = Fill ,IsAntialiased = IsAntialiased, Opacity = Opacity})
             {
-                canvas.DrawCircle(Location.X, Location.Y, Radius, paint);
+                e.DrawCircle(Location, Radius, paint);
             }
 
             if (!(StrokeThickness > 0)) return;
 
-            using (var paint = new SKPaint
+            using (var paint = new Paint() { Fill = Fill, IsAntialiased = IsAntialiased, Opacity = Opacity, Stroke = Stroke, StrokeThickness = StrokeThickness})
             {
-                Color = Stroke.ToSkColor(Opacity),
-                IsStroke = true,
-                StrokeWidth = StrokeThickness,
-                IsAntialias = IsAntialiased
-            })
-            {
-                canvas.DrawCircle(Location.X, Location.Y, Radius, paint);
+                e.DrawCircle(Location, Radius, paint);
             }
         }
 

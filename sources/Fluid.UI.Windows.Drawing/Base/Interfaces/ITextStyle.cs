@@ -13,19 +13,19 @@ namespace Fluid.UI.Windows.Drawing.Base.Interfaces
         float FontSize { get; set; }
 
         /// <summary>
-        /// Gets or sets text color.
+        /// Gets or sets font family.
         /// </summary>
-        Color Color { get; set; }
-
-        /// <summary>
-        /// Gets or sets font name.
-        /// </summary>
-        string FontName { get; set; }
+        string FontFamily { get; set; }
 
         /// <summary>
         /// Gets or sets font weight.
         /// </summary>
         int Weight { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the text may be in subpixels. 
+        /// </summary>
+        bool IsSubpixelText { get; set; }
 
         /// <summary>
         /// Gets or sets text alignment.

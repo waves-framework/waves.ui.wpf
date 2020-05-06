@@ -22,9 +22,6 @@ namespace Fluid.UI.Windows.Drawing.Base
         public abstract override string Name { get; set; }
 
         /// <inheritdoc />
-        public abstract override Size Size { get; }
-
-        /// <inheritdoc />
-        public abstract override void Draw(SKCanvas canvas);
+        public abstract override void Draw(IDrawingElement e);
     }
 }

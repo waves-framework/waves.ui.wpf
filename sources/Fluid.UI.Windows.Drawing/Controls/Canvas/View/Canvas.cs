@@ -59,6 +59,7 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.View
         /// </summary>
         private void SubscribeEvents()
         {
+            
         }
 
         /// <summary>
