@@ -25,6 +25,7 @@ namespace Fluid.UI.Windows.Drawing.Services
     {
         private readonly object _pathsLocker = new object();
         private readonly object _enginesLocker = new object();
+        private IDrawingEngine _currentEngine;
 
         /// <summary>
         /// Gets or sets loaded drawing engines.
@@ -42,7 +43,18 @@ namespace Fluid.UI.Windows.Drawing.Services
         public override string Name { get; set; } = "Drawing service";
 
         /// <inheritdoc />
-        public IDrawingEngine CurrentEngine { get; set; }
+        public IDrawingEngine CurrentEngine
+        {
+            get => _currentEngine;
+            set
+            {
+                _currentEngine = value;
+
+                OnPropertyChanged();
+
+                OnEngineChanged();
+            }
+        }
 
         /// <inheritdoc />
         public List<string> EnginePaths { get; set; } = new List<string>();
@@ -195,6 +207,9 @@ namespace Fluid.UI.Windows.Drawing.Services
         protected virtual void OnEngineChanged()
         {
             EngineChanged?.Invoke(this, EventArgs.Empty);
+
+            OnMessageReceived(this, new Message("Drawing engine changing...", "Drawing engine changed to " + CurrentEngine.Name + ".", Name,
+                MessageType.Information));
         }
 
         /// <summary>
@@ -249,7 +264,7 @@ namespace Fluid.UI.Windows.Drawing.Services
                         }
                         catch (Exception e)
                         {
-                            OnMessageReceived(this, new Message("Loading assemblies", "Error loading assembly (" + file + ")\r\n" + e, Name, MessageType.Warning));
+                            OnMessageReceived(this, new Message("Loading assemblies", "Error loading assembly (" + file + ").", Name, e,false));
                         }
                     }
                 }

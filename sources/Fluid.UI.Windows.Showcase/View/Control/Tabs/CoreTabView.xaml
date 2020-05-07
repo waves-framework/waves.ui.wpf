@@ -55,15 +55,16 @@
 
                 <ScrollViewer Grid.RowSpan="2" Margin="-12,0,-24,-18">
 
-                    <ItemsControl ItemsSource="{Binding LoggingService.LastMessages, UpdateSourceTrigger=PropertyChanged}"
-                                  ItemTemplate="{StaticResource MessageListDataTemplate}">
+                    <ItemsControl ItemsSource="{Binding LoggingService.LastMessages, UpdateSourceTrigger=PropertyChanged}">
+
+                        <ItemsControl.Resources>
+                            <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/MessageObjects.xaml" />
+                        </ItemsControl.Resources>
 
                         <ItemsControl.ItemsPanel>
-
                             <ItemsPanelTemplate>
                                 <StackPanel IsItemsHost="True" Margin="12,24,12,24"/>
                             </ItemsPanelTemplate>
-
                         </ItemsControl.ItemsPanel>
 
                     </ItemsControl>
