@@ -208,7 +208,7 @@ namespace Fluid.UI.Windows.Drawing.Services
         {
             EngineChanged?.Invoke(this, EventArgs.Empty);
 
-            OnMessageReceived(this, new Message("Drawing engine changing...", "Drawing engine changed to " + CurrentEngine.Name + ".", Name,
+            OnMessageReceived(this, new Message("Drawing engine", "Drawing engine changed to " + CurrentEngine.Name + ".", Name,
                 MessageType.Information));
         }
 
