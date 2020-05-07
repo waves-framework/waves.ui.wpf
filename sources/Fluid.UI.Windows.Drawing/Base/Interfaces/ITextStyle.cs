@@ -1,4 +1,5 @@
 ﻿using Fluid.Core.Base;
+using Fluid.UI.Windows.Drawing.Base.Enums;
 
 namespace Fluid.UI.Windows.Drawing.Base.Interfaces
 {

@@ -15,6 +15,7 @@ using Fluid.UI.Windows.Controls.Modality.Presentation.Controllers;
 using Fluid.UI.Windows.Controls.Modality.Presentation.Controllers.Interfaces;
 using Fluid.UI.Windows.Controls.Modality.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Modality.View;
+using Fluid.UI.Windows.Drawing.Services.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
 
@@ -150,6 +151,7 @@ namespace Fluid.UI.Windows
         private void InitializeServices()
         {
             RegisterService(ServiceManager.GetService<IThemeService>().First());
+            RegisterService(ServiceManager.GetService<IDrawingService>().First());
 
             InitializeThemeService();
         }

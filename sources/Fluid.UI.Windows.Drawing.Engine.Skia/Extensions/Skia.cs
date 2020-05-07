@@ -1,8 +1,9 @@
 ﻿using System;
 using Fluid.Core.Base;
+using Fluid.UI.Windows.Drawing.Base.Enums;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Drawing.Extensions
+namespace Fluid.UI.Windows.Drawing.Engine.Skia.Extensions
 {
     /// <summary>
     /// Skia extensions.

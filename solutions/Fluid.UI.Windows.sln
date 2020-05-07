@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Showcase",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows", "..\sources\Fluid.UI.Windows\Fluid.UI.Windows.csproj", "{769C4355-5E15-48A6-A59E-B17EE5D2E291}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{3632479B-346F-489E-B1EE-F6E108A55EF5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Drawing", "Drawing", "{3632479B-346F-489E-B1EE-F6E108A55EF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.UI.Windows.Drawing", "..\sources\Fluid.UI.Windows.Drawing\Fluid.UI.Windows.Drawing.csproj", "{6B8974B3-7B7E-4008-AFBF-25E76390FF92}"
 EndProject

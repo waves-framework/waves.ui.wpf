@@ -1,12 +1,9 @@
-﻿using Fluid.Core.Base;
-using Fluid.UI.Windows.Drawing.Base.Interfaces;
-using Fluid.UI.Windows.Drawing.Extensions;
-using SkiaSharp;
+﻿using Fluid.UI.Windows.Drawing.Base.Interfaces;
 
 namespace Fluid.UI.Windows.Drawing.Base
 {
     /// <summary>
-    /// Ellipse.
+    ///     Ellipse.
     /// </summary>
     public class Ellipse : ShapeDrawingObject
     {
@@ -14,7 +11,7 @@ namespace Fluid.UI.Windows.Drawing.Base
         public override string Name { get; set; } = "Ellipse";
 
         /// <summary>
-        /// Gets or sets ellipse radius.
+        ///     Gets or sets ellipse radius.
         /// </summary>
         public float Radius { get; set; }
 
@@ -23,14 +20,15 @@ namespace Fluid.UI.Windows.Drawing.Base
         {
             if (!IsVisible) return;
 
-            using (var paint = new Paint() { Fill = Fill ,IsAntialiased = IsAntialiased, Opacity = Opacity})
+            using (var paint = new Paint {Fill = Fill, IsAntialiased = IsAntialiased, Opacity = Opacity})
             {
                 e.DrawCircle(Location, Radius, paint);
             }
 
             if (!(StrokeThickness > 0)) return;
 
-            using (var paint = new Paint() { IsAntialiased = IsAntialiased, Opacity = Opacity, Stroke = Stroke, StrokeThickness = StrokeThickness})
+            using (var paint = new Paint
+                {IsAntialiased = IsAntialiased, Opacity = Opacity, Stroke = Stroke, StrokeThickness = StrokeThickness})
             {
                 e.DrawCircle(Location, Radius, paint);
             }

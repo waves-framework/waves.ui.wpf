@@ -6,6 +6,11 @@
     public interface IDrawingEngine
     {
         /// <summary>
+        /// Gets name of engine.
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Gets new instance of drawing element view.
         /// </summary>
         /// <returns>Instance of drawing element.</returns>

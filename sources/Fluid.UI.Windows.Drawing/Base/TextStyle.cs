@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Fluid.Core.Base;
+using Fluid.UI.Windows.Drawing.Base.Enums;
 using Fluid.UI.Windows.Drawing.Base.Interfaces;
 
 namespace Fluid.UI.Windows.Drawing.Base
@@ -32,10 +33,13 @@ namespace Fluid.UI.Windows.Drawing.Base
         public Color Color { get; set; } = Color.Black;
 
         /// <inheritdoc />
-        public string FontName { get; set; } = "Segoe UI";
+        public string FontFamily { get; set; } = "Segoe UI";
 
         /// <inheritdoc />
         public int Weight { get; set; } = FontWeightMapping["Regular"];
+
+        /// <inheritdoc />
+        public bool IsSubpixelText { get; set; } = true;
 
         /// <inheritdoc />
         public TextAlignment Alignment { get; set; } = TextAlignment.Left;

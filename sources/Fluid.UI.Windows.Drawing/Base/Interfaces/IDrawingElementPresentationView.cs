@@ -8,9 +8,6 @@ namespace Fluid.UI.Windows.Drawing.Base.Interfaces
     /// </summary>
     public interface IDrawingElementPresentationView : IPresentationView, IDisposable
     {
-        /// <summary>
-        /// Gets or sets drawing element.
-        /// </summary>
-        IDrawingElement DrawingElement { get; }
+        
     }
 }

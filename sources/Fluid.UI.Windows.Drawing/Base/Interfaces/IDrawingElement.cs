@@ -23,5 +23,22 @@ namespace Fluid.UI.Windows.Drawing.Base.Interfaces
         /// <param name="point2">Point 2.</param>
         /// <param name="paint">Paint.</param>
         void DrawLine(Point point1, Point point2, IPaint paint);
+
+        /// <summary>
+        /// Draws rectangle 
+        /// </summary>
+        /// <param name="location">Location.</param>
+        /// <param name="size">Size.</param>
+        /// <param name="paint">Paint.</param>
+        /// <param name="cornerRadius">Corner radius.</param>
+        void DrawRectangle(Point location, Size size, IPaint paint, float cornerRadius = 0);
+
+        /// <summary>
+        /// Draws text.
+        /// </summary>
+        /// <param name="location">Text location.</param>
+        /// <param name="text">Text.</param>
+        /// <param name="paint">Paint.</param>
+        void DrawText(Point location, string text, ITextPaint paint);
     }
 }

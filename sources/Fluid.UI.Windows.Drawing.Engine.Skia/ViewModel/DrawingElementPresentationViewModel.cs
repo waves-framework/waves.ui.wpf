@@ -5,15 +5,14 @@ using System.Runtime.InteropServices;
 using System.Windows.Data;
 using Fluid.Presentation.Base;
 using Fluid.UI.Windows.Drawing.Base.Interfaces;
-using Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel.Interfaces;
 using SkiaSharp;
 
-namespace Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel
+namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
 {
     /// <summary>
     /// Drawing canvas view model.
     /// </summary>
-    public class CanvasViewModel : PresentationViewModel, ICanvasViewModel
+    public class DrawingElementPresentationViewModel : PresentationViewModel, IDrawingElementPresentationViewModel
     {
         private readonly object _collectionLocker = new object();
 
@@ -22,7 +21,7 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel
         /// <summary>
         /// Creates new instance of canvas view model.
         /// </summary>
-        public CanvasViewModel()
+        public DrawingElementPresentationViewModel()
         {
 
         }
@@ -94,10 +93,10 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel
             if (_surface == null) return;
             if (_surface.Handle == IntPtr.Zero) return;
 
-            _surface.Canvas.Clear(SKColors.Empty);
+            _surface.Canvas.Clear(SKColors.Black);
 
-            foreach (var obj in DrawingObjects)
-                obj.Draw(_surface.Canvas);
+            //foreach (var obj in DrawingObjects)
+            //    obj.Draw(_surface.Canvas);
         }
 
         /// <inheritdoc />
@@ -120,6 +119,12 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel
         private void InitializeCollectionSynchronization()
         {
             BindingOperations.EnableCollectionSynchronization(DrawingObjects, _collectionLocker);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            _surface?.Dispose();
         }
     }
 }

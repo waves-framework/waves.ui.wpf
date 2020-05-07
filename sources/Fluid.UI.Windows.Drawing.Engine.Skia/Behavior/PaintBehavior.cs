@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
-using Fluid.UI.Windows.Drawing.Controls.Canvas.ViewModel;
+using Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.Desktop;
 using SkiaSharp.Views.WPF;
 
-namespace Fluid.UI.Windows.Drawing.Behaviors
+namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
 {
     /// <summary>
     ///     Paint surface command behavior.
     /// </summary>
     public class PaintBehavior : Behavior<SKElement>
     {
-        private CanvasViewModel _dataContext;
+        private DrawingElementPresentationViewModel _dataContext;
 
         /// <inheritdoc />
         protected override void OnAttached()
@@ -82,7 +82,7 @@ namespace Fluid.UI.Windows.Drawing.Behaviors
             var element = sender as FrameworkElement;
             if (element == null) return;
 
-            var dataContext = element.DataContext as CanvasViewModel;
+            var dataContext = element.DataContext as DrawingElementPresentationViewModel;
             if (dataContext == null) return;
 
             _dataContext = dataContext;

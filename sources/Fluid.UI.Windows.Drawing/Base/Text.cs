@@ -1,6 +1,5 @@
 ﻿using Fluid.Core.Base;
-using Fluid.UI.Windows.Drawing.Extensions;
-using SkiaSharp;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
 
 namespace Fluid.UI.Windows.Drawing.Base
 {
@@ -11,33 +10,6 @@ namespace Fluid.UI.Windows.Drawing.Base
     {
         /// <inheritdoc />
         public override string Name { get; set; } = "Text";
-
-        /// <inheritdoc />
-        public override Size Size
-        {
-            get
-            {
-                if (Style == null) return new Size(0, 0);
-
-                using (var paint = new SKPaint
-                {
-                    TextSize = Style.FontSize,
-                    Color = Style.Color.ToSkColor(),
-                    IsStroke = false,
-                    SubpixelText = true,
-                    IsAntialias = IsAntialiased,
-                    TextAlign = Style.Alignment.ToSkTextAlign(),
-                })
-                {
-                    paint.Typeface = SKTypeface.FromFamilyName(Style.FontName);
-
-                    var bounds = new SKRect();
-                    paint.MeasureText(Value, ref bounds);
-
-                    return new Size(bounds.Width, bounds.Height);
-                }
-            }
-        }
 
         /// <summary>
         /// Gets or sets text style.
@@ -55,23 +27,14 @@ namespace Fluid.UI.Windows.Drawing.Base
         public Point Location { get; set; } = new Point(0, 0);
 
         /// <inheritdoc />
-        public override void Draw(SKCanvas canvas)
+        public override void Draw(IDrawingElement e)
         {
             if (Style == null) return;
             if (!IsVisible) return;
 
-            using (var paint = new SKPaint
+            using (var paint = new TextPaint { Fill = Fill, IsAntialiased = IsAntialiased, Opacity = Opacity, TextStyle = Style})
             {
-                TextSize = Style.FontSize,
-                Color = Style.Color.ToSkColor(),
-                IsStroke = false,
-                SubpixelText = true,
-                IsAntialias = true,
-                TextAlign = Style.Alignment.ToSkTextAlign(),
-            })
-            {
-                paint.Typeface = SKTypeface.FromFamilyName(Style.FontName);
-                canvas.DrawText(Value, Location.ToSkPoint(), paint);
+                e.DrawText(Location, Value, paint);
             }
         }
 

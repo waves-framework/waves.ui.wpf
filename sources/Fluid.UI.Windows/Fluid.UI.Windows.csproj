@@ -25,8 +25,12 @@
   <ItemGroup>
     <PackageReference Include="Fluid.Core" Version="2020.1.125" />
     <PackageReference Include="Fluid.Core.Base" Version="2020.1.125" />
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.24" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.25" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows.Drawing\Fluid.UI.Windows.Drawing.csproj" />
   </ItemGroup>
 
   <ItemGroup>

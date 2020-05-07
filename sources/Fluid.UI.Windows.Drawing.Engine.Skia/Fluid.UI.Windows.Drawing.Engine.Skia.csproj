@@ -10,4 +10,8 @@
     <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows.Drawing\Fluid.UI.Windows.Drawing.csproj" />
+  </ItemGroup>
+
 </Project>

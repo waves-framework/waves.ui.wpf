@@ -1,6 +1,5 @@
 ﻿using Fluid.Core.Base;
 using Fluid.UI.Windows.Drawing.Base.Interfaces;
-using SkiaSharp;
 
 namespace Fluid.UI.Windows.Drawing.Base
 {

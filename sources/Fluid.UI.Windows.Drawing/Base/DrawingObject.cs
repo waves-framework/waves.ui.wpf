@@ -1,7 +1,6 @@
 ﻿using System;
 using Fluid.Core.Base;
 using Fluid.UI.Windows.Drawing.Base.Interfaces;
-using SkiaSharp;
 using Object = Fluid.Core.Base.Object;
 
 namespace Fluid.UI.Windows.Drawing.Base

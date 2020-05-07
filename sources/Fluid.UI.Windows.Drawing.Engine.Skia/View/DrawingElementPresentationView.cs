@@ -2,34 +2,34 @@
 using System.ComponentModel;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
-using Fluid.Presentation.Interfaces;
-using Fluid.UI.Windows.Drawing.Behaviors;
+using Fluid.UI.Windows.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Drawing.Engine.Skia.Behavior;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.WPF;
 
-namespace Fluid.UI.Windows.Drawing.Controls.Canvas.View
+namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
 {
     /// <summary>
-    /// Drawing canvas.
+    ///     Drawing canvas.
     /// </summary>
     [Category("Fluid - Drawing")]
-    public class Canvas : SKElement, IPresentationView, IDisposable
+    public class DrawingElementPresentationView : SKElement, IDrawingElementPresentationView
     {
         private readonly Point _lastTouchPosition = new Point();
 
         /// <summary>
-        /// Creates new instance of <see cref="Canvas"/>.
+        ///     Creates new instance of <see cref="DrawingElementPresentationView" />.
         /// </summary>
-        public Canvas()
+        public DrawingElementPresentationView()
         {
             InitializeBehaviors();
             SubscribeEvents();
         }
 
         /// <summary>
-        /// Finalizes instance.
+        ///     Finalizes instance.
         /// </summary>
-        ~Canvas()
+        ~DrawingElementPresentationView()
         {
             Dispose();
         }
@@ -38,7 +38,7 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.View
         public event EventHandler<IMessage> MessageReceived;
 
         /// <summary>
-        /// Notifies when message received.
+        ///     Notifies when message received.
         /// </summary>
         /// <param name="e">Message.</param>
         protected virtual void OnMessageReceived(IMessage e)
@@ -47,7 +47,7 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.View
         }
 
         /// <summary>
-        /// Initializes behaviors.
+        ///     Initializes behaviors.
         /// </summary>
         private void InitializeBehaviors()
         {
@@ -55,15 +55,14 @@ namespace Fluid.UI.Windows.Drawing.Controls.Canvas.View
         }
 
         /// <summary>
-        /// Subscribes events.
+        ///     Subscribes events.
         /// </summary>
         private void SubscribeEvents()
         {
-            
         }
 
         /// <summary>
-        /// Unsubscribe events.
+        ///     Unsubscribe events.
         /// </summary>
         private void UnsubscribeEvents()
         {
