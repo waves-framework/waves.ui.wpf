@@ -57,7 +57,7 @@ namespace Fluid.UI.Windows.Controls.Modality.Base
         /// </summary>
         public ICommand Command { get; private set; }
 
-        /// <summary
+        /// <summary>
         /// Returns new "OK" action.
         /// </summary>
         /// <param name="action">Action.</param>

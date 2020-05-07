@@ -121,6 +121,9 @@
     <Page Update="Templates\Message.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\MessageObjects.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\Modality\View\Templates\ModalWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
