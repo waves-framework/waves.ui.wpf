@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
-using Fluid.UI.Windows.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Fluid.UI.Windows.Drawing.Engine.Skia.Behavior;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.WPF;
@@ -13,7 +13,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
     ///     Drawing canvas.
     /// </summary>
     [Category("Fluid - Drawing")]
-    public class DrawingElementPresentationView : SKElement, IDrawingElementPresentationView
+    public class DrawingElementPresentationView : SKElement, IDrawingElementView
     {
         private readonly Point _lastTouchPosition = new Point();
 

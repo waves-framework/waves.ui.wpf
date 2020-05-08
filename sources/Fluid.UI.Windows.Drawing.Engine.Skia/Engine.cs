@@ -1,5 +1,7 @@
 ﻿using System.Composition;
-using Fluid.UI.Windows.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
 using Fluid.UI.Windows.Drawing.Engine.Skia.View;
 using Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel;
 
@@ -15,13 +17,13 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia
         public string Name => "SKIA";
 
         /// <inheritdoc />
-        public IDrawingElementPresentationView GetView()
+        public IDrawingElementView GetView()
         {
             return new DrawingElementPresentationView();
         }
 
         /// <inheritdoc />
-        public IDrawingElementPresentationViewModel GetViewModel()
+        public IDrawingElementViewModel GetViewModel()
         {
             return new DrawingElementPresentationViewModel();
         }

@@ -15,7 +15,6 @@ using Fluid.UI.Windows.Controls.Modality.Presentation.Controllers;
 using Fluid.UI.Windows.Controls.Modality.Presentation.Controllers.Interfaces;
 using Fluid.UI.Windows.Controls.Modality.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Modality.View;
-using Fluid.UI.Windows.Drawing.Services.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 using Application = System.Windows.Application;
 
