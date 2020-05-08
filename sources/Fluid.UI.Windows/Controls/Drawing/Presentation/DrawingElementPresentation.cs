@@ -85,6 +85,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Presentation
             _view = view;
 
             _view.DataContext = _dataContext;
+            
+            dataContext.Update();
 
             OnPropertyChanged(nameof(DataContext));
             OnPropertyChanged(nameof(View));

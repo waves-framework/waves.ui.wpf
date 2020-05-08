@@ -67,7 +67,7 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
                 Location = new Point(300,300),
                 Style = new TextStyle()
                 {
-                    FontSize = 14,
+                    FontSize = 12,
                     FontFamily = "Lato",
                 }
             });
