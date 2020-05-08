@@ -1,6 +1,6 @@
 ﻿using System;
 using Fluid.Core.Base;
-using Fluid.UI.Windows.Drawing.Base.Enums;
+using Fluid.UI.Windows.Base.Enums;
 using SkiaSharp;
 
 namespace Fluid.UI.Windows.Drawing.Engine.Skia.Extensions

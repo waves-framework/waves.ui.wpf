@@ -1,51 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
 using System.Windows.Data;
 using Fluid.Presentation.Base;
-using Fluid.UI.Windows.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
+using Fluid.UI.Windows.Drawing.Engine.Skia.View;
 using SkiaSharp;
 
 namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
 {
     /// <summary>
-    /// Drawing canvas view model.
+    ///     Drawing canvas view model.
     /// </summary>
-    public class DrawingElementPresentationViewModel : PresentationViewModel, IDrawingElementPresentationViewModel
+    public class DrawingElementPresentationViewModel : PresentationViewModel, IDrawingElementViewModel
     {
         private readonly object _collectionLocker = new object();
 
-        private SKSurface _surface;
+        private readonly object _surfaceLocker = new object();
+
+        private DrawingElement _drawingElement;
 
         /// <summary>
-        /// Creates new instance of canvas view model.
+        ///     Gets or sets whether is drawing initialized.
         /// </summary>
-        public DrawingElementPresentationViewModel()
-        {
-
-        }
+        public bool IsDrawingInitialized { get; internal set; }
 
         /// <summary>
-        /// Redrawing requested event handler.
+        ///     Redrawing requested event handler.
         /// </summary>
-        public event EventHandler RedrawRequested; 
+        public event EventHandler RedrawRequested;
 
         /// <summary>
-        /// Gets or sets width.
+        ///     Gets or sets width.
         /// </summary>
         public float Width { get; internal set; }
 
         /// <summary>
-        /// Gets or sets height.
+        ///     Gets or sets height.
         /// </summary>
         public float Height { get; internal set; }
 
-        /// <inheritdoc />
-        public bool IsDrawingInitialized { get; internal set; }
 
         /// <inheritdoc />
-        public ICollection<IDrawingObject> DrawingObjects { get; private set; } = new ObservableCollection<IDrawingObject>();
+        public ICollection<IDrawingObject> DrawingObjects { get; } = new ObservableCollection<IDrawingObject>();
 
         /// <inheritdoc />
         public override void Initialize()
@@ -56,27 +54,16 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         /// <inheritdoc />
         public void AddDrawingObject(IDrawingObject obj)
         {
-            throw new System.NotImplementedException();
+            DrawingObjects.Add(obj);
+
+            OnRedrawRequested();
         }
 
         /// <inheritdoc />
         public void RemoveDrawingObject(IDrawingObject obj)
         {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Sets surface pointer.
-        /// </summary>
-        /// <param name="ptr">Pointer.</param>
-        public void SetSurfacePointer(IntPtr ptr)
-        {
-            var handle = GCHandle.FromIntPtr(ptr);
-            
-            _surface = handle.Target as SKSurface;
-
-            if (_surface != null) 
-                IsDrawingInitialized = true;
+            DrawingObjects.Remove(obj);
+            OnRedrawRequested();
         }
 
         /// <inheritdoc />
@@ -85,28 +72,37 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
             OnRedrawRequested();
         }
 
-        /// <inheritdoc />
-        public virtual void Draw()
+        /// <summary>
+        ///     Draws objects.
+        /// </summary>
+        public virtual void Draw(SKSurface surface)
         {
-            if (!IsDrawingInitialized) return;
+            if (_drawingElement == null)
+            {
+                _drawingElement = new DrawingElement(surface);
+            }
+            else
+            {
+                if (_drawingElement.Surface == null) _drawingElement.Surface = surface;
 
-            if (_surface == null) return;
-            if (_surface.Handle == IntPtr.Zero) return;
+                if (_drawingElement.Surface.Handle == IntPtr.Zero) _drawingElement.Surface = surface;
+            }
 
-            _surface.Canvas.Clear(SKColors.Black);
+            surface.Canvas.Clear(SKColor.Empty);
 
-            //foreach (var obj in DrawingObjects)
-            //    obj.Draw(_surface.Canvas);
+            foreach (var obj in DrawingObjects)
+                obj.Draw(_drawingElement);
         }
 
         /// <inheritdoc />
         public void Clear()
         {
-            throw new System.NotImplementedException();
+            DrawingObjects.Clear();
+            Update();
         }
 
         /// <summary>
-        /// Notifies when redrawing requested.
+        ///     Notifies when redrawing requested.
         /// </summary>
         protected virtual void OnRedrawRequested()
         {
@@ -114,7 +110,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         }
 
         /// <summary>
-        /// Initializes collection synchronization.
+        ///     Initializes collection synchronization.
         /// </summary>
         private void InitializeCollectionSynchronization()
         {
@@ -124,7 +120,6 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         /// <inheritdoc />
         public void Dispose()
         {
-            _surface?.Dispose();
         }
     }
 }

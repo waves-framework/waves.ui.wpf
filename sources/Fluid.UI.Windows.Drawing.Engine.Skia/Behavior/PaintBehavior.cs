@@ -49,8 +49,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         /// <param name="e">Arguments.</param>
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var element = sender as FrameworkElement;
-            if (element == null) return;
+            if (!(sender is FrameworkElement element)) return;
 
             AssociatedObject.InvalidateMeasure();
             AssociatedObject.InvalidateArrange();
@@ -70,6 +69,9 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
             {
                 _dataContext.IsDrawingInitialized = true;
             }
+
+            var skElement = AssociatedObject;
+            skElement.InvalidateVisual();
         }
 
         /// <summary>
@@ -79,11 +81,8 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         /// <param name="e">Arguments.</param>
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var element = sender as FrameworkElement;
-            if (element == null) return;
-
-            var dataContext = element.DataContext as DrawingElementPresentationViewModel;
-            if (dataContext == null) return;
+            if (!(sender is FrameworkElement element)) return;
+            if (!(element.DataContext is DrawingElementPresentationViewModel dataContext)) return;
 
             _dataContext = dataContext;
 
@@ -117,20 +116,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         /// <param name="e">Arguments.</param>
         private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
-            if (_dataContext == null) return;
-
-            //if (_dataContext.Surface == null)
-            //    _dataContext.Surface = e.Surface;
-
-            if (!_dataContext.IsDrawingInitialized)
-            {
-                var handle = GCHandle.Alloc(e.Surface);
-                var ptr = GCHandle.ToIntPtr(handle);
-
-                _dataContext.SetSurfacePointer(ptr);
-            }
-
-            _dataContext.Draw();
+            _dataContext?.Draw(e.Surface);
         }
     }
 }
