@@ -12,13 +12,13 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
     /// <summary>
     /// Skia drawing element.
     /// </summary>
-    public class DrawingElement : IDrawingElement
+    public class SkiaDrawingElement : IDrawingElement
     {
         /// <summary>
-        /// Creates new instance of <see cref="DrawingElement"/>
+        /// Creates new instance of <see cref="SkiaDrawingElement"/>
         /// </summary>
         /// <param name="surface">Surface.</param>
-        public DrawingElement(SKSurface surface)
+        public SkiaDrawingElement(SKSurface surface)
         {
             Surface = surface;
         }

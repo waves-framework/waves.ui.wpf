@@ -11,6 +11,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces
     public interface IDrawingElementViewModel : IPresentationViewModel, IDisposable
     {
         /// <summary>
+        /// Gets or sets drawing element.
+        /// </summary>
+        IDrawingElement DrawingElement { get; set; }
+
+        /// <summary>
         ///     Gets collection of drawing object.
         /// </summary>
         ICollection<IDrawingObject> DrawingObjects { get; }
@@ -31,6 +36,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces
         /// Updates canvas.
         /// </summary>
         void Update();
+
+        /// <summary>
+        /// Draws on element.
+        /// </summary>
+        void Draw(object element);
 
         /// <summary>
         /// Clears drawing objects.

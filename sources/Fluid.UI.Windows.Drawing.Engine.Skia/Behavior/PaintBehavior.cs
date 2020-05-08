@@ -13,7 +13,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
     /// </summary>
     public class PaintBehavior : Behavior<SKElement>
     {
-        private DrawingElementPresentationViewModel _dataContext;
+        private SkiaDrawingElementViewModel _dataContext;
 
         /// <inheritdoc />
         protected override void OnAttached()
@@ -82,7 +82,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (!(sender is FrameworkElement element)) return;
-            if (!(element.DataContext is DrawingElementPresentationViewModel dataContext)) return;
+            if (!(element.DataContext is SkiaDrawingElementViewModel dataContext)) return;
 
             _dataContext = dataContext;
 

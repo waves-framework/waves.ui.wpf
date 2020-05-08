@@ -13,14 +13,14 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
     ///     Drawing canvas.
     /// </summary>
     [Category("Fluid - Drawing")]
-    public class DrawingElementPresentationView : SKElement, IDrawingElementView
+    public class SkiaDrawingElementView : SKElement, IDrawingElementView
     {
         private readonly Point _lastTouchPosition = new Point();
 
         /// <summary>
-        ///     Creates new instance of <see cref="DrawingElementPresentationView" />.
+        ///     Creates new instance of <see cref="SkiaDrawingElementView" />.
         /// </summary>
-        public DrawingElementPresentationView()
+        public SkiaDrawingElementView()
         {
             InitializeBehaviors();
             SubscribeEvents();
@@ -29,7 +29,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         /// <summary>
         ///     Finalizes instance.
         /// </summary>
-        ~DrawingElementPresentationView()
+        ~SkiaDrawingElementView()
         {
             Dispose();
         }

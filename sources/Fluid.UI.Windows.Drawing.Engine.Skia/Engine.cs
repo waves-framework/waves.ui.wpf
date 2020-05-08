@@ -19,13 +19,13 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia
         /// <inheritdoc />
         public IDrawingElementView GetView()
         {
-            return new DrawingElementPresentationView();
+            return new SkiaDrawingElementView();
         }
 
         /// <inheritdoc />
         public IDrawingElementViewModel GetViewModel()
         {
-            return new DrawingElementPresentationViewModel();
+            return new SkiaDrawingElementViewModel();
         }
     }
 }
