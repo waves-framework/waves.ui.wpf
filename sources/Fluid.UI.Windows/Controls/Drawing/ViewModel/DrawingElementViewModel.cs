@@ -11,9 +11,17 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
     /// <summary>
     ///     Drawing element view model base.
     /// </summary>
-    public abstract class DrawingElementViewModel : PresentationViewModel, IDrawingElementViewModel
+    public class DrawingElementViewModel : PresentationViewModel, IDrawingElementViewModel
     {
         private readonly object _collectionLocker = new object();
+
+        /// <summary>
+        /// Creates new instance of <see cref="DrawingElementViewModel"/>.
+        /// </summary>
+        public DrawingElementViewModel(IDrawingElement drawingElement)
+        {
+            DrawingElement = drawingElement;
+        }
 
         /// <summary>
         ///     Redrawing requested event handler.
@@ -21,24 +29,24 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
         public event EventHandler RedrawRequested;
 
         /// <summary>
-        ///     Gets or sets drawing element.
-        /// </summary>
-        public IDrawingElement DrawingElement { get; set; }
-
-        /// <summary>
         ///     Gets or sets whether is drawing initialized.
         /// </summary>
-        public bool IsDrawingInitialized { get; internal set; }
+        public bool IsDrawingInitialized { get; set; }
 
         /// <summary>
         ///     Gets or sets width.
         /// </summary>
-        public float Width { get; internal set; }
+        public float Width { get; set; }
 
         /// <summary>
         ///     Gets or sets height.
         /// </summary>
-        public float Height { get; internal set; }
+        public float Height { get; set; }
+
+        /// <summary>
+        ///     Gets or sets drawing element.
+        /// </summary>
+        public IDrawingElement DrawingElement { get; set; }
 
         /// <inheritdoc />
         public ICollection<IDrawingObject> DrawingObjects { get; } = new ObservableCollection<IDrawingObject>();
@@ -73,10 +81,16 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
         /// <summary>
         ///     Draws objects.
         /// </summary>
-        public abstract void Draw(object element);
+        public void Draw(object element)
+        {
+            DrawingElement?.Draw(element, DrawingObjects);
+        }
 
         /// <inheritdoc />
-        public abstract void Dispose();
+        public void Dispose()
+        {
+            DrawingElement?.Dispose();
+        }
 
         /// <inheritdoc />
         public void Clear()

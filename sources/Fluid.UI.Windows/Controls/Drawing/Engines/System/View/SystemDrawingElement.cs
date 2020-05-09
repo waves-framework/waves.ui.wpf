@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,19 +12,10 @@ using Size = Fluid.Core.Base.Size;
 namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
 {
     /// <summary>
-    /// Skia drawing element.
+    /// Drawing element.
     /// </summary>
-    public class DrawingElement : IDrawingElement
+    public class SystemDrawingElement : IDrawingElement
     {
-        /// <summary>
-        /// Creates new instance of <see cref="DrawingElement"/>
-        /// </summary>
-        /// <param name="canvas">Canvas.</param>
-        public DrawingElement(Canvas canvas)
-        {
-            Canvas = canvas;
-        }
-
         /// <summary>
         /// Gets or sets SKSurface.
         /// </summary>
@@ -32,6 +24,21 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
         /// <inheritdoc />
         public void Dispose()
         {
+        }
+
+        /// <inheritdoc />
+        public void Draw(object element, ICollection<IDrawingObject> drawingObjects)
+        {
+            var canvas = element as Canvas;
+            if (canvas == null) return;
+
+            if (Canvas == null)
+                Canvas = canvas;
+
+            Canvas.Children.Clear();
+
+            foreach (var obj in drawingObjects)
+                obj.Draw(this);
         }
 
         /// <inheritdoc />

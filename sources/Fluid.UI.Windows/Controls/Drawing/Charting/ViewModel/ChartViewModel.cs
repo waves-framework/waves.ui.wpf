@@ -1,50 +1,51 @@
 ﻿using System.Collections.Generic;
 using Fluid.Core.Base;
 using Fluid.UI.Windows.Controls.Drawing.Base;
+using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Charting.Base;
 using Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.Engines.System.ViewModel;
+using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 {
     /// <summary>
     /// Chart view model base.
     /// </summary>
-    public abstract class ChartViewModel : DrawingElementPresentationViewModel, IChartViewModel
+    public abstract class ChartViewModel : DrawingElementViewModel, IChartViewModel
     {
-        private bool _isZoomEnabled;
-        private bool _isTitleVisible;
-        private bool _isXAxisPrimaryTicksVisible;
-        private bool _isXAxisAdditionalTicksVisible;
-        private bool _isXAxisSignaturesVisible;
-        private bool _isXAxisZeroLineVisible;
-        private bool _isXAxisDescriptionVisible;
-        private bool _isYAxisPrimaryTicksVisible;
-        private bool _isYAxisAdditionalTicksVisible;
-        private bool _isYAxisSignaturesVisible;
-        private bool _isYAxisZeroLineVisible;
-        private bool _isYAxisDescriptionVisible;
-        private bool _isBorderVisible;
-        private string _title;
-        private string _xAxisName;
-        private string _xAxisUnit;
-        private string _yAxisName;
-        private string _yAxisUnit;
-        private float _xMin;
-        private float _xMax;
-        private float _yMin;
-        private float _yMax;
-        private int _xAxisPrimaryTicksCount;
-        private int _xAxisAdditionalTicksCount;
-        private int _yAxisPrimaryTicksCount;
-        private int _yAxisAdditionalTicksCount;
-        private float _xAxisPrimaryTickThickness;
-        private float _xAxisAdditionalTickThickness;
-        private float _xAxisZeroLineThickness;
-        private float _yAxisPrimaryTickThickness;
-        private float _yAxisAdditionalTickThickness;
-        private float _yAxisZeroLineThickness;
-        private float _borderThickness;
+        private bool _isZoomEnabled = true;
+        private bool _isTitleVisible = true;
+        private bool _isXAxisPrimaryTicksVisible = true;
+        private bool _isXAxisAdditionalTicksVisible = true;
+        private bool _isXAxisSignaturesVisible = true;
+        private bool _isXAxisZeroLineVisible = true;
+        private bool _isXAxisDescriptionVisible = true;
+        private bool _isYAxisPrimaryTicksVisible = true;
+        private bool _isYAxisAdditionalTicksVisible = true;
+        private bool _isYAxisSignaturesVisible = true;
+        private bool _isYAxisZeroLineVisible = true;
+        private bool _isYAxisDescriptionVisible = true;
+        private bool _isBorderVisible = true;
+        private string _title = "New chart";
+        private string _xAxisName = "X axis";
+        private string _xAxisUnit = "unit";
+        private string _yAxisName = "Y axis";
+        private string _yAxisUnit = "unit";
+        private float _xMin = 0;
+        private float _xMax = 1;
+        private float _yMin = -1;
+        private float _yMax = 1;
+        private int _xAxisPrimaryTicksCount = 4;
+        private int _xAxisAdditionalTicksCount = 4;
+        private int _yAxisPrimaryTicksCount = 4;
+        private int _yAxisAdditionalTicksCount = 4;
+        private float _xAxisPrimaryTickThickness = 1;
+        private float _xAxisAdditionalTickThickness = 1;
+        private float _xAxisZeroLineThickness = 1;
+        private float _yAxisPrimaryTickThickness = 1;
+        private float _yAxisAdditionalTickThickness = 1;
+        private float _yAxisZeroLineThickness = 1;
+        private float _borderThickness = 1;
         private float[] _xAxisPrimaryTicksDashArray;
         private float[] _xAxisAdditionalTicksDashArray;
         private float[] _xAxisZeroLineDashArray;
@@ -59,6 +60,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         private Color _yAxisZeroLineColor;
         private Color _borderColor;
         private TextStyle _textStyle;
+
+        /// <inheritdoc />
+        protected ChartViewModel(IDrawingElement drawingElement) : base(drawingElement)
+        {
+        }
 
         /// <inheritdoc />
         public bool IsZoomEnabled

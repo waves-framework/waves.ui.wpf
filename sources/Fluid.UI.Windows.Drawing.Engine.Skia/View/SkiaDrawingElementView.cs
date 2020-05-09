@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Fluid.UI.Windows.Drawing.Engine.Skia.Behavior;
+using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.WPF;
 
@@ -51,7 +51,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         /// </summary>
         private void InitializeBehaviors()
         {
-            Interaction.GetBehaviors(this).Add(new PaintBehavior());
+            Interaction.GetBehaviors(this).Add(new SkiaPaintBehavior());
         }
 
         /// <summary>
@@ -72,7 +72,6 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         public void Dispose()
         {
             GC.SuppressFinalize(this);
-
             UnsubscribeEvents();
         }
     }

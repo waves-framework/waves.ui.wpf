@@ -4,8 +4,8 @@ using System.Composition;
 using System.Text;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Engines.System.View;
-using Fluid.UI.Windows.Controls.Drawing.Engines.System.ViewModel;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Engines.System
@@ -22,13 +22,13 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System
         /// <inheritdoc />
         public IDrawingElementView GetView()
         {
-            return new DrawingElementPresentationView();
+            return new SystemDrawingElementView();
         }
 
         /// <inheritdoc />
         public IDrawingElementViewModel GetViewModel()
         {
-            return new DrawingElementPresentationViewModel();
+            return new DrawingElementViewModel(new SystemDrawingElement());
         }
     }
 }
