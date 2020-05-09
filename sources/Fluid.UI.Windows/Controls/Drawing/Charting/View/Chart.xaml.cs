@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace Fluid.UI.Windows.Controls.Drawing.Charting.View
 {
     /// <summary>
-    /// Логика взаимодействия для Chart2D.xaml
+    /// Логика взаимодействия для Chart.xaml
     /// </summary>
-    public partial class Chart2D : UserControl
+    public partial class Chart : UserControl
     {
-        public Chart2D()
+        public Chart()
         {
             InitializeComponent();
         }
