@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Composition;
-using System.Text;
+﻿using System.Composition;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Engines.System.View;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.ViewModel;
-using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Engines.System
 {
     /// <summary>
-    /// Engine.
+    ///     Engine.
     /// </summary>
     [Export(typeof(IDrawingEngine))]
     public class Engine : IDrawingEngine
@@ -26,9 +21,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System
         }
 
         /// <inheritdoc />
-        public IDrawingElementViewModel GetViewModel()
+        public IDrawingElement GetDrawingElement()
         {
-            return new DrawingElementViewModel(new SystemDrawingElement());
+            return new SystemDrawingElement();
         }
     }
 }

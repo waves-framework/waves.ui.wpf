@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -12,12 +13,12 @@ using Size = Fluid.Core.Base.Size;
 namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
 {
     /// <summary>
-    /// Drawing element.
+    ///     Drawing element.
     /// </summary>
     public class SystemDrawingElement : IDrawingElement
     {
         /// <summary>
-        /// Gets or sets SKSurface.
+        ///     Gets or sets drawing canvas.
         /// </summary>
         public Canvas Canvas { get; set; }
 
@@ -47,23 +48,36 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
             var x = location.X - radius;
             var y = location.Y - radius;
 
-            Canvas.Children.Add(new Ellipse()
+            Canvas.Children.Add(new Ellipse
             {
                 VerticalAlignment = VerticalAlignment.Top,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Margin = new Thickness(x,y,0,0),
+                Margin = new Thickness(x, y, 0, 0),
                 Width = radius * 2,
                 Height = radius * 2,
                 Fill = new SolidColorBrush(paint.Fill.ToSystemColor()),
                 Stroke = new SolidColorBrush(paint.Stroke.ToSystemColor()),
-                StrokeThickness = paint.StrokeThickness,
+                StrokeThickness = paint.StrokeThickness
             });
         }
 
         /// <inheritdoc />
         public void DrawLine(Point point1, Point point2, IPaint paint)
         {
-            Canvas.Children.Add(new Line()
+            var dashPattern = new DoubleCollection();
+
+            if (paint.DashPattern != null && paint.DashPattern.Length == 4)
+            {
+                dashPattern = new DoubleCollection()
+                {
+                    paint.DashPattern[0],
+                    paint.DashPattern[1],
+                    paint.DashPattern[2],
+                    paint.DashPattern[3],
+                };
+            }
+
+            Canvas.Children.Add(new Line
             {
                 VerticalAlignment = VerticalAlignment.Top,
                 HorizontalAlignment = HorizontalAlignment.Left,
@@ -74,13 +88,14 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
                 Fill = new SolidColorBrush(paint.Fill.ToSystemColor()),
                 Stroke = new SolidColorBrush(paint.Stroke.ToSystemColor()),
                 StrokeThickness = paint.StrokeThickness,
+                StrokeDashArray = dashPattern
             });
         }
 
         /// <inheritdoc />
         public void DrawRectangle(Point location, Size size, IPaint paint, float cornerRadius = 0)
         {
-            Canvas.Children.Add(new Border()
+            Canvas.Children.Add(new Border
             {
                 VerticalAlignment = VerticalAlignment.Top,
                 HorizontalAlignment = HorizontalAlignment.Left,
@@ -97,7 +112,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
         /// <inheritdoc />
         public void DrawText(Point location, string text, ITextPaint paint)
         {
-            var textBlock = new TextBlock()
+            var textBlock = new TextBlock
             {
                 VerticalAlignment = VerticalAlignment.Top,
                 HorizontalAlignment = HorizontalAlignment.Left,
@@ -112,9 +127,29 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
             textBlock.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
             textBlock.Arrange(new Rect(0, 0, textBlock.DesiredSize.Width, textBlock.DesiredSize.Height));
 
-            textBlock.Margin = new Thickness(location.X, location.Y - textBlock.ActualHeight,0,0);
+            textBlock.Margin = new Thickness(location.X, location.Y - textBlock.ActualHeight, 0, 0);
 
             Canvas.Children.Add(textBlock);
+        }
+
+        /// <inheritdoc />
+        public Size MeasureText(string text, ITextPaint paint)
+        {
+            var textBlock = new TextBlock
+            {
+                VerticalAlignment = VerticalAlignment.Top,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Text = text,
+                Foreground = new SolidColorBrush(paint.Fill.ToSystemColor()),
+                FontSize = paint.TextStyle.FontSize,
+                FontFamily = new FontFamily(paint.TextStyle.FontFamily),
+                TextAlignment = paint.TextStyle.Alignment.ToSystemTextAlignment()
+            };
+
+            textBlock.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
+            textBlock.Arrange(new Rect(0, 0, textBlock.DesiredSize.Width, textBlock.DesiredSize.Height));
+
+            return new Size(Convert.ToSingle(textBlock.ActualWidth), Convert.ToSingle(textBlock.ActualHeight));
         }
     }
 }

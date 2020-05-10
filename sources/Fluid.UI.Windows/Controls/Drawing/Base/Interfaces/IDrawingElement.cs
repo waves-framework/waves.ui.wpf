@@ -48,5 +48,13 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
         /// <param name="text">Text.</param>
         /// <param name="paint">Paint.</param>
         void DrawText(Point location, string text, ITextPaint paint);
+
+        /// <summary>
+        /// Measures text size.
+        /// </summary>
+        /// <param name="text">Text.</param>
+        /// <param name="paint">Paint.</param>
+        /// <returns>Text's size.</returns>
+        Size MeasureText(string text, ITextPaint paint);
     }
 }

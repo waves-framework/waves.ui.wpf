@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using Fluid.Core.Base;
 using Fluid.Presentation.Base;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
@@ -43,6 +44,12 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
         /// </summary>
         public float Height { get; set; }
 
+        /// <inheritdoc />
+        public Color Foreground { get; set; } = Color.Black;
+
+        /// <inheritdoc />
+        public Color Background { get; set; } = Color.White;
+
         /// <summary>
         ///     Gets or sets drawing element.
         /// </summary>
@@ -73,7 +80,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
         }
 
         /// <inheritdoc />
-        public void Update()
+        public virtual void Update()
         {
             OnRedrawRequested();
         }
@@ -81,7 +88,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
         /// <summary>
         ///     Draws objects.
         /// </summary>
-        public void Draw(object element)
+        public virtual void Draw(object element)
         {
             DrawingElement?.Draw(element, DrawingObjects);
         }

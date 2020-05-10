@@ -37,7 +37,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base
                 Stroke = Stroke,
                 IsAntialiased = IsAntialiased,
                 Opacity = Opacity,
-                StrokeThickness = StrokeThickness
+                StrokeThickness = StrokeThickness,
+                DashPattern = DashPattern
             };
 
             e.DrawLine(Point1, Point2, paint);

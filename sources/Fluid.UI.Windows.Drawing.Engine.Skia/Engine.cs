@@ -1,5 +1,7 @@
 ﻿using System.Composition;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.Charting.View.Interface;
+using Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
@@ -23,9 +25,9 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia
         }
 
         /// <inheritdoc />
-        public IDrawingElementViewModel GetViewModel()
+        public IDrawingElement GetDrawingElement()
         {
-            return new DrawingElementViewModel(new SkiaDrawingElement());
+            return new SkiaDrawingElement();
         }
     }
 }

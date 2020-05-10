@@ -95,8 +95,6 @@ namespace Fluid.UI.Windows.Services
             InitializeSelectedTheme();
             InitializeSystemThemeCheckerDaemon();
 
-            
-
             OnMessageReceived(this,
                 new Message("Initialization", "Application attached - " + application, Name, MessageType.Information));
         }
@@ -285,12 +283,9 @@ namespace Fluid.UI.Windows.Services
                 OnMessageReceived(this,
                     new Message("Theme Service", "Error initializing system accent theme:\r\n" + e, Name, MessageType.Error));
             }
-           
 
             try
-            {
-                
-                    
+            { 
                 Themes.Add(new Theme("Dark / System accent", Guid.Parse("842FB00F-1B3B-4FE1-BB47-EC80BF99B623"),
                     new ResourceDictionary
                     {
