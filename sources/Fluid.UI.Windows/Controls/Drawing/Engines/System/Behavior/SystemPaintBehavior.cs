@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Fluid.UI.Windows.Controls.Drawing.Behavior;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel;
+using Fluid.UI.Windows.Helpers;
 using Microsoft.Xaml.Behaviors;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.Behavior
@@ -45,7 +46,10 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.Behavior
         {
             base.OnRedrawRequested(sender, e);
 
-            DataContext?.Draw(AssociatedObject);
+            DispatcherHelper.Invoke(() =>
+            {
+                DataContext?.Draw(AssociatedObject);
+            });
         }
     }
 }

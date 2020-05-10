@@ -60,7 +60,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
                 Color = paint.Stroke.ToSkColor(paint.Opacity),
                 IsAntialias = paint.IsAntialiased,
                 StrokeWidth = paint.StrokeThickness,
-                IsStroke = true
+                IsStroke = true,
             })
             {
                 Surface.Canvas.DrawCircle(location.X, location.Y, radius, skPaint);

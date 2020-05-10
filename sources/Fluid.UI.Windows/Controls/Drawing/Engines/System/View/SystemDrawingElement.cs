@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Extensions;
+using Fluid.UI.Windows.Helpers;
 using Point = Fluid.Core.Base.Point;
 using Size = Fluid.Core.Base.Size;
 
@@ -57,7 +58,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
                 Height = radius * 2,
                 Fill = new SolidColorBrush(paint.Fill.ToSystemColor()),
                 Stroke = new SolidColorBrush(paint.Stroke.ToSystemColor()),
-                StrokeThickness = paint.StrokeThickness
+                StrokeThickness = paint.StrokeThickness,
+                Opacity = paint.Opacity
             });
         }
 
@@ -88,7 +90,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
                 Fill = new SolidColorBrush(paint.Fill.ToSystemColor()),
                 Stroke = new SolidColorBrush(paint.Stroke.ToSystemColor()),
                 StrokeThickness = paint.StrokeThickness,
-                StrokeDashArray = dashPattern
+                StrokeDashArray = dashPattern,
+                Opacity = paint.Opacity
             });
         }
 
@@ -105,7 +108,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
                 Background = new SolidColorBrush(paint.Fill.ToSystemColor()),
                 BorderBrush = new SolidColorBrush(paint.Stroke.ToSystemColor()),
                 BorderThickness = new Thickness(paint.StrokeThickness),
-                CornerRadius = new CornerRadius(cornerRadius)
+                CornerRadius = new CornerRadius(cornerRadius),
+                Opacity = paint.Opacity
             });
         }
 
@@ -121,7 +125,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
                 FontSize = paint.TextStyle.FontSize,
                 FontFamily = new FontFamily(paint.TextStyle.FontFamily),
                 Margin = new Thickness(location.X, location.Y, 0, 0),
-                TextAlignment = paint.TextStyle.Alignment.ToSystemTextAlignment()
+                TextAlignment = paint.TextStyle.Alignment.ToSystemTextAlignment(),
+                Opacity = paint.Opacity
             };
 
             textBlock.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
@@ -143,7 +148,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
                 Foreground = new SolidColorBrush(paint.Fill.ToSystemColor()),
                 FontSize = paint.TextStyle.FontSize,
                 FontFamily = new FontFamily(paint.TextStyle.FontFamily),
-                TextAlignment = paint.TextStyle.Alignment.ToSystemTextAlignment()
+                TextAlignment = paint.TextStyle.Alignment.ToSystemTextAlignment(),
+                Opacity = paint.Opacity
             };
 
             textBlock.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));

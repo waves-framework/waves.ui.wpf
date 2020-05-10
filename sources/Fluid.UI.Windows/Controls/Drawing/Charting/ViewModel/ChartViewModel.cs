@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using Fluid.Core.Base;
+using Fluid.Core.Base.EventArgs;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Base;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Charting.Base;
@@ -82,6 +84,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         private Color _borderColor = Color.Black;
 
         private TextStyle _textStyle = new TextStyle();
+        private IInputService _inputService;
 
         /// <inheritdoc />
         public ChartViewModel(IDrawingElement drawingElement) : base(drawingElement)
@@ -665,6 +668,32 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         }
 
         /// <summary>
+        /// Gets or sets input service.
+        /// </summary>
+        public IInputService InputService
+        {
+            get => _inputService;
+            set
+            {
+                if (_inputService != null)
+                {
+                    _inputService.PointerStateChanged -= OnInputServicePointerStateChanged;
+                    _inputService.KeyPressed -= OnInputServiceKeyPressed;
+                    _inputService.KeyReleased -= OnInputServiceKeyReleased;
+                }
+
+                _inputService = value;
+
+                if (_inputService != null)
+                {
+                    _inputService.PointerStateChanged += OnInputServicePointerStateChanged;
+                    _inputService.KeyPressed += OnInputServiceKeyPressed;
+                    _inputService.KeyReleased += OnInputServiceKeyReleased;
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets or sets whether CTRL key is pressed.
         /// </summary>
         protected bool IsCtrlPressed { get; set; }
@@ -1019,6 +1048,36 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                 CurrentXMin = XMin;
             if (CurrentXMax > XMax)
                 CurrentXMax = XMax;
+        }
+
+        /// <summary>
+        /// Actions when pointer state changed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnInputServicePointerStateChanged(object sender, Fluid.Core.Base.EventArgs.PointerEventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Actions when key pressed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnInputServiceKeyPressed(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Actions when key released.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnInputServiceKeyReleased(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

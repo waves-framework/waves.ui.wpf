@@ -20,7 +20,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
     {
         private readonly object _dataSetLocker = new object();
 
-        private readonly List<IDrawingObject> _drawingObjects = new List<IDrawingObject>();
+        private readonly List<IDrawingObject> _tempDrawingObjects = new List<IDrawingObject>();
 
         /// <inheritdoc />
         public DataSetChartViewModel(IDrawingElement drawingElement) : base(drawingElement)
@@ -59,8 +59,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         {
             if (Math.Abs(Width) < float.Epsilon || Math.Abs(Height) < float.Epsilon) return;
 
-            foreach (var obj in _drawingObjects)
-                DrawingObjects.Remove(obj);
+            ClearTempObject();
+
+           
 
             foreach (var dataSet in DataSets)
                 switch (dataSet.Type)
@@ -69,7 +70,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                         GenerateLinesForDataSet(dataSet);
                         break;
                     case DataSetType.Bar:
-                        //GenerateBarsForDataSet(dataSet);
+                        GenerateBarsForDataSet(dataSet);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -79,15 +80,13 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         }
 
         /// <summary>
-        /// Generates lines for data set.
+        ///     Generates lines for data set.
         /// </summary>
         /// <param name="dataSet">Data set.</param>
         private void GenerateLinesForDataSet(IDataSet dataSet)
         {
             if (dataSet.Data == null) return;
             if (dataSet.Data.Length == 0) return;
-
-            var objects = new List<IDrawingObject>();
 
             var visiblePoints = new List<Point> {new Point()};
             foreach (var point in dataSet.Data)
@@ -134,8 +133,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 
                 if (visiblePoints.Count > length) line.IsAntialiased = false;
 
-                DrawingObjects.Add(line);
-                _drawingObjects.Add(line);
+                AddTempObject(line);
             }
 
             if (IsMouseOver)
@@ -168,8 +166,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                     IsAntialiased = true
                 };
 
-                DrawingObjects.Add(ellipse);
-                _drawingObjects.Add(ellipse);
+                AddTempObject(ellipse);
 
                 var paint = new TextPaint
                 {
@@ -194,13 +191,12 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 
                 text.Location = new Point(text.Location.X + 12, text.Location.Y + size.Height / 2);
 
-                DrawingObjects.Add(text);
-                _drawingObjects.Add(text);
+                AddTempObject(text);
             }
         }
 
         /// <summary>
-        /// Generates bars for data set.
+        ///     Generates bars for data set.
         /// </summary>
         /// <param name="dataSet">Data set.</param>
         private void GenerateBarsForDataSet(IDataSet dataSet)
@@ -231,33 +227,31 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                 }
             }
 
-            // Применяем децимацию или интерполяцию
-            var length = (int)Width;
+            var length = (int) Width;
             var points = visiblePoints.Count > length
                 ? Resampling.LargestTriangleThreeBucketsDownsampling(visiblePoints.ToArray(), length)
                 : Resampling.SplineUpsampling(visiblePoints.ToArray(), length);
 
-            // Нормируем
             for (var i = 0; i < points.Length; i++)
-                points[i] = Valuation.NormalizePoint(points[i], (float)Width, (float)Height, CurrentXMin,
+                points[i] = Valuation.NormalizePoint(points[i], Width, Height, CurrentXMin,
                     CurrentYMin, CurrentXMax, CurrentYMax);
 
-            // Преобразуем в линии
             for (var i = 0; i < points.Length - 1; i++)
             {
                 var width = points[i + 1].X - points[i].X;
-                var height = (float)Height - points[i].Y;
+                var height = Height - points[i].Y;
 
                 var rectangle = new Rectangle
                 {
                     Fill = dataSet.Color,
                     IsAntialiased = false,
                     IsVisible = true,
-                    StrokeThickness = 1,
+                    StrokeThickness = 2,
                     Stroke = Background,
                     Location = points[i],
                     Width = width,
-                    Height = height
+                    Height = height,
+                    Opacity = 0.8f
                 };
 
                 if (visiblePoints.Count > length / 4)
@@ -270,7 +264,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                 {
                     // Добавляем подписи на столбцы
                     var ep = new Point(points[i].X + (points[i + 1].X - points[i].X) / 2, points[i].Y);
-                    var value = Valuation.DenormalizePointY2D(points[i].Y, (float)Height, CurrentYMin, CurrentYMax);
+                    var value = Valuation.DenormalizePointY2D(points[i].Y, Height, CurrentYMin, CurrentYMax);
 
                     var paint = new TextPaint
                     {
@@ -279,41 +273,44 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                         IsAntialiased = true
                     };
 
+                    var v = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
+
                     var text = new Text
                     {
                         Location = new Point(ep.X, ep.Y),
                         Style = TextStyle,
-                        Value = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture),
+                        Value = v,
                         IsVisible = true,
                         IsAntialiased = true
                     };
 
-                    var size = DrawingElement.MeasureText(Math.Round(value, 2).ToString(CultureInfo.InvariantCulture), paint);
+                    var size = DrawingElement.MeasureText(v, paint);
 
                     text.Location = new Point(text.Location.X - size.Width / 2, text.Location.Y - 6);
 
-                    DrawingObjects.Add(text);
+                    AddTempObject(text);
                 }
 
-                DrawingObjects.Add(rectangle);
+                AddTempObject(rectangle);
             }
 
             if (points.Length == 0) return;
 
             var lastIndex = points.Length - 1;
-            var lastWidth = (float)(Width - points[lastIndex].X);
-            var lastHeight = (float)Height - points[lastIndex].Y;
+            var lastWidth = Width - points[lastIndex].X;
+            var lastHeight = Height - points[lastIndex].Y;
 
             var lastRectangle = new Rectangle
             {
                 Fill = dataSet.Color,
                 IsAntialiased = false,
                 IsVisible = true,
-                StrokeThickness = 1,
+                StrokeThickness = 2,
                 Stroke = Background,
                 Location = points[lastIndex],
                 Width = lastWidth,
-                Height = lastHeight
+                Height = lastHeight,
+                Opacity = 0.8f
             };
 
 
@@ -325,28 +322,56 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 
             if (visiblePoints.Count <= length / 32)
             {
-                // Добавляем подписи на столбцы
                 var ep = new Point(points[lastIndex].X + (points[lastIndex].X - points[lastIndex].X) / 2,
                     points[lastIndex].Y);
-                var value = Valuation.DenormalizePointY2D(points[lastIndex].Y, (float)Height, CurrentYMin,
+                var value = Valuation.DenormalizePointY2D(points[lastIndex].Y, Height, CurrentYMin,
                     CurrentYMax);
+
+                var paint = new TextPaint
+                {
+                    TextStyle = TextStyle,
+                    Fill = Foreground,
+                    IsAntialiased = true
+                };
+
+                var v = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
 
                 var text = new Text
                 {
                     Location = new Point(ep.X, ep.Y),
                     Style = TextStyle,
-                    Value = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture),
+                    Value = v,
                     IsVisible = true,
                     IsAntialiased = true
                 };
 
-                var size = text.MeasureObject();
-                text.Location = new Point2D(text.Location.X - size.Width / 2 + lastWidth / 2, text.Location.Y - 6);
+                var size = DrawingElement.MeasureText(v, paint);
 
-                DrawingObjects.Add(text);
+                text.Location = new Point(text.Location.X - size.Width / 2 + lastWidth / 2, text.Location.Y - 6);
+
+                AddTempObject(text);
             }
 
-            DrawingObjects.Add(lastRectangle);
+            AddTempObject(lastRectangle);
+        }
+
+        /// <summary>
+        ///     Adds object.
+        /// </summary>
+        /// <param name="obj">Drawing object.</param>
+        private void AddTempObject(IDrawingObject obj)
+        {
+            _tempDrawingObjects.Add(obj);
+
+            DrawingObjects.Add(obj);
+        }
+
+        private void ClearTempObject()
+        {
+            foreach (var obj in _tempDrawingObjects)
+                DrawingObjects.Remove(obj);
+
+            _tempDrawingObjects.Clear();
         }
 
         /// <summary>

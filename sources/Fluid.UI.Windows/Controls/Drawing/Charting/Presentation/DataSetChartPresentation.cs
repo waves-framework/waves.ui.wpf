@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Documents;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Charting.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Charting.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Charting.View;
@@ -19,7 +20,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
         private ObservableCollection<IDataSet> _oldDataSets = new ObservableCollection<IDataSet>();
 
         /// <inheritdoc />
-        public DataSetChartPresentation(IDrawingService drawingService, IThemeService themeService) : base(drawingService, themeService)
+        public DataSetChartPresentation(IDrawingService drawingService, IThemeService themeService, IInputService inputService) : base(drawingService, themeService, inputService)
         {
         }
 
@@ -60,6 +61,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
 
             base.Initialize();
 
+            SubscribeEvents();
+
             dataContext.Update();
         }
 
@@ -82,7 +85,47 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
 
             _oldDataSets = context.DataSets;
 
+            UnsubscribeEvents();
+
             Update();
+        }
+
+        /// <summary>
+        /// Subscribes events.
+        /// </summary>
+        private void SubscribeEvents()
+        {
+            var view = View as ChartView;
+            if (view == null) return;
+
+            view.DrawingElementView.MouseMove += OnMouseMove;
+            view.DrawingElementView.MouseEnter += OnMouseEnter;
+            view.DrawingElementView.MouseLeave += OnMouseLeave;
+            view.DrawingElementView.MouseDown += OnMouseDown;
+            view.DrawingElementView.MouseUp += OnMouseUp;
+            view.DrawingElementView.MouseWheel += OnMouseWheel;
+            view.DrawingElementView.TouchEnter += OnTouchEnter;
+
+            //view.DrawingElementView.ManipulationDelta += OnManipulationDelta;
+        }
+
+        /// <summary>
+        /// Unsubscribes events.
+        /// </summary>
+        private void UnsubscribeEvents()
+        {
+            var view = View as ChartView;
+            if (view == null) return;
+
+            view.DrawingElementView.MouseMove -= OnMouseMove;
+            view.DrawingElementView.MouseEnter -= OnMouseEnter;
+            view.DrawingElementView.MouseLeave -= OnMouseLeave;
+            view.DrawingElementView.MouseDown -= OnMouseDown;
+            view.DrawingElementView.MouseUp -= OnMouseUp;
+            view.DrawingElementView.MouseWheel -= OnMouseWheel;
+            view.DrawingElementView.TouchEnter -= OnTouchEnter;
+
+            //view.DrawingElementView.ManipulationDelta += OnManipulationDelta;
         }
     }
 }

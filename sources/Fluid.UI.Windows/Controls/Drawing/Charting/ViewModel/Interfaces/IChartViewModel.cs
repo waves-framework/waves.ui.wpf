@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Fluid.Core.Base;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Base;
 using Fluid.UI.Windows.Controls.Drawing.Charting.Base;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
@@ -11,7 +12,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces
     /// </summary>
     public interface IChartViewModel : IDrawingElementViewModel
     {
-
         /// <summary>
         ///     Gets or sets whether zoom is enabled.
         /// </summary>
@@ -256,6 +256,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces
         ///     Gets or sets chart text style.
         /// </summary>
         TextStyle TextStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets input service.
+        /// </summary>
+        IInputService InputService { get; set; }
 
         /// <summary>
         /// Sets default ticks.
