@@ -33,10 +33,45 @@
 
         <Grid Grid.Row="2">
 
-            <ContentControl Content="{Binding DrawingElementPresentation.View, UpdateSourceTrigger=PropertyChanged}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
 
+            <Grid Grid.Column="0">
+
+                <ContentControl Content="{Binding ChartPresentation.View, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </Grid>
+
+            <Grid Grid.Column="2">
+
+                <ScrollViewer Margin="0,0,-24,-18">
+
+                    <StackPanel Margin="0,0,24,18">
+
+                        <TextBlock Text="Drawing engine" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                        <TextBlock Text="Drawing engine selection." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                        <ComboBox Height="36"
+                                  ItemsSource="{Binding DrawingService.Engines, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedItem="{Binding DrawingService.CurrentEngine, UpdateSourceTrigger=PropertyChanged}"
+                                  DisplayMemberPath="Name"
+                                  VerticalContentAlignment="Center"
+                                  Padding="12,0,12,0"
+                                  Margin="0,0,0,18"/>
+
+                    </StackPanel>
+
+                </ScrollViewer>
+
+            </Grid>
+
+            
         </Grid>
 
-</Grid>
+    </Grid>
 
 </UserControl>

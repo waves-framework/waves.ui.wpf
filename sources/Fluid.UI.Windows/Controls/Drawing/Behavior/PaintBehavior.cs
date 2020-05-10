@@ -1,30 +1,38 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Windows;
-using Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel;
+using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Microsoft.Xaml.Behaviors;
-using SkiaSharp.Views.Desktop;
-using SkiaSharp.Views.WPF;
 
-namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
+namespace Fluid.UI.Windows.Controls.Drawing.Behavior
 {
     /// <summary>
-    ///     Paint surface command behavior.
+    /// Paint behavior class.
     /// </summary>
-    public class PaintBehavior : Behavior<SKElement>
+    /// <typeparam name="T">Type.</typeparam>
+    public class PaintBehavior<T>: Behavior<T>
+        where T : FrameworkElement
     {
-        private DrawingElementPresentationViewModel _dataContext;
+        /// <summary>
+        /// Gets or sets data context.
+        /// </summary>
+        protected DrawingElementViewModel DataContext { get; set; }
+
+        /// <summary>
+        /// Creates new instance of <see cref="PaintBehavior{T}"/>
+        /// </summary>
+        public PaintBehavior()
+        {
+        }
 
         /// <inheritdoc />
         protected override void OnAttached()
         {
             base.OnAttached();
 
-            var skElement = AssociatedObject;
+            var element = AssociatedObject;
 
-            skElement.DataContextChanged += OnDataContextChanged;
-            skElement.SizeChanged += OnSizeChanged;
-            skElement.PaintSurface += OnPaintSurface;
+            element.DataContextChanged += OnDataContextChanged;
+            element.SizeChanged += OnSizeChanged;
         }
 
         /// <inheritdoc />
@@ -36,10 +44,9 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
 
             skElement.DataContextChanged -= OnDataContextChanged;
             skElement.SizeChanged -= OnSizeChanged;
-            skElement.PaintSurface -= OnPaintSurface;
 
-            if (_dataContext != null)
-                _dataContext.RedrawRequested -= OnRedrawRequested;
+            if (DataContext != null)
+                DataContext.RedrawRequested -= OnRedrawRequested;
         }
 
         /// <summary>
@@ -47,31 +54,30 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
-        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        protected virtual void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (!(sender is FrameworkElement element)) return;
 
             AssociatedObject.InvalidateMeasure();
             AssociatedObject.InvalidateArrange();
 
-            if (_dataContext == null) return;
+            if (DataContext == null) return;
 
             var size = e.NewSize;
 
-            _dataContext.Width = Convert.ToSingle(size.Width);
-            _dataContext.Height = Convert.ToSingle(size.Height);
+            DataContext.Width = Convert.ToSingle(size.Width);
+            DataContext.Height = Convert.ToSingle(size.Height);
 
             if (Math.Abs(size.Width) < double.Epsilon || Math.Abs(size.Height) < double.Epsilon)
             {
-                _dataContext.IsDrawingInitialized = false;
+                DataContext.IsDrawingInitialized = false;
             }
             else
             {
-                _dataContext.IsDrawingInitialized = true;
+                DataContext.IsDrawingInitialized = true;
             }
 
-            var skElement = AssociatedObject;
-            skElement.InvalidateVisual();
+            AssociatedObject.InvalidateVisual();
         }
 
         /// <summary>
@@ -79,14 +85,22 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
-        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        protected virtual void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (!(sender is FrameworkElement element)) return;
-            if (!(element.DataContext is DrawingElementPresentationViewModel dataContext)) return;
+            if (!(element.DataContext is DrawingElementViewModel dataContext)) return;
 
-            _dataContext = dataContext;
+            if (e.OldValue != null)
+            {
+                if (e.OldValue is DrawingElementViewModel oldContext)
+                {
+                    oldContext.RedrawRequested -= OnRedrawRequested;
+                }
+            }
 
-            _dataContext.RedrawRequested += OnRedrawRequested;
+            DataContext = dataContext;
+
+            DataContext.RedrawRequested += OnRedrawRequested;
         }
 
         /// <summary>
@@ -94,7 +108,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments/</param>
-        private void OnRedrawRequested(object sender, EventArgs e)
+        protected virtual void OnRedrawRequested(object sender, EventArgs e)
         {
             Dispatcher?.Invoke(delegate
             {
@@ -107,16 +121,6 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
                     Console.WriteLine(exception);
                 }
             });
-        }
-
-        /// <summary>
-        ///     Actions when paint requested.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
-        {
-            _dataContext?.Draw(e.Surface);
         }
     }
 }

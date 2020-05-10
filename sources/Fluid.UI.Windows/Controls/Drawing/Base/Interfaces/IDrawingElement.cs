@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Fluid.Core.Base;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
@@ -8,6 +9,13 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
     /// </summary>
     public interface IDrawingElement : IDisposable
     {
+        /// <summary>
+        /// Draws on element.
+        /// </summary>
+        /// <param name="element">Element.</param>
+        /// <param name="drawingObjects">List of drawing objects.</param>
+        void Draw(object element, ICollection<IDrawingObject> drawingObjects);
+
         /// <summary>
         /// Draws circle.
         /// </summary>
@@ -40,5 +48,13 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
         /// <param name="text">Text.</param>
         /// <param name="paint">Paint.</param>
         void DrawText(Point location, string text, ITextPaint paint);
+
+        /// <summary>
+        /// Measures text size.
+        /// </summary>
+        /// <param name="text">Text.</param>
+        /// <param name="paint">Paint.</param>
+        /// <returns>Text's size.</returns>
+        Size MeasureText(string text, ITextPaint paint);
     }
 }

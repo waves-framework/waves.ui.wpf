@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Fluid.Core.Base;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 
@@ -10,6 +11,21 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces
     /// </summary>
     public interface IDrawingElementViewModel : IPresentationViewModel, IDisposable
     {
+        /// <summary>
+        /// Gets or sets foreground.
+        /// </summary>
+        Color Foreground { get; set; }
+
+        /// <summary>
+        /// Gets or sets background.
+        /// </summary>
+        Color Background { get; set; }
+
+        /// <summary>
+        /// Gets or sets drawing element.
+        /// </summary>
+        IDrawingElement DrawingElement { get; set; }
+
         /// <summary>
         ///     Gets collection of drawing object.
         /// </summary>
@@ -31,6 +47,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces
         /// Updates canvas.
         /// </summary>
         void Update();
+
+        /// <summary>
+        /// Draws on element.
+        /// </summary>
+        void Draw(object element);
 
         /// <summary>
         /// Clears drawing objects.

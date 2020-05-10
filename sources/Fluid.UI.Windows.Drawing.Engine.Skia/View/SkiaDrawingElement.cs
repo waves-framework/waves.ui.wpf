@@ -1,30 +1,19 @@
 ﻿using System;
-using System.Windows;
+using System.Collections.Generic;
 using Fluid.Core.Base;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Drawing.Engine.Skia.Extensions;
 using SkiaSharp;
-using Point = Fluid.Core.Base.Point;
-using Size = Fluid.Core.Base.Size;
 
 namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
 {
     /// <summary>
-    /// Skia drawing element.
+    ///     Skia drawing element.
     /// </summary>
-    public class DrawingElement : IDrawingElement
+    public class SkiaDrawingElement : IDrawingElement
     {
         /// <summary>
-        /// Creates new instance of <see cref="DrawingElement"/>
-        /// </summary>
-        /// <param name="surface">Surface.</param>
-        public DrawingElement(SKSurface surface)
-        {
-            Surface = surface;
-        }
-
-        /// <summary>
-        /// Gets or sets SKSurface.
+        ///     Gets or sets SKSurface.
         /// </summary>
         public SKSurface Surface { get; set; }
 
@@ -35,12 +24,30 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         }
 
         /// <inheritdoc />
+        public void Draw(object element, ICollection<IDrawingObject> drawingObjects)
+        {
+            var surface = element as SKSurface;
+            if (surface == null) return;
+
+            if (Surface == null)
+                Surface = surface;
+
+            if (Surface.Handle == IntPtr.Zero)
+                Surface = surface;
+
+            Surface.Canvas.Clear(SKColor.Empty);
+
+            foreach (var obj in drawingObjects)
+                obj.Draw(this);
+        }
+
+        /// <inheritdoc />
         public void DrawEllipse(Point location, float radius, IPaint paint)
         {
             using (var skPaint = new SKPaint
             {
                 Color = paint.Fill.ToSkColor(paint.Opacity),
-                IsAntialias = paint.IsAntialiased,
+                IsAntialias = paint.IsAntialiased
             })
             {
                 Surface.Canvas.DrawCircle(location.X, location.Y, radius, skPaint);
@@ -53,7 +60,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
                 Color = paint.Stroke.ToSkColor(paint.Opacity),
                 IsAntialias = paint.IsAntialiased,
                 StrokeWidth = paint.StrokeThickness,
-                IsStroke = true
+                IsStroke = true,
             })
             {
                 Surface.Canvas.DrawCircle(location.X, location.Y, radius, skPaint);
@@ -63,9 +70,10 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         /// <inheritdoc />
         public void DrawLine(Point point1, Point point2, IPaint paint)
         {
-            using var skPaint = new SKPaint{ 
-                Color = paint.Fill.ToSkColor(paint.Opacity), 
-                StrokeWidth = paint.StrokeThickness, 
+            using var skPaint = new SKPaint
+            {
+                Color = paint.Fill.ToSkColor(paint.Opacity),
+                StrokeWidth = paint.StrokeThickness,
                 IsAntialias = paint.IsAntialiased,
                 IsStroke = Math.Abs(paint.StrokeThickness) > float.Epsilon
             };
@@ -87,7 +95,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
             using (var skPaint = new SKPaint
             {
                 Color = paint.Fill.ToSkColor(paint.Opacity),
-                IsAntialias = paint.IsAntialiased,
+                IsAntialias = paint.IsAntialiased
             })
             {
                 Surface.Canvas.DrawRoundRect(location.X, location.Y, size.Width, size.Height,
@@ -112,7 +120,30 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         /// <inheritdoc />
         public void DrawText(Point location, string text, ITextPaint paint)
         {
-            using var skPaint = new SKPaint
+            using var skPaint = GetSkiaTextPaint(paint);
+
+            Surface.Canvas.DrawText(text, location.ToSkPoint(), skPaint);
+        }
+
+        /// <inheritdoc />
+        public Size MeasureText(string text, ITextPaint paint)
+        {
+            using var skPaint = GetSkiaTextPaint(paint);
+
+            var bounds = new SKRect();
+            skPaint.MeasureText(text, ref bounds);
+
+            return new Size(bounds.Width, bounds.Height);
+        }
+
+        /// <summary>
+        ///     Gets Skia text paint.
+        /// </summary>
+        /// <param name="paint">Fluid's paint.</param>
+        /// <returns>Skia text paint.</returns>
+        private SKPaint GetSkiaTextPaint(ITextPaint paint)
+        {
+            return new SKPaint
             {
                 TextSize = paint.TextStyle.FontSize,
                 Color = paint.Fill.ToSkColor(),
@@ -122,8 +153,6 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
                 TextAlign = paint.TextStyle.Alignment.ToSkTextAlign(),
                 Typeface = SKTypeface.FromFamilyName(paint.TextStyle.FontFamily)
             };
-
-            Surface.Canvas.DrawText(text, location.ToSkPoint(), skPaint);
         }
     }
 }

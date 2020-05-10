@@ -1,33 +1,29 @@
 ﻿using System.Composition;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.Charting.View.Interface;
-using Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.Engines.System.View;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
-using Fluid.UI.Windows.Controls.Drawing.ViewModel;
-using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
-using Fluid.UI.Windows.Drawing.Engine.Skia.View;
 
-namespace Fluid.UI.Windows.Drawing.Engine.Skia
+namespace Fluid.UI.Windows.Controls.Drawing.Engines.System
 {
     /// <summary>
-    /// Engine.
+    ///     Engine.
     /// </summary>
     [Export(typeof(IDrawingEngine))]
     public class Engine : IDrawingEngine
     {
         /// <inheritdoc />
-        public string Name => "SKIA";
+        public string Name => "System";
 
         /// <inheritdoc />
         public IDrawingElementView GetView()
         {
-            return new SkiaDrawingElementView();
+            return new SystemDrawingElementView();
         }
 
         /// <inheritdoc />
         public IDrawingElement GetDrawingElement()
         {
-            return new SkiaDrawingElement();
+            return new SystemDrawingElement();
         }
     }
 }

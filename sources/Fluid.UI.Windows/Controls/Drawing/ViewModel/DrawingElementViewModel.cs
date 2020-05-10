@@ -2,29 +2,27 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using Fluid.Core.Base;
 using Fluid.Presentation.Base;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
-using Fluid.UI.Windows.Drawing.Engine.Skia.View;
-using SkiaSharp;
 
-namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
+namespace Fluid.UI.Windows.Controls.Drawing.ViewModel
 {
     /// <summary>
-    ///     Drawing canvas view model.
+    ///     Drawing element view model base.
     /// </summary>
-    public class DrawingElementPresentationViewModel : PresentationViewModel, IDrawingElementViewModel
+    public class DrawingElementViewModel : PresentationViewModel, IDrawingElementViewModel
     {
         private readonly object _collectionLocker = new object();
 
-        private readonly object _surfaceLocker = new object();
-
-        private DrawingElement _drawingElement;
-
         /// <summary>
-        ///     Gets or sets whether is drawing initialized.
+        /// Creates new instance of <see cref="DrawingElementViewModel"/>.
         /// </summary>
-        public bool IsDrawingInitialized { get; internal set; }
+        public DrawingElementViewModel(IDrawingElement drawingElement)
+        {
+            DrawingElement = drawingElement;
+        }
 
         /// <summary>
         ///     Redrawing requested event handler.
@@ -32,15 +30,30 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         public event EventHandler RedrawRequested;
 
         /// <summary>
+        ///     Gets or sets whether is drawing initialized.
+        /// </summary>
+        public bool IsDrawingInitialized { get; set; }
+
+        /// <summary>
         ///     Gets or sets width.
         /// </summary>
-        public float Width { get; internal set; }
+        public float Width { get; set; }
 
         /// <summary>
         ///     Gets or sets height.
         /// </summary>
-        public float Height { get; internal set; }
+        public float Height { get; set; }
 
+        /// <inheritdoc />
+        public Color Foreground { get; set; } = Color.Black;
+
+        /// <inheritdoc />
+        public Color Background { get; set; } = Color.White;
+
+        /// <summary>
+        ///     Gets or sets drawing element.
+        /// </summary>
+        public IDrawingElement DrawingElement { get; set; }
 
         /// <inheritdoc />
         public ICollection<IDrawingObject> DrawingObjects { get; } = new ObservableCollection<IDrawingObject>();
@@ -67,7 +80,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         }
 
         /// <inheritdoc />
-        public void Update()
+        public virtual void Update()
         {
             OnRedrawRequested();
         }
@@ -75,29 +88,22 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         /// <summary>
         ///     Draws objects.
         /// </summary>
-        public virtual void Draw(SKSurface surface)
+        public virtual void Draw(object element)
         {
-            if (_drawingElement == null)
-            {
-                _drawingElement = new DrawingElement(surface);
-            }
-            else
-            {
-                if (_drawingElement.Surface == null) _drawingElement.Surface = surface;
+            DrawingElement?.Draw(element, DrawingObjects);
+        }
 
-                if (_drawingElement.Surface.Handle == IntPtr.Zero) _drawingElement.Surface = surface;
-            }
-
-            surface.Canvas.Clear(SKColor.Empty);
-
-            foreach (var obj in DrawingObjects)
-                obj.Draw(_drawingElement);
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            DrawingElement?.Dispose();
         }
 
         /// <inheritdoc />
         public void Clear()
         {
             DrawingObjects.Clear();
+
             Update();
         }
 
@@ -115,11 +121,6 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.ViewModel
         private void InitializeCollectionSynchronization()
         {
             BindingOperations.EnableCollectionSynchronization(DrawingObjects, _collectionLocker);
-        }
-
-        /// <inheritdoc />
-        public void Dispose()
-        {
         }
     }
 }

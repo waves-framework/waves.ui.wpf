@@ -14,7 +14,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base
         /// <summary>
         /// Gets or sets text style.
         /// </summary>
-        public TextStyle Style { get; set; }
+        public ITextStyle Style { get; set; }
 
         /// <summary>
         /// Gets or sets text value.

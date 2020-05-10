@@ -1,4 +1,6 @@
-﻿using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
+﻿using Fluid.UI.Windows.Controls.Drawing.Charting.View.Interface;
+using Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
@@ -20,9 +22,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
         IDrawingElementView GetView();
 
         /// <summary>
-        /// Gets new instance of drawing element view model.
+        /// Gets drawing element.
         /// </summary>
-        /// <returns>Instance of drawing element view model.</returns>
-        IDrawingElementViewModel GetViewModel();
+        /// <returns>Drawing element.</returns>
+        IDrawingElement GetDrawingElement();
     }
 }

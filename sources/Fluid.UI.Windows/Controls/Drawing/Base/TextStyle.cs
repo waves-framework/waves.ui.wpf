@@ -30,9 +30,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base
         public float FontSize { get; set; } = 12;
 
         /// <inheritdoc />
-        public Color Color { get; set; } = Color.Black;
-
-        /// <inheritdoc />
         public string FontFamily { get; set; } = "Segoe UI";
 
         /// <inheritdoc />

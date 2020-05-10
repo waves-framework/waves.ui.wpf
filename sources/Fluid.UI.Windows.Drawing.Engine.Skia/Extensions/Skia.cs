@@ -27,7 +27,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Extensions
         /// <returns></returns>
         public static SKColor ToSkColor(this Color color, float opacity)
         {
-            var a = Convert.ToByte(opacity * byte.MaxValue);
+            var a = Convert.ToByte(opacity * color.A);
             return new SKColor(color.R, color.G, color.B, a);
         }
 

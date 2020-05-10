@@ -104,11 +104,11 @@
                             <Style.Triggers>
 
                                 <DataTrigger Binding="{Binding IsReadOnly}" Value="True">
-                                    <Setter Property="Text" Value="Read Only"></Setter>
+                                    <Setter Property="Text" Value="Editable"/>
                                 </DataTrigger>
 
                                 <DataTrigger Binding="{Binding IsReadOnly}" Value="False">
-                                    <Setter Property="Text" Value="Editable"></Setter>
+                                    <Setter Property="Text" Value="Read Only"/>
                                 </DataTrigger>
 
                             </Style.Triggers>

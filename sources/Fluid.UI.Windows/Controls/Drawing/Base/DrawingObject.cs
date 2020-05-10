@@ -11,7 +11,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base
     public abstract class DrawingObject: Object, IDrawingObject
     {
         /// <inheritdoc />
-        public override Guid Id { get; } = new Guid();
+        public override Guid Id { get; } = Guid.NewGuid();
 
         /// <inheritdoc />
         public abstract override string Name { get; set; }

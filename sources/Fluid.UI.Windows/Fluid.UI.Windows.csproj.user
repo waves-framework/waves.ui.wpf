@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Controls\Drawing\Charting\View\ChartView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\Modality\View\MessageModalWindowView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -38,6 +41,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Colors\Primary.Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\Drawing\Charting\View\ChartView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Converters\Converters.xaml">

@@ -1,26 +1,26 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Controls;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.Engines.System.Behavior;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
-using Fluid.UI.Windows.Drawing.Engine.Skia.Behavior;
 using Microsoft.Xaml.Behaviors;
-using SkiaSharp.Views.WPF;
 
-namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
+namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
 {
     /// <summary>
     ///     Drawing canvas.
     /// </summary>
     [Category("Fluid - Drawing")]
-    public class DrawingElementPresentationView : SKElement, IDrawingElementView
+    public class SystemDrawingElementView : Canvas, IDrawingElementView
     {
         private readonly Point _lastTouchPosition = new Point();
 
         /// <summary>
-        ///     Creates new instance of <see cref="DrawingElementPresentationView" />.
+        ///     Creates new instance of <see cref="SystemDrawingElementView" />.
         /// </summary>
-        public DrawingElementPresentationView()
+        public SystemDrawingElementView()
         {
             InitializeBehaviors();
             SubscribeEvents();
@@ -29,7 +29,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         /// <summary>
         ///     Finalizes instance.
         /// </summary>
-        ~DrawingElementPresentationView()
+        ~SystemDrawingElementView()
         {
             Dispose();
         }
@@ -51,7 +51,7 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         /// </summary>
         private void InitializeBehaviors()
         {
-            Interaction.GetBehaviors(this).Add(new PaintBehavior());
+            Interaction.GetBehaviors(this).Add(new SystemPaintBehavior());
         }
 
         /// <summary>

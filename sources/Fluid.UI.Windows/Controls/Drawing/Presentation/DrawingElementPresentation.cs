@@ -1,45 +1,57 @@
 ﻿using System;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Presentation.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
 using Fluid.UI.Windows.Services.Interfaces;
 
 namespace Fluid.UI.Windows.Controls.Drawing.Presentation
 {
     /// <summary>
-    /// Drawing element presentation.
+    ///     Drawing element presentation.
     /// </summary>
     public class DrawingElementPresentation : Fluid.Presentation.Base.Presentation, IDrawingElementPresentation
     {
-        private readonly IDrawingService _drawingService;
-
-        private IPresentationViewModel _dataContext;
-        private IPresentationView _view;
-
         /// <summary>
-        /// Creates new instance of <see cref="DrawingElementPresentation"/>
+        ///     Creates new instance of <see cref="DrawingElementPresentation" />
         /// </summary>
         /// <param name="drawingService"></param>
         public DrawingElementPresentation(IDrawingService drawingService)
         {
-            _drawingService = drawingService;
-
-            SubscribeEvents();
+            DrawingService = drawingService;
         }
 
         /// <inheritdoc />
-        public override IPresentationViewModel DataContext => _dataContext;
+        public override IPresentationViewModel DataContext => DataContextBackingField;
 
         /// <inheritdoc />
-        public override IPresentationView View => _view;
+        public override IPresentationView View => ViewBackingField;
+
+        /// <summary>
+        ///     Gets or sets Data context's backing field.
+        /// </summary>
+        protected IDrawingElementViewModel DataContextBackingField;
+
+        /// <summary>
+        ///     Gets or sets View's backing field.
+        /// </summary>
+        protected IDrawingElementView ViewBackingField;
+
+        /// <summary>
+        ///     Gets or sets drawing service.
+        /// </summary>
+        protected IDrawingService DrawingService { get; set; }
 
         /// <inheritdoc />
         public override void Initialize()
         {
-            if (_drawingService?.CurrentEngine == null) return;
+            if (DrawingService?.CurrentEngine == null) return;
 
-            _dataContext = _drawingService.CurrentEngine.GetViewModel();
-            _view = _drawingService.CurrentEngine.GetView();
+            SubscribeEvents();
+
+            DataContextBackingField = new DrawingElementViewModel(DrawingService.CurrentEngine.GetDrawingElement());
+            ViewBackingField = DrawingService.CurrentEngine.GetView();
 
             OnPropertyChanged(nameof(DataContext));
             OnPropertyChanged(nameof(View));
@@ -52,42 +64,40 @@ namespace Fluid.UI.Windows.Controls.Drawing.Presentation
         {
             base.Dispose();
 
-            _drawingService.EngineChanged -= OnDrawingServiceEngineChanged;
+            DrawingService.EngineChanged -= OnDrawingServiceEngineChanged;
         }
 
         /// <summary>
-        /// Subscribes events.
-        /// </summary>
-        private void SubscribeEvents()
-        {
-            _drawingService.EngineChanged += OnDrawingServiceEngineChanged;
-        }
-
-        /// <summary>
-        /// Actions when drawing engine changed.
+        ///     Actions when drawing engine changed.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
-        private void OnDrawingServiceEngineChanged(object sender, EventArgs e)
+        protected virtual void OnDrawingServiceEngineChanged(object sender, EventArgs e)
         {
-            var dataContext = _drawingService.CurrentEngine.GetViewModel();
-            if (dataContext == null) return;
+            var dataContext = new DrawingElementViewModel(DrawingService.CurrentEngine.GetDrawingElement());
 
-            var currentContext = _dataContext as IDrawingElementViewModel;
+            var currentContext = DataContextBackingField;
             if (currentContext == null) return;
 
-            var view = _drawingService.CurrentEngine.GetView();
+            var view = DrawingService.CurrentEngine.GetView();
 
-            foreach (var obj in currentContext.DrawingObjects) 
-                dataContext.AddDrawingObject(obj);
+            DataContextBackingField = dataContext;
+            ViewBackingField = view;
 
-            _dataContext = dataContext;
-            _view = view;
+            ViewBackingField.DataContext = DataContextBackingField;
 
-            _view.DataContext = _dataContext;
+            dataContext.Update();
 
             OnPropertyChanged(nameof(DataContext));
             OnPropertyChanged(nameof(View));
+        }
+
+        /// <summary>
+        ///     Subscribes events.
+        /// </summary>
+        private void SubscribeEvents()
+        {
+            DrawingService.EngineChanged += OnDrawingServiceEngineChanged;
         }
     }
 }
