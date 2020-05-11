@@ -52,6 +52,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
             }
 
             DataContextBackingField = dataContext;
+            DataContextBackingField.InputService = InputService;
             ViewBackingField = view;
 
             InitializeColors();

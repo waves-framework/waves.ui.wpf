@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using Fluid.Core.Base;
+using Fluid.Core.Base.Enums;
 using Fluid.Core.Base.EventArgs;
 using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Base;
@@ -39,6 +40,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         private bool _isYAxisZeroLineVisible = true;
         private bool _isYAxisDescriptionVisible = true;
         private bool _isBorderVisible = true;
+
+        private int _lastMouseDelta;
+        private Point _lastMousePosition;
 
         private string _title = "New chart";
         private string _xAxisName = "X axis";
@@ -84,6 +88,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         private Color _borderColor = Color.Black;
 
         private TextStyle _textStyle = new TextStyle();
+
         private IInputService _inputService;
 
         /// <inheritdoc />
@@ -1057,7 +1062,44 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         /// <param name="e">Arguments.</param>
         private void OnInputServicePointerStateChanged(object sender, Fluid.Core.Base.EventArgs.PointerEventArgs e)
         {
-            
+            // если горизонтальный скролл
+            if (e.Type == PointerEventType.VerticalScroll)
+            {
+                _lastMouseDelta = (int)e.Delta.X;
+                ZoomChart(_lastMouseDelta, _lastMousePosition);
+            }
+
+            if (e.Type == PointerEventType.Enter)
+            {
+                IsMouseOver = true;
+                Update();
+            }
+
+            if (e.Type == PointerEventType.Leave)
+            {
+                IsMouseOver = false;
+                Update();
+            }
+
+            // если передвижение мыши
+            if (e.Type == PointerEventType.Enter || e.Type == PointerEventType.Leave || e.Type == PointerEventType.Move)
+            {
+                _lastMousePosition = new Point(e.X, e.Y);
+                Update();
+            }
+
+            if (e.Type == PointerEventType.TouchZoom)
+                if (IsZoomEnabled)
+                {
+                    _lastMouseDelta = (int)e.Delta.X;
+                    ZoomChart(_lastMouseDelta, _lastMousePosition);
+                }
+
+            if (e.Type == PointerEventType.TouchMove)
+            {
+                _lastMousePosition = new Point(e.X, e.Y);
+                Update();
+            }
         }
 
         /// <summary>
@@ -1067,7 +1109,10 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         /// <param name="e">Arguments.</param>
         private void OnInputServiceKeyPressed(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == VirtualKey.Control)
+                IsCtrlPressed = true;
+            if (e.Key == VirtualKey.Shift)
+                IsShiftPressed = true;
         }
 
         /// <summary>
@@ -1077,7 +1122,10 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         /// <param name="e">Arguments.</param>
         private void OnInputServiceKeyReleased(object sender, KeyEventArgs e)
         {
-            
+            if (e.Key == VirtualKey.Control)
+                IsCtrlPressed = false;
+            if (e.Key == VirtualKey.Shift)
+                IsShiftPressed = false;
         }
     }
 }
