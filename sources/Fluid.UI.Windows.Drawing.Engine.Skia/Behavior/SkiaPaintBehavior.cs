@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Behavior;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Microsoft.Xaml.Behaviors;
@@ -13,6 +14,11 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.Behavior
     /// </summary>
     public class SkiaPaintBehavior : PaintBehavior<SKElement>
     {
+        /// <inheritdoc />
+        public SkiaPaintBehavior(IInputService inputService) : base(inputService)
+        {
+        }
+
         /// <inheritdoc />
         protected override void OnAttached()
         {

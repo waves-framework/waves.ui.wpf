@@ -98,6 +98,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
         /// <inheritdoc />
         public void DrawRectangle(Point location, Size size, IPaint paint, float cornerRadius = 0)
         {
+            if (size.Width < 0 || size.Height < 0) return;
+
             Canvas.Children.Add(new Border
             {
                 VerticalAlignment = VerticalAlignment.Top,

@@ -41,9 +41,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         private bool _isYAxisDescriptionVisible = true;
         private bool _isBorderVisible = true;
 
-        private int _lastMouseDelta;
-        private Point _lastMousePosition;
-
         private string _title = "New chart";
         private string _xAxisName = "X axis";
         private string _xAxisUnit = "unit";
@@ -88,8 +85,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         private Color _borderColor = Color.Black;
 
         private TextStyle _textStyle = new TextStyle();
-
-        private IInputService _inputService;
 
         /// <inheritdoc />
         public ChartViewModel(IDrawingElement drawingElement) : base(drawingElement)
@@ -673,52 +668,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
         }
 
         /// <summary>
-        /// Gets or sets input service.
-        /// </summary>
-        public IInputService InputService
-        {
-            get => _inputService;
-            set
-            {
-                if (_inputService != null)
-                {
-                    _inputService.PointerStateChanged -= OnInputServicePointerStateChanged;
-                    _inputService.KeyPressed -= OnInputServiceKeyPressed;
-                    _inputService.KeyReleased -= OnInputServiceKeyReleased;
-                }
-
-                _inputService = value;
-
-                if (_inputService != null)
-                {
-                    _inputService.PointerStateChanged += OnInputServicePointerStateChanged;
-                    _inputService.KeyPressed += OnInputServiceKeyPressed;
-                    _inputService.KeyReleased += OnInputServiceKeyReleased;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets whether CTRL key is pressed.
-        /// </summary>
-        protected bool IsCtrlPressed { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether SHIFT key is pressed.
-        /// </summary>
-        protected bool IsShiftPressed { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether is mouse over chart.
-        /// </summary>
-        protected bool IsMouseOver { get; set; }
-
-        /// <summary>
-        /// Gets or sets last mouse position.
-        /// </summary>
-        protected Point LastMousePosition { get; set; }
-
-        /// <summary>
         /// Gets or sets Axis ticks list.
         /// </summary>
         protected List<AxisTick> AxisTicks { get; set; } = new List<AxisTick>();
@@ -771,6 +720,69 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                 _hasDefaultTicks = false;
                 AxisTicks = ticks;
             }
+        }
+
+        /// <summary>
+        /// Actions when pointer state changed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected override void OnInputServicePointerStateChanged(object sender, Fluid.Core.Base.EventArgs.PointerEventArgs e)
+        {
+            if (e.Type == PointerEventType.VerticalScroll)
+            {
+                LastMouseDelta = (int)e.Delta.X;
+                ZoomChart(LastMouseDelta, base.LastMousePosition);
+            }
+
+            if (e.Type == PointerEventType.Enter)
+            {
+                IsMouseOver = true;
+                Update();
+            }
+
+            if (e.Type == PointerEventType.Leave)
+            {
+                IsMouseOver = false;
+                Update();
+            }
+
+            if (e.Type == PointerEventType.Enter || e.Type == PointerEventType.Leave || e.Type == PointerEventType.Move)
+            {
+                base.LastMousePosition = new Point(e.X, e.Y);
+                Update();
+            }
+
+            if (e.Type == PointerEventType.TouchZoom)
+                if (IsZoomEnabled)
+                {
+                    LastMouseDelta = (int)e.Delta.X;
+                    ZoomChart(LastMouseDelta, base.LastMousePosition);
+                }
+
+            if (e.Type == PointerEventType.TouchMove)
+            {
+                base.LastMousePosition = new Point(e.X, e.Y);
+                Update();
+            }
+        }
+
+        /// <summary>
+        /// Actions when key pressed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected override void OnInputServiceKeyPressed(object sender, KeyEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Actions when key released.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected override void OnInputServiceKeyReleased(object sender, KeyEventArgs e)
+        {
         }
 
         /// <summary>
@@ -1053,79 +1065,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                 CurrentXMin = XMin;
             if (CurrentXMax > XMax)
                 CurrentXMax = XMax;
-        }
-
-        /// <summary>
-        /// Actions when pointer state changed.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnInputServicePointerStateChanged(object sender, Fluid.Core.Base.EventArgs.PointerEventArgs e)
-        {
-            // если горизонтальный скролл
-            if (e.Type == PointerEventType.VerticalScroll)
-            {
-                _lastMouseDelta = (int)e.Delta.X;
-                ZoomChart(_lastMouseDelta, _lastMousePosition);
-            }
-
-            if (e.Type == PointerEventType.Enter)
-            {
-                IsMouseOver = true;
-                Update();
-            }
-
-            if (e.Type == PointerEventType.Leave)
-            {
-                IsMouseOver = false;
-                Update();
-            }
-
-            // если передвижение мыши
-            if (e.Type == PointerEventType.Enter || e.Type == PointerEventType.Leave || e.Type == PointerEventType.Move)
-            {
-                _lastMousePosition = new Point(e.X, e.Y);
-                Update();
-            }
-
-            if (e.Type == PointerEventType.TouchZoom)
-                if (IsZoomEnabled)
-                {
-                    _lastMouseDelta = (int)e.Delta.X;
-                    ZoomChart(_lastMouseDelta, _lastMousePosition);
-                }
-
-            if (e.Type == PointerEventType.TouchMove)
-            {
-                _lastMousePosition = new Point(e.X, e.Y);
-                Update();
-            }
-        }
-
-        /// <summary>
-        /// Actions when key pressed.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnInputServiceKeyPressed(object sender, KeyEventArgs e)
-        {
-            if (e.Key == VirtualKey.Control)
-                IsCtrlPressed = true;
-            if (e.Key == VirtualKey.Shift)
-                IsShiftPressed = true;
-        }
-
-        /// <summary>
-        /// Actions when key released.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnInputServiceKeyReleased(object sender, KeyEventArgs e)
-        {
-            if (e.Key == VirtualKey.Control)
-                IsCtrlPressed = false;
-            if (e.Key == VirtualKey.Shift)
-                IsShiftPressed = false;
         }
     }
 }

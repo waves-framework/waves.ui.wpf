@@ -1,4 +1,5 @@
 ﻿using System;
+using Fluid.Core.Services.Interfaces;
 using Fluid.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Presentation.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
@@ -16,10 +17,12 @@ namespace Fluid.UI.Windows.Controls.Drawing.Presentation
         /// <summary>
         ///     Creates new instance of <see cref="DrawingElementPresentation" />
         /// </summary>
-        /// <param name="drawingService"></param>
-        public DrawingElementPresentation(IDrawingService drawingService)
+        /// <param name="drawingService">Drawing service.</param>
+        /// <param name="inputService">Input service.</param>
+        public DrawingElementPresentation(IDrawingService drawingService, IInputService inputService)
         {
             DrawingService = drawingService;
+            InputService = inputService;
         }
 
         /// <inheritdoc />
@@ -43,6 +46,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.Presentation
         /// </summary>
         protected IDrawingService DrawingService { get; set; }
 
+        /// <summary>
+        /// Gets or sets input service.
+        /// </summary>
+        protected IInputService InputService { get; set; }
+
         /// <inheritdoc />
         public override void Initialize()
         {
@@ -51,7 +59,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Presentation
             SubscribeEvents();
 
             DataContextBackingField = new DrawingElementViewModel(DrawingService.CurrentEngine.GetDrawingElement());
-            ViewBackingField = DrawingService.CurrentEngine.GetView();
+            ViewBackingField = DrawingService.CurrentEngine.GetView(InputService);
 
             OnPropertyChanged(nameof(DataContext));
             OnPropertyChanged(nameof(View));
@@ -79,7 +87,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Presentation
             var currentContext = DataContextBackingField;
             if (currentContext == null) return;
 
-            var view = DrawingService.CurrentEngine.GetView();
+            var view = DrawingService.CurrentEngine.GetView(InputService);
 
             DataContextBackingField = dataContext;
             ViewBackingField = view;

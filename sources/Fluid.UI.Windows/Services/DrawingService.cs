@@ -63,12 +63,6 @@ namespace Fluid.UI.Windows.Services
         public ICollection<IDrawingEngine> Engines { get; private set; } = new ObservableCollection<IDrawingEngine>();
 
         /// <inheritdoc />
-        public IDrawingElementPresentation CreatePresentation()
-        {
-            return new DrawingElementPresentation(this);
-        }
-
-        /// <inheritdoc />
         public void AddPath(string path)
         {
             try

@@ -1,4 +1,5 @@
-﻿using Fluid.UI.Windows.Controls.Drawing.Charting.View.Interface;
+﻿using Fluid.Core.Services.Interfaces;
+using Fluid.UI.Windows.Controls.Drawing.Charting.View.Interface;
 using Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
@@ -18,8 +19,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Base.Interfaces
         /// <summary>
         /// Gets new instance of drawing element view.
         /// </summary>
+        /// <param name="inputService">Input service.</param>
         /// <returns>Instance of drawing element.</returns>
-        IDrawingElementView GetView();
+        IDrawingElementView GetView(IInputService inputService);
 
         /// <summary>
         /// Gets drawing element.
