@@ -14,5 +14,10 @@
         /// Bar data set.
         /// </summary>
         Bar,
+
+        /// <summary>
+        /// Bar data set with envelope line.
+        /// </summary>
+        BarWithEnvelope
     }
 }
