@@ -29,7 +29,7 @@
 
         <!-- Templates -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Property.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Message.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/MessageObjects.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Theme.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Templates/Type.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Controls/Modality/View/Templates/ModalWindow.xaml" />

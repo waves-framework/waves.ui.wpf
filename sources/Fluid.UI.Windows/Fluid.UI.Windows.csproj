@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core" Version="2020.1.125" />
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.125" />
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.24" />
+    <PackageReference Include="Fluid.Core" Version="2020.1.148" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.148" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.27" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
 
@@ -120,7 +120,7 @@
     <Page Update="Styles\Window.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Templates\Message.xaml">
+    <Page Update="Templates\MessageObjects.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Theme.xaml">

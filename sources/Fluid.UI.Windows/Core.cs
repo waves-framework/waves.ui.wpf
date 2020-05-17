@@ -44,16 +44,21 @@ namespace Fluid.UI.Windows
             {
                 base.Start();
 
+                WriteLogMessage(
+                    new Message("UI Core launch", "UI Core is launching...", "UI Core", MessageType.Information));
+
                 Initialize();
 
                 IsInitialized = true;
 
                 WriteLogMessage(
-                    new Message("UI Core", "UI Core launched successfully.", "UI Core", MessageType.Success));
+                    new Message("UI Core launch", "UI Core launched successfully.", "UI Core", MessageType.Success));
+
+                AddMessageSeparator();
             }
             catch (Exception ex)
             {
-                WriteLogException(ex, "UI.Core", true);
+                WriteLogException(ex, "UI Core launch", true);
             }
         }
 
@@ -149,9 +154,26 @@ namespace Fluid.UI.Windows
         /// </summary>
         private void InitializeServices()
         {
-            RegisterService(ServiceManager.GetService<IThemeService>().First());
+            try
+            {
+                var service = ServiceManager.GetService<IThemeService>().First();
+                RegisterService(service);
+                InitializeThemeService();
+            }
+            catch (Exception e)
+            {
+                WriteLogMessage(new Message("Registering logging service", "Error registering theme service.", "UI Core", e, true));
+            }
 
-            InitializeThemeService();
+            try
+            {
+                var service = ServiceManager.GetService<IDrawingService>().First();
+                RegisterService(service);
+            }
+            catch (Exception e)
+            {
+                WriteLogMessage(new Message("Registering drawing service", "Error registering drawing service service.", "UI Core", e, true));
+            }
         }
 
         /// <summary>
@@ -163,7 +185,7 @@ namespace Fluid.UI.Windows
 
             if (service == null)
                 WriteLogMessage(
-                    new Message("Service", "Theme Service is not initialized", "UI Core", MessageType.Fatal));
+                    new Message("Service", "Theme service is not initialized.", "UI Core", MessageType.Fatal));
             else
                 service.AttachApplication(Application);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Composition;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -95,7 +96,7 @@ namespace Fluid.UI.Windows.Services
             InitializeSystemThemeCheckerDaemon();
 
             OnMessageReceived(this,
-                new Message("Initialization", "Application attached.", Name, MessageType.Information));
+                new Message("Initialization", "Application attached - " + application, Name, MessageType.Information));
         }
 
         /// <inheritdoc />
@@ -282,12 +283,9 @@ namespace Fluid.UI.Windows.Services
                 OnMessageReceived(this,
                     new Message("Theme Service", "Error initializing system accent theme:\r\n" + e, Name, MessageType.Error));
             }
-           
 
             try
-            {
-                
-                    
+            { 
                 Themes.Add(new Theme("Dark / System accent", Guid.Parse("842FB00F-1B3B-4FE1-BB47-EC80BF99B623"),
                     new ResourceDictionary
                     {
@@ -565,7 +563,7 @@ namespace Fluid.UI.Windows.Services
 
                 _application.Resources.EndInit();
 
-                OnMessageReceived(this, new Message("Theme Service", "Theme changed.", Name, MessageType.Information));
+                OnMessageReceived(this, new Message("Theme Service", "Theme changed to \"" + SelectedTheme.Name + "\".", Name, MessageType.Information));
             }
             catch (Exception e)
             {

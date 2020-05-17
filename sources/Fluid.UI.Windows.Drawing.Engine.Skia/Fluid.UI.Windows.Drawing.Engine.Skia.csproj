@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="../../props/Fluid.UI.Windows.props" />
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fluid.UI.Windows\Fluid.UI.Windows.csproj" />
+  </ItemGroup>
+
+</Project>

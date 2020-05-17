@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="Fluid.UI.Windows.Controls.Drawing.Charting.View.ChartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fluid.UI.Windows.Controls.Drawing.Charting.View"
+             xmlns:viewModel="clr-namespace:Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel"
+             d:DataContext="{d:DesignInstance viewModel:ChartViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Converters. -->
+                <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
+
+                <!-- Icons. -->
+                <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
+
+                <!-- Padding. -->
+                <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Padding.xaml" />
+
+                <!-- Text. -->
+                <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Text.xaml" />
+
+                <!-- Opacity. -->
+                <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Styles/Opacity.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Title row -->
+            <Grid Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
+                               FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"
+                               Margin="0,0,0,6"
+                               Foreground="{Binding Foreground, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
+                               Visibility="{Binding IsTitleVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                </Grid>
+
+                <Grid Grid.Column="1">
+
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,6"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding IsXAxisDescriptionVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Opacity="{StaticResource Opacity3}">
+
+                        <TextBlock Text="{Binding XAxisName, UpdateSourceTrigger=PropertyChanged}" 
+                                   Margin="0,0,3,0" 
+                                   Foreground="{Binding Foreground, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="{Binding XAxisUnit, UpdateSourceTrigger=PropertyChanged, StringFormat={}({0})}" 
+                                   Margin="0,0,0,0" 
+                                   Foreground="{Binding Foreground, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="1" IsManipulationEnabled="True">
+
+                <Grid>
+
+                    <Border x:Name="MaskBorder" Background="{Binding Background, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" CornerRadius="{StaticResource StandardCornerRadius}"/>
+
+                    <Grid>
+
+                        <Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=MaskBorder}" />
+                        </Grid.OpacityMask>
+
+                        <ContentControl Content="{Binding DrawingElementView, RelativeSource={RelativeSource AncestorType={x:Type local:ChartView}}}"
+                                        DataContext="{Binding}"
+                                        ClipToBounds="True"
+                                        Background="{Binding Background, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    </Grid>
+
+                </Grid>
+
+                <Border BorderBrush="{Binding BorderColor, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
+                        BorderThickness="{Binding BorderThickness}"
+                        CornerRadius="{StaticResource StandardCornerRadius}"/>
+
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  HorizontalAlignment="Right" 
+                  VerticalAlignment="Center" 
+                  Margin="{StaticResource SmallThickness}"
+                  Visibility="{Binding IsYAxisDescriptionVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}">
+
+                <Border Background="{DynamicResource Primary-100-Brush}"
+                        CornerRadius="{StaticResource StandardCornerRadius}" 
+                        Opacity="{StaticResource Opacity3}"/>
+
+                <Border BorderBrush="{DynamicResource Primary-500-Brush}"
+                        CornerRadius="{StaticResource StandardCornerRadius}"
+                        BorderThickness="1"/>
+
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="{StaticResource SmallThickness}">
+
+                    <Grid.LayoutTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="90" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Grid.LayoutTransform>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="{Binding YAxisName, UpdateSourceTrigger=PropertyChanged}" 
+                                   Margin="0,0,3,0" 
+                                   Foreground="{Binding Foreground, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="{Binding YAxisUnit, UpdateSourceTrigger=PropertyChanged, StringFormat={}({0})}" 
+                                   Margin="0,0,0,0" 
+                                   Foreground="{Binding Foreground, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

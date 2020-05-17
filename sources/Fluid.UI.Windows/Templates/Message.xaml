@@ -5,6 +5,9 @@
 
     <ResourceDictionary.MergedDictionaries>
 
+        <!-- Converters. -->
+        <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Converters/Converters.xaml" />
+
         <!-- Icons. -->
         <ResourceDictionary Source="pack://application:,,,/Fluid.UI.Windows;component/Resources/Icons.xaml" />
 
@@ -19,356 +22,114 @@
 
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="MessageListDataTemplate" DataType="{x:Type interfaces:IMessage}">
+    <DataTemplate x:Key="MessageItemListDataTemplate" DataType="{x:Type interfaces:IMessage}">
 
-        <Grid Margin="0,0,0,12">
+        <Grid Margin="0,0,0,6">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16" />
-                <ColumnDefinition Width="12" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="6" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="0" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="12" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <StackPanel>
 
-            <Grid Grid.Column="0" VerticalAlignment="Top">
+                <!-- Text -->
+                <TextBlock Text="{Binding Text, StringFormat={}{0}}" VerticalAlignment="Center" Style="{StaticResource Regular1}"
+                                   Margin="0,0,0,0"/>
 
-                <Viewbox Height="16" Width="16" Stretch="Uniform" Margin="0,2,0,0">
+                <Grid Grid.Row="3" 
+                              Visibility="{Binding Exception, Converter={StaticResource InverseNullToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
+                              Margin="0,12,0,12">
 
-                    <Path>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Path.Style>
+                    <Grid Grid.Column="0">
 
-                            <Style TargetType="{x:Type Path}">
+                        <Border Opacity="{StaticResource Opacity5}">
 
-                                <Style.Triggers>
+                            <Border.Style>
 
-                                    <DataTrigger Binding="{Binding Type}"
-                                                 Value="{x:Static enums:MessageType.Information}">
-                                        <Setter Property="Fill" Value="{DynamicResource Primary-Foreground-100-Brush}" />
-                                        <Setter Property="Data" Value="{StaticResource Icon-Information}" />
-                                    </DataTrigger>
+                                <Style TargetType="{x:Type Border}" >
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                        <Setter Property="Fill" Value="{DynamicResource Warning-Brush}" />
-                                        <Setter Property="Data" Value="{StaticResource Icon-Warning}" />
-                                    </DataTrigger>
+                                    <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                        <Setter Property="Fill" Value="{DynamicResource Error-Brush}" />
-                                        <Setter Property="Data" Value="{StaticResource Icon-Error}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                        <Setter Property="Fill" Value="{DynamicResource Fatal-Brush}" />
-                                        <Setter Property="Data" Value="{StaticResource Icon-Fatal}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                        <Setter Property="Fill" Value="{DynamicResource Primary-Foreground-500-Brush}" />
-                                        <Setter Property="Data" Value="{StaticResource Icon-Debug}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                        <Setter Property="Fill" Value="{DynamicResource Success-Brush}" />
-                                        <Setter Property="Data" Value="{StaticResource Icon-Success}" />
-                                    </DataTrigger>
-
-                                </Style.Triggers>
-
-                            </Style>
-
-                        </Path.Style>
-
-                    </Path>
-
-                </Viewbox>
-
-            </Grid>
-
-            <Grid Grid.Column="2" VerticalAlignment="Top">
-
-                <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="6">
-
-                    <Border.Style>
-
-                        <Style TargetType="{x:Type Border}" >
-
-                            <Style.Triggers>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
-                                    <Setter Property="Background"
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                            <Setter Property="Background"
                                             Value="{DynamicResource Primary-300-Brush}" />
-                                </DataTrigger>
+                                        </DataTrigger>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                    <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
-                                </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                            <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
+                                        </DataTrigger>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                    <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
-                                </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                            <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
+                                        </DataTrigger>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                    <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
-                                </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                            <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
+                                        </DataTrigger>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                    <Setter Property="Background"
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                            <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
-                                </DataTrigger>
+                                        </DataTrigger>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                    <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
-                                </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                            <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
+                                        </DataTrigger>
 
-                            </Style.Triggers>
+                                    </Style.Triggers>
 
-                        </Style>
+                                </Style>
 
-                    </Border.Style>
+                            </Border.Style>
 
-                </Border>
+                        </Border>
 
-                <TextBlock Text="{Binding DateTime, StringFormat='{}{0:HH:mm dd.MM.yyyy}'}" VerticalAlignment="Center" Margin="{StaticResource SmallThickness}">
+                    </Grid>
 
-                    <TextBlock.Style>
+                    <Grid Grid.Column="2">
 
-                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Header3}">
+                        <!-- Exception -->
+                        <StackPanel>
 
-                            <Style.Triggers>
+                            <TextBlock Text="Exception" Style="{StaticResource Header3}" Margin="0,0,0,6" Foreground="{DynamicResource Error-Brush}"/>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
-                                    <Setter Property="Foreground"
-                                            Value="{DynamicResource Primary-Foreground-100-Brush}" />
-                                </DataTrigger>
+                            <TextBlock Text="{Binding Exception.Source}" Style="{StaticResource Header3}" Margin="0,0,0,6"/>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
-                                </DataTrigger>
+                            <TextBlock Text="{Binding Exception.Message}" Style="{StaticResource Regular1}" Margin="0,0,0,6"/>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
-                                </DataTrigger>
+                            <TextBlock Text="{Binding Exception.StackTrace}" Style="{StaticResource Regular2}" Margin="0,0,0,12"/>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
-                                </DataTrigger>
+                            <Grid Margin="9,0,0,0">
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                    <Setter Property="Foreground"
-                                            Value="{DynamicResource Primary-Foreground-500-Brush}" />
-                                </DataTrigger>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="6"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
-                                </DataTrigger>
+                                <Grid Grid.Column="0">
 
+                                    <TextBlock Text="HResult:" Style="{StaticResource Hint1}"/>
 
-                            </Style.Triggers>
+                                </Grid>
 
-                        </Style>
+                                <Grid Grid.Column="2">
 
-                    </TextBlock.Style>
+                                    <TextBlock Text="{Binding Exception.HResult}" Style="{StaticResource Hint1}"/>
 
-                </TextBlock>
+                                </Grid>
 
-            </Grid>
+                            </Grid>
 
-            <Grid Grid.Column="4" Margin="0,0,-1,0" VerticalAlignment="Top">
+                        </StackPanel>
 
-                <Border CornerRadius="6,0,0,6">
-
-                    <Border.Style>
-
-                        <Style TargetType="{x:Type Border}" >
-
-                            <Style.Triggers>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
-                                    <Setter Property="Background"
-                                            Value="{DynamicResource Primary-300-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                    <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                    <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                    <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                    <Setter Property="Background"
-                                            Value="{DynamicResource Primary-100-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                    <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
-                                </DataTrigger>
-
-                            </Style.Triggers>
-
-                        </Style>
-
-                    </Border.Style>
-
-                </Border>
-
-                <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="6,0,0,6"/>
-
-                <TextBlock Text="{Binding Sender}" Margin="{StaticResource SmallThickness}" VerticalAlignment="Center">
-
-                    <TextBlock.Style>
-
-                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Header3}">
-
-                            <Style.Triggers>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
-                                    <Setter Property="Foreground"
-                                            Value="{DynamicResource Primary-Foreground-100-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                    <Setter Property="Foreground"
-                                            Value="{DynamicResource Primary-Foreground-500-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                    <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
-                                </DataTrigger>
-
-                            </Style.Triggers>
-
-                        </Style>
-
-                    </TextBlock.Style>
-
-                </TextBlock>
-
-            </Grid>
-
-            <Grid Grid.Column="6" VerticalAlignment="Top">
-
-                <Border CornerRadius="0,6,6,0">
-
-                    <Border.Style>
-
-                        <Style TargetType="{x:Type Border}" >
-
-                            <Style.Triggers>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
-                                    <Setter Property="Background"
-                                            Value="{DynamicResource Primary-300-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                    <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                    <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                    <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                    <Setter Property="Background"
-                                            Value="{DynamicResource Primary-100-Brush}" />
-                                </DataTrigger>
-
-                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                    <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
-                                </DataTrigger>
-
-                            </Style.Triggers>
-
-                        </Style>
-
-                    </Border.Style>
-
-                </Border>
-
-                <Border Background="{DynamicResource Primary-500-Brush}" CornerRadius="0,6,6,0" Opacity="{StaticResource Opacity5}"/>
-                <Border BorderBrush="{DynamicResource Primary-500-Brush}" BorderThickness="1" CornerRadius="0,6,6,0"/>
-
-                <Grid Margin="{StaticResource SmallThickness}">
-
-                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="12" Margin="0,0,0,0">
-
-                        <TextBlock.Style>
-
-                            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Regular1}">
-
-                                <Style.Triggers>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
-                                        <Setter Property="Foreground"
-                                            Value="{DynamicResource Primary-Foreground-100-Brush}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
-                                        <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
-                                        <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
-                                        <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
-                                        <Setter Property="Foreground"
-                                            Value="{DynamicResource Primary-Foreground-500-Brush}" />
-                                    </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
-                                        <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
-                                    </DataTrigger>
-
-                                </Style.Triggers>
-
-                            </Style>
-
-                        </TextBlock.Style>
-
-                    </TextBlock>
+                    </Grid>
 
                 </Grid>
 
-            </Grid>
-
-            <Grid Grid.Column="8">
-
-                <TextBlock Text="{Binding Text}" VerticalAlignment="Center" Style="{StaticResource Regular1}"/>
-
-            </Grid>
+            </StackPanel>
 
         </Grid>
 
