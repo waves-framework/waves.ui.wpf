@@ -32,12 +32,6 @@ namespace Fluid.UI.Windows.Services.Interfaces
         ICollection<IDrawingEngine> Engines { get; }
 
         /// <summary>
-        /// Creates presentation.
-        /// </summary>
-        /// <returns>Drawing element presentation.</returns>
-        IDrawingElementPresentation CreatePresentation();
-
-        /// <summary>
         ///     Adds path of engines.
         /// </summary>
         /// <param name="path">Path.</param>

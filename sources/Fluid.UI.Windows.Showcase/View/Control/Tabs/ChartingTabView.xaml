@@ -63,6 +63,12 @@
                                   Padding="12,0,12,0"
                                   Margin="0,0,0,18"/>
 
+                        <TextBlock Text="Data sets" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                        <TextBlock Text="Editing of data sets." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                        
+
                     </StackPanel>
 
                 </ScrollViewer>

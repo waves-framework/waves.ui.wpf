@@ -1,4 +1,5 @@
 ﻿using System.Composition;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Charting.View.Interface;
 using Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
@@ -19,9 +20,9 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia
         public string Name => "SKIA";
 
         /// <inheritdoc />
-        public IDrawingElementView GetView()
+        public IDrawingElementView GetView(IInputService inputService)
         {
-            return new SkiaDrawingElementView();
+            return new SkiaDrawingElementView(inputService);
         }
 
         /// <inheritdoc />

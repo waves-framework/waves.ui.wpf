@@ -64,10 +64,10 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
                 points1[i].Y = (float)random1.NextDouble() - 0.5f;
             }
 
-            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.GetMiscellaneousColor("Success-Brush"), Type = DataSetType.Bar };
+            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.GetMiscellaneousColor("Success-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
             context.AddDataSet(dataSet1);
 
-            var num2 = 64;
+            var num2 = 128;
             var random2 = new Random();
             var points2 = new Point[num2];
             for (var i = 0; i < num2; i++)
@@ -76,34 +76,8 @@ namespace Fluid.UI.Windows.Showcase.ViewModel.Tabs
                 points2[i].Y = (float)random2.NextDouble() - 0.5f;
             }
 
-            var dataSet2 = new DataSet(points2) { Color = ThemeService.SelectedTheme.GetMiscellaneousColor("Error-Brush"), Type = DataSetType.Bar };
+            var dataSet2 = new DataSet(points2) { Color = ThemeService.SelectedTheme.GetMiscellaneousColor("Error-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f };
             context.AddDataSet(dataSet2);
-
-            //var task = new Task(async delegate
-            //{
-            //    do
-            //    {
-            //        for (var i = 0; i < num1; i++)
-            //        {
-            //            points1[i].X = i / (float)num1;
-            //            points1[i].Y = (float)random1.NextDouble() - 0.5f;
-            //        }
-
-            //        for (var i = 0; i < num2; i++)
-            //        {
-            //            points2[i].X = i / (float)num2;
-            //            points2[i].Y = (float)random2.NextDouble() - 0.5f;
-            //        }
-
-            //        context.UpdateDataSet(0, points1);
-            //        context.UpdateDataSet(1, points2);
-
-            //        await Task.Delay(TimeSpan.FromMilliseconds(1000 / 60.0d)).ConfigureAwait(false);
-
-            //    } while (true);
-            //});
-
-            //task.Start();
         }
     }
 }

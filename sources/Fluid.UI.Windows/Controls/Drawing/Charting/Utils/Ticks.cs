@@ -108,6 +108,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Utils
             return new Line
             {
                 Stroke = stroke,
+                Fill = stroke,
                 DashPattern = dashArray,
                 IsAntialiased = true,
                 IsVisible = true,
@@ -137,6 +138,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Utils
             return new Line
             {
                 Stroke = stroke,
+                Fill = stroke,
                 DashPattern = dashArray,
                 IsAntialiased = true,
                 IsVisible = true,

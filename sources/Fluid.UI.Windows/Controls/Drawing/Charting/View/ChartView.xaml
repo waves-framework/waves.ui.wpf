@@ -89,13 +89,28 @@
 
             <Grid Grid.Row="1" IsManipulationEnabled="True">
 
-                <Border Background="{Binding Background, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
-                        BorderBrush="{Binding BorderColor, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
+                <Grid>
+
+                    <Border x:Name="MaskBorder" Background="{Binding Background, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" CornerRadius="{StaticResource StandardCornerRadius}"/>
+
+                    <Grid>
+
+                        <Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=MaskBorder}" />
+                        </Grid.OpacityMask>
+
+                        <ContentControl Content="{Binding DrawingElementView, RelativeSource={RelativeSource AncestorType={x:Type local:ChartView}}}"
+                                        DataContext="{Binding}"
+                                        ClipToBounds="True"
+                                        Background="{Binding Background, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    </Grid>
+
+                </Grid>
+
+                <Border BorderBrush="{Binding BorderColor, Converter={StaticResource FluidColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
                         BorderThickness="{Binding BorderThickness}"
                         CornerRadius="{StaticResource StandardCornerRadius}"/>
-
-                <ContentControl Content="{Binding DrawingElementView, RelativeSource={RelativeSource AncestorType={x:Type local:ChartView}}}"
-                                DataContext="{Binding}"/>
 
             </Grid>
 

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
+using Fluid.Core.Base.Enums;
+using Fluid.Core.Base.EventArgs;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Microsoft.Xaml.Behaviors;
 
@@ -13,16 +17,22 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behavior
         where T : FrameworkElement
     {
         /// <summary>
+        /// Creates new instance of <see cref="PaintBehavior{T}"/>
+        /// </summary>
+        public PaintBehavior(IInputService inputService)
+        {
+            InputService = inputService;
+        }
+
+        /// <summary>
         /// Gets or sets data context.
         /// </summary>
         protected DrawingElementViewModel DataContext { get; set; }
 
         /// <summary>
-        /// Creates new instance of <see cref="PaintBehavior{T}"/>
+        ///     Gets or sets input service.
         /// </summary>
-        public PaintBehavior()
-        {
-        }
+        protected IInputService InputService { get; set; }
 
         /// <inheritdoc />
         protected override void OnAttached()
@@ -33,6 +43,15 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behavior
 
             element.DataContextChanged += OnDataContextChanged;
             element.SizeChanged += OnSizeChanged;
+            element.MouseMove += OnMouseMove;
+            element.MouseEnter += OnMouseEnter;
+            element.MouseLeave += OnMouseLeave;
+            element.MouseDown += OnMouseDown;
+            element.MouseUp += OnMouseUp;
+            element.MouseWheel += OnMouseWheel;
+            element.TouchEnter += OnTouchEnter;
+
+            // TODO: touch.
         }
 
         /// <inheritdoc />
@@ -40,10 +59,19 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behavior
         {
             base.OnDetaching();
 
-            var skElement = AssociatedObject;
+            var element = AssociatedObject;
 
-            skElement.DataContextChanged -= OnDataContextChanged;
-            skElement.SizeChanged -= OnSizeChanged;
+            element.DataContextChanged -= OnDataContextChanged;
+            element.SizeChanged -= OnSizeChanged;
+            element.DataContextChanged -= OnDataContextChanged;
+            element.SizeChanged -= OnSizeChanged;
+            element.MouseMove -= OnMouseMove;
+            element.MouseEnter -= OnMouseEnter;
+            element.MouseLeave -= OnMouseLeave;
+            element.MouseDown -= OnMouseDown;
+            element.MouseUp -= OnMouseUp;
+            element.MouseWheel -= OnMouseWheel;
+            element.TouchEnter -= OnTouchEnter;
 
             if (DataContext != null)
                 DataContext.RedrawRequested -= OnRedrawRequested;
@@ -100,6 +128,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behavior
 
             DataContext = dataContext;
 
+            // attaches input service.
+            dataContext.InputService = InputService;
+
             DataContext.RedrawRequested += OnRedrawRequested;
         }
 
@@ -121,6 +152,203 @@ namespace Fluid.UI.Windows.Controls.Drawing.Behavior
                     Console.WriteLine(exception);
                 }
             });
+        }
+
+        /// <summary>
+        /// Actions when mouse move.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var position = e.GetPosition(element);
+
+            var args = new PointerEventArgs(
+                Fluid.Core.Base.Enums.MouseButton.None,
+                PointerEventType.Move,
+                0,
+                new Fluid.Core.Base.Point(),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
+        }
+
+        /// <summary>
+        /// Actions when mouse enters.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var position = e.GetPosition(element);
+            var args = new PointerEventArgs(
+                Fluid.Core.Base.Enums.MouseButton.None,
+                PointerEventType.Enter,
+                0,
+                new Fluid.Core.Base.Point(),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
+        }
+
+        /// <summary>
+        /// Actions when mouse leaves.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var position = e.GetPosition(element);
+            var args = new PointerEventArgs(
+                Fluid.Core.Base.Enums.MouseButton.None,
+                PointerEventType.Leave,
+                0,
+                new Fluid.Core.Base.Point(),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
+        }
+
+        /// <summary>
+        /// Actions when mouse button is down.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var button = Fluid.Core.Base.Enums.MouseButton.None;
+
+            switch (e.ChangedButton)
+            {
+                case System.Windows.Input.MouseButton.Left:
+                    button = Fluid.Core.Base.Enums.MouseButton.Left;
+                    break;
+                case System.Windows.Input.MouseButton.Middle:
+                    button = Fluid.Core.Base.Enums.MouseButton.Middle;
+                    break;
+                case System.Windows.Input.MouseButton.Right:
+                    button = Fluid.Core.Base.Enums.MouseButton.Right;
+                    break;
+            }
+
+            var position = e.GetPosition(element);
+
+            var args = new PointerEventArgs(
+                button,
+                PointerEventType.Press,
+                0,
+                new Fluid.Core.Base.Point(),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
+        }
+
+        /// <summary>
+        /// Actions when mouse ups.
+        /// TODO: combine methods.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var button = Fluid.Core.Base.Enums.MouseButton.None;
+
+            switch (e.ChangedButton)
+            {
+                case System.Windows.Input.MouseButton.Left:
+                    button = Fluid.Core.Base.Enums.MouseButton.Left;
+                    break;
+                case System.Windows.Input.MouseButton.Middle:
+                    button = Fluid.Core.Base.Enums.MouseButton.Middle;
+                    break;
+                case System.Windows.Input.MouseButton.Right:
+                    button = Fluid.Core.Base.Enums.MouseButton.Right;
+                    break;
+            }
+
+            var position = e.GetPosition(element);
+
+            var args = new PointerEventArgs(
+                button,
+                PointerEventType.Release,
+                0,
+                new Fluid.Core.Base.Point(),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
+        }
+
+        /// <summary>
+        /// Actions when mouse scrolling.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var position = e.GetPosition(element);
+
+            var args = new PointerEventArgs(
+                Fluid.Core.Base.Enums.MouseButton.None,
+                PointerEventType.VerticalScroll,
+                0,
+                new Fluid.Core.Base.Point(e.Delta, 0),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
+        }
+
+        /// <summary>
+        /// Actions when touch enters.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        protected void OnTouchEnter(object sender, TouchEventArgs e)
+        {
+            if (InputService == null) return;
+
+            var element = sender as FrameworkElement;
+            if (element == null) return;
+
+            var position = e.GetTouchPoint(element).Position;
+
+            var args = new PointerEventArgs(
+                Fluid.Core.Base.Enums.MouseButton.None,
+                PointerEventType.Enter,
+                0,
+                new Fluid.Core.Base.Point(),
+                new Fluid.Core.Base.Point((int)position.X, (int)position.Y));
+
+            InputService.SetPointer(args);
         }
     }
 }

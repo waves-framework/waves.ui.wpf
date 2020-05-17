@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Engines.System.Behavior;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Microsoft.Xaml.Behaviors;
@@ -20,10 +22,12 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
         /// <summary>
         ///     Creates new instance of <see cref="SystemDrawingElementView" />.
         /// </summary>
-        public SystemDrawingElementView()
+        public SystemDrawingElementView(IInputService inputService)
         {
-            InitializeBehaviors();
+            InitializeBehaviors(inputService);
             SubscribeEvents();
+
+            Background = Brushes.Transparent;
         }
 
         /// <summary>
@@ -49,9 +53,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.View
         /// <summary>
         ///     Initializes behaviors.
         /// </summary>
-        private void InitializeBehaviors()
+        private void InitializeBehaviors(IInputService inputService)
         {
-            Interaction.GetBehaviors(this).Add(new SystemPaintBehavior());
+            Interaction.GetBehaviors(this).Add(new SystemPaintBehavior(inputService));
         }
 
         /// <summary>

@@ -40,7 +40,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
             var dataContext = new DataSetChartViewModel(drawingElement);
             var view = new ChartView()
             {
-                DrawingElementView = (FrameworkElement)DrawingService.CurrentEngine.GetView()
+                DrawingElementView = (FrameworkElement)DrawingService.CurrentEngine.GetView(InputService)
             };
 
             if (_oldDataSets != null)
@@ -60,8 +60,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
             OnPropertyChanged(nameof(View));
 
             base.Initialize();
-
-            SubscribeEvents();
 
             dataContext.Update();
         }
@@ -85,47 +83,7 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.Presentation
 
             _oldDataSets = context.DataSets;
 
-            UnsubscribeEvents();
-
             Update();
-        }
-
-        /// <summary>
-        /// Subscribes events.
-        /// </summary>
-        private void SubscribeEvents()
-        {
-            var view = View as ChartView;
-            if (view == null) return;
-
-            view.DrawingElementView.MouseMove += OnMouseMove;
-            view.DrawingElementView.MouseEnter += OnMouseEnter;
-            view.DrawingElementView.MouseLeave += OnMouseLeave;
-            view.DrawingElementView.MouseDown += OnMouseDown;
-            view.DrawingElementView.MouseUp += OnMouseUp;
-            view.DrawingElementView.MouseWheel += OnMouseWheel;
-            view.DrawingElementView.TouchEnter += OnTouchEnter;
-
-            //view.DrawingElementView.ManipulationDelta += OnManipulationDelta;
-        }
-
-        /// <summary>
-        /// Unsubscribes events.
-        /// </summary>
-        private void UnsubscribeEvents()
-        {
-            var view = View as ChartView;
-            if (view == null) return;
-
-            view.DrawingElementView.MouseMove -= OnMouseMove;
-            view.DrawingElementView.MouseEnter -= OnMouseEnter;
-            view.DrawingElementView.MouseLeave -= OnMouseLeave;
-            view.DrawingElementView.MouseDown -= OnMouseDown;
-            view.DrawingElementView.MouseUp -= OnMouseUp;
-            view.DrawingElementView.MouseWheel -= OnMouseWheel;
-            view.DrawingElementView.TouchEnter -= OnTouchEnter;
-
-            //view.DrawingElementView.ManipulationDelta += OnManipulationDelta;
         }
     }
 }

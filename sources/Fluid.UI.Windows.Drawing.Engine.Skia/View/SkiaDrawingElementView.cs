@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Fluid.Core.Base;
 using Fluid.Core.Base.Interfaces;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Drawing.Engine.Skia.Behavior;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
 using Microsoft.Xaml.Behaviors;
@@ -15,14 +16,13 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
     [Category("Fluid - Drawing")]
     public class SkiaDrawingElementView : SKElement, IDrawingElementView
     {
-        private readonly Point _lastTouchPosition = new Point();
-
         /// <summary>
-        ///     Creates new instance of <see cref="SkiaDrawingElementView" />.
+        /// Creates new instance of <see cref="SkiaDrawingElementView" />.
         /// </summary>
-        public SkiaDrawingElementView()
+        /// <param name="inputService">Input service.</param>
+        public SkiaDrawingElementView(IInputService inputService)
         {
-            InitializeBehaviors();
+            InitializeBehaviors(inputService);
             SubscribeEvents();
         }
 
@@ -47,11 +47,12 @@ namespace Fluid.UI.Windows.Drawing.Engine.Skia.View
         }
 
         /// <summary>
-        ///     Initializes behaviors.
+        /// Initializes behaviors.
         /// </summary>
-        private void InitializeBehaviors()
+        /// <param name="inputService">Input service.</param>
+        private void InitializeBehaviors(IInputService inputService)
         {
-            Interaction.GetBehaviors(this).Add(new SkiaPaintBehavior());
+            Interaction.GetBehaviors(this).Add(new SkiaPaintBehavior(inputService));
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Behavior;
 using Fluid.UI.Windows.Controls.Drawing.ViewModel;
 using Fluid.UI.Windows.Helpers;
@@ -13,6 +14,11 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System.Behavior
     /// </summary>
     public class SystemPaintBehavior : PaintBehavior<Canvas>
     {
+        /// <inheritdoc />
+        public SystemPaintBehavior(IInputService inputService) : base(inputService)
+        {
+        }
+
         /// <summary>
         ///     Actions when size changed.
         /// </summary>

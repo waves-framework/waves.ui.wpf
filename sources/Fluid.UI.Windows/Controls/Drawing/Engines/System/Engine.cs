@@ -1,4 +1,5 @@
 ﻿using System.Composition;
+using Fluid.Core.Services.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Fluid.UI.Windows.Controls.Drawing.Engines.System.View;
 using Fluid.UI.Windows.Controls.Drawing.View.Interfaces;
@@ -15,9 +16,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Engines.System
         public string Name => "System";
 
         /// <inheritdoc />
-        public IDrawingElementView GetView()
+        public IDrawingElementView GetView(IInputService inputService)
         {
-            return new SystemDrawingElementView();
+            return new SystemDrawingElementView(inputService);
         }
 
         /// <inheritdoc />

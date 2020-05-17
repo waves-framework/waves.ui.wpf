@@ -61,8 +61,6 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 
             ClearTempObject();
 
-           
-
             foreach (var dataSet in DataSets)
                 switch (dataSet.Type)
                 {
@@ -72,8 +70,9 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                     case DataSetType.Bar:
                         GenerateBarsForDataSet(dataSet);
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    case DataSetType.BarWithEnvelope:
+                        GenerateBarsWithEnvelopeForDataSet(dataSet);
+                        break;
                 }
 
             base.Draw(element);
@@ -184,7 +183,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
                     Value = value,
                     IsVisible = true,
                     IsAntialiased = paint.IsAntialiased,
-                    Fill = paint.Fill
+                    Stroke = Foreground,
+                    Fill = Foreground,
                 };
 
                 var size = DrawingElement.MeasureText(value, paint);
@@ -277,6 +277,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 
                     var text = new Text
                     {
+                        Stroke = Foreground,
+                        Fill = Foreground,
                         Location = new Point(ep.X, ep.Y),
                         Style = TextStyle,
                         Value = v,
@@ -338,6 +340,8 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
 
                 var text = new Text
                 {
+                    Stroke = Foreground,
+                    Fill = Foreground,
                     Location = new Point(ep.X, ep.Y),
                     Style = TextStyle,
                     Value = v,
@@ -353,6 +357,333 @@ namespace Fluid.UI.Windows.Controls.Drawing.Charting.ViewModel
             }
 
             AddTempObject(lastRectangle);
+        }
+
+        /// <summary>
+        ///     Generates bars with envelope line for data set.
+        /// </summary>
+        /// <param name="dataSet">Data set.</param>
+        private void GenerateBarsWithEnvelopeForDataSet(IDataSet dataSet)
+        {
+            if (dataSet.Data == null) return;
+            if (dataSet.Data.Length == 0) return;
+
+            var visiblePoints = new List<Point>();
+            foreach (var point in dataSet.Data)
+            {
+                if (point.X < CurrentXMin)
+                {
+                    if (visiblePoints.Count == 0)
+                        visiblePoints.Add(new Point());
+
+                    visiblePoints[0] = point;
+                    continue;
+                }
+
+                if (point.X >= CurrentXMin && point.X <= CurrentXMax)
+                {
+                    visiblePoints.Add(point);
+                }
+                else if (point.X > CurrentXMax)
+                {
+                    visiblePoints.Add(point);
+                    break;
+                }
+            }
+
+            var length = (int)Width;
+            var points = visiblePoints.Count > length
+                ? Resampling.LargestTriangleThreeBucketsDownsampling(visiblePoints.ToArray(), length)
+                : Resampling.SplineUpsampling(visiblePoints.ToArray(), length);
+
+            for (var i = 0; i < points.Length; i++)
+                points[i] = Valuation.NormalizePoint(points[i], Width, Height, CurrentXMin,
+                    CurrentYMin, CurrentXMax, CurrentYMax);
+
+            // first rectangle
+            var firstIndex = 0;
+            var firstWidth = points[firstIndex + 1].X - points[firstIndex].X;
+            var firstHeight = Height - points[firstIndex].Y;
+
+            var firstRectangle = new Rectangle
+            {
+                Fill = dataSet.Color,
+                IsAntialiased = false,
+                IsVisible = true,
+                StrokeThickness = 0,
+                Stroke = Background,
+                Location = points[firstIndex],
+                Width = firstWidth,
+                Height = firstHeight,
+                Opacity = 0.8f
+            };
+
+            var firstLine1 = new Line
+            {
+                Stroke = dataSet.Color,
+                Fill = dataSet.Color,
+                IsAntialiased = true,
+                IsVisible = true,
+                StrokeThickness = 2,
+                Point1 = points[firstIndex],
+                Point2 = new Point(points[firstIndex].X + firstWidth, points[firstIndex].Y),
+                Opacity = 1
+            };
+
+            var firstLine2 = new Line
+            {
+                Stroke = dataSet.Color,
+                Fill = dataSet.Color,
+                IsAntialiased = true,
+                IsVisible = true,
+                StrokeThickness = 2,
+                Point1 = new Point(points[firstIndex].X + firstWidth, points[firstIndex].Y),
+                Point2 = new Point(points[firstIndex].X + firstWidth, points[firstIndex + 1].Y),
+                Opacity = 1
+            };
+
+            if (visiblePoints.Count > length / 4)
+            {
+                firstRectangle.StrokeThickness = 0;
+                firstRectangle.IsAntialiased = false;
+
+                firstLine1.IsAntialiased = false;
+                firstLine2.IsAntialiased = false;
+            }
+
+            if (visiblePoints.Count <= length / 32)
+            {
+                var ep = new Point(points[firstIndex].X + (points[firstIndex].X - points[firstIndex].X) / 2,
+                    points[firstIndex].Y);
+                var value = Valuation.DenormalizePointY2D(points[firstIndex].Y, Height, CurrentYMin,
+                    CurrentYMax);
+
+                var paint = new TextPaint
+                {
+                    TextStyle = TextStyle,
+                    Fill = Foreground,
+                    IsAntialiased = true
+                };
+
+                var v = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
+
+                var text = new Text
+                {
+                    Stroke = Foreground,
+                    Fill = Foreground,
+                    Location = new Point(ep.X, ep.Y),
+                    Style = TextStyle,
+                    Value = v,
+                    IsVisible = true,
+                    IsAntialiased = true
+                };
+
+                var size = DrawingElement.MeasureText(v, paint);
+
+                text.Location = new Point(text.Location.X - size.Width / 2 + firstWidth / 2, text.Location.Y - 6);
+
+                AddTempObject(text);
+            }
+
+            AddTempObject(firstRectangle);
+            AddTempObject(firstLine1);
+            AddTempObject(firstLine2);
+
+            // mid rectangles
+            for (var i = 1; i < points.Length - 1; i++)
+            {
+                var width = points[i + 1].X - points[i].X;
+                var height = Height - points[i].Y;
+
+                var line0 = new Line
+                {
+                    Stroke = dataSet.Color,
+                    Fill = dataSet.Color,
+                    IsAntialiased = true,
+                    IsVisible = true,
+                    StrokeThickness = 2,
+                    Point1 = new Point(points[i].X, points[i - 1].Y),
+                    Point2 = points[i],
+                    Opacity = 1
+                };
+
+                var line1 = new Line
+                {
+                    Stroke = dataSet.Color,
+                    Fill = dataSet.Color,
+                    IsAntialiased = true,
+                    IsVisible = true,
+                    StrokeThickness = 2,
+                    Point1 = points[i],
+                    Point2 = new Point(points[i].X + width, points[i].Y),
+                    Opacity = 1
+                };
+
+                var line2 = new Line
+                {
+                    Stroke = dataSet.Color,
+                    Fill = dataSet.Color,
+                    IsAntialiased = true,
+                    IsVisible = true,
+                    StrokeThickness = 2,
+                    Point1 = new Point(points[i].X + width, points[i].Y),
+                    Point2 = new Point(points[i].X + width, points[i + 1].Y),
+                    Opacity = 1
+                };
+
+                var rectangle = new Rectangle
+                {
+                    Fill = dataSet.Color,
+                    IsAntialiased = false,
+                    IsVisible = true,
+                    StrokeThickness = 0,
+                    Stroke = Background,
+                    Location = points[i],
+                    Width = width,
+                    Height = height,
+                    Opacity = dataSet.Opacity
+                };
+
+                if (visiblePoints.Count > length / 4)
+                {
+                    rectangle.StrokeThickness = 0;
+                    rectangle.IsAntialiased = false;
+
+                    line0.IsAntialiased = false;
+                    line1.IsAntialiased = false;
+                    line2.IsAntialiased = false;
+                }
+
+                if (visiblePoints.Count <= length / 32)
+                {
+                    // Добавляем подписи на столбцы
+                    var ep = new Point(points[i].X + (points[i + 1].X - points[i].X) / 2, points[i].Y);
+                    var value = Valuation.DenormalizePointY2D(points[i].Y, Height, CurrentYMin, CurrentYMax);
+
+                    var paint = new TextPaint
+                    {
+                        TextStyle = TextStyle,
+                        Fill = Foreground,
+                        IsAntialiased = true
+                    };
+
+                    var v = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
+
+                    var text = new Text
+                    {
+                        Stroke = Foreground,
+                        Fill = Foreground,
+                        Location = new Point(ep.X, ep.Y),
+                        Style = TextStyle,
+                        Value = v,
+                        IsVisible = true,
+                        IsAntialiased = true
+                    };
+
+                    var size = DrawingElement.MeasureText(v, paint);
+
+                    text.Location = new Point(text.Location.X - size.Width / 2, text.Location.Y - 6);
+
+                    AddTempObject(text);
+                }
+
+                AddTempObject(rectangle);
+                AddTempObject(line0);
+                AddTempObject(line1);
+                AddTempObject(line2);
+            }
+
+            if (points.Length == 0) return;
+
+            // Last rectangle
+
+            var lastIndex = points.Length - 1;
+            var lastWidth = Width - points[lastIndex].X;
+            var lastHeight = Height - points[lastIndex].Y;
+
+            var lastRectangle = new Rectangle
+            {
+                Fill = dataSet.Color,
+                IsAntialiased = false,
+                IsVisible = true,
+                StrokeThickness = 2,
+                Stroke = Background,
+                Location = points[lastIndex],
+                Width = lastWidth,
+                Height = lastHeight,
+                Opacity = 0.8f
+            };
+
+            var lastLine0 = new Line
+            {
+                Stroke = dataSet.Color,
+                Fill = dataSet.Color,
+                IsAntialiased = true,
+                IsVisible = true,
+                StrokeThickness = 2,
+                Point1 = new Point(points[lastIndex].X, points[lastIndex - 1].Y),
+                Point2 = points[lastIndex],
+                Opacity = 1
+            };
+
+            var lastLine1 = new Line
+            {
+                Stroke = dataSet.Color,
+                Fill = dataSet.Color,
+                IsAntialiased = true,
+                IsVisible = true,
+                StrokeThickness = 0,
+                Point1 = points[lastIndex],
+                Point2 = new Point(points[lastIndex].X + lastWidth, points[lastIndex].Y),
+                Opacity = 1
+            };
+
+            if (visiblePoints.Count > length / 4)
+            {
+                lastRectangle.StrokeThickness = 0;
+                lastRectangle.IsAntialiased = false;
+
+                lastLine0.IsAntialiased = false;
+                lastLine1.IsAntialiased = false;
+            }
+
+            if (visiblePoints.Count <= length / 32)
+            {
+                var ep = new Point(points[lastIndex].X + (points[lastIndex].X - points[lastIndex].X) / 2,
+                    points[lastIndex].Y);
+                var value = Valuation.DenormalizePointY2D(points[lastIndex].Y, Height, CurrentYMin,
+                    CurrentYMax);
+
+                var paint = new TextPaint
+                {
+                    TextStyle = TextStyle,
+                    Fill = Foreground,
+                    IsAntialiased = true
+                };
+
+                var v = Math.Round(value, 2).ToString(CultureInfo.InvariantCulture);
+
+                var text = new Text
+                {
+                    Stroke = Foreground,
+                    Fill = Foreground,
+                    Location = new Point(ep.X, ep.Y),
+                    Style = TextStyle,
+                    Value = v,
+                    IsVisible = true,
+                    IsAntialiased = true
+                };
+
+                var size = DrawingElement.MeasureText(v, paint);
+
+                text.Location = new Point(text.Location.X - size.Width / 2 + lastWidth / 2, text.Location.Y - 6);
+
+                AddTempObject(text);
+            }
+
+            AddTempObject(lastRectangle);
+            AddTempObject(lastLine0);
+            AddTempObject(lastLine1);
         }
 
         /// <summary>
