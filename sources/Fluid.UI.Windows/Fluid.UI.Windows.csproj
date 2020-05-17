@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core" Version="2020.1.143" />
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.143" />
-    <PackageReference Include="Fluid.Presentation" Version="2020.1.25" />
+    <PackageReference Include="Fluid.Core" Version="2020.1.148" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.148" />
+    <PackageReference Include="Fluid.Presentation" Version="2020.1.27" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
 
