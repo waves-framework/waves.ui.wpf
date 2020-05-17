@@ -7,7 +7,7 @@ using System.Windows.Media.Animation;
 namespace Fluid.UI.Windows.Animations
 {
     /// <summary>
-    ///     Supplies attached properties that provides visibility of animations
+    ///     Supplies attached properties that provides visibility of animations.
     /// </summary>
     public class VisibilityAnimation
     {
