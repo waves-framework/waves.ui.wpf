@@ -25,7 +25,7 @@
         <Setter Property="Focusable" Value="false" />
         <Setter Property="IsTabStop" Value="false" />
 
-        <Setter Property="helpers:Control.CornerRadius" Value="{DynamicResource StandardCornerRadius}" />
+        <Setter Property="helpers:Control.CornerRadius" Value="3" />
 
         <Setter Property="Template">
 

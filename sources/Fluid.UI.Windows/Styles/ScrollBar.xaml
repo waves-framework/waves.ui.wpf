@@ -88,9 +88,9 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.RowSpan="3">
+
                 <Border x:Name="BackgroundBorder" 
-                        Background="{DynamicResource Primary-300-Brush}" 
-                        CornerRadius="{StaticResource StandardCornerRadius}"
+                        Background="{DynamicResource Primary-300-Brush}"
                         Opacity="0"/>
             </Grid>
 
@@ -107,8 +107,9 @@
             <Track Name="PART_Track" Grid.Row="1" 
                    IsDirectionReversed="True" 
                    Margin="-1,3,3,3" 
-                   Width="12" 
-                   HorizontalAlignment="Right">
+                   Width="6" 
+                   HorizontalAlignment="Right"
+                   Opacity="{StaticResource Opacity5}">
 
                 <Track.DecreaseRepeatButton>
 
@@ -170,6 +171,14 @@
                             <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="18" />
                         </DoubleAnimationUsingKeyFrames>
 
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="{StaticResource Opacity1}" />
+                        </DoubleAnimationUsingKeyFrames>
+
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BackgroundBorder" Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="{StaticResource Opacity1}" />
+                        </DoubleAnimationUsingKeyFrames>
+
                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TopRepeatButton" Storyboard.TargetProperty="(UIElement.Opacity)">
                             <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1" />
                         </DoubleAnimationUsingKeyFrames>
@@ -208,7 +217,15 @@
                         </ThicknessAnimationUsingKeyFrames>
 
                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
-                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="12" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="6" />
+                        </DoubleAnimationUsingKeyFrames>
+
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="{StaticResource Opacity5}" />
+                        </DoubleAnimationUsingKeyFrames>
+
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="BackgroundBorder" Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="{StaticResource Opacity0}" />
                         </DoubleAnimationUsingKeyFrames>
 
                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TopRepeatButton" Storyboard.TargetProperty="(UIElement.Opacity)">
@@ -258,6 +275,8 @@
                         <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
                                                 Grid.Row="0"
                                                 Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Grid.RowSpan="2"
                                                 Margin="{TemplateBinding Padding}"
                                                 CanContentScroll="{TemplateBinding CanContentScroll}"
                                                 CanHorizontallyScroll="False"
