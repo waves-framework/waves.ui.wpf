@@ -1,0 +1,173 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Waves.UI.Windows.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Base control. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.Windows;component/Styles/Control.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlStyle}">
+
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Width" Value="Auto" />
+
+        <Setter Property="IsTabStop" Value="True"/>
+
+        <Setter Property="Padding" Value="0"/>
+
+        <Setter Property="Background" Value="{DynamicResource Primary-100-Brush}"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary-700-Brush}"/>
+
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+
+                    <Grid x:Name="MainGrid">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18" />
+                            <ColumnDefinition Width="9" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.ColumnSpan="3">
+                            <Canvas Background="Black" Opacity="0" />
+                        </Grid>
+
+                        <Grid Grid.Column="0">
+
+                            <Ellipse Fill="{TemplateBinding Background}" Opacity="1" Height="18"
+                                    Width="18" />
+
+                            <Ellipse Fill="Transparent" Stroke="{TemplateBinding BorderBrush}"
+                                    StrokeThickness="1" Opacity="1" Height="18" Width="18" />
+
+                            <Ellipse x:Name="HighlightEllipse" Fill="{TemplateBinding Foreground}" Opacity="0.0" Height="18" Width="18" />
+
+                            <Ellipse x:Name="SelectionEllipse" Width="12" Height="12" Fill="{TemplateBinding Foreground}" Opacity="0"/>
+
+                            <Ellipse x:Name="IndeterminateEllipse" Width="12" Height="12" Fill="{TemplateBinding Foreground}" Opacity="0"/>
+
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                              RecognizesAccessKey="True" />
+
+                        </Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="SelectionEllipse"
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         To="1"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="SelectionEllipse"
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         To="0"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="IndeterminateEllipse"
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         To="0.125"
+                                                         Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{DynamicResource Primary-500-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-Foreground-900-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource Accent-500-Brush}" />
+                            <Setter TargetName="SelectionEllipse" Property="Fill" Value="{DynamicResource Accent-500-Brush}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="Background" Value="{DynamicResource Primary-500-Brush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource Primary-Foreground-900-Brush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
+                            <Setter TargetName="SelectionEllipse" Property="Fill" Value="{DynamicResource Primary-Foreground-900-Brush}" />
+
+                        </MultiTrigger>
+
+                        <!-- Наведение курсора мыши -->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="HighlightEllipse">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.0625" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Уведение курсора мыши -->
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="HighlightEllipse">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.0" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+    
+</ResourceDictionary>

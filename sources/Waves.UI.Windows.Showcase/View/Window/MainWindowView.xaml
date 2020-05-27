@@ -1,0 +1,21 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Waves.UI.Windows.Showcase.View.Window"
+    xmlns:control="clr-namespace:Waves.UI.Windows.Showcase.View.Control"
+    x:Class="Waves.UI.Windows.Showcase.View.Window.MainWindowView"
+    Style="{DynamicResource WindowStyle}"
+    mc:Ignorable="d"
+    Title="Waves - UI Showcase" Height="768" Width="1024" 
+    WindowStartupLocation="CenterScreen"
+    Icon="pack://application:,,,/Waves.UI.Windows.Showcase;component/Waves.ico">
+
+    <Grid>
+
+        <control:MainControlView Margin="0" DataContext="{Binding}" />
+
+    </Grid>
+
+</Window>
