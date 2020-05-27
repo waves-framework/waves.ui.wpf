@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helpers="clr-namespace:Waves.UI.Windows.Helpers">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Base control. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.Windows;component/Styles/Control.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Thumb Style -->
+    <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}" BasedOn="{StaticResource ControlStyle}">
+
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="MinHeight" Value="0"/>
+
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="Auto"/>
+
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary-900-Brush}"/>
+        <Setter Property="Background" Value="{DynamicResource Primary-900-Brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Primary-900-Brush}"/>
+
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="IsTabStop" Value="false" />
+
+        <Setter Property="helpers:Control.CornerRadius" Value="3" />
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type Thumb}">
+
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="{TemplateBinding helpers:Control.CornerRadius}"/>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource Accent-300-Brush}" />
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>
