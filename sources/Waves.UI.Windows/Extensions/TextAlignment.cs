@@ -10,15 +10,15 @@
         /// </summary>
         /// <param name="alignment">Waves text alignment.</param>
         /// <returns>System text alignment.</returns>
-        public static System.Windows.TextAlignment ToSystemTextAlignment(this Base.Enums.TextAlignment alignment)
+        public static System.Windows.TextAlignment ToSystemTextAlignment(this Drawing.Base.Enums.TextAlignment alignment)
         {
             switch (alignment)
             {
-                case Base.Enums.TextAlignment.Left:
+                case Drawing.Base.Enums.TextAlignment.Left:
                     return System.Windows.TextAlignment.Left;
-                case Base.Enums.TextAlignment.Right:
+                case Drawing.Base.Enums.TextAlignment.Right:
                     return System.Windows.TextAlignment.Right;
-                case Base.Enums.TextAlignment.Center:
+                case Drawing.Base.Enums.TextAlignment.Center:
                     return System.Windows.TextAlignment.Center;
                 default:
                     return System.Windows.TextAlignment.Left;

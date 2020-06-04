@@ -6,13 +6,14 @@ using Waves.Core.Base;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.EventArgs;
 using Waves.Core.Services.Interfaces;
+using Waves.UI.Drawing.Base;
+using Waves.UI.Drawing.Base.Interfaces;
+using Waves.UI.Drawing.ViewModel;
 using Waves.UI.Windows.Controls.Drawing.Base;
-using Waves.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Charting.Base;
 using Waves.UI.Windows.Controls.Drawing.Charting.Base.Enums;
 using Waves.UI.Windows.Controls.Drawing.Charting.Utils;
 using Waves.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
-using Waves.UI.Windows.Controls.Drawing.ViewModel;
 
 namespace Waves.UI.Windows.Controls.Drawing.Charting.ViewModel
 {

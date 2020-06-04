@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">FCE88583-DE5F-4B97-A69A-8239800C3CB5</system:String>
+    <system:String x:Key="ColorSetName">Classic Miscellaneous</system:String>
 
     <!-- Disabled colors -->
     <Color x:Key="Disabled-Color">#6D6A75</Color>

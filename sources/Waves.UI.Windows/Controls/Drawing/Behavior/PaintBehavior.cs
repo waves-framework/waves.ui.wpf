@@ -4,8 +4,8 @@ using System.Windows.Input;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.EventArgs;
 using Waves.Core.Services.Interfaces;
-using Waves.UI.Windows.Controls.Drawing.ViewModel;
 using Microsoft.Xaml.Behaviors;
+using Waves.UI.Drawing.ViewModel;
 
 namespace Waves.UI.Windows.Controls.Drawing.Behavior
 {

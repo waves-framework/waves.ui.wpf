@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Data;
 using System.Windows.Input;
 using Waves.Presentation.Interfaces;
-using Waves.UI.Windows.Base.Interfaces;
+using Waves.UI.Base.Interfaces;
 using Waves.UI.Windows.Commands;
 using Waves.UI.Windows.Controls.Modality.Base.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Presentation.Interfaces;
@@ -32,7 +32,7 @@ namespace Waves.UI.Windows.Controls.Modality.Presentation
         public event EventHandler<IModalWindowPresentation> WindowRequestClosing;
 
         /// <inheritdoc />
-        public abstract IVectorIcon Icon { get; }
+        public abstract IVectorImage Icon { get; }
 
         /// <inheritdoc />
         public abstract string Title { get; }

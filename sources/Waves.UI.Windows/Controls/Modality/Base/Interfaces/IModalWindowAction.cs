@@ -1,5 +1,5 @@
 ﻿using System;
-using Waves.UI.Windows.Base.Interfaces;
+using Waves.UI.Base.Interfaces;
 
 namespace Waves.UI.Windows.Controls.Modality.Base.Interfaces
 {
@@ -21,7 +21,7 @@ namespace Waves.UI.Windows.Controls.Modality.Base.Interfaces
         /// <summary>
         /// Gets icon.
         /// </summary>
-        IVectorIcon Icon { get; }
+        IVectorImage Icon { get; }
 
         /// <summary>
         /// Gets caption.

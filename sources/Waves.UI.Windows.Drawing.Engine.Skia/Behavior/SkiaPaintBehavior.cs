@@ -2,7 +2,6 @@
 using System.Windows;
 using Waves.Core.Services.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Behavior;
-using Waves.UI.Windows.Controls.Drawing.ViewModel;
 using Microsoft.Xaml.Behaviors;
 using SkiaSharp.Views.Desktop;
 using SkiaSharp.Views.WPF;

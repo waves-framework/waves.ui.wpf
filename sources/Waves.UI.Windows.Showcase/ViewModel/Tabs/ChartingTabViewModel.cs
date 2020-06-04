@@ -3,15 +3,14 @@ using System.Threading.Tasks;
 using Waves.Core.Base;
 using Waves.Core.Services.Interfaces;
 using Waves.Presentation.Base;
+using Waves.UI.Drawing.Services.Interfaces;
+using Waves.UI.Services.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Base;
 using Waves.UI.Windows.Controls.Drawing.Charting.Base;
 using Waves.UI.Windows.Controls.Drawing.Charting.Base.Enums;
 using Waves.UI.Windows.Controls.Drawing.Charting.Presentation;
 using Waves.UI.Windows.Controls.Drawing.Charting.Presentation.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
-using Waves.UI.Windows.Controls.Drawing.Presentation.Interfaces;
-using Waves.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
-using Waves.UI.Windows.Services.Interfaces;
 
 namespace Waves.UI.Windows.Showcase.ViewModel.Tabs
 {
@@ -64,7 +63,7 @@ namespace Waves.UI.Windows.Showcase.ViewModel.Tabs
                 points1[i].Y = (float)random1.NextDouble() - 0.5f;
             }
 
-            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.GetMiscellaneousColor("Success-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
+            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Success-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
             context.AddDataSet(dataSet1);
 
             var num2 = 128;
@@ -76,7 +75,7 @@ namespace Waves.UI.Windows.Showcase.ViewModel.Tabs
                 points2[i].Y = (float)random2.NextDouble() - 0.5f;
             }
 
-            var dataSet2 = new DataSet(points2) { Color = ThemeService.SelectedTheme.GetMiscellaneousColor("Error-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f };
+            var dataSet2 = new DataSet(points2) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Error-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f };
             context.AddDataSet(dataSet2);
         }
     }

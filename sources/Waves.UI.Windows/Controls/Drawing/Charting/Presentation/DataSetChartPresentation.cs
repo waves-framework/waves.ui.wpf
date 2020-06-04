@@ -3,12 +3,13 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Documents;
 using Waves.Core.Services.Interfaces;
+using Waves.UI.Drawing.Services.Interfaces;
+using Waves.UI.Services.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Charting.Base.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Charting.Presentation.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Charting.View;
 using Waves.UI.Windows.Controls.Drawing.Charting.ViewModel;
 using Waves.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces;
-using Waves.UI.Windows.Services.Interfaces;
 
 namespace Waves.UI.Windows.Controls.Drawing.Charting.Presentation
 {

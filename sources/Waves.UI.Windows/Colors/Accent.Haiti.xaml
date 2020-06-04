@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">3F37F6CF-995C-4B78-9E7A-0605B98B1E64</system:String>
+    <system:String x:Key="ColorSetName">Haiti</system:String>
 
     <Color x:Key="Accent-Color-100">#0B132B</Color>
     <Color x:Key="Accent-Color-200">#192137</Color>

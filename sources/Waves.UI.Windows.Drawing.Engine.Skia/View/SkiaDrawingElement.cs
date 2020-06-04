@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Waves.Core.Base;
-using Waves.UI.Windows.Controls.Drawing.Base.Interfaces;
 using Waves.UI.Windows.Drawing.Engine.Skia.Extensions;
 using SkiaSharp;
+using Waves.UI.Drawing.Base.Interfaces;
 
 namespace Waves.UI.Windows.Drawing.Engine.Skia.View
 {

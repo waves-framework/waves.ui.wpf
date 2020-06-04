@@ -5,9 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Waves.UI.Windows.Controls.Drawing.Base.Interfaces;
+using Waves.UI.Drawing.Base.Interfaces;
 using Waves.UI.Windows.Extensions;
-using Waves.UI.Windows.Helpers;
 using Point = Waves.Core.Base.Point;
 using Size = Waves.Core.Base.Size;
 

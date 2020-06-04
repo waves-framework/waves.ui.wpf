@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Waves.Core.Base;
 using Waves.Core.Services.Interfaces;
-using Waves.UI.Windows.Controls.Drawing.Base;
+using Waves.UI.Drawing.Base;
+using Waves.UI.Drawing.ViewModel.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Charting.Base;
-using Waves.UI.Windows.Controls.Drawing.ViewModel.Interfaces;
 
 namespace Waves.UI.Windows.Controls.Drawing.Charting.ViewModel.Interfaces
 {

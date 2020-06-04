@@ -1,6 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
+    <!-- ID -->
+    <system:String x:Key="ColorSetId">00000000-0000-0000-0000-000000000000</system:String>
+    <system:String x:Key="ColorSetName">Template</system:String>
+
+    <!-- Colors -->
     <Color x:Key="Accent-Color-100">#000000</Color>
     <Color x:Key="Accent-Color-200">#000000</Color>
     <Color x:Key="Accent-Color-300">#000000</Color>
@@ -11,11 +17,12 @@
     <Color x:Key="Accent-Color-800">#000000</Color>
     <Color x:Key="Accent-Color-900">#000000</Color>
 
-    <Color x:Key="Accent-Color-Foreground-100">#000000</Color>
-    <Color x:Key="Accent-Color-Foreground-500">#000000</Color>
-    <Color x:Key="Accent-Color-Foreground-900">#000000</Color>
+    <!-- Foreground colors -->
+    <Color x:Key="Accent-Color-Foreground-100">#FFFFFF</Color>
+    <Color x:Key="Accent-Color-Foreground-500">#FFFFFF</Color>
+    <Color x:Key="Accent-Color-Foreground-900">#FFFFFF</Color>
 
-    <!-- Accent -->
+    <!-- Brushes -->
     <SolidColorBrush x:Key="Accent-100-Brush" Color="{StaticResource Accent-Color-100}" />
     <SolidColorBrush x:Key="Accent-200-Brush" Color="{StaticResource Accent-Color-200}" />
     <SolidColorBrush x:Key="Accent-300-Brush" Color="{StaticResource Accent-Color-300}" />
@@ -26,6 +33,7 @@
     <SolidColorBrush x:Key="Accent-800-Brush" Color="{StaticResource Accent-Color-800}" />
     <SolidColorBrush x:Key="Accent-900-Brush" Color="{StaticResource Accent-Color-900}" />
 
+    <!-- Foreground brushes -->
     <SolidColorBrush x:Key="Accent-Foreground-100-Brush" Color="{StaticResource Accent-Color-Foreground-100}" />
     <SolidColorBrush x:Key="Accent-Foreground-500-Brush" Color="{StaticResource Accent-Color-Foreground-500}" />
     <SolidColorBrush x:Key="Accent-Foreground-900-Brush" Color="{StaticResource Accent-Color-Foreground-900}" />

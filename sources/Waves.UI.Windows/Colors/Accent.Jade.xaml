@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">66280E94-94B0-4179-AA40-79B85E09DF63</system:String>
+    <system:String x:Key="ColorSetName">Jade</system:String>
 
     <Color x:Key="Accent-Color-100">#A3DFCD</Color>
     <Color x:Key="Accent-Color-200">#7AD1B8</Color>

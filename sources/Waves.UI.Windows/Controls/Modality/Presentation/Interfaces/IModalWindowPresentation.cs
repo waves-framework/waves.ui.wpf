@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Waves.Presentation.Interfaces;
-using Waves.UI.Windows.Base.Interfaces;
+using Waves.UI.Base.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Base.Interfaces;
 
 namespace Waves.UI.Windows.Controls.Modality.Presentation.Interfaces
@@ -14,7 +14,7 @@ namespace Waves.UI.Windows.Controls.Modality.Presentation.Interfaces
         /// <summary>
         /// Gets icon.
         /// </summary>
-        IVectorIcon Icon { get; }
+        IVectorImage Icon { get; }
 
         /// <summary>
         /// Gets title.

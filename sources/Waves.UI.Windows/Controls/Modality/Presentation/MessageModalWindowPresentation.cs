@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Waves.Presentation.Interfaces;
+using Waves.UI.Base.Interfaces;
 using Waves.UI.Windows.Base;
-using Waves.UI.Windows.Base.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Base.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Presentation.Enums;
 using Waves.UI.Windows.Controls.Modality.View;
@@ -16,7 +16,7 @@ namespace Waves.UI.Windows.Controls.Modality.Presentation
     /// </summary>
     public class MessageModalWindowPresentation : ModalWindowPresentation
     {
-        private IVectorIcon _icon;
+        private IVectorImage _icon;
 
         private IPresentationViewModel _dataContext;
 
@@ -35,7 +35,7 @@ namespace Waves.UI.Windows.Controls.Modality.Presentation
         }
 
         /// <inheritdoc />
-        public override IVectorIcon Icon => _icon;
+        public override IVectorImage Icon => _icon;
 
         /// <inheritdoc />
         public override string Title { get; }
