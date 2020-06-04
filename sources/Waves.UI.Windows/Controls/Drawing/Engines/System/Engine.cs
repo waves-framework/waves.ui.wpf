@@ -1,6 +1,6 @@
 ﻿using System.Composition;
 using Waves.Core.Services.Interfaces;
-using Waves.UI.Windows.Controls.Drawing.Base.Interfaces;
+using Waves.UI.Drawing.Base.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Engines.System.View;
 using Waves.UI.Windows.Controls.Drawing.View.Interfaces;
 

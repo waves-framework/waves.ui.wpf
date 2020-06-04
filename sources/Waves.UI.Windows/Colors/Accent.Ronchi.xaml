@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">50C3C9A1-09A2-466F-B081-6C57141E8ABF</system:String>
+    <system:String x:Key="ColorSetName">Ronchi</system:String>
 
     <Color x:Key="Accent-Color-100">#F9EABB</Color>
     <Color x:Key="Accent-Color-200">#F7E29D</Color>

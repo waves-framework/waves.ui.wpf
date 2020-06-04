@@ -1,7 +1,7 @@
 ﻿using System;
 using Waves.Core.Base;
-using Waves.UI.Windows.Base.Enums;
 using SkiaSharp;
+using Waves.UI.Drawing.Base.Enums;
 
 namespace Waves.UI.Windows.Drawing.Engine.Skia.Extensions
 {

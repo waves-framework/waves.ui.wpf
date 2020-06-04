@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using Waves.Core.Base;
+using Waves.UI.Drawing.Base;
+using Waves.UI.Drawing.Base.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Base;
-using Waves.UI.Windows.Controls.Drawing.Base.Interfaces;
 
 namespace Waves.UI.Windows.Controls.Drawing.Charting.Utils
 {

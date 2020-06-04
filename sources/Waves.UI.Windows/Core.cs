@@ -9,13 +9,14 @@ using Waves.Core.Base;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
+using Waves.UI.Drawing.Services.Interfaces;
+using Waves.UI.Services.Interfaces;
 using Waves.UI.Windows.Base;
-using Waves.UI.Windows.Base.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Presentation.Controllers;
 using Waves.UI.Windows.Controls.Modality.Presentation.Controllers.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Presentation.Interfaces;
 using Waves.UI.Windows.Controls.Modality.View;
-using Waves.UI.Windows.Services.Interfaces;
+using Waves.UI.Windows.Services;
 using Application = System.Windows.Application;
 
 namespace Waves.UI.Windows
@@ -154,26 +155,26 @@ namespace Waves.UI.Windows
         /// </summary>
         private void InitializeServices()
         {
-            try
-            {
-                var service = ServiceManager.GetService<IThemeService>().First();
-                RegisterService(service);
-                InitializeThemeService();
-            }
-            catch (Exception e)
-            {
-                WriteLogMessage(new Message("Registering logging service", "Error registering theme service.", "UI Core", e, true));
-            }
+            InitializeThemeService();
 
-            try
-            {
-                var service = ServiceManager.GetService<IDrawingService>().First();
-                RegisterService(service);
-            }
-            catch (Exception e)
-            {
-                WriteLogMessage(new Message("Registering drawing service", "Error registering drawing service service.", "UI Core", e, true));
-            }
+            //try
+            //{
+
+            //}
+            //catch (Exception e)
+            //{
+            //    WriteLogMessage(new Message("Registering logging service", "Error registering theme service.", "UI Core", e, true));
+            //}
+
+            //try
+            //{
+            //    var service = ServiceManager.GetService<IDrawingService>().First();
+            //    RegisterService(service);
+            //}
+            //catch (Exception e)
+            //{
+            //    WriteLogMessage(new Message("Registering drawing service", "Error registering drawing service service.", "UI Core", e, true));
+            //}
         }
 
         /// <summary>
@@ -181,8 +182,8 @@ namespace Waves.UI.Windows
         /// </summary>
         private void InitializeThemeService()
         {
-            var service = GetService<IThemeService>();
-
+            var service = GetService<IThemeService>() as ThemeService;
+ 
             if (service == null)
                 WriteLogMessage(
                     new Message("Service", "Theme service is not initialized.", "UI Core", MessageType.Fatal));

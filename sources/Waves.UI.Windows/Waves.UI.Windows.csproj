@@ -23,10 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Waves.Core" Version="2020.1.156" />
-    <PackageReference Include="Waves.Core.Base" Version="2020.1.156" />
+    <PackageReference Include="Waves.Core" Version="2020.1.160" />
     <PackageReference Include="Waves.Presentation" Version="2020.1.29" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="Waves.UI" Version="2020.1.18-alpha" />
+    <PackageReference Include="Waves.UI.Drawing" Version="2020.1.18-alpha" />
+    <PackageReference Include="Waves.UI.Drawing.Charting" Version="2020.1.18-alpha" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,22 +41,22 @@
     <Page Update="Colors\Accent.Template.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Colors\Accent.Black.xaml">
+    <Page Update="Colors\Accent.Haiti.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Colors\Accent.White.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Colors\Accent.Blue.xaml">
+    <Page Update="Colors\Accent.Picton.Blue.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Colors\Accent.Green.xaml">
+    <Page Update="Colors\Accent.Jade.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Colors\Accent.Red.xaml">
+    <Page Update="Colors\Accent.Sunset.Orange.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Colors\Accent.Yellow.xaml">
+    <Page Update="Colors\Accent.Ronchi.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Colors\Miscellaneous.Classic.xaml">

@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">132A0F51-0A5A-41C4-A357-99B9B6B02064</system:String>
+    <system:String x:Key="ColorSetName">White</system:String>
 
     <Color x:Key="Accent-Color-100">#FFFFFF</Color>
     <Color x:Key="Accent-Color-200">#F7F7F8</Color>

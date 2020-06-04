@@ -1,5 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">97353E27-C9C5-46FE-B321-A5A52B3D0E9F</system:String>
+    <system:String x:Key="ColorSetName">Classic Dark</system:String>
 
     <Color x:Key="Color-100">#FFFFFF</Color>
     <Color x:Key="Color-200">#F7F7F8</Color>

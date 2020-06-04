@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Waves.Core.Base;
+using Waves.UI.Base.Interfaces;
 using Waves.UI.Windows.Base;
-using Waves.UI.Windows.Base.Interfaces;
 using Waves.UI.Windows.Commands;
 using Waves.UI.Windows.Controls.Modality.Base.Interfaces;
 
@@ -23,7 +23,7 @@ namespace Waves.UI.Windows.Controls.Modality.Base
         /// <param name="icon">Icon.</param>
         /// <param name="isAccent">Is accent.</param>
         /// <param name="toolTip">Tool tip.</param>
-        public ModalWindowAction(string caption, Action action, IVectorIcon icon = null, bool isAccent = false, string toolTip = null)
+        public ModalWindowAction(string caption, Action action, IVectorImage icon = null, bool isAccent = false, string toolTip = null)
         {
             Caption = caption;
             ToolTip = !string.IsNullOrEmpty(toolTip) ? toolTip : caption;
@@ -41,7 +41,7 @@ namespace Waves.UI.Windows.Controls.Modality.Base
         public bool IsEnabled { get; set; } = true;
 
         /// <inheritdoc />
-        public IVectorIcon Icon { get; private set; }
+        public IVectorImage Icon { get; private set; }
 
         /// <inheritdoc />
         public string Caption { get; private set; }

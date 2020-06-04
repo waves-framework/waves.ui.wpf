@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
-using Waves.Core.Base;
-using Waves.UI.Windows.Base.Interfaces;
+using Waves.UI.Base;
+using Waves.UI.Base.Interfaces;
+using Color = Waves.Core.Base.Color;
 
 namespace Waves.UI.Windows.Base
 {
     /// <summary>
     /// Vector icon from resources.
     /// </summary>
-    public class ResourcesVectorIcon : ObservableObject, IVectorIcon
+    public class ResourcesVectorIcon : VectorImage
     {
         private const string DefaultResourceUriSource = "pack://application:,,,/Waves.UI.Windows;component/Resources/Icons.xaml";
 
@@ -50,25 +52,13 @@ namespace Waves.UI.Windows.Base
             Name = key;
             Width = width;
             Height = height;
-            Padding = padding;
+            Padding = new []{padding.Left, padding.Top, padding.Right, padding.Right};
 
             InitializeGeometryFromDefaultResourceDictionary(key);
         }
 
         /// <inheritdoc />
-        public string Name { get; private set; }
-
-        /// <inheritdoc />
-        public Geometry PathData { get; private set; }
-
-        /// <inheritdoc />
-        public double Width { get; private set; } = 14;
-
-        /// <inheritdoc />
-        public double Height { get; private set; } = 14;
-
-        /// <inheritdoc />
-        public Thickness Padding { get; } = new Thickness();
+        public sealed override string Name { get; set; }
 
         /// <summary>
         /// Initializes geometry from default resource dictionary.
@@ -76,7 +66,10 @@ namespace Waves.UI.Windows.Base
         private void InitializeGeometryFromDefaultResourceDictionary(string key)
         {
             var resourceDictionary = new ResourceDictionary() { Source = new Uri(DefaultResourceUriSource) };
-            PathData = (Geometry)resourceDictionary[key];
+
+            Paths.Clear();
+
+            Paths.Add(new VectorPath(resourceDictionary[key].ToString(), Color.Black));
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
+using Waves.UI.Base.Interfaces;
 using Waves.UI.Windows.Base;
-using Waves.UI.Windows.Base.Interfaces;
 using Waves.UI.Windows.Controls.Modality.Base;
 using Waves.UI.Windows.Controls.Modality.Presentation;
 using Waves.UI.Windows.Extensions;
@@ -40,7 +40,7 @@ namespace Waves.UI.Windows.Showcase.Presentation.ModalWindow
         public IConfiguration Configuration { get; private set; }
 
         /// <inheritdoc />
-        public override IVectorIcon Icon { get; } = new ResourcesVectorIcon("Icon-File-New");
+        public override IVectorImage Icon { get; } = new ResourcesVectorIcon("Icon-File-New");
 
         /// <inheritdoc />
         public override string Title => "Add property";

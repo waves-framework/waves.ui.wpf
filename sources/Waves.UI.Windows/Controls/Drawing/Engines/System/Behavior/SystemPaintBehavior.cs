@@ -3,9 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Waves.Core.Services.Interfaces;
 using Waves.UI.Windows.Controls.Drawing.Behavior;
-using Waves.UI.Windows.Controls.Drawing.ViewModel;
 using Waves.UI.Windows.Helpers;
-using Microsoft.Xaml.Behaviors;
 
 namespace Waves.UI.Windows.Controls.Drawing.Engines.System.Behavior
 {

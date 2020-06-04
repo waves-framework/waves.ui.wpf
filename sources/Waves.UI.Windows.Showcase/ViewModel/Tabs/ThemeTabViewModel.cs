@@ -1,5 +1,5 @@
 ﻿using Waves.Presentation.Base;
-using Waves.UI.Windows.Services.Interfaces;
+using Waves.UI.Services.Interfaces;
 
 namespace Waves.UI.Windows.Showcase.ViewModel.Tabs
 {

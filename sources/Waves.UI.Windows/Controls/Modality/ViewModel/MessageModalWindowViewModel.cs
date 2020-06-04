@@ -1,4 +1,4 @@
-﻿using Waves.UI.Windows.Base.Interfaces;
+﻿using Waves.UI.Base.Interfaces;
 
 namespace Waves.UI.Windows.Controls.Modality.ViewModel
 {
@@ -12,7 +12,7 @@ namespace Waves.UI.Windows.Controls.Modality.ViewModel
         /// </summary>
         /// <param name="message">Message.</param>
         /// <param name="icon">Icon.</param>
-        public MessageModalWindowViewModel(string message, IVectorIcon icon)
+        public MessageModalWindowViewModel(string message, IVectorImage icon)
         {
             Message = message;
             Icon = icon;
@@ -26,7 +26,7 @@ namespace Waves.UI.Windows.Controls.Modality.ViewModel
         /// <summary>
         /// Gets or sets modal window icon.
         /// </summary>
-        public IVectorIcon Icon { get; set; }
+        public IVectorImage Icon { get; set; }
 
         /// <inheritdoc />
         public override void Initialize()
