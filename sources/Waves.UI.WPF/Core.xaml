@@ -1,0 +1,110 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:behaviors="clr-namespace:Waves.UI.WPF.Behaviors">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Controls -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Opacity.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Padding.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/RepeatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ScrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Text.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Text.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/ToggleButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Window.xaml" />
+
+        <!-- Templates -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Templates/Property.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Templates/MessageObjects.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Templates/Theme.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Templates/Type.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Controls/Modality/View/Templates/ModalWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Controls/Modality/View/Templates/ModalWindowAction.xaml" />
+
+        <!-- Converters -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Converters/Converters.xaml" />
+
+        <!-- Resources -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Resources/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Resources/Fonts.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Button. -->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}" />
+
+    <!-- Checkbox. -->
+    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource CheckBoxStyle}" />
+
+    <!-- Combobox. -->
+    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ComboBoxStyle}" />
+
+    <!-- Combobox item. -->
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ComboBoxItemStyle}" />
+
+    <!-- Context menu. -->
+    <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource ContextMenuStyle}" />
+
+    <!-- ListBox. -->
+    <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource ListBoxStyle}">
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
+    </Style>
+
+    <!-- ListBox item. -->
+    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ListBoxItemStyle}" />
+
+    <!-- Menu. -->
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource MenuStyle}" />
+
+    <!-- Menu item. -->
+    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MenuItemStyle}" />
+
+    <!-- Scrollbar. -->
+    <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ProgressBarStyle}"/>
+
+    <!-- Scrollbar. -->
+    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource RadioButtonStyle}"/>
+
+    <!-- Menu separator. -->
+    <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource SeparatorStyle}" />
+
+    <!-- Scrollbar. -->
+    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ScrollBarStyle}">
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
+    </Style>
+
+    <!-- Scroll viewer. -->
+    <Style TargetType="{x:Type ScrollViewer}">
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
+    </Style>
+
+    <!-- Tab Control -->
+    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource TabControlStyle}" />
+
+    <!-- Tab Item -->
+    <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource TabItemStyle}"/>
+
+    <!-- Tab Control -->
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}" />
+
+    <!-- Toggle button -->
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ToggleButtonStyle}" />
+
+    <!-- Window -->
+    <Style TargetType="{x:Type Window}" BasedOn="{StaticResource WindowStyle}" />
+
+</ResourceDictionary>
