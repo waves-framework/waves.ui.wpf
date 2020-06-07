@@ -450,7 +450,7 @@
                                VerticalAlignment="Center"
                                MaxWidth="160">
 
-                        Click left mouse button here to open context menu...
+                        Click right mouse button here to open context menu...
 
                     </TextBlock>
 

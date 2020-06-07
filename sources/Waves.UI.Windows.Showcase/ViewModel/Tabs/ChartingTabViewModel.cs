@@ -63,7 +63,7 @@ namespace Waves.UI.Windows.Showcase.ViewModel.Tabs
                 points1[i].Y = (float)random1.NextDouble() - 0.5f;
             }
 
-            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Success-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
+            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Success-Color"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
             context.AddDataSet(dataSet1);
 
             var num2 = 128;
@@ -75,7 +75,7 @@ namespace Waves.UI.Windows.Showcase.ViewModel.Tabs
                 points2[i].Y = (float)random2.NextDouble() - 0.5f;
             }
 
-            var dataSet2 = new DataSet(points2) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Error-Brush"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f };
+            var dataSet2 = new DataSet(points2) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Error-Color"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f };
             context.AddDataSet(dataSet2);
         }
     }

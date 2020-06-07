@@ -678,9 +678,15 @@ namespace Waves.UI.Windows.Services
 
                 if (value.Equals(_selectedTheme)) return;
 
+                var useDarkSet = false;
+                if (_selectedTheme != null)
+                    useDarkSet = _selectedTheme.UseDarkSet;
+
                 _selectedTheme = value;
 
                 _selectedThemeId = _selectedTheme.Id;
+
+                _selectedTheme.UseDarkSet = useDarkSet;
 
                 UpdateTheme();
 
@@ -895,6 +901,29 @@ namespace Waves.UI.Windows.Services
                 darkPrimaryColorSet,
                 greenAccentColorSet,
                 miscellaneousColorSet));
+
+            Themes.Add(new Theme(
+                Guid.Parse("2549DD92-C094-4EF5-B50D-0DD187DFE154"),
+                accentBlueColorName,
+                lightPrimaryColorSet,
+                darkPrimaryColorSet,
+                blueAccentColorSet,
+                miscellaneousColorSet));
+
+            foreach (var theme in Themes)
+            {
+                theme.PrimaryColorSetChanged += OnThemePrimaryColorSetChanged;
+            }
+        }
+
+        /// <summary>
+        /// Actions when theme's primary color set changed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Arguments.</param>
+        private void OnThemePrimaryColorSetChanged(object sender, EventArgs e)
+        {
+            UpdateTheme();
         }
 
         /// <summary>

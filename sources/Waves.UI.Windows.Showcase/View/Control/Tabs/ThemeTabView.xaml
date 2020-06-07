@@ -55,11 +55,17 @@
 
                 </ComboBox>
 
-                <TextBlock Text="System color" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+                <TextBlock Text="Dark theme" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                <TextBlock Text="Sets whether application is using dark theme." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                <CheckBox Content="Use dark theme" IsChecked="{Binding ThemeService.SelectedTheme.UseDarkSet}"/>
+
+                <!--<TextBlock Text="System color" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
 
                 <TextBlock Text="Sets whether application is repeating system color theme." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
 
-                <CheckBox Content="Repeat system color theme" IsChecked="{Binding ThemeService.UseAutomaticScheme}"/>
+                <CheckBox Content="Repeat system color theme" IsChecked="{Binding ThemeService.UseAutomaticScheme}"/>-->
 
             </StackPanel>
 
