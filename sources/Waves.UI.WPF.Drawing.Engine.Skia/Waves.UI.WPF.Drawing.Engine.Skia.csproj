@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="../../props/Waves.UI.WPF.props" />
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="1.68.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Waves.UI.WPF\Waves.UI.WPF.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Waves.ico</ApplicationIcon>
+    <AssemblyName>Waves.UI.WPF.Showcase</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="View\Tab\**" />
+    <EmbeddedResource Remove="View\Tab\**" />
+    <None Remove="View\Tab\**" />
+    <Page Remove="View\Tab\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="logo.svg" />
+    <None Remove="Waves.ico" />
+    <None Remove="FodyWeavers.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Waves.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpVectors.Reloaded" Version="1.6.0" />
+    <PackageReference Include="Waves.Presentation" Version="2020.1.29" />
+    <PackageReference Include="RandomDataGenerator.Net" Version="1.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Waves.UI.WPF\Waves.UI.WPF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+    <Content Include="logo.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <Import Project="../../props/Waves.UI.WPF.props" />
+
+</Project>

@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="ColorSetId">FCE88583-DE5F-4B97-A69A-8239800C3CB5</system:String>
+    <system:String x:Key="ColorSetName">Classic Miscellaneous</system:String>
+
+    <!-- Disabled colors -->
+    <Color x:Key="Disabled-Color">#6D6A75</Color>
+    <Color x:Key="Disabled-Foreground-Color">#BFBDC1</Color>
+
+    <!-- Message colors -->
+    <Color x:Key="Warning-Color">#EEC643</Color>
+    <Color x:Key="Error-Color">#FE4A49</Color>
+    <Color x:Key="Fatal-Color">#D24043</Color>
+    <Color x:Key="Success-Color">#00A676</Color>
+    <Color x:Key="Warning-Foreground-Color">#0B132B</Color>
+    <Color x:Key="Error-Foreground-Color">#FFFFFF</Color>
+    <Color x:Key="Fatal-Foreground-Color">#FFFFFF</Color>
+    <Color x:Key="Success-Foreground-Color">#FFFFFF</Color>
+
+    <SolidColorBrush x:Key="Disabled-Brush" Color="{StaticResource Disabled-Color}" />
+    <SolidColorBrush x:Key="Disabled-Foreground-Brush" Color="{StaticResource Disabled-Foreground-Color}" />
+
+    <SolidColorBrush x:Key="Warning-Brush" Color="{StaticResource Warning-Color}" />
+    <SolidColorBrush x:Key="Error-Brush" Color="{StaticResource Error-Color}" />
+    <SolidColorBrush x:Key="Fatal-Brush" Color="{StaticResource Fatal-Color}" />
+    <SolidColorBrush x:Key="Success-Brush" Color="{StaticResource Success-Color}"/>
+    <SolidColorBrush x:Key="Warning-Foreground-Brush" Color="{StaticResource Warning-Foreground-Color}" />
+    <SolidColorBrush x:Key="Error-Foreground-Brush" Color="{StaticResource Error-Foreground-Color}" />
+    <SolidColorBrush x:Key="Fatal-Foreground-Brush" Color="{StaticResource Fatal-Foreground-Color}" />
+    <SolidColorBrush x:Key="Success-Foreground-Brush" Color="{StaticResource Success-Foreground-Color}"/>
+
+</ResourceDictionary>

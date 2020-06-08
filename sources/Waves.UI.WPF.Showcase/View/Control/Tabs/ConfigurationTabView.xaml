@@ -1,0 +1,314 @@
+﻿<UserControl x:Class="Waves.UI.WPF.Showcase.View.Control.Tabs.ConfigurationTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Waves.UI.WPF.Showcase.View.Control.Tabs"
+             xmlns:tabs="clr-namespace:Waves.UI.WPF.Showcase.ViewModel.Tabs"
+             xmlns:behaviors="clr-namespace:Waves.UI.WPF.Behaviors;assembly=Waves.UI.WPF"
+             d:DataContext="{d:DesignInstance tabs:ConfigurationTabViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Margin="{StaticResource BigThickness}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <StackPanel>
+
+                <TextBlock Text="Configuration" Style="{StaticResource Header1}" Margin="0,0,0,9"/>
+
+                <TextBlock Text="This tab shows core configuration properties." Style="{StaticResource Regular1}" Margin="0,0,0,9"/>
+
+                <Canvas Height="2" Background="{DynamicResource Accent-100-Brush}" Width="300" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <StackPanel>
+
+                    <TextBlock Text="Properties" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                    <TextBlock Text="Shows all core properties." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                    <Grid>
+
+                        <Border Background="{DynamicResource Primary-300-Brush}" CornerRadius="6"/>
+
+                        <Grid Margin="6,6">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                    <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Command="{Binding AddPropertyCommand}"
+                                        Margin="0,0,3,0">
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Plus}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Add new"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                                <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Margin="0,0,3,0"
+                                        Command="{Binding ShowPropertyCommand}"
+                                        IsEnabled="{Binding SelectedProperty, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseNullToBoolConverter}}">
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-1,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Show-Property}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Show"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                                <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Margin="0,0,3,0"
+                                        Command="{Binding EditPropertyCommand}">
+
+                                    <Button.Style>
+
+                                        <Style BasedOn="{StaticResource ButtonStyle}" TargetType="{x:Type Button}">
+
+                                            <Setter Property="IsEnabled" Value="False"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.IsReadOnly}" Value="True">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.CanBeDeleted}" Value="False">
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </Button.Style>
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Edit}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Edit"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                                <Button Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Margin="0,0,0,0"
+                                        Command="{Binding RemovePropertyCommand}">
+
+                                    <Button.Style>
+
+                                        <Style BasedOn="{StaticResource ButtonStyle}" TargetType="{x:Type Button}">
+
+                                            <Setter Property="IsEnabled" Value="False"/>
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.CanBeDeleted}" Value="True">
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding SelectedProperty.CanBeDeleted}" Value="False">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </Button.Style>
+
+                                    <Grid Margin="12,0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Remove}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Remove"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                            </StackPanel>
+
+                            <Button Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    Margin="0,0,6,0"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding SaveAllCommand}"
+                                    IsEnabled="{Binding IsConfigurationChanged, UpdateSourceTrigger=PropertyChanged}">
+
+                                <Grid Margin="12,0">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="9"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+
+                                        <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="0,-2,0,0">
+
+                                            <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Data="{StaticResource Icon-Save-All}"/>
+
+                                        </Viewbox>
+
+                                    </Grid>
+
+                                    <Grid Grid.Column="2">
+
+                                        <TextBlock Style="{StaticResource Regular1}" Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" Text="Save all"/>
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </Button>
+
+                        </Grid>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="-18,0,-24,-18">
+
+                <ListBox ItemsSource="{Binding Properties, UpdateSourceTrigger=PropertyChanged}"
+                         ItemTemplate="{StaticResource PropertyListDataTemplate}"
+                         SelectedItem="{Binding SelectedProperty, UpdateSourceTrigger=PropertyChanged}"
+                         Background="Transparent"
+                         BorderBrush="Transparent"
+                         BorderThickness="0"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         behaviors:ListBoxDoubleClickBehavior.DoubleClickItemCommand="{Binding PropertiesDoubleClickCommand}">
+
+                    <ItemsControl.ItemsPanel>
+
+                        <ItemsPanelTemplate>
+                            <StackPanel IsItemsHost="True" Margin="0,12,0,0"/>
+                        </ItemsPanelTemplate>
+
+                    </ItemsControl.ItemsPanel>
+
+                </ListBox>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>
