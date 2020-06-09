@@ -1,0 +1,3 @@
+[submodule "sources/Waves.UI.Showcase.Common"]
+	path = sources/Waves.UI.Showcase.Common
+	url = ssh://git@bitbucket.ambertape.ru:7999/waves/showcase.common.git
