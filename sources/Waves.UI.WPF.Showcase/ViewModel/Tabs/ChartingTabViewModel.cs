@@ -54,17 +54,37 @@ namespace Waves.UI.WPF.Showcase.ViewModel.Tabs
 
             context.Update();
 
-            var num1 = 65536;
-            var random1 = new Random();
-            var points1 = new Point[num1];
+            //var num1 = 128;
+            //var random1 = new Random();
+            //var points1 = new Point[num1];
+            //for (var i = 0; i < num1; i++)
+            //{
+            //    points1[i].X = i / (float)num1;
+            //    points1[i].Y = (float)random1.NextDouble() - 0.5f;
+            //}
+
+            //var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Success-Color"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
+            //context.AddDataSet(dataSet1);
+
+            var num1 = 8;
+            var num2 = 4096;
+            var max = 40;
+
+            context.XMax = max;
+
             for (var i = 0; i < num1; i++)
             {
-                points1[i].X = i / (float)num1;
-                points1[i].Y = (float)random1.NextDouble() - 0.5f;
-            }
+                var points = new Point[num2];
 
-            var dataSet1 = new DataSet(points1) { Color = ThemeService.SelectedTheme.MiscellaneousColorSet.GetColor("Success-Color"), Type = DataSetType.BarWithEnvelope, Opacity = 0.75f};
-            context.AddDataSet(dataSet1);
+                for (var j = 0; j < num2; j++)
+                {
+                    points[j].X = max * j / (float) num2;
+                    points[j].Y = (float)Bessel.J(i, max * j / (float)num2);
+                }
+
+                var dataSet = new DataSet(points) { Color = Color.Random(), Type = DataSetType.Line, Opacity = 0.75f };
+                context.AddDataSet(dataSet);
+            }
 
             //var num2 = 65536;
             //var random2 = new Random();
