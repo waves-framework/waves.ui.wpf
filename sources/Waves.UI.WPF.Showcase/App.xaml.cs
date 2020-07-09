@@ -1,14 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
-using Waves.Core.Base;
+using Waves.Core.Base.Interfaces;
+using Waves.UI.Showcase.Common.Services;
+using Waves.UI.Showcase.Common.Services.Interfaces;
 using Waves.UI.WPF.Showcase.Presentation.Controllers;
-using Waves.UI.WPF.Showcase.Services;
-using Waves.UI.WPF.Showcase.Services.Interfaces;
 using Waves.UI.WPF.Showcase.View.Window;
-using Waves.UI.WPF.Showcase.ViewModel;
 
 namespace Waves.UI.WPF.Showcase
 {
@@ -28,18 +25,21 @@ namespace Waves.UI.WPF.Showcase
             try
             {
                 Core.Start(Current);
-                Core.RegisterService<ITextGeneratorService>(new TextGeneratorService());
 
-                var controller = new MainTabPresentationController();
+                var controller = new MainTabPresentationController(Core);
+
                 controller.MessageReceived += OnControllerMessageReceived;
                 controller.Initialize();
 
-                var view = new MainWindowView { DataContext = controller };
+                var view = new MainWindowView {DataContext = controller};
+
                 view.Show();
 
                 Core.AttachMainWindow(view);
 
                 view.Closing += OnViewClosing;
+
+                Core.AddMessageSeparator();
             }
             catch (Exception exception)
             {
@@ -49,11 +49,11 @@ namespace Waves.UI.WPF.Showcase
         }
 
         /// <summary>
-        /// Actions when controller's message received.
+        ///     Actions when controller's message received.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Message.</param>
-        private void OnControllerMessageReceived(object sender, Waves.Core.Base.Interfaces.IMessage e)
+        private void OnControllerMessageReceived(object sender, IMessage e)
         {
             Core.WriteLogMessage(e);
         }
