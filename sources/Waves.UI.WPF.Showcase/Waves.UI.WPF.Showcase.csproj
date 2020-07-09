@@ -28,11 +28,11 @@
 
   <ItemGroup>
     <PackageReference Include="SharpVectors.Reloaded" Version="1.6.0" />
-    <PackageReference Include="Waves.Presentation" Version="2020.1.29" />
-    <PackageReference Include="RandomDataGenerator.Net" Version="1.0.11" />
+    <PackageReference Include="Waves.Presentation" Version="2020.1.32" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Waves.UI.Showcase.Common\Waves.UI.Showcase.Common.csproj" />
     <ProjectReference Include="..\Waves.UI.WPF\Waves.UI.WPF.csproj" />
   </ItemGroup>
 

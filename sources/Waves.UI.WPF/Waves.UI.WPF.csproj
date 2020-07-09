@@ -24,11 +24,11 @@
 
   <ItemGroup>
     <PackageReference Include="Waves.Core" Version="2020.1.160" />
-    <PackageReference Include="Waves.Presentation" Version="2020.1.29" />
+    <PackageReference Include="Waves.Presentation" Version="2020.1.32" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
-    <PackageReference Include="Waves.UI" Version="2020.1.38" />
-    <PackageReference Include="Waves.UI.Drawing" Version="2020.1.38" />
-    <PackageReference Include="Waves.UI.Drawing.Charting" Version="2020.1.38" />
+    <PackageReference Include="Waves.UI" Version="2020.1.66" />
+    <PackageReference Include="Waves.UI.Drawing" Version="2020.1.66" />
+    <PackageReference Include="Waves.UI.Drawing.Charting" Version="2020.1.66" />
   </ItemGroup>
 
   <ItemGroup>
