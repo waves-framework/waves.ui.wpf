@@ -22,6 +22,8 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         /// <param name="inputService">Input service.</param>
         public SkiaDrawingElementView(IInputService inputService)
         {
+            IgnorePixelScaling = true;
+
             InitializeBehaviors(inputService);
             SubscribeEvents();
         }

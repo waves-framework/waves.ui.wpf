@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Waves.UI.WPF.Showcase.View.Control.Tabs"
-             xmlns:tabs="clr-namespace:Waves.UI.WPF.Showcase.ViewModel.Tabs"
              xmlns:behaviors="clr-namespace:Waves.UI.WPF.Behaviors;assembly=Waves.UI.WPF"
              d:DataContext="{d:DesignInstance tabs:ConfigurationTabViewModel}"
              mc:Ignorable="d" 

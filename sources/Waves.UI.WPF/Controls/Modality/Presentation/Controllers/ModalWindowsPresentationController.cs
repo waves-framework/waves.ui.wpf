@@ -8,8 +8,7 @@ namespace Waves.UI.WPF.Controls.Modality.Presentation.Controllers
     /// <summary>
     ///     Modality windows presentation controller.
     /// </summary>
-    public class
-        ModalWindowsPresentationController : UI.Modality.Presentation.Controllers.ModalWindowsPresentationController
+    public class ModalWindowsPresentationController : UI.Modality.Presentation.Controllers.ModalWindowsPresentationController
     {
         /// <summary>
         ///     Animates fade in.
