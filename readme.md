@@ -3,23 +3,40 @@ WPF UI Kit sources of "Waves".
 
 1. ScrollBar style (animated)
 
-   ![scrollbar]("files/screenshots/0. ScrollBar.gif")
+   ![scrollbar](files/screenshots/ScrollBar.gif)
 
 2. Text styles
-
-   ![text]("files/screenshots/1. Text.png")
-
-   
+   ![text](files/screenshots/Text.png)
 
 3. Button styles
-
-   ![2. Buttons](\files\screenshots\2. Buttons.png)
-
+   ![buttons](/files/screenshots/Buttons.png)
    
-
 4. ComboBox styles
+   ![comboBox](/files/screenshots/ComboBox.png)
 
-   ![3. ComboBox](C:\repos\waves\ui.wpf\files\screenshots\3. ComboBox.png)
+5. CheckBox styles
+   ![checkbox](/files/screenshots/CheckBox.png)
+   
+6. RadioButton styles
+   ![checkbox](/files/screenshots/RadioButton.png)
+   
+7. TextBox styles
+   ![textbox](/files/screenshots/TextBox.png)
+   
+8. ListBox styles
+   ![listbox](/files/screenshots/ListBox.png)
 
-5. 
-
+9. ProgressBar styles
+   ![progressbar](/files/screenshots/ProgressBar.png)
+   
+10. Menu styles
+   ![menu](/files/screenshots/Menu.png)
+   
+11. Chart control
+   ![chart](/files/screenshots/Charts.png)
+   
+12. Core logging with UI
+   ![log](/files/screenshots/Log.png)
+   
+13. Theme change (Accent colors and primary: dark or light)
+   ![theme](/files/screenshots/Theme.png)
