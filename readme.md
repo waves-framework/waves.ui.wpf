@@ -1,13 +1,13 @@
-## <img src="\files\logo_small.png" alt="logo_small" style="zoom:25%;" />  Waves Utils
+![logo](files/logo_very_small.png) Waves UI WPF
 WPF UI Kit sources of "Waves".
 
 1. ScrollBar style (animated)
 
-   ![0. ScrollBar](\files\screenshots\0. ScrollBar.gif)
+   ![scrollbar]("files/screenshots/0. ScrollBar.gif")
 
 2. Text styles
 
-   ![1. Text](\files\screenshots\1. Text.png)
+   ![text]("files/screenshots/1. Text.png")
 
    
 
