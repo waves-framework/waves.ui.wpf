@@ -33,12 +33,12 @@
 
     <Grid Margin="0,0,0,0">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Margin="0,0,0,0">
+        <Grid Grid.Row="0" Margin="0,0,0,0">
 
             <Canvas Background="{DynamicResource Primary-200-Brush}" Margin="0,-36,0,0"/>
             <!--<Canvas Background="{DynamicResource Primary-500-Brush}" Width="2" Margin="0,-36,-0,0" HorizontalAlignment="Right"/>-->
@@ -47,13 +47,14 @@
                         ItemsSource="{Binding Presentations, UpdateSourceTrigger=PropertyChanged}"
                         SelectedItem="{Binding SelectedPresentation, UpdateSourceTrigger=PropertyChanged}"
                         ItemTemplate="{StaticResource TabDataTemplate}"
-                        TabStripPlacement="Left"
+                        TabStripPlacement="Top"
                         helpers:TabControl.IsContentVisible="False"
+                        HorizontalContentAlignment="Center"
                         SelectionChanged="OnTabSelectionChanged"/>
 
         </Grid>
 
-        <Grid Grid.Column="0">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
 
             <Grid Margin="12,-36,0,0" Height="36" VerticalAlignment="Top">
 
@@ -84,7 +85,7 @@
 
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Row="1">
 
             <ContentControl x:Name="Content"
                             ContentTemplate="{StaticResource TabContentTemplate}"
