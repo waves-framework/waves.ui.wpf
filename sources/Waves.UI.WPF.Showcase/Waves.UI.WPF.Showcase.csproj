@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <PackageReference Include="SharpVectors.Reloaded" Version="1.6.0" />
-    <PackageReference Include="Waves.Presentation" Version="2020.1.32" />
   </ItemGroup>
 
   <ItemGroup>

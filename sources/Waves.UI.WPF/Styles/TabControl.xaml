@@ -102,7 +102,7 @@
                               x:Name="SeparatorGrid">
 
                             <Canvas x:Name="SelectionCanvas"
-                                    Background="{DynamicResource Accent-500-Brush}" 
+                                    Background="{DynamicResource Primary-500-Brush}" 
                                     Opacity="{StaticResource Opacity6}"/>
 
                         </Grid>
@@ -126,6 +126,7 @@
                             <Setter TargetName="HeaderPanelGrid" Property="Grid.Row" Value="1" />
                             <Setter TargetName="RowDefinition0" Property="Height" Value="2" />
                             <Setter TargetName="RowDefinition1" Property="Height" Value="*" />
+                            <Setter TargetName="SelectionCanvas" Property="Background" Value="{DynamicResource Accent-500-Brush}"/>
 
                         </Trigger>
 
@@ -139,6 +140,7 @@
                             <Setter TargetName="HeaderPanelGrid" Property="Grid.Row" Value="0" />
                             <Setter TargetName="RowDefinition0" Property="Height" Value="*" />
                             <Setter TargetName="RowDefinition1" Property="Height" Value="0" />
+                            <Setter TargetName="SelectionCanvas" Property="Background" Value="{DynamicResource Accent-500-Brush}"/>
 
                         </Trigger>
 
