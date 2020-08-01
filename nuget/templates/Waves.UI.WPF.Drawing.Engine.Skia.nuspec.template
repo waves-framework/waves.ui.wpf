@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>Waves.UI.WPF</id>
+    <id>Waves.UI.WPF.Drawing.Engine.Skia</id>
     <version>{$NUGETVERSION}</version>
     <authors>Waves</authors>
     <owners>Waves</owners>
@@ -9,19 +9,17 @@
     <projectUrl>https://github.com/ambertape/waves.ui.wpf</projectUrl>
     <icon>files\logo_small.png</icon>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Waves UI WPF library.</description>
+    <description>SKIA drawing engine for WAVES UI WPF.</description>
     <releaseNotes>
       The first release of package.
-      - Styles, behaviors and base UI WPF classes.
+      - SKIA drawing engine.
     </releaseNotes>
     <copyright>Copyright (c) 2020 Egor Khindikaynen</copyright>
-    <tags>Waves ui wpf</tags>
+    <tags>Waves ui skia drawing engine</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Waves.UI" version="[2020.2.1.82,2020.2.2.0)" />
-        <dependency id="Waves.UI.Drawing" version="[2020.2.1.82,2020.2.2.0)" />
-        <dependency id="Waves.UI.Drawing.Charting" version="[2020.2.1.82,2020.2.2.0)" />
-        <dependency id="Microsoft.Xaml.Behaviors.Wpf" version="1.1.19" />
+        <dependency id="Waves.UI.WPF" version="[{$NUGETVERSION},2020.2.2.0)" />
+        <dependency id="SkiaSharp.Views.WPF" version="2.80.1" />
       </group>
     </dependencies>
     <frameworkReferences>
@@ -33,7 +31,7 @@
   <files>
   	<file src="..\..\license.md" target="" />
     <file src="..\..\files\logo_small.png" target="files\" />
-    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Waves.UI.WPF.dll" target="lib\netcoreapp3.1"/>
-    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Waves.UI.WPF.xml" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Waves.UI.WPF.Drawing.Engine.Skia.dll" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Waves.UI.WPF.Drawing.Engine.Skia.xml" target="lib\netcoreapp3.1"/>
   </files>
 </package>
