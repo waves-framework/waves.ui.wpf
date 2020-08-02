@@ -1,4 +1,6 @@
-## ![logo](files/logo_very_small.png) Waves UI WPF
+![logo](files/logo_very_small.png) 
+### Waves UI WPF
+
 WPF UI Kit sources of "Waves".
 
 1. ScrollBar style (animated)
