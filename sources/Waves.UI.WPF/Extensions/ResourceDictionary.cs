@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
+using Waves.Core.Base;
 
 namespace Waves.UI.WPF.Extensions
 {
@@ -15,10 +16,10 @@ namespace Waves.UI.WPF.Extensions
         /// <param name="key">Key.</param>
         /// <param name="weights">Weight.</param>
         /// <returns>Colors dictionary.</returns>
-        public static Dictionary<int, Waves.Core.Base.Color> GetColorsDictionary(this System.Windows.ResourceDictionary dictionary, string key,
+        public static Dictionary<int, WavesColor> GetColorsDictionary(this System.Windows.ResourceDictionary dictionary, string key,
             int[] weights)
         {
-            var result = new Dictionary<int, Waves.Core.Base.Color>();
+            var result = new Dictionary<int, WavesColor>();
 
             foreach (var weight in weights)
                 result.Add(weight, GetColorFromResourceDictionary(dictionary, key, weight));
@@ -33,7 +34,7 @@ namespace Waves.UI.WPF.Extensions
         /// <param name="key">Key.</param>
         /// <param name="weight">Weight.</param>
         /// <returns>Color.</returns>
-        public static Waves.Core.Base.Color GetColorFromResourceDictionary(this System.Windows.ResourceDictionary dictionary, string key, int weight)
+        public static WavesColor GetColorFromResourceDictionary(this System.Windows.ResourceDictionary dictionary, string key, int weight)
         {
             var currentKey = key + "-" + weight;
 
@@ -47,9 +48,9 @@ namespace Waves.UI.WPF.Extensions
         /// </summary>
         /// <param name="dictionary">ResourceDictionary</param>
         /// <returns>Colors dictionary.</returns>
-        public static Dictionary<string, Waves.Core.Base.Color> GetColorsDictionary(System.Windows.ResourceDictionary dictionary)
+        public static Dictionary<string, WavesColor> GetColorsDictionary(System.Windows.ResourceDictionary dictionary)
         {
-            var result = new Dictionary<string, Waves.Core.Base.Color>();
+            var result = new Dictionary<string, WavesColor>();
 
             foreach (var key in dictionary.Keys)
             {
@@ -69,9 +70,9 @@ namespace Waves.UI.WPF.Extensions
         /// </summary>
         /// <param name="dictionary">ResourceDictionary</param>
         /// <returns>Colors dictionary.</returns>
-        public static Dictionary<string, Waves.Core.Base.Color> GetForegroundColorsDictionary(System.Windows.ResourceDictionary dictionary)
+        public static Dictionary<string, WavesColor> GetForegroundColorsDictionary(System.Windows.ResourceDictionary dictionary)
         {
-            var result = new Dictionary<string, Waves.Core.Base.Color>();
+            var result = new Dictionary<string, WavesColor>();
 
             foreach (var key in dictionary.Keys)
             {

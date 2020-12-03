@@ -28,14 +28,14 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Separator -->
-    <DataTemplate DataType="{x:Type base:MessageSeparator}">
+    <DataTemplate DataType="{x:Type base:WavesMessageSeparator}">
 
         <Border Height="2" Margin="0,0,0,18" Background="{DynamicResource Primary-300-Brush}"/>
 
     </DataTemplate>
 
     <!-- Group -->
-    <DataTemplate DataType="{x:Type base:MessageGroup}">
+    <DataTemplate DataType="{x:Type base:WavesMessageGroup}">
 
         <Grid Margin="0,0,0,18">
 
@@ -74,32 +74,32 @@
                                     <Style.Triggers>
 
                                         <DataTrigger Binding="{Binding Type}"
-                                                 Value="{x:Static enums:MessageType.Information}">
+                                                 Value="{x:Static enums:WavesMessageType.Information}">
                                             <Setter Property="Fill" Value="{DynamicResource Primary-Foreground-100-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Information}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                             <Setter Property="Fill" Value="{DynamicResource Warning-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Warning}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                             <Setter Property="Fill" Value="{DynamicResource Error-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Error}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                             <Setter Property="Fill" Value="{DynamicResource Fatal-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Fatal}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                             <Setter Property="Fill" Value="{DynamicResource Primary-Foreground-500-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Debug}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                             <Setter Property="Fill" Value="{DynamicResource Success-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Success}" />
                                         </DataTrigger>
@@ -127,29 +127,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-300-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                     </DataTrigger>
 
@@ -169,29 +169,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-500-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
                                     </DataTrigger>
 
@@ -217,29 +217,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-300-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                     </DataTrigger>
 
@@ -263,29 +263,29 @@
 
                                     <Style.Triggers>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                             <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-100-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                             <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                             <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                             <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                             <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-500-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                             <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
                                         </DataTrigger>
 
@@ -366,29 +366,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-500-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                     </DataTrigger>
 
@@ -434,7 +434,7 @@
     </DataTemplate>
 
     <!-- Message -->
-    <DataTemplate DataType="{x:Type base:Message}">
+    <DataTemplate DataType="{x:Type base:WavesMessage}">
 
         <Grid Margin="0,0,0,18">
 
@@ -469,32 +469,32 @@
                                     <Style.Triggers>
 
                                         <DataTrigger Binding="{Binding Type}"
-                                                 Value="{x:Static enums:MessageType.Information}">
+                                                 Value="{x:Static enums:WavesMessageType.Information}">
                                             <Setter Property="Fill" Value="{DynamicResource Primary-Foreground-100-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Information}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                             <Setter Property="Fill" Value="{DynamicResource Warning-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Warning}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                             <Setter Property="Fill" Value="{DynamicResource Error-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Error}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                             <Setter Property="Fill" Value="{DynamicResource Fatal-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Fatal}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                             <Setter Property="Fill" Value="{DynamicResource Primary-Foreground-500-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Debug}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                             <Setter Property="Fill" Value="{DynamicResource Success-Brush}" />
                                             <Setter Property="Data" Value="{StaticResource Icon-Success}" />
                                         </DataTrigger>
@@ -522,29 +522,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-300-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                     </DataTrigger>
 
@@ -564,29 +564,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-500-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
                                     </DataTrigger>
 
@@ -612,29 +612,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-300-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                     </DataTrigger>
 
@@ -658,29 +658,29 @@
 
                                     <Style.Triggers>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                             <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-100-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                             <Setter Property="Foreground" Value="{DynamicResource Warning-Foreground-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                             <Setter Property="Foreground" Value="{DynamicResource Error-Foreground-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                             <Setter Property="Foreground" Value="{DynamicResource Fatal-Foreground-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                             <Setter Property="Foreground"
                                             Value="{DynamicResource Primary-Foreground-500-Brush}" />
                                         </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                        <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                             <Setter Property="Foreground" Value="{DynamicResource Success-Foreground-Brush}" />
                                         </DataTrigger>
 
@@ -717,29 +717,29 @@
 
                                 <Style.Triggers>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-500-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                         <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                         <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                         <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                         <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                     </DataTrigger>
 
-                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                    <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                         <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                     </DataTrigger>
 
@@ -784,29 +784,29 @@
 
                                             <Style.Triggers>
 
-                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Information}">
+                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Information}">
                                                     <Setter Property="Background"
                                             Value="{DynamicResource Primary-300-Brush}" />
                                                 </DataTrigger>
 
-                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Warning}">
+                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Warning}">
                                                     <Setter Property="Background" Value="{DynamicResource Warning-Brush}" />
                                                 </DataTrigger>
 
-                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Error}">
+                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Error}">
                                                     <Setter Property="Background" Value="{DynamicResource Error-Brush}" />
                                                 </DataTrigger>
 
-                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Fatal}">
+                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Fatal}">
                                                     <Setter Property="Background" Value="{DynamicResource Fatal-Brush}" />
                                                 </DataTrigger>
 
-                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Debug}">
+                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Debug}">
                                                     <Setter Property="Background"
                                             Value="{DynamicResource Primary-100-Brush}" />
                                                 </DataTrigger>
 
-                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:MessageType.Success}">
+                                                <DataTrigger Binding="{Binding Type}" Value="{x:Static enums:WavesMessageType.Success}">
                                                     <Setter Property="Background" Value="{DynamicResource Success-Brush}" />
                                                 </DataTrigger>
 

@@ -16,6 +16,12 @@ namespace Waves.UI.WPF.Showcase.Presentation.Controllers
         public MainTabPresentationController(UI.Core core) : base(core)
         {
         }
+        
+        /// <inheritdoc />
+        public override Guid Id { get; } = Guid.NewGuid();
+
+        /// <inheritdoc />
+        public override string Name { get; set; } = "Main Tab Presenter Controller";
 
         /// <inheritdoc />
         public override void Initialize()
@@ -24,43 +30,43 @@ namespace Waves.UI.WPF.Showcase.Presentation.Controllers
             {
                 var textTabPresentation = new TextTabPresentation(Core);
                 textTabPresentation.SetView(new TextTabView());
-                RegisterPresentation(textTabPresentation);
+                RegisterPresenter(textTabPresentation);
 
                 var buttonsTabPresentation = new ButtonsTabPresentation(Core);
                 buttonsTabPresentation.SetView(new ButtonsTabView());
-                RegisterPresentation(buttonsTabPresentation);
+                RegisterPresenter(buttonsTabPresentation);
 
                 var comboBoxesTabPresentation = new ComboBoxesTabPresentation(Core);
                 comboBoxesTabPresentation.SetView(new ComboBoxesTabView());
-                RegisterPresentation(comboBoxesTabPresentation);
+                RegisterPresenter(comboBoxesTabPresentation);
 
                 var checkBoxesTabPresentation = new CheckBoxesTabPresentation(Core);
                 checkBoxesTabPresentation.SetView(new CheckBoxesTabView());
-                RegisterPresentation(checkBoxesTabPresentation);
+                RegisterPresenter(checkBoxesTabPresentation);
 
                 var radioButtonsTabPresentation = new RadioButtonsTabPresentation(Core);
                 radioButtonsTabPresentation.SetView(new RadioButtonsTabView());
-                RegisterPresentation(radioButtonsTabPresentation);
+                RegisterPresenter(radioButtonsTabPresentation);
 
                 var textBoxesTabPresentation = new TextBoxesTabPresentation(Core);
                 textBoxesTabPresentation.SetView(new TextBoxesTabView());
-                RegisterPresentation(textBoxesTabPresentation);
+                RegisterPresenter(textBoxesTabPresentation);
 
                 var listBoxesTabPresentation = new ListBoxesTabPresentation(Core);
                 listBoxesTabPresentation.SetView(new ListBoxesTabView());
-                RegisterPresentation(listBoxesTabPresentation);
+                RegisterPresenter(listBoxesTabPresentation);
 
                 var progressBarsTabPresentation = new ProgressBarsTabPresentation(Core);
                 progressBarsTabPresentation.SetView(new ProgressBarsTabView());
-                RegisterPresentation(progressBarsTabPresentation);
+                RegisterPresenter(progressBarsTabPresentation);
 
                 var menusTabPresentation = new MenusTabPresentation(Core);
                 menusTabPresentation.SetView(new MenusTabView());
-                RegisterPresentation(menusTabPresentation);
+                RegisterPresenter(menusTabPresentation);
 
                 var chartingTabPresentation = new ChartingTabPresentation(Core);
                 chartingTabPresentation.SetView(new ChartingTabView());
-                RegisterPresentation(chartingTabPresentation);
+                RegisterPresenter(chartingTabPresentation);
 
                 //var configurationTabPresentation = new ConfigurationTabPresentation(Core);
                 //configurationTabPresentation.SetView(new ConfigurationTabView());
@@ -68,25 +74,30 @@ namespace Waves.UI.WPF.Showcase.Presentation.Controllers
 
                 var coreTabPresentation = new CoreTabPresentation(Core);
                 coreTabPresentation.SetView(new CoreTabView());
-                RegisterPresentation(coreTabPresentation);
+                RegisterPresenter(coreTabPresentation);
 
                 var themeTabPresentation = new ThemeTabPresentation(Core);
                 themeTabPresentation.SetView(new ThemeTabView());
-                RegisterPresentation(themeTabPresentation);
+                RegisterPresenter(themeTabPresentation);
 
                 var aboutTabPresentation = new AboutTabPresentation(Core);
                 aboutTabPresentation.SetView(new AboutTabView());
-                RegisterPresentation(aboutTabPresentation);
+                RegisterPresenter(aboutTabPresentation);
 
-                OnMessageReceived(new Message("Initialization", "Main tab controller initialized.", "Main tab controller", MessageType.Success));
+                OnMessageReceived(this,new WavesMessage("Initialization", "Main tab controller initialized.", "Main tab controller", WavesMessageType.Success));
 
-                if (Presentations.Count > 0)
-                    SelectedPresentation = Presentations.First();
+                if (Presenters.Count > 0)
+                    SelectedPresenter = Presenters.First();
             }
             catch (Exception e)
             {
-                OnMessageReceived(new Message("Initialization", "Error initialization main tab controller:\r\n" + e, "Main tab controller", MessageType.Error));
+                OnMessageReceived(this,new WavesMessage("Initialization", "Error initialization main tab controller:\r\n" + e, "Main tab controller", WavesMessageType.Error));
             }
+        }
+
+        /// <inheritdoc />
+        public override void Dispose()
+        {
         }
     }
 }

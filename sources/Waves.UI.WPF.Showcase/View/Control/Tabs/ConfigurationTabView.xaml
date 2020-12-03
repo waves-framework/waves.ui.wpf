@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Waves.UI.WPF.Showcase.View.Control.Tabs"
              xmlns:behaviors="clr-namespace:Waves.UI.WPF.Behaviors;assembly=Waves.UI.WPF"
+             xmlns:tabs="clr-namespace:Waves.UI.Showcase.Common.Presentation.ViewModel.Tabs;assembly=Waves.UI.Showcase.Common"
              d:DataContext="{d:DesignInstance tabs:ConfigurationTabViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">

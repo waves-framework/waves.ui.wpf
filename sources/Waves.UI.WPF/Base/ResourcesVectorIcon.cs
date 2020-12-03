@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Media;
+using Waves.Core.Base;
 using Waves.UI.Base;
-using Waves.UI.Base.Interfaces;
-using Color = Waves.Core.Base.Color;
 
 namespace Waves.UI.WPF.Base
 {
     /// <summary>
-    /// Vector icon from resources.
+    ///     Vector icon from resources.
     /// </summary>
     public class ResourcesVectorIcon : VectorImage
     {
-        private const string DefaultResourceUriSource = "pack://application:,,,/Waves.UI.WPF;component/Resources/Icons.xaml";
+        private const string DefaultResourceUriSource =
+            "pack://application:,,,/Waves.UI.WPF;component/Resources/Icons.xaml";
 
         /// <summary>
-        /// Creates new instance of <see cref="ResourcesVectorIcon"/> from default icons resource. 
+        ///     Creates new instance of <see cref="ResourcesVectorIcon" /> from default icons resource.
         /// </summary>
         /// <param name="key">Key</param>
         public ResourcesVectorIcon(string key)
@@ -26,7 +24,7 @@ namespace Waves.UI.WPF.Base
         }
 
         /// <summary>
-        /// Creates new instance of <see cref="ResourcesVectorIcon"/> from default icons resource. 
+        ///     Creates new instance of <see cref="ResourcesVectorIcon" /> from default icons resource.
         /// </summary>
         /// <param name="key">Key</param>
         /// <param name="width">Width of icon.</param>
@@ -41,7 +39,7 @@ namespace Waves.UI.WPF.Base
         }
 
         /// <summary>
-        /// Creates new instance of <see cref="ResourcesVectorIcon"/> from default icons resource. 
+        ///     Creates new instance of <see cref="ResourcesVectorIcon" /> from default icons resource.
         /// </summary>
         /// <param name="key">Key</param>
         /// <param name="width">Width of icon.</param>
@@ -52,7 +50,7 @@ namespace Waves.UI.WPF.Base
             Name = key;
             Width = width;
             Height = height;
-            Padding = new []{padding.Left, padding.Top, padding.Right, padding.Right};
+            Padding = new[] {padding.Left, padding.Top, padding.Right, padding.Right};
 
             InitializeGeometryFromDefaultResourceDictionary(key);
         }
@@ -61,15 +59,15 @@ namespace Waves.UI.WPF.Base
         public sealed override string Name { get; set; }
 
         /// <summary>
-        /// Initializes geometry from default resource dictionary.
+        ///     Initializes geometry from default resource dictionary.
         /// </summary>
         private void InitializeGeometryFromDefaultResourceDictionary(string key)
         {
-            var resourceDictionary = new ResourceDictionary() { Source = new Uri(DefaultResourceUriSource) };
+            var resourceDictionary = new ResourceDictionary {Source = new Uri(DefaultResourceUriSource)};
 
             Paths.Clear();
 
-            Paths.Add(new VectorPath(resourceDictionary[key].ToString(), Color.Black));
+            Paths.Add(new VectorPath(resourceDictionary[key].ToString(), WavesColor.Black));
         }
     }
 }

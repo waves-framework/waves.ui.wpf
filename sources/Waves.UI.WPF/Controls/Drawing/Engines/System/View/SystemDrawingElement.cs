@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Waves.Core.Base;
 using Waves.UI.Drawing.Base.Interfaces;
 using Waves.UI.WPF.Extensions;
-using Point = Waves.Core.Base.Point;
-using Size = Waves.Core.Base.Size;
 
 namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
 {
     /// <summary>
     ///     Drawing element.
     /// </summary>
-    public class SystemDrawingElement : IDrawingElement
+    public class SystemDrawingElement : WavesObject, IDrawingElement
     {
         /// <summary>
         ///     Gets or sets drawing canvas.
@@ -23,9 +21,10 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         public Canvas Canvas { get; set; }
 
         /// <inheritdoc />
-        public void Dispose()
-        {
-        }
+        public override Guid Id { get; }
+
+        /// <inheritdoc />
+        public override string Name { get; set; }
 
         /// <inheritdoc />
         public void Draw(object element, ICollection<IDrawingObject> drawingObjects)
@@ -43,7 +42,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         }
 
         /// <inheritdoc />
-        public void DrawEllipse(Point location, float radius, IPaint paint)
+        public void DrawEllipse(WavesPoint location, float radius, IPaint paint)
         {
             var x = location.X - radius;
             var y = location.Y - radius;
@@ -63,7 +62,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         }
 
         /// <inheritdoc />
-        public void DrawLine(Point point1, Point point2, IPaint paint)
+        public void DrawLine(WavesPoint point1, WavesPoint point2, IPaint paint)
         {
             var dashPattern = new DoubleCollection();
 
@@ -95,7 +94,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         }
 
         /// <inheritdoc />
-        public void DrawRectangle(Point location, Size size, IPaint paint, float cornerRadius = 0)
+        public void DrawRectangle(WavesPoint location, WavesSize size, IPaint paint, float cornerRadius = 0)
         {
             if (size.Width < 0 || size.Height < 0) return;
 
@@ -115,7 +114,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         }
 
         /// <inheritdoc />
-        public void DrawText(Point location, string text, ITextPaint paint)
+        public void DrawText(WavesPoint location, string text, ITextPaint paint)
         {
             var textBlock = new TextBlock
             {
@@ -139,7 +138,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         }
 
         /// <inheritdoc />
-        public Size MeasureText(string text, ITextPaint paint)
+        public WavesSize MeasureText(string text, ITextPaint paint)
         {
             var textBlock = new TextBlock
             {
@@ -156,7 +155,12 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
             textBlock.Measure(new global::System.Windows.Size(double.PositiveInfinity, double.PositiveInfinity));
             textBlock.Arrange(new Rect(0, 0, textBlock.DesiredSize.Width, textBlock.DesiredSize.Height));
 
-            return new Size(Convert.ToSingle(textBlock.ActualWidth), Convert.ToSingle(textBlock.ActualHeight));
+            return new WavesSize(Convert.ToSingle(textBlock.ActualWidth), Convert.ToSingle(textBlock.ActualHeight));
+        }
+        
+        /// <inheritdoc />
+        public override void Dispose()
+        {
         }
     }
 }

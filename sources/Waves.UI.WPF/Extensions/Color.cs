@@ -1,4 +1,6 @@
-﻿namespace Waves.UI.WPF.Extensions
+﻿using Waves.Core.Base;
+
+namespace Waves.UI.WPF.Extensions
 {
     /// <summary>
     ///     Color extensions.
@@ -10,9 +12,9 @@
         /// </summary>
         /// <param name="color">Instance of System.Windows.Media.Color.</param>
         /// <returns>New instance of Waves.Core.Base.Color.</returns>
-        public static Waves.Core.Base.Color ToWavesColor(this System.Windows.Media.Color color)
+        public static WavesColor ToWavesColor(this System.Windows.Media.Color color)
         {
-            return new Waves.Core.Base.Color(color.A, color.R, color.G, color.B);
+            return new WavesColor(color.A, color.R, color.G, color.B);
         }
 
         /// <summary>
@@ -20,7 +22,7 @@
         /// </summary>
         /// <param name="color">Instance of System.Windows.Media.Color.</param>
         /// <returns>New instance of Waves.Core.Base.Color.</returns>
-        public static System.Windows.Media.Color ToSystemColor(this Waves.Core.Base.Color color)
+        public static System.Windows.Media.Color ToSystemColor(this WavesColor color)
         {
             return new System.Windows.Media.Color()
             {

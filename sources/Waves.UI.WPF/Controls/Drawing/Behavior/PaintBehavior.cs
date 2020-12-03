@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Xaml.Behaviors;
+using Waves.Core.Base;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.EventArgs;
-using Waves.Core.Services.Interfaces;
-using Microsoft.Xaml.Behaviors;
+using Waves.Core.Base.Interfaces.Services;
 using Waves.UI.Drawing.ViewModel;
 
 namespace Waves.UI.WPF.Controls.Drawing.Behavior
 {
     /// <summary>
-    /// Paint behavior class.
+    ///     Paint behavior class.
     /// </summary>
     /// <typeparam name="T">Type.</typeparam>
-    public class PaintBehavior<T>: Behavior<T>
+    public class PaintBehavior<T> : Behavior<T>
         where T : FrameworkElement
     {
         /// <summary>
-        /// Creates new instance of <see cref="PaintBehavior{T}"/>
+        ///     Creates new instance of <see cref="PaintBehavior{T}" />
         /// </summary>
         public PaintBehavior(IInputService inputService)
         {
@@ -25,9 +26,9 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
         }
 
         /// <summary>
-        /// Gets or sets data context.
+        ///     Gets or sets data context.
         /// </summary>
-        protected DrawingElementViewModel DataContext { get; set; }
+        protected DrawingElementPresenterViewModel DataContext { get; set; }
 
         /// <summary>
         ///     Gets or sets input service.
@@ -97,13 +98,9 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
             DataContext.Height = Convert.ToSingle(size.Height);
 
             if (Math.Abs(size.Width) < double.Epsilon || Math.Abs(size.Height) < double.Epsilon)
-            {
                 DataContext.IsDrawingInitialized = false;
-            }
             else
-            {
                 DataContext.IsDrawingInitialized = true;
-            }
 
             AssociatedObject.InvalidateVisual();
         }
@@ -116,15 +113,11 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
         protected virtual void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (!(sender is FrameworkElement element)) return;
-            if (!(element.DataContext is DrawingElementViewModel dataContext)) return;
+            if (!(element.DataContext is DrawingElementPresenterViewModel dataContext)) return;
 
             if (e.OldValue != null)
-            {
-                if (e.OldValue is DrawingElementViewModel oldContext)
-                {
+                if (e.OldValue is DrawingElementPresenterViewModel oldContext)
                     oldContext.RedrawRequested -= OnRedrawRequested;
-                }
-            }
 
             DataContext = dataContext;
 
@@ -135,7 +128,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
         }
 
         /// <summary>
-        /// Notifies when redraw requested.
+        ///     Notifies when redraw requested.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments/</param>
@@ -155,7 +148,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
         }
 
         /// <summary>
-        /// Actions when mouse move.
+        ///     Actions when mouse move.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -168,18 +161,18 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
 
             var position = e.GetPosition(element);
 
-            var args = new PointerEventArgs(
-                Waves.Core.Base.Enums.MouseButton.None,
-                PointerEventType.Move,
+            var args = new WavesPointerEventArgs(
+                WavesMouseButton.None,
+                WavesPointerEventType.Move,
                 0,
-                new Waves.Core.Base.Point(),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }
 
         /// <summary>
-        /// Actions when mouse enters.
+        ///     Actions when mouse enters.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -191,18 +184,18 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
             if (element == null) return;
 
             var position = e.GetPosition(element);
-            var args = new PointerEventArgs(
-                Waves.Core.Base.Enums.MouseButton.None,
-                PointerEventType.Enter,
+            var args = new WavesPointerEventArgs(
+                WavesMouseButton.None,
+                WavesPointerEventType.Enter,
                 0,
-                new Waves.Core.Base.Point(),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }
 
         /// <summary>
-        /// Actions when mouse leaves.
+        ///     Actions when mouse leaves.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -214,18 +207,18 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
             if (element == null) return;
 
             var position = e.GetPosition(element);
-            var args = new PointerEventArgs(
-                Waves.Core.Base.Enums.MouseButton.None,
-                PointerEventType.Leave,
+            var args = new WavesPointerEventArgs(
+                WavesMouseButton.None,
+                WavesPointerEventType.Leave,
                 0,
-                new Waves.Core.Base.Point(),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }
 
         /// <summary>
-        /// Actions when mouse button is down.
+        ///     Actions when mouse button is down.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -236,36 +229,36 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
             var element = sender as FrameworkElement;
             if (element == null) return;
 
-            var button = Waves.Core.Base.Enums.MouseButton.None;
+            var button = WavesMouseButton.None;
 
             switch (e.ChangedButton)
             {
-                case System.Windows.Input.MouseButton.Left:
-                    button = Waves.Core.Base.Enums.MouseButton.Left;
+                case MouseButton.Left:
+                    button = WavesMouseButton.Left;
                     break;
-                case System.Windows.Input.MouseButton.Middle:
-                    button = Waves.Core.Base.Enums.MouseButton.Middle;
+                case MouseButton.Middle:
+                    button = WavesMouseButton.Middle;
                     break;
-                case System.Windows.Input.MouseButton.Right:
-                    button = Waves.Core.Base.Enums.MouseButton.Right;
+                case MouseButton.Right:
+                    button = WavesMouseButton.Right;
                     break;
             }
 
             var position = e.GetPosition(element);
 
-            var args = new PointerEventArgs(
+            var args = new WavesPointerEventArgs(
                 button,
-                PointerEventType.Press,
+                WavesPointerEventType.Press,
                 0,
-                new Waves.Core.Base.Point(),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }
 
         /// <summary>
-        /// Actions when mouse ups.
-        /// TODO: combine methods.
+        ///     Actions when mouse ups.
+        ///     TODO: combine methods.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -276,35 +269,35 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
             var element = sender as FrameworkElement;
             if (element == null) return;
 
-            var button = Waves.Core.Base.Enums.MouseButton.None;
+            var button = WavesMouseButton.None;
 
             switch (e.ChangedButton)
             {
-                case System.Windows.Input.MouseButton.Left:
-                    button = Waves.Core.Base.Enums.MouseButton.Left;
+                case MouseButton.Left:
+                    button = WavesMouseButton.Left;
                     break;
-                case System.Windows.Input.MouseButton.Middle:
-                    button = Waves.Core.Base.Enums.MouseButton.Middle;
+                case MouseButton.Middle:
+                    button = WavesMouseButton.Middle;
                     break;
-                case System.Windows.Input.MouseButton.Right:
-                    button = Waves.Core.Base.Enums.MouseButton.Right;
+                case MouseButton.Right:
+                    button = WavesMouseButton.Right;
                     break;
             }
 
             var position = e.GetPosition(element);
 
-            var args = new PointerEventArgs(
+            var args = new WavesPointerEventArgs(
                 button,
-                PointerEventType.Release,
+                WavesPointerEventType.Release,
                 0,
-                new Waves.Core.Base.Point(),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }
 
         /// <summary>
-        /// Actions when mouse scrolling.
+        ///     Actions when mouse scrolling.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -317,18 +310,18 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
 
             var position = e.GetPosition(element);
 
-            var args = new PointerEventArgs(
-                Waves.Core.Base.Enums.MouseButton.None,
-                PointerEventType.VerticalScroll,
+            var args = new WavesPointerEventArgs(
+                WavesMouseButton.None,
+                WavesPointerEventType.VerticalScroll,
                 0,
-                new Waves.Core.Base.Point(e.Delta, 0),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(e.Delta, 0),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }
 
         /// <summary>
-        /// Actions when touch enters.
+        ///     Actions when touch enters.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>
@@ -341,12 +334,12 @@ namespace Waves.UI.WPF.Controls.Drawing.Behavior
 
             var position = e.GetTouchPoint(element).Position;
 
-            var args = new PointerEventArgs(
-                Waves.Core.Base.Enums.MouseButton.None,
-                PointerEventType.Enter,
+            var args = new WavesPointerEventArgs(
+                WavesMouseButton.None,
+                WavesPointerEventType.Enter,
                 0,
-                new Waves.Core.Base.Point(),
-                new Waves.Core.Base.Point((int)position.X, (int)position.Y));
+                new WavesPoint(),
+                new WavesPoint((int) position.X, (int) position.Y));
 
             InputService.SetPointer(args);
         }

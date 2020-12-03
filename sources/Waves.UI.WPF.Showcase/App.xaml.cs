@@ -38,8 +38,6 @@ namespace Waves.UI.WPF.Showcase
                 Core.AttachMainWindow(view);
 
                 view.Closing += OnViewClosing;
-
-                Core.AddMessageSeparator();
             }
             catch (Exception exception)
             {
@@ -53,9 +51,9 @@ namespace Waves.UI.WPF.Showcase
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Message.</param>
-        private void OnControllerMessageReceived(object sender, IMessage e)
+        private void OnControllerMessageReceived(object sender, IWavesMessage e)
         {
-            Core.WriteLogMessage(e);
+            Core.WriteLog(e);
         }
 
         /// <summary>

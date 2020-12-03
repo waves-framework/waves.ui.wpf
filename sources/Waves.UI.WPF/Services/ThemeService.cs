@@ -7,12 +7,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Forms;
 using System.Windows.Media;
 using Waves.Core.Base;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.Interfaces;
 using Waves.UI.WPF.Base;
 using Microsoft.Win32;
+using ReactiveUI;
+using Waves.Core.Base.Interfaces.Services;
 using Waves.UI.Base.Interfaces;
 using Waves.UI.Services.Interfaces;
 using Application = System.Windows.Application;
@@ -22,8 +25,8 @@ namespace Waves.UI.WPF.Services
     /// <summary>
     ///     Windows UI theme service.
     /// </summary>
-    [Export(typeof(IService))]
-    public class ThemeService : Waves.Core.Base.Service, IThemeService
+    [Export(typeof(IWavesService))]
+    public class ThemeService : WavesService, IThemeService
     {
         //    /// <summary>
         //    ///     Initializes system theme checker daemon.
@@ -158,14 +161,12 @@ namespace Waves.UI.WPF.Services
             set
             {
                 if (_useDarkScheme.Equals(value)) return;
-
-                _useDarkScheme = value;
-
+                
+                this.RaiseAndSetIfChanged(ref _useDarkScheme, value);
+                
                 UpdateTheme();
 
                 OnThemeChanged();
-
-                OnPropertyChanged();
             }
         }
 
@@ -186,7 +187,7 @@ namespace Waves.UI.WPF.Services
                 if (_selectedTheme != null)
                     useDarkSet = _selectedTheme.UseDarkSet;
 
-                _selectedTheme = value;
+                this.RaiseAndSetIfChanged(ref _selectedTheme, value);
 
                 _selectedThemeId = _selectedTheme.Id;
 
@@ -195,8 +196,6 @@ namespace Waves.UI.WPF.Services
                 UpdateTheme();
 
                 OnThemeChanged();
-
-                OnPropertyChanged();
             }
         }
 
@@ -215,52 +214,54 @@ namespace Waves.UI.WPF.Services
             //InitializeSystemThemeCheckerDaemon();
 
             OnMessageReceived(this,
-                new Message("Initialization", "Application attached - " + application, Name, MessageType.Information));
+                new WavesMessage("Initialization", "Application attached - " + application, Name, WavesMessageType.Information));
         }
 
         /// <inheritdoc />
-        public override void Initialize()
+        public override void Initialize(IWavesCore core)
         {
             if (IsInitialized) return;
+
+            Core = core;
 
             InitializeCollectionSynchronization();
             InitializeThemes();
 
             OnMessageReceived(this,
-                new Message("Initialization", "Service was initialized.", Name, MessageType.Information));
+                new WavesMessage("Initialization", "Service was initialized.", Name, WavesMessageType.Information));
 
             IsInitialized = true;
         }
 
         /// <inheritdoc />
-        public override void LoadConfiguration(IConfiguration configuration)
+        public override void LoadConfiguration()
         {
             try
             {
-                _selectedThemeId = LoadConfigurationValue(configuration, "ThemesService-SelectedThemeId", Guid.Empty);
-                UseAutomaticScheme = LoadConfigurationValue(configuration, "ThemesService-UseAutomaticScheme", false);
-                UseDarkScheme = LoadConfigurationValue(configuration, "ThemesService-UseDarkScheme", false);
+                _selectedThemeId = LoadConfigurationValue(Core.Configuration, "ThemesService-SelectedThemeId", Guid.Empty);
+                UseAutomaticScheme = LoadConfigurationValue(Core.Configuration, "ThemesService-UseAutomaticScheme", false);
+                UseDarkScheme = LoadConfigurationValue(Core.Configuration, "ThemesService-UseDarkScheme", false);
             }
             catch (Exception e)
             {
                 OnMessageReceived(this,
-                    new Message("Theme Service", "Error loading configuration:\r\n" + e, Name, MessageType.Error));
+                    new WavesMessage("Theme Service", "Error loading configuration:\r\n" + e, Name, WavesMessageType.Error));
             }
         }
 
         /// <inheritdoc />
-        public override void SaveConfiguration(IConfiguration configuration)
+        public override void SaveConfiguration()
         {
             try
             {
-                configuration.SetPropertyValue("ThemesService-SelectedThemeId", _selectedThemeId);
-                configuration.SetPropertyValue("ThemesService-UseAutomaticScheme", UseAutomaticScheme);
-                configuration.SetPropertyValue("ThemesService-UseDarkScheme", UseDarkScheme);
+                Core.Configuration.SetPropertyValue("ThemesService-SelectedThemeId", _selectedThemeId);
+                Core.Configuration.SetPropertyValue("ThemesService-UseAutomaticScheme", UseAutomaticScheme);
+                Core.Configuration.SetPropertyValue("ThemesService-UseDarkScheme", UseDarkScheme);
             }
             catch (Exception e)
             {
                 OnMessageReceived(this,
-                    new Message("Theme Service", "Error saving configuration:\r\n" + e, Name, MessageType.Error));
+                    new WavesMessage("Theme Service", "Error saving configuration:\r\n" + e, Name, WavesMessageType.Error));
             }
         }
 
@@ -290,8 +291,8 @@ namespace Waves.UI.WPF.Services
             catch (Exception e)
             {
                 OnMessageReceived(this,
-                    new Message("Theme Service", "Error enabling collection synchronization:\r\n" + e, Name,
-                        MessageType.Error));
+                    new WavesMessage("Theme Service", "Error enabling collection synchronization:\r\n" + e, Name,
+                        WavesMessageType.Error));
             }
         }
 
@@ -312,7 +313,7 @@ namespace Waves.UI.WPF.Services
             catch (Exception e)
             {
                 OnMessageReceived(this,
-                    new Message("Theme Service", "Error initializing base themes:\r\n" + e, Name, MessageType.Error));
+                    new WavesMessage("Theme Service", "Error initializing base themes:\r\n" + e, Name, WavesMessageType.Error));
             }
         }
 
@@ -491,15 +492,15 @@ namespace Waves.UI.WPF.Services
 
                 OnMessageReceived(this,
                     SelectedTheme.UseDarkSet
-                        ? new Message("Theme Service", "Theme changed to \"" + SelectedTheme.Name + "\" (Dark).", Name,
-                            MessageType.Information)
-                        : new Message("Theme Service", "Theme changed to \"" + SelectedTheme.Name + "\" (Light).", Name,
-                            MessageType.Information));
+                        ? new WavesMessage("Theme Service", "Theme changed to \"" + SelectedTheme.Name + "\" (Dark).", Name,
+                            WavesMessageType.Information)
+                        : new WavesMessage("Theme Service", "Theme changed to \"" + SelectedTheme.Name + "\" (Light).", Name,
+                            WavesMessageType.Information));
             }
             catch (Exception e)
             {
                 OnMessageReceived(this,
-                    new Message("Theme Service", "Error updating theme:\r\n" + e, Name, MessageType.Error));
+                    new WavesMessage("Theme Service", "Error updating theme:\r\n" + e, Name, WavesMessageType.Error));
             }
         }
 
@@ -533,13 +534,13 @@ namespace Waves.UI.WPF.Services
                 catch (Exception e)
                 {
                     OnMessageReceived(this,
-                        new Message("Theme Service", "Error initializing selected theme:\r\n" + e, Name,
-                            MessageType.Error));
+                        new WavesMessage("Theme Service", "Error initializing selected theme:\r\n" + e, Name,
+                            WavesMessageType.Error));
                 }
             }
             else
             {
-                OnMessageReceived(this, new Message("Theme Service", "Themes not found.", Name, MessageType.Error));
+                OnMessageReceived(this, new WavesMessage("Theme Service", "Themes not found.", Name, WavesMessageType.Error));
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Waves.UI.WPF.Showcase.View.ModalWindow
     /// <summary>
     ///     Логика взаимодействия для AddPropertyModalityWindowContentView.xaml
     /// </summary>
-    public partial class AddPropertyModalWindowContentView : IModalWindowsPresentationView
+    public partial class AddPropertyModalWindowContentView : IModalWindowsPresenterView
     {
         /// <summary>
         ///     Creates new instance of add property modality window content view.
@@ -18,13 +18,25 @@ namespace Waves.UI.WPF.Showcase.View.ModalWindow
         }
 
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public event EventHandler<IWavesMessage> MessageReceived;
+
+        /// <inheritdoc />
+        public IWavesCore Core { get; private set; }
+
+        /// <inheritdoc />
+        public Guid Id { get; } = Guid.NewGuid();
+
+        /// <inheritdoc />
+        public void AttachCore(IWavesCore core)
+        {
+            Core = core;
+        }
 
         /// <summary>
-        ///     Notifies when message received.
+        /// Notifies when message received.
         /// </summary>
         /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
+        protected virtual void OnMessageReceived(IWavesMessage e)
         {
             MessageReceived?.Invoke(this, e);
         }

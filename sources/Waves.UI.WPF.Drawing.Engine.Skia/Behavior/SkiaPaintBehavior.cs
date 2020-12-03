@@ -1,10 +1,7 @@
-﻿using System;
-using System.Windows;
-using Waves.Core.Services.Interfaces;
-using Waves.UI.WPF.Controls.Drawing.Behavior;
-using Microsoft.Xaml.Behaviors;
-using SkiaSharp.Views.Desktop;
+﻿using SkiaSharp.Views.Desktop;
 using SkiaSharp.Views.WPF;
+using Waves.Core.Base.Interfaces.Services;
+using Waves.UI.WPF.Controls.Drawing.Behavior;
 
 namespace Waves.UI.WPF.Drawing.Engine.Skia.Behavior
 {

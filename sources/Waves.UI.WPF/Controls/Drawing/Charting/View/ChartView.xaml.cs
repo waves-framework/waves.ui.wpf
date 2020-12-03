@@ -10,7 +10,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Charting.View
     /// <summary>
     ///     Chart view.
     /// </summary>
-    public partial class ChartView : IChartView
+    public partial class ChartView : IChartPresenterView
     {
         /// <summary>
         /// Gets or sets "DrawingElementView".
@@ -19,7 +19,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Charting.View
             DependencyProperty.Register
             (
                 "DrawingElementView",
-                typeof(IDrawingElementView),
+                typeof(IDrawingElementPresenterView),
                 typeof(ChartView),
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault)
             );
@@ -29,9 +29,9 @@ namespace Waves.UI.WPF.Controls.Drawing.Charting.View
         /// </summary>
         /// <param name="obj">Dependency object.</param>
         /// <returns>Returns Drawing element view.</returns>
-        public static IDrawingElementView GetDrawingElementView(DependencyObject obj)
+        public static IDrawingElementPresenterView GetDrawingElementView(DependencyObject obj)
         {
-            return (IDrawingElementView)obj.GetValue(DrawingElementViewProperty);
+            return (IDrawingElementPresenterView)obj.GetValue(DrawingElementViewProperty);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Charting.View
         /// </summary>
         /// <param name="obj">Dependency object.</param>
         /// <param name="value">Drawing element view.</param>
-        public static void SetDrawingElementView(DependencyObject obj, IDrawingElementView value)
+        public static void SetDrawingElementView(DependencyObject obj, IDrawingElementPresenterView value)
         {
             obj.SetValue(DrawingElementViewProperty, value);
         }
@@ -53,14 +53,26 @@ namespace Waves.UI.WPF.Controls.Drawing.Charting.View
         }
 
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public event EventHandler<IWavesMessage> MessageReceived;
+
+        /// <inheritdoc />
+        public IWavesCore Core { get; private set; }
+
+        /// <inheritdoc />
+        public Guid Id { get; } = Guid.NewGuid();
+
+        /// <inheritdoc />
+        public void AttachCore(IWavesCore core)
+        {
+            Core = core;
+        }
 
         /// <summary>
         /// Gets or sets Drawing element view.
         /// </summary>
-        public IDrawingElementView DrawingElementView
+        public IDrawingElementPresenterView DrawingElementView
         {
-            get => (IDrawingElementView)GetValue(DrawingElementViewProperty);
+            get => (IDrawingElementPresenterView)GetValue(DrawingElementViewProperty);
             set
             {
                 if (value.Equals(DrawingElementView)) return;
@@ -78,7 +90,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Charting.View
         /// Notifies when system message received.
         /// </summary>
         /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
+        protected virtual void OnMessageReceived(IWavesMessage e)
         {
             MessageReceived?.Invoke(this, e);
         }

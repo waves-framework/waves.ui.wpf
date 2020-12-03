@@ -10,7 +10,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Factories
     public class ChartViewFactory : IChartViewFactory
     {
         /// <inheritdoc />
-        public IChartView GetChartView()
+        public IChartPresenterView GetChartView()
         {
             return new ChartView();
         }

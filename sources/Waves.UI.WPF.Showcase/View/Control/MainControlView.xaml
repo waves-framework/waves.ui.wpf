@@ -44,12 +44,12 @@
             <!--<Canvas Background="{DynamicResource Primary-500-Brush}" Width="2" Margin="0,-36,-0,0" HorizontalAlignment="Right"/>-->
 
             <TabControl x:Name="TabControl"
-                        ItemsSource="{Binding Presentations, UpdateSourceTrigger=PropertyChanged}"
-                        SelectedItem="{Binding SelectedPresentation, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding Presenters, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding SelectedPresenter, UpdateSourceTrigger=PropertyChanged}"
                         ItemTemplate="{StaticResource TabDataTemplate}"
                         TabStripPlacement="Top"
                         helpers:TabControl.IsContentVisible="False"
-                        HorizontalContentAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
                         SelectionChanged="OnTabSelectionChanged"/>
 
         </Grid>
@@ -89,7 +89,7 @@
 
             <ContentControl x:Name="Content"
                             ContentTemplate="{StaticResource TabContentTemplate}"
-                            Content="{Binding SelectedPresentation.View, UpdateSourceTrigger=PropertyChanged}"
+                            Content="{Binding SelectedPresenter.View, UpdateSourceTrigger=PropertyChanged}"
                             IsTabStop="False"/>
 
         </Grid>

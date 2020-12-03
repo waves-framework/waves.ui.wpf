@@ -3,6 +3,7 @@ using System.Composition;
 using Waves.Core.Base;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.Interfaces;
+using Waves.Core.Base.Interfaces.Services;
 using Waves.Presentation.Interfaces;
 using Waves.UI.Showcase.Common.Services.Interfaces;
 using Waves.UI.WPF.Showcase.View.ModalWindow;
@@ -12,8 +13,8 @@ namespace Waves.UI.WPF.Showcase.Services
     /// <summary>
     /// Configuration windows service.
     /// </summary>
-    [Export(typeof(IService))]
-    public class ConfigurationWindowsService : Service, IConfigurationWindowsService
+    [Export(typeof(IWavesService))]
+    public class ConfigurationWindowsService : WavesService, IConfigurationWindowsService
     {
         /// <inheritdoc />
         public override Guid Id { get; } = Guid.Parse("04B1C0AF-A858-4DBB-BEEF-FA9D1E363CA4");
@@ -22,23 +23,25 @@ namespace Waves.UI.WPF.Showcase.Services
         public override string Name { get; set; } = "WPF Configuration windows service";
 
         /// <inheritdoc />
-        public override void Initialize()
+        public override void Initialize(IWavesCore core)
         {
             if (IsInitialized) return;
 
+            Core = core;
+
             OnMessageReceived(this,
-                new Message("Initialization", "Service was initialized.", Name, MessageType.Information));
+                new WavesMessage("Initialization", "Service was initialized.", Name, WavesMessageType.Information));
 
             IsInitialized = true;
         }
 
         /// <inheritdoc />
-        public override void LoadConfiguration(IConfiguration configuration)
+        public override void LoadConfiguration()
         {
         }
 
         /// <inheritdoc />
-        public override void SaveConfiguration(IConfiguration configuration)
+        public override void SaveConfiguration()
         {
         }
 
@@ -48,19 +51,19 @@ namespace Waves.UI.WPF.Showcase.Services
         }
 
         /// <inheritdoc />
-        public IPresentationView GetAddPropertyPresentationView()
+        public IPresenterView GetAddPropertyPresentationView()
         {
             return new AddPropertyModalWindowContentView();
         }
 
         /// <inheritdoc />
-        public IPresentationView GetShowPropertyPresentationView()
+        public IPresenterView GetShowPropertyPresentationView()
         {
             return new ShowPropertyModalWindowContentView();
         }
 
         /// <inheritdoc />
-        public IPresentationView GetEditPropertyPresentationView()
+        public IPresenterView GetEditPropertyPresentationView()
         {
             return new EditPropertyModalWindowContentView();
         }

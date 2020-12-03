@@ -50,7 +50,7 @@ namespace Waves.UI.WPF
 
             if (!(Application.MainWindow?.Content is Grid grid)) return;
 
-            ModalWindowController = new ModalWindowsPresentationController();
+            ModalWindowController = new ModalWindowsPresentationController(this);
             var controllerView = new ModalWindowPresentationControllerView {DataContext = ModalWindowController };
 
             ModalWindowController.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
@@ -84,11 +84,11 @@ namespace Waves.UI.WPF
         /// </summary>
         private void InitializeThemeService()
         {
-            var service = GetService<IThemeService>() as ThemeService;
+            var service = GetInstance<IThemeService>() as ThemeService;
 
             if (service == null)
-                WriteLogMessage(
-                    new Message("Service", "Theme service is not initialized.", "UI Core", MessageType.Fatal));
+                WriteLog(
+                    new WavesMessage("Service", "Theme service is not initialized.", "UI Core", WavesMessageType.Fatal));
             else
                 service.AttachApplication(Application);
         }
@@ -100,7 +100,7 @@ namespace Waves.UI.WPF
         /// <param name="e">Arguments.</param>
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            WriteLogMessage(new Message(e.Exception, true));
+            WriteLog(new WavesMessage(e.Exception, true));
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Waves.UI.WPF
         /// <param name="e">Arguments.</param>
         private void OnTaskSchedulerUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            WriteLogMessage(new Message(e.Exception, true));
+            WriteLog(new WavesMessage(e.Exception, true));
         }
     }
 }

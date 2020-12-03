@@ -4,9 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Waves.Core.Base;
 using Waves.Core.Base.Interfaces;
-using Waves.Core.Services.Interfaces;
 using Waves.UI.WPF.Controls.Drawing.Engines.System.Behavior;
 using Microsoft.Xaml.Behaviors;
+using Waves.Core.Base.Interfaces.Services;
 using Waves.UI.Drawing.View.Interfaces;
 
 namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
@@ -15,10 +15,8 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
     ///     Drawing canvas.
     /// </summary>
     [Category("Waves - Drawing")]
-    public class SystemDrawingElementView : Canvas, IDrawingElementView
+    public class SystemDrawingElementView : Canvas, IDrawingElementPresenterView
     {
-        private readonly Point _lastTouchPosition = new Point();
-
         /// <summary>
         ///     Creates new instance of <see cref="SystemDrawingElementView" />.
         /// </summary>
@@ -37,15 +35,27 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         {
             Dispose();
         }
+        
+        /// <inheritdoc />
+        public event EventHandler<IWavesMessage> MessageReceived;
 
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public IWavesCore Core { get; private set; }
 
+        /// <inheritdoc />
+        public Guid Id { get; } = Guid.NewGuid();
+        
+        /// <inheritdoc />
+        public void AttachCore(IWavesCore core)
+        {
+            Core = core;
+        }
+        
         /// <summary>
         ///     Notifies when message received.
         /// </summary>
         /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
+        protected virtual void OnMessageReceived(IWavesMessage e)
         {
             MessageReceived?.Invoke(this, e);
         }

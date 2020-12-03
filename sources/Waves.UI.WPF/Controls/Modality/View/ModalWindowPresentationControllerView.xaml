@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:animations="clr-namespace:Waves.UI.WPF.Animations"
              xmlns:interfaces="clr-namespace:Waves.UI.Modality.Presentation.Controllers.Interfaces;assembly=Waves.UI"
-             d:DataContext="{d:DesignInstance interfaces:IModalWindowsPresentationController}"
+             d:DataContext="{d:DesignInstance interfaces:IModalWindowPresenterController}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 

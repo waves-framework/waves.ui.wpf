@@ -6,7 +6,7 @@ namespace Waves.UI.WPF.Base
     /// <summary>
     /// Primary color set.
     /// </summary>
-    public class PrimaryColorSet : UI.Services.PrimaryColorSet
+    public class PrimaryColorSet : UI.Services.ThemeService.ColorSets.PrimaryColorSet
     {
         private const string ColorKey = "Color";
         private const string ForegroundColorKey = "Color-Foreground";

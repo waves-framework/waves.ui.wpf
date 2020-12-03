@@ -14,7 +14,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.Extensions
         ///     Converts color to Skia color.
         /// </summary>
         /// <returns>Skia color.</returns>
-        public static SKColor ToSkColor(this Color color)
+        public static SKColor ToSkColor(this WavesColor color)
         {
             return new SKColor(color.R, color.G, color.B, color.A);
         }
@@ -25,7 +25,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.Extensions
         /// <param name="color">Color.</param>
         /// <param name="opacity">Opacity.</param>
         /// <returns></returns>
-        public static SKColor ToSkColor(this Color color, float opacity)
+        public static SKColor ToSkColor(this WavesColor color, float opacity)
         {
             var a = Convert.ToByte(opacity * color.A);
             return new SKColor(color.R, color.G, color.B, a);
@@ -36,7 +36,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.Extensions
         /// </summary>
         /// <param name="point">Point.</param>
         /// <returns>Skia point.</returns>
-        public static SKPoint ToSkPoint(this Point point)
+        public static SKPoint ToSkPoint(this WavesPoint point)
         {
             return new SKPoint(point.X, point.Y);
         }

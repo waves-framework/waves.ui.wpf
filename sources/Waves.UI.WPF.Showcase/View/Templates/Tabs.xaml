@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:presentation="clr-namespace:Waves.UI.Presentation.Tabs.Interfaces;assembly=Waves.UI">
 
-    <DataTemplate x:Key="TabDataTemplate" DataType="{x:Type presentation:ITabPresentation}">
+    <DataTemplate x:Key="TabDataTemplate" DataType="{x:Type presentation:ITabPresenter}">
 
         <Grid>
 

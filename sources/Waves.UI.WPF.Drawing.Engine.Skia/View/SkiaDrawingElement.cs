@@ -10,7 +10,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
     /// <summary>
     ///     Skia drawing element.
     /// </summary>
-    public class SkiaDrawingElement : IDrawingElement
+    public class SkiaDrawingElement : WavesObject, IDrawingElement
     {
         /// <summary>
         ///     Gets or sets SKSurface.
@@ -18,11 +18,17 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         public SKSurface Surface { get; set; }
 
         /// <inheritdoc />
-        public void Dispose()
+        public override Guid Id { get; } = Guid.NewGuid();
+
+        /// <inheritdoc />
+        public override string Name { get; set; } = "WPF Skia Drawing Object";
+
+        /// <inheritdoc />
+        public override void Dispose()
         {
             Surface?.Dispose();
         }
-
+        
         /// <inheritdoc />
         public void Draw(object element, ICollection<IDrawingObject> drawingObjects)
         {
@@ -42,7 +48,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         }
 
         /// <inheritdoc />
-        public void DrawEllipse(Point location, float radius, IPaint paint)
+        public void DrawEllipse(WavesPoint location, float radius, IPaint paint)
         {
             using (var skPaint = new SKPaint
             {
@@ -68,7 +74,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         }
 
         /// <inheritdoc />
-        public void DrawLine(Point point1, Point point2, IPaint paint)
+        public void DrawLine(WavesPoint point1, WavesPoint point2, IPaint paint)
         {
             using var skPaint = new SKPaint
             {
@@ -90,7 +96,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         }
 
         /// <inheritdoc />
-        public void DrawRectangle(Point location, Size size, IPaint paint, float cornerRadius = 0)
+        public void DrawRectangle(WavesPoint location, WavesSize size, IPaint paint, float cornerRadius = 0)
         {
             using (var skPaint = new SKPaint
             {
@@ -118,7 +124,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         }
 
         /// <inheritdoc />
-        public void DrawText(Point location, string text, ITextPaint paint)
+        public void DrawText(WavesPoint location, string text, ITextPaint paint)
         {
             using var skPaint = GetSkiaTextPaint(paint);
 
@@ -126,14 +132,14 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia.View
         }
 
         /// <inheritdoc />
-        public Size MeasureText(string text, ITextPaint paint)
+        public WavesSize MeasureText(string text, ITextPaint paint)
         {
             using var skPaint = GetSkiaTextPaint(paint);
 
             var bounds = new SKRect();
             skPaint.MeasureText(text, ref bounds);
 
-            return new Size(bounds.Width, bounds.Height);
+            return new WavesSize(bounds.Width, bounds.Height);
         }
 
         /// <summary>

@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using System.Windows.Media;
+using Waves.Core.Base;
 
 namespace Waves.UI.WPF.Converters.Base
 {
     /// <inheritdoc />
-    public class WavesColorToSolidColorBrushConverter : IValueConverter
+    public class WavesColorToHexStringConverter : IValueConverter
     {
         /// <inheritdoc />
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) 
-                return new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-            var color = (Waves.Core.Base.Color) value;
-            return new SolidColorBrush(Color.FromArgb(color.A, color.R, color.G, color.B));
+            var color = (WavesColor?) value;
+            return color?.ToHexString();
         }
 
         /// <inheritdoc />
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Binding.DoNothing;
+            var text = (string) value;
+            var parse = WavesColor.TryParseFromHex(text, out var color, out var hasAlpha);
+            return parse ? (object) color : null;
         }
     }
 }

@@ -28,7 +28,7 @@
 
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="ModalWindowDataTemplate" DataType="{x:Type interfaces:IModalWindowPresentation}">
+    <DataTemplate x:Key="ModalWindowDataTemplate" DataType="{x:Type interfaces:IModalWindowPresenter}">
 
         <Grid VerticalAlignment="Stretch"
               HorizontalAlignment="Stretch"

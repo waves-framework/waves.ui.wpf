@@ -22,7 +22,7 @@
 
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="PropertyListDataTemplate" DataType="{x:Type interfaces:IProperty}">
+    <DataTemplate x:Key="PropertyListDataTemplate" DataType="{x:Type interfaces:IWavesProperty}">
 
         <Grid Margin="12,12,12,12">
 

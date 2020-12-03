@@ -18,7 +18,7 @@ namespace Waves.UI.WPF.Showcase.View.Control.Tabs
     /// <summary>
     /// Логика взаимодействия для TextTabView.xaml
     /// </summary>
-    public partial class TextTabView : IPresentationView
+    public partial class TextTabView : IPresenterView
     {
         /// <summary>
         /// Creates new inctance of text tab vire.
@@ -29,13 +29,25 @@ namespace Waves.UI.WPF.Showcase.View.Control.Tabs
         }
 
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public event EventHandler<IWavesMessage> MessageReceived;
+
+        /// <inheritdoc />
+        public IWavesCore Core { get; private set; }
+
+        /// <inheritdoc />
+        public Guid Id { get; } = Guid.NewGuid();
+
+        /// <inheritdoc />
+        public void AttachCore(IWavesCore core)
+        {
+            Core = core;
+        }
 
         /// <summary>
         /// Notifies when message received.
         /// </summary>
         /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
+        protected virtual void OnMessageReceived(IWavesMessage e)
         {
             MessageReceived?.Invoke(this, e);
         }

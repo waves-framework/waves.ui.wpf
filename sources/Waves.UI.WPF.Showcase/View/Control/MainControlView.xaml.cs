@@ -12,7 +12,7 @@ namespace Waves.UI.WPF.Showcase.View.Control
     /// <summary>
     ///     Логика взаимодействия для MainControlView.xaml
     /// </summary>
-    public partial class MainControlView : IPresentationView
+    public partial class MainControlView : IPresenterView
     {
         private int _previousIndex = -1;
 
@@ -25,13 +25,25 @@ namespace Waves.UI.WPF.Showcase.View.Control
         }
 
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public event EventHandler<IWavesMessage> MessageReceived;
+
+        /// <inheritdoc />
+        public IWavesCore Core { get; private set; }
+
+        /// <inheritdoc />
+        public Guid Id { get; } = Guid.NewGuid();
+
+        /// <inheritdoc />
+        public void AttachCore(IWavesCore core)
+        {
+            Core = core;
+        }
 
         /// <summary>
         /// Notifies when message received.
         /// </summary>
         /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
+        protected virtual void OnMessageReceived(IWavesMessage e)
         {
             MessageReceived?.Invoke(this, e);
         }

@@ -12,7 +12,7 @@ namespace Waves.UI.WPF.Converters.Base
         {
             if (value != null)
             {
-                var color = (Color) value;
+                var color = (WavesColor) value;
                 var newColor = new System.Windows.Media.Color
                 {
                     A = 0,

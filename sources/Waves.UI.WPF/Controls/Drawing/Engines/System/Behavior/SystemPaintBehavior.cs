@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using Waves.Core.Services.Interfaces;
+using Waves.Core.Base.Interfaces.Services;
 using Waves.UI.WPF.Controls.Drawing.Behavior;
 using Waves.UI.WPF.Helpers;
 

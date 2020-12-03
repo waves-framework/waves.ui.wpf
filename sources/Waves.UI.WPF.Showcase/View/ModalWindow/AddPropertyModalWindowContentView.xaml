@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helpers="clr-namespace:Waves.UI.WPF.Helpers;assembly=Waves.UI.WPF"
-             xmlns:modalWindow="clr-namespace:Waves.UI.Showcase.Common.ViewModel.ModalWindow;assembly=Waves.UI.Showcase.Common"
-             d:DataContext="{d:DesignInstance modalWindow:AddPropertyModalWindowViewModel}"
+             xmlns:modalWindow1="clr-namespace:Waves.UI.Showcase.Common.Presentation.ViewModel.ModalWindow;assembly=Waves.UI.Showcase.Common"
+             d:DataContext="{d:DesignInstance modalWindow1:AddPropertyModalWindowViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 

@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Waves.UI.WPF.Controls.Drawing.Charting.View"
-             xmlns:viewModel1="clr-namespace:Waves.UI.Drawing.Charting.ViewModel;assembly=Waves.UI.Drawing.Charting"
-             d:DataContext="{d:DesignInstance viewModel1:ChartViewModel}"
+             xmlns:viewModel="clr-namespace:Waves.UI.Drawing.Charting.ViewModel;assembly=Waves.UI.Drawing.Charting"
+             d:DataContext="{d:DesignInstance viewModel:ChartPresenterViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
