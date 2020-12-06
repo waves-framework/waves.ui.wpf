@@ -100,23 +100,24 @@
                             <Setter Property="Foreground" Value="{DynamicResource Primary-Foreground-900-Brush}" />
                         </Trigger>
 
-                        <!-- Наведение курсора мыши -->
+                        <!-- Mouse enter animation -->
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard TargetName="HighlightBorder">
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
-                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.125" />
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="{StaticResource Opacity7}" />
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{StaticResource Opacity8}" />
                                     </DoubleAnimationUsingKeyFrames>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
 
-                        <!-- Уведение курсора мыши -->
+                        <!-- Mouse leave animation -->
                         <EventTrigger RoutedEvent="MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard TargetName="HighlightBorder">
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
-                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.0" />
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{StaticResource Opacity0}" />
                                     </DoubleAnimationUsingKeyFrames>
                                 </Storyboard>
                             </BeginStoryboard>

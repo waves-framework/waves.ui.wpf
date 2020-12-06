@@ -29,12 +29,14 @@
 
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
 
-                    <Border x:Name="Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            Opacity="0">
+                    <Grid>
+
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                Opacity="0"/>
 
                         <Grid>
 
@@ -47,15 +49,33 @@
 
                         </Grid>
 
-                    </Border>
+                    </Grid>
 
                     <ControlTemplate.Triggers>
 
-                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="HighlightCanvas" Property="Opacity" Value="{StaticResource Opacity8}" />
-                        </Trigger>
+                        <!-- Mouse enter animation -->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="HighlightCanvas">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="{StaticResource Opacity7}" />
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{StaticResource Opacity8}" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
 
-                        <!-- Убрать привязку к конкретным цветам -->
+                        <!-- Mouse leave animation -->
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="HighlightCanvas">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{StaticResource Opacity0}" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Foreground" Value="{DynamicResource Accent-Foreground-100-Brush}" />
                             <Setter Property="Background" Value="{DynamicResource Accent-500-Brush}" />
@@ -121,6 +141,7 @@
         <Setter Property="Width" Value="Auto" />
 
         <Setter Property="Background" Value="{DynamicResource Primary-200-Brush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary-500-Brush}" />
 
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -148,19 +169,25 @@
                     <Grid>
 
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}" />
+                                CornerRadius="{TemplateBinding helpers:Control.CornerRadius}"
+                                x:Name="Border"/>
 
                         <ScrollViewer CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
                                       Focusable="False"
                                       HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                       VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                      Margin="{TemplateBinding BorderThickness}">
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+
+                            <ScrollViewer.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=Border}" />
+                            </ScrollViewer.OpacityMask>
 
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                             VerticalAlignment="{TemplateBinding HorizontalAlignment}"
-                                            Margin="{TemplateBinding Padding}"/>
+                                            Margin="{TemplateBinding Padding}">
+
+                            </ItemsPresenter>
 
                         </ScrollViewer>
 

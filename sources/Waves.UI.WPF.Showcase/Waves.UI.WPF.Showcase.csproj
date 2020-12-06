@@ -42,6 +42,12 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="View\Templates\Charts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
   <Import Project="../../props/Waves.UI.WPF.props" />
 
 </Project>

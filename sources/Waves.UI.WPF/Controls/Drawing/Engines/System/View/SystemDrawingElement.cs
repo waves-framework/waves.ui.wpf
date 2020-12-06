@@ -21,7 +21,7 @@ namespace Waves.UI.WPF.Controls.Drawing.Engines.System.View
         public Canvas Canvas { get; set; }
 
         /// <inheritdoc />
-        public override Guid Id { get; }
+        public override Guid Id { get; } = Guid.NewGuid();
 
         /// <inheritdoc />
         public override string Name { get; set; }

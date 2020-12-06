@@ -33,6 +33,7 @@
     <ic:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
     <ic:InverseNullToBoolConverter x:Key="InverseNullToBoolConverter" />
     <ic:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter" />
+    <ic:InverseSingleItemToVisibilityConverter x:Key="InverseSingleItemToVisibilityConverter" />
     <ic:InverseStringIsNullOrEmptyToBoolConverter x:Key="InverseStringIsNullOrEmptyToBoolConverter" />
     <ic:InverseStringIsNullOrEmptyToVisibilityConverter x:Key="InverseStringIsNullOrEmptyToVisibilityConverter" />
     <ic:InverseZeroAmountToBoolConverter x:Key="InverseZeroAmountToBoolConverter" />

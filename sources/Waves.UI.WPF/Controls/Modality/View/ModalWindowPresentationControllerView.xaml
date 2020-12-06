@@ -16,6 +16,8 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Converters/Converters.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Controls/Modality/View/Templates/ModalWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Controls/Modality/View/Templates/ModalWindowAction.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 
@@ -71,7 +73,7 @@
 
         </Grid.Style>-->
 
-        <ItemsControl ItemsSource="{Binding Presentations, UpdateSourceTrigger=PropertyChanged}"
+        <ItemsControl ItemsSource="{Binding Presenters, UpdateSourceTrigger=PropertyChanged}"
                       ItemTemplate="{StaticResource ModalWindowDataTemplate}">
 
             <ItemsControl.ItemsPanel>
@@ -86,7 +88,7 @@
 
         <Canvas Background="{DynamicResource Primary-100-Brush}" Opacity="{DynamicResource Opacity3}"/>
 
-        <ContentControl DataContext="{Binding SelectedPresentation, UpdateSourceTrigger=PropertyChanged}"
+        <ContentControl DataContext="{Binding SelectedPresenter, UpdateSourceTrigger=PropertyChanged}"
                         Content="{Binding}"
                         ContentTemplate="{StaticResource ModalWindowDataTemplate}"
                         x:Name="SelectedPresentationContentControl"/>

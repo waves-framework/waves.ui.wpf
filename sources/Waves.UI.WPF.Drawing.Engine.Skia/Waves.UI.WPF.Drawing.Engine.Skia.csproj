@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\ui\sources\Waves.UI.Common.Engine.Skia\Waves.UI.Common.Engine.Skia.csproj" />
     <ProjectReference Include="..\Waves.UI.WPF\Waves.UI.WPF.csproj" />
   </ItemGroup>
 

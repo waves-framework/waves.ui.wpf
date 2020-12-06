@@ -5,9 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Waves.UI.WPF.Showcase.View.Control.Tabs"
              xmlns:tabs="clr-namespace:Waves.UI.Showcase.Common.Presentation.ViewModel.Tabs;assembly=Waves.UI.Showcase.Common"
+             xmlns:interfaces="clr-namespace:Waves.UI.Drawing.Presentation.Interfaces;assembly=Waves.UI.Drawing"
              d:DataContext="{d:DesignInstance tabs:ChartingTabViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="pack://application:,,,/View/Templates/Charts.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </UserControl.Resources>
 
     <Grid Margin="{StaticResource BigThickness}">
 
@@ -41,31 +56,219 @@
 
             <Grid Grid.Column="0">
 
-                <ContentControl Content="{Binding ChartPresentation.View, UpdateSourceTrigger=PropertyChanged}"/>
+                <ItemsControl ItemsSource="{Binding DrawingElementPresenters, UpdateSourceTrigger=PropertyChanged}">
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type interfaces:IDrawingElementPresenter}">
+                            <ContentControl Content="{Binding View, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="12,12,12,12"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                </ItemsControl>
+
+                <TextBlock Style="{StaticResource Regular1}"
+                           Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                           Visibility="{Binding DrawingElementPresenters.Count, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ZeroAmountToVisibilityConverter}}"
+                           Text="(No charts have been added)"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Opacity="{StaticResource Opacity5}"/>
 
             </Grid>
 
             <Grid Grid.Column="2">
 
-                <ScrollViewer Margin="0,0,-24,-18">
+                <ScrollViewer Margin="0,-80,-24,-18">
 
                     <StackPanel Margin="0,0,24,18">
 
-                        <TextBlock Text="Drawing engine" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+                        <TextBlock Text="Control" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+
+                        <TextBlock Text="Chart playback control." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                        <Grid Margin="0,0,0,18">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="34"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+
+                                <Button Style="{StaticResource AccentButtonStyle}">
+
+                                    <Viewbox Height="17" Width="17" Stretch="Uniform" Margin="-6,-4,0,0">
+
+                                        <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                              Data="M8,5v14l11-7L8,5z"/>
+
+                                    </Viewbox>
+
+                                </Button>
+
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+
+                                <Button>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-6,-3,0,0">
+
+                                        <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                              Data="M5 5L5 19L19 19L19 5L5 5 z"/>
+
+                                    </Viewbox>
+
+                                </Button>
+
+                            </Grid>
+
+                            <Grid Grid.Column="4">
+
+                                <Button>
+
+                                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-1,0,0,0">
+
+                                        <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                              Data="{StaticResource Icon-Tune}"/>
+
+                                    </Viewbox>
+
+                                </Button>
+
+                            </Grid>
+
+                        </Grid>
+
+                        <!--<TextBlock Text="Engine" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
 
                         <TextBlock Text="Drawing engine selection." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
 
                         <ComboBox Height="36"
-                                  ItemsSource="{Binding DrawingService.Engines, UpdateSourceTrigger=PropertyChanged}"
+                                  ItemsSource="{Binding DrawingService.Objects, UpdateSourceTrigger=PropertyChanged}"
                                   SelectedItem="{Binding DrawingService.CurrentEngine, UpdateSourceTrigger=PropertyChanged}"
                                   DisplayMemberPath="Name"
                                   VerticalContentAlignment="Center"
                                   Padding="12,0,12,0"
-                                  Margin="0,0,0,18"/>
+                                  Margin="0,0,0,18"/>-->
 
-                        <TextBlock Text="Data sets" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
+                        <TextBlock Text="Charts" Style="{StaticResource Header2}" Margin="0,0,0,7"/>
 
-                        <TextBlock Text="Editing of data sets." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+                        <TextBlock Text="Collection of charts." Style="{StaticResource Regular1}" Margin="0,0,0,12"/>
+
+                        <Grid Margin="0,0,0,6">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+
+                                <Button Command="{Binding AddChartCommand}">
+
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-2,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                                      Data="{StaticResource Icon-Plus}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}"
+                                                       Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                                       Text="Add chart"
+                                                       VerticalAlignment="Center"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+
+                                <Button CommandParameter="{Binding SelectedDrawingElementPresenter}"
+                                        Command="{Binding RemoveChartCommand}">
+
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="9"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+
+                                            <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-4,-2,0,0">
+
+                                                <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                                      Data="{StaticResource Icon-Remove}"/>
+
+                                            </Viewbox>
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+
+                                            <TextBlock Style="{StaticResource Regular1}"
+                                                       Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                                                       Text="Remove chart"
+                                                       VerticalAlignment="Center"/>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Button>
+
+                            </Grid>
+
+                        </Grid>
+
+                        <Grid>
+
+                            <ListBox ItemsSource="{Binding DrawingElementPresenters, UpdateSourceTrigger=PropertyChanged}"
+                                     ItemTemplate="{DynamicResource ChartListDataTemplate}"
+                                     SelectedItem="{Binding SelectedDrawingElementPresenter, UpdateSourceTrigger=PropertyChanged}"
+                                     x:Name="DataSetListControl"/>
+
+                            <TextBlock Style="{StaticResource Regular1}"
+                                       Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                                       Visibility="{Binding DrawingElementPresenters.Count, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ZeroAmountToVisibilityConverter}}"
+                                       Text="(No charts have been added)"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Opacity="{StaticResource Opacity5}"/>
+
+                        </Grid>
 
                         
 

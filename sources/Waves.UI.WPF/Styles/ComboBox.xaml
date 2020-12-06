@@ -111,7 +111,7 @@
         <Setter Property="IsTabStop" Value="True"/>
 
         <Setter Property="Background" Value="{DynamicResource Primary-300-Brush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Primary-700-Brush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Primary-500-Brush}"/>
 
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="{StaticResource StandardThickness}" />

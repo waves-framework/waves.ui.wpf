@@ -2,6 +2,7 @@
 using System.Composition;
 using Waves.Core.Base;
 using Waves.Core.Base.Interfaces.Services;
+using Waves.UI.Common.Engine.Skia.View;
 using Waves.UI.Drawing.Base.Interfaces;
 using Waves.UI.Drawing.View.Interfaces;
 using Waves.UI.WPF.Drawing.Engine.Skia.View;
@@ -18,7 +19,7 @@ namespace Waves.UI.WPF.Drawing.Engine.Skia
         public override Guid Id { get; } = Guid.NewGuid();
 
         /// <inheritdoc />
-        public override string Name { get; set; } = "SKIA";
+        public override string Name { get; set; } = "Skia";
 
         /// <inheritdoc />
         public IDrawingElementPresenterView GetView(IInputService inputService)

@@ -49,13 +49,27 @@
             <Grid Grid.Row="0">
 
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="6" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
 
-                    <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
+                    <Border Background="{Binding Color, Converter={StaticResource WavesColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
+                            Visibility="{Binding IsTitleVisible, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}"
+                            CornerRadius="2"
+                            Height="8"
+                            Width="8"
+                            Margin="0,0,0,6"/>
+
+                </Grid>
+
+                <Grid Grid.Column="2">
+
+                    <TextBlock Style="{StaticResource Header3}"
+                               Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
                                FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"
                                Margin="0,0,0,6"
                                Foreground="{Binding Foreground, Converter={StaticResource WavesColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}"
@@ -63,7 +77,7 @@
 
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="3">
 
                     <StackPanel Orientation="Horizontal"
                                 Margin="0,0,0,6"
@@ -74,12 +88,14 @@
                         <TextBlock Text="{Binding XAxisName, UpdateSourceTrigger=PropertyChanged}" 
                                    Margin="0,0,3,0" 
                                    Foreground="{Binding Foreground, Converter={StaticResource WavesColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
-                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource Regular1}"/>
 
                         <TextBlock Text="{Binding XAxisUnit, UpdateSourceTrigger=PropertyChanged, StringFormat={}({0})}" 
                                    Margin="0,0,0,0" 
                                    Foreground="{Binding Foreground, Converter={StaticResource WavesColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
-                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource Regular1}"/>
 
                     </StackPanel>
 
@@ -144,12 +160,14 @@
                         <TextBlock Text="{Binding YAxisName, UpdateSourceTrigger=PropertyChanged}" 
                                    Margin="0,0,3,0" 
                                    Foreground="{Binding Foreground, Converter={StaticResource WavesColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
-                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource Regular1}"/>
 
                         <TextBlock Text="{Binding YAxisUnit, UpdateSourceTrigger=PropertyChanged, StringFormat={}({0})}" 
                                    Margin="0,0,0,0" 
                                    Foreground="{Binding Foreground, Converter={StaticResource WavesColorToSolidColorBrushConverter}, UpdateSourceTrigger=PropertyChanged}" 
-                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"/>
+                                   FontSize="{Binding TextStyle.FontSize, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource Regular1}"/>
 
                     </StackPanel>
 

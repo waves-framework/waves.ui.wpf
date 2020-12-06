@@ -170,4 +170,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ui\sources\Waves.UI.Drawing.Charting\Waves.UI.Drawing.Charting.csproj" />
+    <ProjectReference Include="..\..\..\ui\sources\Waves.UI.Drawing\Waves.UI.Drawing.csproj" />
+    <ProjectReference Include="..\..\..\ui\sources\Waves.UI\Waves.UI.csproj" />
+  </ItemGroup>
+
 </Project>

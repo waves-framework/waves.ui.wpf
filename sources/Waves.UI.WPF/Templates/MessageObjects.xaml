@@ -306,6 +306,7 @@
                     <TextBlock Style="{StaticResource Regular2}" 
                                Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
                                Text="{Binding Messages.Count, StringFormat={}Grouped from {0} messages.}" 
+                               Visibility="{Binding Messages.Count, Converter={StaticResource InverseSingleItemToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
                                VerticalAlignment="Center"/>
 
                 </Grid>

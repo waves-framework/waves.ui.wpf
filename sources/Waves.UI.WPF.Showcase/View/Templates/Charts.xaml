@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:interfaces="clr-namespace:Waves.UI.Drawing.Presentation.Interfaces;assembly=Waves.UI.Drawing">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Converters. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Converters/Converters.xaml" />
+
+        <!-- Icons. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Resources/Icons.xaml" />
+
+        <!-- Padding. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Padding.xaml" />
+
+        <!-- Text. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Text.xaml" />
+
+        <!-- Opacity. -->
+        <ResourceDictionary Source="pack://application:,,,/Waves.UI.WPF;component/Styles/Opacity.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="ChartListDataTemplate" DataType="{x:Type interfaces:IDrawingElementPresenter}">
+
+        <Grid Margin="6,6,6,6"
+              Height="34">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="9"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="9"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-1,-1,0,0">
+
+                    <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                          Data="{StaticResource Icon-Nodes}"/>
+
+                </Viewbox>
+
+                <Border Background="{Binding DataContext.Color, Converter={StaticResource WavesColorToSolidColorBrushConverter}}"
+                        BorderBrush="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}"
+                        BorderThickness="1.4"
+                        CornerRadius="2"
+                        Height="8"
+                        Width="8"
+                        Margin="0,0,0,6"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"/>
+
+            </Grid>
+
+            <Grid Grid.Column="2">
+
+                <TextBlock Style="{StaticResource Regular1}"
+                           Foreground="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                           Text="{Binding Name}"
+                           VerticalAlignment="Center"/>
+
+            </Grid>
+
+            <Grid Grid.Column="4">
+
+                <Button Height="24"
+                        Width="24"
+                        Background="{DynamicResource Primary-500-Brush}"
+                        Command="{Binding ElementName=DataSetListControl, Path=DataContext.OpenChartEditModalWindowCommand}"
+                        CommandParameter="{Binding}">
+
+                    <Viewbox Height="14" Width="14" Stretch="Uniform" Margin="-2,-2,0,0">
+
+                        <Path Fill="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type UIElement}}}" 
+                              Data="{StaticResource Icon-Edit}"/>
+
+                    </Viewbox>
+
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+    </DataTemplate>
+
+</ResourceDictionary>
